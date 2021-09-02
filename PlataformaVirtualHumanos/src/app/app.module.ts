@@ -3,14 +3,24 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { PacienteComponent } from './paciente/paciente.component';
+import { BarraDeNavegacionComponent } from './paciente/barra-de-navegacion/barra-de-navegacion.component';
+import { CuerpoComponent } from './paciente/cuerpo/cuerpo.component';
+import { ControlDeEstudioComponent } from './paciente/Cuerpo/control-de-estudio/control-de-estudio.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    BarraDeNavegacionComponent,
+    CuerpoComponent,
+    PacienteComponent,
+    ControlDeEstudioComponent
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+   
   ],
   providers: [],
   bootstrap: [AppComponent]
