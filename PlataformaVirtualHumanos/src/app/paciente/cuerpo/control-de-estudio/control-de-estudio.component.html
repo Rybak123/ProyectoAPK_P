@@ -1,4 +1,81 @@
-<router-outlet></router-outlet>
-<p>control-de-estudio works! </p>
-<br>
-<button class="btn btn-danger">Boton boostrap</button>
+
+    
+    <div class="principal">
+      <div class="conteiner_information" id="contenedor1">
+        <br>
+        <h2 class="estilo_letra">
+          
+          ¿CUANTAS HORAS ESTUDIASTE HOY?
+        </h2>
+        <div>
+          <img src="assets/img/libro1.png" class="imagen" alt="">
+        </div>
+          
+          <div class="contenedor_opciones" id="botones">
+
+              <button class="estilo_boton"> 
+                <div class="dentro_boton">
+                  <div class="dentro_boton" id="icono">
+                    <img
+                    width="40"
+                     alt="Angular Logo"
+                     src="assets/img/reloj1_icon.png"
+                     
+                   />
+                  </div>
+                  <div class="dentro_boton" id="inicio">INICIAR</div>
+                </div>
+              
+                 
+              
+                
+              </button><BR>
+             
+                <button class="estilo_boton"> 
+                  <div class="dentro_boton">
+                    <div class="dentro_boton" id="icono">
+                      <img
+                      width="40"
+                       alt="Angular Logo"
+                       src="assets/img/reloj2_icon.png"
+                       
+                     />
+                    </div>
+                    <div class="dentro_boton" id="inicio">FINALIZAR</div>
+                  </div>
+              </button><BR>
+                <button class="estilo_boton"> 
+                  <div class="dentro_boton">
+                    <div class="dentro_boton" id="icono">
+                      <img
+                      width="40"
+                       alt="Angular Logo"
+                       src="assets/img/notas_icon.png"
+                       
+                     />
+                    </div>
+                    <div class="dentro_boton" id="inicio">REGISTRAR</div>
+                  </div>
+              </button>
+          </div>
+          <div class="contenedor_opciones" id="informacion_tiempo">
+              <div style="margin-top: 10px;">
+              00:00
+              </div>
+              
+              <div style="margin-top: 15%;">
+                <textarea name="Text1" cols="30" rows="8"></textarea>
+              </div>
+          </div>
+      </div>
+      <div class="conteiner_information" id="contenedor2">
+        <div >
+          <h2 style="text-align:center"> MI CALENDARIO</h2>
+         </div>
+         <div style="background-color: rgb(234, 243, 243);">
+          <full-calendar [options]="calendarOptions"></full-calendar>
+         </div>      
+      </div>
+    
+    </div>
+  <router-outlet></router-outlet>
