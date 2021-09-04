@@ -12,9 +12,15 @@ export class CuerpoComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-  }
 
+    
+  }
+  
 }
+
+
+
+
 export class AppComponent {
   title = 'practica1';
   calendarOptions: CalendarOptions = {

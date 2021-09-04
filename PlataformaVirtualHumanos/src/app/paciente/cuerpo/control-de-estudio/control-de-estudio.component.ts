@@ -9,9 +9,11 @@ import { CalendarOptions } from '@fullcalendar/angular';
 })
 export class ControlDeEstudioComponent implements OnInit {
 
+  
   constructor() { }
 
   ngOnInit(): void {
+    this.iniciarCalendario(controlDeEstudio);
   }
   title = 'practica1';
   calendarOptions: CalendarOptions = {
@@ -26,6 +28,16 @@ export class ControlDeEstudioComponent implements OnInit {
     alert('date click! ' + arg.dateStr)
   }
 
+  iniciarCalendario(controlDeEstudioJson:any){
+    
+  }
+  
+
 }
+var controlDeEstudio=[
+  {fecha:"2021-03-08T04:00:00.000+00:00",cantidadDeTiempo:3,materia:"Matematicas"},
+  {fecha:"2021-04-08T04:00:00.000+00:00",cantidadDeTiempo:6,materia:"Lenguaje"},
+  {fecha:"2021-05-08T04:00:00.000+00:00",cantidadDeTiempo:9,materia:"Fisica"},
+]; 
 
 
