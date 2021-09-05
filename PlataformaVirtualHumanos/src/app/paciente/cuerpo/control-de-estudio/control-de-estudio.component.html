@@ -1,4 +1,5 @@
-
+<link rel="stylesheet" href="control-de-estudio.component.scss">
+<link rel="stylesheet" media="only screen and (max-width: 768px)" href="control-de-estudio.component.scss">
     
     <div class="principal">
       <div class="conteiner_information" id="contenedor1">
@@ -10,8 +11,26 @@
         <div>
           <img src="assets/img/libro1.png" class="imagen" alt="">
         </div>
+        <div class="contenedor_opciones" >
+          <div  class="estilo_letra2">
+          00:00
+          </div>
           
-          <div class="contenedor_opciones" id="botones">
+          <div style="margin-top: 5%;">
+            
+            <input type="text" class="input" placeholder="Escribe tu materia" style="width: 200px;height: 20px;text-align: center;">
+            <button class="boton_agregar">AGREGAR</button> <br>
+            <div class="caja">
+              <select name="select" style="height: 25px; width: 200px; margin-top: 1%;">
+                <option value="value1">Value 1</option>
+                <option value="value2" selected>Value 2</option>
+                <option value="value3">Value 3</option>
+              </select>
+            </div>
+            <br>
+          </div>
+      </div>
+          <div class="contenedor_opciones" style="margin-top: 12%;">
 
               <button class="estilo_boton"> 
                 <div class="dentro_boton">
@@ -25,11 +44,7 @@
                   </div>
                   <div class="dentro_boton" id="inicio">INICIAR</div>
                 </div>
-              
-                 
-              
-                
-              </button><BR>
+              </button>
              
                 <button class="estilo_boton"> 
                   <div class="dentro_boton">
@@ -44,7 +59,8 @@
                     <div class="dentro_boton" id="inicio">FINALIZAR</div>
                   </div>
               </button><BR>
-                <button class="estilo_boton"> 
+             <!--
+              <button class="estilo_boton"> 
                   <div class="dentro_boton">
                     <div class="dentro_boton" id="icono">
                       <img
@@ -57,16 +73,9 @@
                     <div class="dentro_boton" id="inicio">REGISTRAR</div>
                   </div>
               </button>
+             -->   
           </div>
-          <div class="contenedor_opciones" id="informacion_tiempo">
-              <div style="margin-top: 10px;">
-              00:00
-              </div>
-              
-              <div style="margin-top: 15%;">
-                <textarea name="Text1" cols="30" rows="8"></textarea>
-              </div>
-          </div>
+       
       </div>
       <div class="conteiner_information" id="contenedor2">
         <div >

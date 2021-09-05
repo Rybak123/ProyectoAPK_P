@@ -74,7 +74,7 @@
 #contenedor1{
   background-color: #1976d2;
   width: 40%;
-  height: 667px;
+  height: 600px;
   margin-left: 4em;
   margin: 1em;
 }
@@ -96,20 +96,22 @@ body {
   background:linear-gradient( rgba(0, 162, 255, 0.5),white)
 }
 .contenedor_opciones{
-  margin-top: 5%;
-  float: left;
+  margin-top: 0%;
+  
   text-align: center;
-  height: 240px;
+  height: 100px;
 }
 #botones{
   //-color:orange;
   width: 50%;
 }
-#informacion_tiempo{
+.estilo_letra2{
   //background-color: orchid;
+  margin-top: 5px;
   width: 50%;
   font-size: 50px;
-  
+  margin-left: 25%;
+  color: white;
 }
 .estilo_boton{
   width: 190px;
@@ -148,4 +150,94 @@ body {
 }
 .dentro_boton{
   height: 50px;
+}
+.input{
+  width:180px;
+
+	margin:8px 0;
+	display:inline-block;
+
+  background: rgb(255, 255, 255);
+  border: 1px solid #393939;
+  border-radius: 5px 5px 5px 5px;
+  color: #393939;
+  font-size: 12px;
+  padding: 5px;
+}
+.caja {
+  margin:20px auto 40px auto;	
+  border:1px solid #d9d9d9;
+  height:30px;
+  overflow: hidden;
+  width: 230px;
+  position:relative;
+  background-color: rgb(244, 245, 236);
+}
+select {
+ 
+    background: transparent;
+    border: none;
+    font-size: 14px;
+    height: 30px;
+    padding: 5px;
+    width: 250px;
+ 
+}
+select:focus{ outline: none;}
+
+.caja::after{
+	content:"\025be";
+	display:table-cell;
+	padding-top:7px;
+	text-align:center;
+	width:30px;
+	height:30px;
+	background-color:#d9d9d9;
+	position:absolute;
+	top:0;
+	right:0px;	
+	pointer-events: none;
+}
+.boton_agregar{
+  //position: relative;
+  //display: block;
+  height: 30px;
+  width: 140px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  background-color: transparent;
+  color: #FFF;
+  font-size: 18px;
+  overflow: hidden;
+  transition: all 500ms ease;
+  border:2px solid #20e2d7;
+  margin-left: 10px;
+  z-index: 0;
+  font-weight: 700;
+ &::before{
+
+   content: '';
+   position: absolute;
+   left: 0;
+   right: 0;
+   top: 0;
+   margin: auto;
+   background-color: #20e2d7;
+   transition: all 500ms ease;
+   z-index:-1;
+ }
+}
+.boton_agregar:hover{
+  background-color: #20e2d7; 
+
+  box-shadow: 0 0 10px #20e2d7,0 0 20px #20e2d7,0 0 20px #20e2d7;
+
+  color:#434343 ;
+
+}
+@media (max-width:320px){
+ 
+}
+@media (min-width:768px){
+ // width: 100px; height: 25px;margin-left: 2%;
 }
