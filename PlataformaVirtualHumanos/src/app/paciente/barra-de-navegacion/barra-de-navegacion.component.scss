@@ -60,7 +60,7 @@
    //:auto;
    // background-color: rgb(35, 190, 35);
    // padding: 1em;
-   margin-top:3%;
+   margin-top:5%;
 }
 .conteiner_information{
     margin: 1em;
@@ -148,4 +148,18 @@ body {
 }
 .dentro_boton{
   height: 50px;
+}
+
+.example-spacer {
+
+  flex: 0 1 auto;
+
+}
+.example-spacer2 {
+
+  flex: 1 1 auto;
+
+}
+mat-icon{
+  color: white;
 }

@@ -1,6 +1,7 @@
 import { OnInit,Input,EventEmitter } from '@angular/core';
 import { Component,ViewEncapsulation } from '@angular/core';
 import { CalendarOptions, EventInput } from '@fullcalendar/angular';
+
 @Component({
   selector: 'app-control-de-estudio',
   templateUrl: './control-de-estudio.component.html',

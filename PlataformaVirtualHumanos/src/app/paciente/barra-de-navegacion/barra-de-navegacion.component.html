@@ -1,34 +1,31 @@
 <!-- barra de navegacion -->
  <!-- Toolbar -->
- <div class="toolbar" role="banner">
-  <img
-    width="60"
-    alt="Angular Logo"
-    src="assets/img/logo_psicologia.png"
-  />
-<!--  <span>CENTRO PSICOLOGICO INTEGRAL HUMANOS</span> --> 
-  <section >
-    
-    <div class="example-button-row">
-      
-      <div class="example-flex-container">
-        <button mat-icon-button  aria-label="Example icon button with a home icon">
-          <mat-icon>home</mat-icon>
-        </button>
-        <button mat-icon-button  aria-label="Example icon button with a menu icon">
-          <mat-icon>menu</mat-icon>
-        </button>
-        <button mat-icon-button aria-label="Example icon button with a vertical three dot icon" style="margin-left: 1050px;">
-            <mat-icon>contact_support</mat-icon>
-        </button>
-      
-        <button mat-icon-button  aria-label="Example icon button with a heart icon" >
+
+<p>
+  <mat-toolbar style="background-color: #1976d2;">
+    <mat-toolbar-row>
+      <span></span>
+      <span class="example-spacer"></span>
+      <button mat-icon-button  aria-label="Example icon button with a home icon">
+        <mat-icon >home</mat-icon>
+      </button>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+      </button>
+        <span class="example-spacer2"></span>
+        <button mat-icon-button class="example-icon" aria-label="Example icon button with a open in new tab icon" >
+        <mat-icon>notification_important</mat-icon>
+      </button>
+        <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+          <mat-icon>contact_support</mat-icon>
+      </button>
+        <button mat-icon-button class="example-icon" aria-label="Example icon button with a heart icon" >
           <mat-icon>perm_identity</mat-icon>
         </button>
-        <button mat-icon-button  aria-label="Example icon button with a open in new tab icon" >
-          <mat-icon>notification_important</mat-icon>
-        </button>
-      </div>
-    </div>
-  </section>
-</div>
+      
+  
+
+       
+    </mat-toolbar-row>
+  </mat-toolbar>
+</p> 

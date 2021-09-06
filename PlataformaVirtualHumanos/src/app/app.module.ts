@@ -13,6 +13,7 @@ import interactionPlugin from '@fullcalendar/interaction';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 FullCalendarModule.registerPlugins([ 
   dayGridPlugin,
@@ -25,7 +26,6 @@ FullCalendarModule.registerPlugins([
     CuerpoComponent,
     PacienteComponent,
     ControlDeEstudioComponent
-    
   ],
   imports: [
     BrowserModule,
@@ -33,8 +33,8 @@ FullCalendarModule.registerPlugins([
     FullCalendarModule,
     MatButtonModule,
     MatIconModule,
-    MatDividerModule
-   
+    MatDividerModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

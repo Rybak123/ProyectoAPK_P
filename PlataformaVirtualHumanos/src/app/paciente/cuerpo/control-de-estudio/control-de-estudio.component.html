@@ -1,89 +1,70 @@
-<link rel="stylesheet" href="control-de-estudio.component.scss">
-<link rel="stylesheet" media="only screen and (max-width: 768px)" href="control-de-estudio.component.scss">
-    
-    <div class="principal">
-      <div class="conteiner_information" id="contenedor1">
+   
+    <div class="row align-items-md-stretch" style="width: 100%; height: 90.3%;">
+      <div class="col-md-6" style="background-color: teal;">
         <br>
-        <h2 class="estilo_letra">
-          
-          ¿CUANTAS HORAS ESTUDIASTE HOY?
-        </h2>
-        <div>
-          <img src="assets/img/libro1.png" class="imagen" alt="">
+    <h2 class="estilo_letra">
+      
+      ¿CUANTAS HORAS ESTUDIASTE HOY?
+    </h2>
+    <div>
+      <img src="assets/img/libro1.png" class="imagen" alt="">
+    </div>
+    <div class="contenedor_opciones" >
+      <div  class="estilo_letra2">
+      00:00
+      </div>
+      
+      <div style="margin-top: 5%;">
+        
+        <input type="text" class="input" placeholder="Escribe tu materia" style="width: 200px;height: 20px;text-align: center;">
+        <button class="boton_agregar">AGREGAR</button> <br>
+        <div class="caja">
+          <select name="select" style="height: 25px; width: 200px; margin-top: 1%;">
+            <option value="value1">Value 1</option>
+            <option value="value2" selected>Value 2</option>
+            <option value="value3">Value 3</option>
+          </select>
         </div>
-        <div class="contenedor_opciones" >
-          <div  class="estilo_letra2">
-          00:00
-          </div>
-          
-          <div style="margin-top: 5%;">
-            
-            <input type="text" class="input" placeholder="Escribe tu materia" style="width: 200px;height: 20px;text-align: center;">
-            <button class="boton_agregar">AGREGAR</button> <br>
-            <div class="caja">
-              <select name="select" style="height: 25px; width: 200px; margin-top: 1%;">
-                <option value="value1">Value 1</option>
-                <option value="value2" selected>Value 2</option>
-                <option value="value3">Value 3</option>
-              </select>
-            </div>
-            <br>
-          </div>
+        <br>
       </div>
-          <div class="contenedor_opciones" style="margin-top: 12%;">
+  </div>
+      <div class="contenedor_opciones" style="margin-top: 12%;">
 
-              <button class="estilo_boton"> 
-                <div class="dentro_boton">
-                  <div class="dentro_boton" id="icono">
-                    <img
-                    width="40"
-                     alt="Angular Logo"
-                     src="assets/img/reloj1_icon.png"
-                     
-                   />
-                  </div>
-                  <div class="dentro_boton" id="inicio">INICIAR</div>
+          <button class="estilo_boton"> 
+            <div class="dentro_boton">
+              <div class="dentro_boton" id="icono">
+                <img
+                width="40"
+                 alt="Angular Logo"
+                 src="assets/img/reloj1_icon.png"
+                 
+               />
+              </div>
+              <div class="dentro_boton" id="inicio">INICIAR</div>
+            </div>
+          </button>
+         
+            <button class="estilo_boton"> 
+              <div class="dentro_boton">
+                <div class="dentro_boton" id="icono">
+                  <img
+                  width="40"
+                   alt="Angular Logo"
+                   src="assets/img/reloj2_icon.png"
+                   
+                 />
                 </div>
-              </button>
-             
-                <button class="estilo_boton"> 
-                  <div class="dentro_boton">
-                    <div class="dentro_boton" id="icono">
-                      <img
-                      width="40"
-                       alt="Angular Logo"
-                       src="assets/img/reloj2_icon.png"
-                       
-                     />
-                    </div>
-                    <div class="dentro_boton" id="inicio">FINALIZAR</div>
-                  </div>
-              </button><BR>
-             <!--
-              <button class="estilo_boton"> 
-                  <div class="dentro_boton">
-                    <div class="dentro_boton" id="icono">
-                      <img
-                      width="40"
-                       alt="Angular Logo"
-                       src="assets/img/notas_icon.png"
-                       
-                     />
-                    </div>
-                    <div class="dentro_boton" id="inicio">REGISTRAR</div>
-                  </div>
-              </button>
-             -->   
-          </div>
-       
+                <div class="dentro_boton" id="inicio">FINALIZAR</div>
+              </div>
+          </button><BR>
+         
       </div>
-      <div class="conteiner_information" id="contenedor2">
-        <div >
-          <h2 style="text-align:center"> MI CALENDARIO</h2>
-         </div>
-         <div style="background-color: rgb(234, 243, 243);">
+      </div>
+      <div class="col-md-6" style="background-color: rgb(234, 243, 243);">
+        
+         <div class="calendario" style="background-color: rgb(234, 243, 243); width: 100% !important;margin-top: 5%;">
           <full-calendar [options]="calendarOptions"></full-calendar>
-         </div>      
+         </div>  
       </div>
     
     </div>
