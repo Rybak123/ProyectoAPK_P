@@ -10,7 +10,7 @@
 
 
   <Button
-    android:id="@+id/button5"
+    android:id="@+id/id_controlDeEstudioF_btn_pararCronometro"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginStart="32dp"
@@ -20,7 +20,7 @@
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintHorizontal_bias="0.0"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/button3" />
+    app:layout_constraintTop_toBottomOf="@+id/id_controlDeEstudioF_btn_iniciarCronometro" />
 
   <Button
     android:id="@+id/id_controlDeEstudioF_btn_irCalendario"
@@ -46,7 +46,7 @@
     app:layout_constraintTop_toTopOf="parent" />
 
   <Button
-    android:id="@+id/button3"
+    android:id="@+id/id_controlDeEstudioF_btn_iniciarCronometro"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginStart="32dp"
@@ -57,7 +57,7 @@
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintHorizontal_bias="0.0"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/textView3" />
+    app:layout_constraintTop_toBottomOf="@+id/id_controlDeEstudioF_tv_Cronometro" />
 
   <TextView
     android:id="@+id/textView2"
@@ -74,7 +74,7 @@
     app:layout_constraintTop_toBottomOf="@+id/id_controlDeEstudioF_btn_eliminarMateria" />
 
   <TextView
-    android:id="@+id/textView3"
+    android:id="@+id/id_controlDeEstudioF_tv_Cronometro"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginStart="32dp"
