@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { SidenavService } from '../../_services/sidenavService';
+import { MatSidenav } from '@angular/material/sidenav';
 @Component({
   selector: 'app-barra-de-navegacion',
   templateUrl: './barra-de-navegacion.component.html',
@@ -8,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BarraDeNavegacionComponent implements OnInit {
 
-  constructor() { }
+  constructor(private sideNavService: SidenavService) { }
 
   ngOnInit(): void {
   }
-
+  clickMenu() { 
+    this.sideNavService.toggle();
+  }
 }

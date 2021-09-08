@@ -14,7 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { RegistroComponent } from './registro/registro.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
+import {SidenavService} from '../app/_services/sidenavService'
 
 
 import {A11yModule} from '@angular/cdk/a11y';
@@ -133,7 +133,7 @@ FullCalendarModule.registerPlugins([
     ScrollingModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [SidenavService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
