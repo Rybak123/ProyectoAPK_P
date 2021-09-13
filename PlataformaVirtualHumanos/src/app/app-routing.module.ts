@@ -6,7 +6,7 @@ import { RegistroComponent } from './registro/registro.component';
 import { PacienteComponent } from './paciente/paciente.component';
 import { AuthGuard } from '../app/_helpers';
 const routes: Routes = [
-{ path: '', component: PacienteComponent, },
+{ path: '', component: PacienteComponent, canActivate: [AuthGuard]},
 { path: 'login', component: LoginComponent},
 { path: 'register', component: RegistroComponent},
 

@@ -10,7 +10,7 @@ router.post('/actualizarHorasDeEstudio', actualizarHorasDeEstudio);
 router.post('/actualizarControlDeSueno', actualizarControlDeSueno);
 router.post('/actualizarControlDeEnergia', actualizarControlDeEnergia);
 router.post('/actualizarControlDeAnimo', actualizarControlDeAnimo);
-router.post('/actualizarControlDeConsumoDeAgua', actualizarControlDeConsumoDeAgua);
+router.post('/actualizarControlDeConsumoDeAgua', actualizarcontrolDeConsumoDeAgua);
 router.post('/autenticacion', autenticacion);
 module.exports = router;
 
@@ -28,8 +28,8 @@ function listarPacientes(req, res, next) {
 }
 function obtenerPaciente(req, res, next) {
     PacienteDao.read_Paciente(req.body)
-        .then(user => user ? res.json(user) : res.sendStatus(404))
-        .catch(err => next(err));
+        .then(user => user ? res.json(user) : res.sendStatus(400))
+        .catch(err => {next(err);console.log(res);});
 }
 function actualizarHorasDeEstudio(req, res, next) {
     PacienteDao.actualizarHoraDeEstudio(req.body)
@@ -38,22 +38,22 @@ function actualizarHorasDeEstudio(req, res, next) {
 }
 function actualizarControlDeSueno(req, res, next) {
     PacienteDao.actualizarControlDeSueno(req.body)
-        .then(user => user ? res.json(user) : res.sendStatus(404))
+        .then(user => user ? res.json(user) : res.sendStatus(500))
         .catch(err => next(err));
 }
 function actualizarControlDeAnimo(req, res, next) {
     PacienteDao.actualizarControlDeAnimo(req.body)
-        .then(user => user ? res.json(user) : res.sendStatus(404))
+        .then(user => user ? res.json(user) : res.sendStatus(500))
         .catch(err => next(err));
 }
 function actualizarControlDeEnergia(req, res, next) {
     PacienteDao.actualizarControlDeEnergia(req.body)
-        .then(user => user ? res.json(user) : res.sendStatus(404))
+        .then(user => user ? res.json(user) : res.sendStatus(500))
         .catch(err => next(err));
 }
-function actualizarControlDeConsumoDeAgua(req, res, next) {
-    PacienteDao.actualizarControlDeConsumoDeAgua(req.body)
-        .then(user => user ? res.json(user) : res.sendStatus(404))
+function actualizarcontrolDeConsumoDeAgua(req, res, next) {
+    PacienteDao.actualizarcontrolDeConsumoDeAgua(req.body)
+        .then(user => user ? res.json(user) : res.sendStatus(500))
         .catch(err => next(err));
 }
 function autenticacion(req, res, next) {

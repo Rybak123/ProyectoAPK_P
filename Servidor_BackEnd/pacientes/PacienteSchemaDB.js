@@ -19,7 +19,7 @@ const schema = new Schema({
 
     agendaVirtual:{
         controlDeEstudio:{
-            diasDeEstudio:[
+            diasControlados:[
                 {
                 fecha:{type: String, default: "2021-1-1"},
                 materiasEstudiadas:[{

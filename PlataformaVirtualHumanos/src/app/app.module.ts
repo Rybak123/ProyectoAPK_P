@@ -7,15 +7,19 @@ import { PacienteComponent } from './paciente/paciente.component';
 import { BarraDeNavegacionComponent } from './paciente/barra-de-navegacion/barra-de-navegacion.component';
 import { CuerpoComponent } from './paciente/cuerpo/cuerpo.component';
 import { ControlDeEstudioComponent } from './paciente/cuerpo/control-de-estudio/control-de-estudio.component';
+import { ControlDeSuenoComponent } from './paciente/cuerpo/control-de-sueno/control-de-sueno.component';
+import { ControlDeAnimoComponent } from './paciente/cuerpo/control-de-animo/control-de-animo.component';
+import { ControlDeConsumoDeAguaComponent } from './paciente/cuerpo/control-de-consumo-de-agua/control-de-consumo-de-agua.component';
+import { ControlDeEnergiaComponent } from './paciente/cuerpo/control-de-energia/control-de-energia.component';
 import { FullCalendarModule } from '@fullcalendar/angular'; 
 import dayGridPlugin from '@fullcalendar/daygrid'; 
 import interactionPlugin from '@fullcalendar/interaction';
 import { LoginComponent } from './login/login.component';
 import { RegistroComponent } from './registro/registro.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {SidenavService} from '../app/_services/sidenavService'
-
+import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 
 import {A11yModule} from '@angular/cdk/a11y';
 import {ClipboardModule} from '@angular/cdk/clipboard';
@@ -74,7 +78,11 @@ FullCalendarModule.registerPlugins([
     PacienteComponent,
     ControlDeEstudioComponent,
     LoginComponent,
-    RegistroComponent
+    RegistroComponent,
+    ControlDeSuenoComponent,
+    ControlDeAnimoComponent,
+    ControlDeConsumoDeAguaComponent,
+    ControlDeEnergiaComponent
   ],
   imports: [
     BrowserModule,
@@ -133,7 +141,11 @@ FullCalendarModule.registerPlugins([
     ScrollingModule,
     BrowserAnimationsModule
   ],
-  providers: [SidenavService],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    SidenavService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

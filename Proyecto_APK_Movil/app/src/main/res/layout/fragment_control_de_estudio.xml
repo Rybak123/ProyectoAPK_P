@@ -6,11 +6,10 @@
   android:layout_height="match_parent"
   tools:context=".ui.home.ControlDeEstudio.ControlDeEstudio">
 
-  <!-- TODO: Update blank fragment layout -->
 
 
   <Button
-    android:id="@+id/id_controlDeEstudioF_btn_pararCronometro"
+    android:id="@+id/id_controlDeSueno_btn9horas"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginStart="32dp"
@@ -20,7 +19,7 @@
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintHorizontal_bias="0.0"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/id_controlDeEstudioF_btn_iniciarCronometro" />
+    app:layout_constraintTop_toBottomOf="@+id/id_controlDeSueno_btn10horas" />
 
   <Button
     android:id="@+id/id_controlDeEstudioF_btn_irCalendario"
@@ -46,7 +45,7 @@
     app:layout_constraintTop_toTopOf="parent" />
 
   <Button
-    android:id="@+id/id_controlDeEstudioF_btn_iniciarCronometro"
+    android:id="@+id/id_controlDeSueno_btn10horas"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginStart="32dp"

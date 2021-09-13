@@ -1,7 +1,6 @@
 package com.example.proyecto_apk.ui.home.ControlDeEstudio;
 
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -14,13 +13,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.JsonRequest;
 import com.android.volley.toolbox.Volley;
 import com.applandeo.materialcalendarview.CalendarView;
 import com.applandeo.materialcalendarview.EventDay;
@@ -31,14 +28,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.Console;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 public class CalendarioControlDeEstudio extends Fragment {
@@ -60,7 +52,7 @@ public class CalendarioControlDeEstudio extends Fragment {
       getPacienteObject();
 
       root=inflater.inflate(R.layout.fragment_calendario_control_de_estudio, container, false);
-        btn_volver=root.findViewById(R.id.id_CalendarioControlDeEstudioF_btn_volver);
+        btn_volver=root.findViewById(R.id.id_CalendarioDeSueno_volver);
         btn_volver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -72,7 +64,7 @@ public class CalendarioControlDeEstudio extends Fragment {
         });
 
 
-      CalendarView calendarView = (CalendarView) root.findViewById(R.id.calendarView);
+      CalendarView calendarView = (CalendarView) root.findViewById(R.id.calendarView_ControlDeEstudio);
       calendarView.setOnDayClickListener(new OnDayClickListener() {
         @Override
         public void onDayClick(EventDay eventDay) {
@@ -128,7 +120,7 @@ public class CalendarioControlDeEstudio extends Fragment {
           Calendar fecha=Calendar.getInstance();
           fecha.set(Integer.parseInt(fechaJson[0]),Integer.parseInt(fechaJson[1])-1,Integer.parseInt(fechaJson[2]));
           events.add(new EventDay(fecha, R.drawable.libro, Color.parseColor("#228B22")));
-          CalendarView calendarView = (CalendarView) root.findViewById(R.id.calendarView);
+          CalendarView calendarView = (CalendarView) root.findViewById(R.id.calendarView_ControlDeEstudio);
           calendarView.setEvents(events);
         }
       } catch (JSONException e) {

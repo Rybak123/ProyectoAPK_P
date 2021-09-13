@@ -33,16 +33,17 @@ async function read_Paciente(infoJson) {
 async function actualizarHoraDeEstudio(infoJson) {
     var fechaCompleta=infoJson.fecha;
     if (await Paciente.findOne({carnetDeIdentidad: infoJson.carnetDeIdentidad})) {
-        var diaControlado=await Paciente.find({carnetDeIdentidad: infoJson.carnetDeIdentidad,"agendaVirtual.controlDeEstudio.diasDeEstudio.fecha":fechaCompleta});        
+        var diaControlado=await Paciente.find({carnetDeIdentidad: infoJson.carnetDeIdentidad,"agendaVirtual.controlDeEstudio.diasControlados.fecha":fechaCompleta});        
         if(diaControlado.length>0){
-            return await Paciente.findOneAndUpdate({
+            await Paciente.findOneAndUpdate({
                 carnetDeIdentidad: infoJson.carnetDeIdentidad,
-                'agendaVirtual.controlDeEstudio.diasDeEstudio.fecha': fechaCompleta
+                'agendaVirtual.controlDeEstudio.diasControlados.fecha': fechaCompleta
               }, {
                 '$set': {
-                  'agendaVirtual.controlDeEstudio.diasDeEstudio.$.materiasEstudiadas': infoJson.MateriasEstudiadas
+                  'agendaVirtual.controlDeEstudio.diasControlados.$.materiasEstudiadas': infoJson.materiasEstudiadas
                 }
               })
+              return await Paciente.findOne({carnetDeIdentidad: infoJson.carnetDeIdentidad});
 
 
         }
@@ -51,15 +52,16 @@ async function actualizarHoraDeEstudio(infoJson) {
             var datetime = MyDate.getFullYear()+ '-'
             + ('0' + (MyDate.getMonth()+1)).slice(-2) + '-'
             + ('0' + MyDate.getDate()).slice(-2);
-            var nuevoDiaDeEstudio={
+            var diasControlados={
                 fecha:datetime,
-                materiasEstudiadas:infoJson.MateriasEstudiadas
+                materiasEstudiadas:infoJson.materiasEstudiadas
             }
-             return await Paciente.findOneAndUpdate({
+            await Paciente.findOneAndUpdate({
                 carnetDeIdentidad: infoJson.carnetDeIdentidad
              },{
-                $push: { 'agendaVirtual.controlDeEstudio.diasDeEstudio': nuevoDiaDeEstudio}
+                $push: { 'agendaVirtual.controlDeEstudio.diasControlados': diasControlados}
              });
+             return await Paciente.findOne({carnetDeIdentidad: infoJson.carnetDeIdentidad});
          
         }
     }
@@ -69,32 +71,37 @@ async function actualizarHoraDeEstudio(infoJson) {
 }
 async function actualizarControlDeSueno(infoJson) {
     var fechaCompleta=infoJson.fecha;
+    console.log(fechaCompleta);
     if (await Paciente.findOne({carnetDeIdentidad: infoJson.carnetDeIdentidad})) {
-        var diaControlado=await Paciente.find({carnetDeIdentidad: infoJson.carnetDeIdentidad,"agendaVirtual.controlDeEstudio.diasControlados.fecha":fechaCompleta});        
+        
+        var diaControlado=await Paciente.find({carnetDeIdentidad: infoJson.carnetDeIdentidad,"agendaVirtual.controlDeSueno.diasControlados.fecha":fechaCompleta});        
         if(diaControlado.length>0){
-            return await Paciente.findOneAndUpdate({
+            console.log("si");
+            await Paciente.findOneAndUpdate({
                 carnetDeIdentidad: infoJson.carnetDeIdentidad,
-                'agendaVirtual.controlDeEstudio.diasControlados.fecha': fechaCompleta
+                'agendaVirtual.controlDeSueno.diasControlados.fecha': fechaCompleta
               }, {
                 '$set': {
-                  'agendaVirtual.controlDeEstudio.diasControlados.$.horasDeSueno': infoJson.horasDeSueno
+                  'agendaVirtual.controlDeSueno.diasControlados.$.horasDeSueno': infoJson.horasDeSueno
                 }
               })
-
+            return await Paciente.findOne({carnetDeIdentidad: infoJson.carnetDeIdentidad});
         
         }
         else{
+            console.log("no");
             var MyDate = new Date(); 
             var datetime = fechaCompleta;
             var nuevoDiaControlado={
                 fecha:datetime,
                 horasDeSueno:infoJson.horasDeSueno
             }
-             return await Paciente.findOneAndUpdate({
+            await Paciente.findOneAndUpdate({
                 carnetDeIdentidad: infoJson.carnetDeIdentidad
              },{
-                $push: { 'agendaVirtual.controlDeEstudio.diasControlados': nuevoDiaControlado}
+                $push: { 'agendaVirtual.controlDeSueno.diasControlados': nuevoDiaControlado}
              });
+            return await Paciente.findOne({carnetDeIdentidad: infoJson.carnetDeIdentidad});
 
         }
     }
@@ -107,7 +114,7 @@ async function actualizarControlDeEnergia(infoJson) {
     if (await Paciente.findOne({carnetDeIdentidad: infoJson.carnetDeIdentidad})) {
         var diaControlado=await Paciente.find({carnetDeIdentidad: infoJson.carnetDeIdentidad,"agendaVirtual.controlDeEnergia.diasControlados.fecha":fechaCompleta});        
         if(diaControlado.length>0){
-            return await Paciente.findOneAndUpdate({
+            await Paciente.findOneAndUpdate({
                 carnetDeIdentidad: infoJson.carnetDeIdentidad,
                 'agendaVirtual.controlDeEnergia.diasControlados.fecha': fechaCompleta
               }, {
@@ -115,6 +122,7 @@ async function actualizarControlDeEnergia(infoJson) {
                   'agendaVirtual.controlDeEnergia.diasControlados.$.porcentajeDeEnergia': infoJson.porcentajeDeEnergia
                 }
               })
+              return await Paciente.findOne({carnetDeIdentidad: infoJson.carnetDeIdentidad});
         }
         else{
             var MyDate = new Date(); 
@@ -123,11 +131,12 @@ async function actualizarControlDeEnergia(infoJson) {
                 fecha:datetime,
                 porcentajeDeEnergia:infoJson.porcentajeDeEnergia
             }
-             return await Paciente.findOneAndUpdate({
+             await Paciente.findOneAndUpdate({
                 carnetDeIdentidad: infoJson.carnetDeIdentidad
              },{
                 $push: { 'agendaVirtual.controlDeEnergia.diasControlados': nuevoDiaControlado}
              });
+             return await Paciente.findOne({carnetDeIdentidad: infoJson.carnetDeIdentidad});
 
         }
     }
@@ -140,7 +149,7 @@ async function actualizarControlDeAnimo(infoJson) {
     if (await Paciente.findOne({carnetDeIdentidad: infoJson.carnetDeIdentidad})) {
         var diaControlado=await Paciente.find({carnetDeIdentidad: infoJson.carnetDeIdentidad,"agendaVirtual.controlDeAnimo.diasControlados.fecha":fechaCompleta});        
         if(diaControlado.length>0){
-            return await Paciente.findOneAndUpdate({
+            await Paciente.findOneAndUpdate({
                 carnetDeIdentidad: infoJson.carnetDeIdentidad,
                 'agendaVirtual.controlDeAnimo.diasControlados.fecha': fechaCompleta
               }, {
@@ -148,6 +157,7 @@ async function actualizarControlDeAnimo(infoJson) {
                   'agendaVirtual.controlDeAnimo.diasControlados.$.estadoDeAnimo': infoJson.estadoDeAnimo
                 }
               })
+              return await Paciente.findOne({carnetDeIdentidad: infoJson.carnetDeIdentidad});
         }
         else{
             var MyDate = new Date(); 
@@ -156,11 +166,12 @@ async function actualizarControlDeAnimo(infoJson) {
                 fecha:datetime,
                 estadoDeAnimo:infoJson.estadoDeAnimo
             }
-             return await Paciente.findOneAndUpdate({
+             await Paciente.findOneAndUpdate({
                 carnetDeIdentidad: infoJson.carnetDeIdentidad
              },{
-                $push: { 'agendaVirtual.controlDeAnimo.estadoDeAnimo': nuevoDiaControlado}
+                $push: { 'agendaVirtual.controlDeAnimo.diasControlados': nuevoDiaControlado}
              });
+             return await Paciente.findOne({carnetDeIdentidad: infoJson.carnetDeIdentidad});
 
         }
     }
@@ -173,27 +184,31 @@ async function actualizarcontrolDeConsumoDeAgua(infoJson) {
     if (await Paciente.findOne({carnetDeIdentidad: infoJson.carnetDeIdentidad})) {
         var diaControlado=await Paciente.find({carnetDeIdentidad: infoJson.carnetDeIdentidad,"agendaVirtual.controlDeConsumoDeAgua.diasControlados.fecha":fechaCompleta});        
         if(diaControlado.length>0){
-            return await Paciente.findOneAndUpdate({
+    
+            await Paciente.findOneAndUpdate({
                 carnetDeIdentidad: infoJson.carnetDeIdentidad,
                 'agendaVirtual.controlDeConsumoDeAgua.diasControlados.fecha': fechaCompleta
               }, {
                 '$set': {
-                  'agendaVirtual.controlDeConsumoDeAgua.diasControlados.$.cantidadDeAgua': infoJson.estadoDeAnimo
+                  'agendaVirtual.controlDeConsumoDeAgua.diasControlados.$.cantidadDeAgua': infoJson.cantidadDeAgua
                 }
               })
+              return await Paciente.findOne({carnetDeIdentidad: infoJson.carnetDeIdentidad});
         }
         else{
+           
             var MyDate = new Date(); 
             var datetime = fechaCompleta;
             var nuevoDiaControlado={
                 fecha:datetime,
                 cantidadDeAgua:infoJson.cantidadDeAgua
             }
-             return await Paciente.findOneAndUpdate({
+            await Paciente.findOneAndUpdate({
                 carnetDeIdentidad: infoJson.carnetDeIdentidad
              },{
-                $push: { 'agendaVirtual.controlDeConsumoDeAgua.cantidadDeAgua': nuevoDiaControlado}
+                $push: { 'agendaVirtual.controlDeConsumoDeAgua.diasControlados': nuevoDiaControlado}
              });
+             return await Paciente.findOne({carnetDeIdentidad: infoJson.carnetDeIdentidad});
 
         }
     }
