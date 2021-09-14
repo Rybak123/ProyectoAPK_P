@@ -16,12 +16,19 @@ import { PacienteVO } from '../../_models';
 })
 export class BarraDeNavegacionComponent implements OnInit {
 
+  usuarioLogueado:any;
   currentUser: PacienteVO|any;
   constructor(private sideNavService: SidenavService,private router: Router,
-    private authenticationService: AuthenticationService) { this.authenticationService.currentUser.subscribe(x => this.currentUser = x); }
+  private authenticationService: AuthenticationService) { this.authenticationService.currentUser.subscribe(x => this.currentUser = x); }
   
   ngOnInit(): void {
-
+    var pacienteInfo=localStorage.getItem('currentUser');
+        if(pacienteInfo==null){
+            pacienteInfo="null";
+            throw console.error("Paciente no encontrado");
+        }
+    var usuario:any =JSON.parse(pacienteInfo);
+    this.usuarioLogueado=usuario.nombres+" "+usuario.apellidos;
     
     
   }

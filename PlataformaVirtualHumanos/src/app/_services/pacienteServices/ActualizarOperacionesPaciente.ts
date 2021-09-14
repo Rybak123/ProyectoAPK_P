@@ -87,8 +87,41 @@ export class ActualizarOperacionesPaciente
             var mydate = new Date().setFullYear(parseInt(anio),(parseInt(mes)-1),parseInt(dia));
             var descripcion= "estadoDeAnimo: "+element.estadoDeAnimo;
               calendarEvents= calendarEvents.concat({ 
-              title: descripcion,
-              start: mydate
+               date:mydate
+              })
+        });
+        return calendarEvents;
+    }
+    convertirAEventosCalendario_ControlDeEstudio(activiadaJsonArray:any){
+        var calendarEvents: EventInput[] = [];
+        activiadaJsonArray.forEach((element: any) => {
+            var anio:any=element.fecha.split("-")[0];
+            var mes:any=element.fecha.split("-")[1];
+            var dia:any=element.fecha.split("-")[2];
+            var mydate = new Date().setFullYear(parseInt(anio),(parseInt(mes)-1),parseInt(dia));
+            var materiasEstudiadas=element.materiasEstudiadas;
+            
+            if(materiasEstudiadas.length>0){
+                calendarEvents= calendarEvents.concat({ 
+                    date:mydate
+                })
+            }
+              
+        });
+        return calendarEvents;
+    }
+    convertirAEventosCalendario_ControlDeSueno(activiadaJsonArray:any){
+        console.log("fecha");
+        var calendarEvents: EventInput[] = [];
+        activiadaJsonArray.forEach((element: any) => {
+            var anio:any=element.fecha.split("-")[0];
+            var mes:any=element.fecha.split("-")[1];
+            var dia:any=element.fecha.split("-")[2];
+            var mydate = new Date().setFullYear(parseInt(anio),(parseInt(mes)-1),parseInt(dia));
+            var descripcion= "estadoDeAnimo: "+element.estadoDeAnimo;
+              calendarEvents= calendarEvents.concat({ 
+               date:mydate,
+              imageurl:'img/iconosCalendario/sonando.png'
               })
         });
         return calendarEvents;

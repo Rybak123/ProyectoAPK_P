@@ -1,29 +1,31 @@
-<div class="row align-items-md-stretch" style="width: 100%; height: 90.3%;">
+<div class="row align-items-md-stretch" style="width: 100% !important; height: 90.3% !important;background-color: rgb(234, 243, 243)">
     <div class="col-md-6" style=" background:linear-gradient( rgba(196, 245, 18, 0.693),rgba(58, 238, 184, 0.898));width: 50%;">
       <br>
-  <h2 class="estilo_letra">
-    
-    ¿CUANTA AGUA TOMASTE EL DIA DE HOY?
-  </h2>
   <div>
-   <!--<img src="assets/img/agua2.png" class="imagen" alt="">--> 
+        <h3 class="estilo_letra">
+        
+          ¿CUANTA AGUA TOMASTE EL DIA DE HOY?
+        </h3>
         <img src="assets/img/agua6.png" class="imagen">
+        <div class="contenedor_opciones">
+    
+    
+          <button class="boton_agregar" (click)="guardarRegistros('8 Vasos')">8 Vasos</button> <br>
+          <button class="boton_agregar" (click)="guardarRegistros('7 Vasos')">7 Vasos</button> <br>
+          <button class="boton_agregar" (click)="guardarRegistros('5 Vasos')">5 Vasos</button> <br>
+          <button class="boton_agregar" (click)="guardarRegistros('3 Vasos')">3 Vasos</button>
+       
+       </div>
     
   </div>
-  <div class="contenedor_opciones" >
-    
-    
-   <button class="boton_agregar" (click)="guardarRegistros('1 Litro y Medio')">1 LITRO Y MEDIO</button> <br>
-   <button class="boton_agregar" (click)="guardarRegistros('1 Litro')">1 LITRO</button> <br>
-   <button class="boton_agregar" (click)="guardarRegistros('3 Vasos')">3 VASOS</button> <br>
-   <button class="boton_agregar" (click)="guardarRegistros('2 Vasos')">2 VASOS</button>
-
-</div>
+  
  
     </div>
         <div class="col-md-6" style="background-color: rgb(234, 243, 243);width: 50%;">
-          
-           <div class="calendario" style="background-color: rgb(234, 243, 243); width: 100% !important;margin-top: 5%;">
+          <div>
+            <p id="textoConfirmatorio" style="font-size:x-large;width: 100%; text-align: center;margin-top: 2%;">{{estadoActividad}}</p>
+          </div> 
+           <div class="calendario" style="background-color: rgb(234, 243, 243) ; width: 100% !important;margin-top: 5%; width: 50%;">
             <full-calendar [options]="calendarOptions"></full-calendar>
            </div>  
         </div>

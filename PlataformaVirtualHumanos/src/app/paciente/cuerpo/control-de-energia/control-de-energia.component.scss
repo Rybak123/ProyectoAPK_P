@@ -40,9 +40,9 @@
   }
 
 
-.principal{
+//.principal{
   
-}
+//}
 .conteiner_information{
     margin: 0em;
     margin-left: 1em;
@@ -72,20 +72,20 @@ margin: 0.5em;
   //background-color: blue;
 }
 .imagen{
-  width: 35%;
-  height: 37%;
+  width:35vh;
+  height: 37vh;
   display: block;
-margin-left: auto;
-margin-right: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 body {
   background:linear-gradient( rgba(0, 162, 255, 0.5),white)
 }
 .contenedor_opciones{
-  margin-top: 3%;
+  margin-top: 1%;
   
   text-align: center;
-  height: 100px;
+  height: 40%;
 }
 #botones{
   //-color:orange;
@@ -100,8 +100,7 @@ body {
   color: white;
 }
 .estilo_boton{
-  width: 39%;
-  height: 60px;
+  width: 190px;
   text-decoration: none;
   padding: 2px;
   padding-left: 5px;
@@ -109,16 +108,15 @@ body {
   font-family: helvetica;
   font-weight: 150px;
   font-size: 20px;
-  margin-top: 1%;
-  margin-bottom: 1%;
+  margin-top: 3px;
   margin-left: 15px;
   font-style: italic;
-  color: #000000;
-  background-color: #fcfcfc;
-  border-radius: 15px;
+  color: #0c091a;
+  background-color: #b4b3d6;
+  border-radius: 5px;
+  border: 5px double #093016;
   cursor: pointer;
-  border-color: #000000;
- line-height: 30px;
+ line-height: 50px;
  // font: 700 1em Tahoma, Arial, Verdana, sans-serif;
 }
 .estilo_boton:hover{
@@ -137,8 +135,7 @@ body {
   float: left;
 }
 .dentro_boton{
-  weight: 25%;
-  margin-top: 1%;
+  height: 50px;
 }
 .input{
   width:180px;
@@ -188,10 +185,12 @@ select:focus{ outline: none;}
 	pointer-events: none;
 }
 .boton_agregar{
+  margin-top: 1%;
+  margin-bottom: 2%;
   //position: relative;
   //display: block;
-  height: 30px;
-  width: 140px;
+  height: 7vh;
+  width: 30vh;
   border-radius: 4px;
   text-transform: uppercase;
   background-color: transparent;
@@ -199,8 +198,9 @@ select:focus{ outline: none;}
   font-size: 18px;
   overflow: hidden;
   transition: all 500ms ease;
-  border:2px solid #20e2d7;
+  border:2px solid #6b0054;
   margin-left: 10px;
+  //margin:0px auto;
   z-index: 0;
   font-weight: 700;
  &::before{
@@ -211,26 +211,29 @@ select:focus{ outline: none;}
    right: 0;
    top: 0;
    margin: auto;
-   background-color: #20e2d7;
+   background-color: #6b0054;
    transition: all 500ms ease;
    z-index:-1;
  }
 }
 .boton_agregar:hover{
-  background-color: #20e2d7; 
-
-  box-shadow: 0 0 10px #20e2d7,0 0 20px #20e2d7,0 0 20px #20e2d7;
-
+  background-color: #d600a8; 
+  box-shadow: 0 0 10px #6b0054,0 0 20px #6b0054,0 0 20px #6b0054;
   color:#434343 ;
+  //color:#434343;
+  //.boton_agregar::before{
+      //width: 100%;
+  //}
 }
-.calendario{
+//.calendario{
  
   
-}
+//}
 full-calendar{
   width: 85%;
   height: 95%;
   display: block;
   margin-left: auto;
   margin-right: auto;
+  
 }

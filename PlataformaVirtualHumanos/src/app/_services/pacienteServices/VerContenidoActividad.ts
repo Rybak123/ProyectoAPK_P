@@ -16,12 +16,15 @@ export class VerContenidoActividad{
         return mensaje;
     }
     verContenidoActividad_Estudio(actividadJson:any,fechaSeleccionada:any){
-        var mensaje="";
+        var mensaje="Este día estudiaste:\n";
         actividadJson.forEach((diasControlados: any) => {
             var fechaEncontrada=diasControlados.fecha;
             if(fechaSeleccionada==fechaEncontrada){
                 diasControlados.materiasEstudiadas.forEach((element1:any) => {
-                    var descripcion= "Tiempo: "+element1.cantidadDeTiempo+'\n'+"Materia: "+element1.materia;
+                    var horasString=element1.cantidadDeTiempo.split(":")[0];
+                    var minutosString=element1.cantidadDeTiempo.split(":")[1];
+                    var segundosString=element1.cantidadDeTiempo.split(":")[2];
+                    var descripcion= ""+element1.materia+" durante un tiempo de: "+parseInt(horasString)+" horas, "+parseInt(minutosString)+" minutos y "+parseInt(segundosString)+" segundos cronometrados.\n";
                     mensaje+=descripcion;
                 })
             };      

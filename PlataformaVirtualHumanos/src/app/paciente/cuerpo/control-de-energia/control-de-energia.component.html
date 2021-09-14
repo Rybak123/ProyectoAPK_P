@@ -1,89 +1,32 @@
-   
-    <div class="row align-items-md-stretch" style="width: 100%; height: 90.3%;">
-        <div class="col-md-6" style="background-color: rgb(148, 3, 141); width: 50%;">
-          <br>
-      <h2 class="estilo_letra">
-        
-        ¿CUANTA ENERGIA TE SENTISTE HOY?
-      </h2>
-      <div>
+
+  <div class="row align-items-md-stretch" style="width: 100%; height: 90.3%;background-color: rgb(234, 243, 243)">
+    <div class="col-md-6" style="background-color: rgb(104, 0, 107);width: 50%;">
+      <br>
+  <h3 class="estilo_letra">
+    ¿CUAN ENERGICO ESTUVISTE EL DIA DE HOY?
+  </h3>
+    <div>
         <img src="assets/img/control_energia_rayo1.png" class="imagen" alt="">
+        <div class="contenedor_opciones">
+          <div> 
+            <button class="boton_agregar" (click)="guardarRegistros('100%')">100%</button><br>
+            <button class="boton_agregar" (click)="guardarRegistros('75%')">75%</button><br>
+            <button class="boton_agregar" (click)="guardarRegistros('50%')">50%</button><br>
+            <button class="boton_agregar" (click)="guardarRegistros('25%')">25%</button><br>
+          </div>
       </div>
-        <div class="contenedor_opciones" style="margin-top: 5%;">
-            <button  (click)="guardarRegistros('Muy baja')" class="estilo_boton"> 
-              <div class="dentro_boton">
-                <div class="dentro_boton" id="icono">
-                  <img
-                  width="40"
-                   alt="Angular Logo"
-                   src="assets/img/control_energia_nube_lluvia.png"
-                 />
-                </div>
-                <div class="dentro_boton" id="inicio">MUY BAJA</div>
-              </div>
-            </button>
-            <BR>
-              <button class="estilo_boton"  (click)="guardarRegistros('Baja')"> 
-                <div class="dentro_boton">
-                  <div class="dentro_boton" id="icono">
-                    <img
-                    width="40"
-                     alt="Angular Logo"
-                     src="assets/img/control_energia_nube.png"
-                     
-                   />
-                  </div>
-                  <div class="dentro_boton" id="inicio">BAJA</div>
-                </div>
-            </button><BR>
-              <button class="estilo_boton"  (click)="guardarRegistros('Normal')"> 
-                <div class="dentro_boton">
-                  <div class="dentro_boton" id="icono">
-                    <img
-                    width="40"
-                     alt="Angular Logo"
-                     src="assets/img/control_energia_arcoiris.png"
-                   />
-                  </div>
-                  <div class="dentro_boton" id="inicio">NORMAL</div>
-                </div>
-              </button>
-              <BR>
-                <button class="estilo_boton"  (click)="guardarRegistros('Alta')">  
-                  <div class="dentro_boton">
-                    <div class="dentro_boton" id="icono">
-                      <img
-                      width="40"
-                       alt="Angular Logo"
-                       src="assets/img/control_energia_sol.png"
-                       
-                     />
-                    </div>
-                    <div class="dentro_boton" id="inicio">ALTA</div>
-                  </div>
-              </button><BR>
-                <button class="estilo_boton"  (click)="guardarRegistros('Muy alta')"> 
-                  <div class="dentro_boton">
-                    <div class="dentro_boton" id="icono">
-                      <img
-                      width="40"
-                       
-                       src="assets/img/control_energia_rayo.png"
-                       
-                     />
-                    </div>
-                    <div class="dentro_boton" id="inicio">MUY ALTA</div>
-                  </div>
-              </button><BR>
-        </div>
-        </div>
-        <div class="col-md-6" style="background-color: rgb(192, 124, 219); width: 50%;">
-          
-           <div class="calendario" style="background-color: rgb(234, 243, 243); width: 100% !important;margin-top: 5%;">
-            <full-calendar [options]="calendarOptions"></full-calendar>
-           </div>  
-        </div>
-      
-      </div>
-    <router-outlet></router-outlet>
-  
+    </div>
+    
+    </div>
+    <div class="col-md-6" style="background-color: rgb(234, 243, 243); height: 100%;width: 50%;">   
+      <div>
+        <p id="textoConfirmatorio" style="font-size:x-large;width: 100%; text-align: center;margin-top: 2%;">{{estadoActividad}}</p>
+      </div>  
+      <div class="calendario" style="background-color: rgb(234, 243, 243); width: 100% !important;margin-top: 5%;height: 100%; ">
+        <full-calendar [options]="calendarOptions"></full-calendar>
+       </div>  
+    </div>
+</div>
+
+
+

@@ -8,8 +8,9 @@ import { ControlDeSuenoComponent } from '../cuerpo/control-de-sueno/control-de-s
 import { ControlDeAnimoComponent } from '../cuerpo/control-de-animo/control-de-animo.component';
 import { ControlDeConsumoDeAguaComponent } from '../cuerpo/control-de-consumo-de-agua/control-de-consumo-de-agua.component';
 import { ControlDeEnergiaComponent } from '../cuerpo/control-de-energia/control-de-energia.component';
-
+import { AuthenticationService } from '../../_services';
 import { AdDirective } from '../../_helpers/ad.directive';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-cuerpo',
   templateUrl: './cuerpo.component.html',
@@ -25,7 +26,8 @@ export class CuerpoComponent implements OnInit {
 
   @ViewChild('sidenav') sidenav: MatSidenav|any;
   @ViewChild('dynamicComponent', { read: ViewContainerRef }) myRef:any
-  constructor(private sidenavService: SidenavService,private componentFactoryResolver: ComponentFactoryResolver) 
+  constructor(private sidenavService: SidenavService,private componentFactoryResolver: ComponentFactoryResolver,private router: Router,
+    private authenticationService: AuthenticationService) 
   {
 
   }
@@ -75,14 +77,15 @@ export class CuerpoComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    const factory = this.componentFactoryResolver.resolveComponentFactory(ControlDeSuenoComponent);
+    this.sidenav.close();
+    const factory = this.componentFactoryResolver.resolveComponentFactory(ControlDeConsumoDeAguaComponent);
     this.myRef.clear();
     const ref = this.myRef.createComponent(factory);
     ref.changeDetectorRef.detectChanges();
 }
 
   ngOnInit() {
-   
+ 
       this.sidenavService.asObservable().subscribe((isOpen: boolean) => {
                   if(this.sidenav.opened) {  
                       this.sidenav.close();
@@ -98,6 +101,10 @@ export class CuerpoComponent implements OnInit {
   }
   onClosedChange() {
       this.sidenavService.silenceClose();
+  }
+  logout() {
+    this.authenticationService.logout();
+    this.router.navigate(['/login']);
   }
 }
 

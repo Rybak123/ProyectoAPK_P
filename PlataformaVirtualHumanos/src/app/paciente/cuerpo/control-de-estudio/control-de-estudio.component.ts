@@ -13,6 +13,7 @@ import { VerificarOperacionesPaciente } from 'src/app/_services/pacienteServices
   encapsulation: ViewEncapsulation.None
 })
 export class ControlDeEstudioComponent implements OnInit{
+  estadoActividad="";
   myMap:any;
   public hora:number = 0;
   public minutos:number = 0;
@@ -25,35 +26,46 @@ export class ControlDeEstudioComponent implements OnInit{
   calendarVisible = true;
   localControlDeEstudio:any;
   start(){ 
-    if(this.contador == undefined){ 
-      this.contador = setInterval(()=>{ 
-        this.segundos += 1;
-        this.segundosString=('0' + this.segundos).slice(-2);
-        if(this.segundos == 60){ 
-          this.segundos = 0;
-          this.minutos +=1;
-          this.minutosString=('0' + this.minutos).slice(-2);
-          if(this.minutos == 60){ 
-            this.minutos = 0;
-            this.hora +=1;
-            this.horaString=('0' + this.horaString).slice(-2);
-            if(this.hora = 24){ 
-              this.hora = 0;
+    if(this.myMap.size>0)
+    {
+      if(this.contador == undefined){ 
+        this.contador = setInterval(()=>{ 
+          this.segundos += 1;
+          this.segundosString=('0' + this.segundos).slice(-2);
+          if(this.segundos == 60){ 
+            this.segundos = 0;
+            this.minutos +=1;
+            this.minutosString=('0' + this.minutos).slice(-2);
+            if(this.minutos == 60){ 
+              this.minutos = 0;
+              this.hora +=1;
+              this.horaString=('0' + this.horaString).slice(-2);
+              if(this.hora = 24){ 
+                this.hora = 0;
+              }
             }
           }
         }
-      }
-      ,1000);
-    }    
+        ,1000);
+      } 
+    }else{
+      alert("Debes ingresar una materia");
+    }
+       
   }
   stop(){ 
-    var e:any = document.getElementById("selectBar");
-    var strUser = e.options[e.selectedIndex].text;
-    this.myMap.set(strUser,this.horaString.toString()+":"+this.minutosString+":"+this.segundosString);
-    clearInterval(this.contador);
-    this.contador = null;
-    this.guardarRegistros();
-    this.obtenerRegistrosParaCalendario();
+    if(this.myMap.size>0){
+      var e:any = document.getElementById("selectBar");
+      var strUser = e.options[e.selectedIndex].text;
+      this.myMap.set(strUser,this.horaString.toString()+":"+this.minutosString+":"+this.segundosString);
+      clearInterval(this.contador);
+      this.contador = null;
+      this.guardarRegistros();
+    }
+    else{
+      alert("Debes ingresar una materia");
+    }
+   
   }
   verCantidadHorasEstudiadas(){
     var e:any = document.getElementById("selectBar");
@@ -68,21 +80,30 @@ export class ControlDeEstudioComponent implements OnInit{
     this.segundosString = horasMateriaSeleccioandaSplit[2];
   }
   aumentarMateria(){
-
     var text:any = document.getElementById('nuevaMateria');
-    this.myMap.set(text.value, "00:00:00");
-    let str = '';
-    this.myMap.forEach((key:any, val:any) => {
-      str += `<option value='${key}'>${val}</option>`
-    });
-    var select:any = document.getElementById('selectBar');
-    select.innerHTML = str;
+    if(text.value.length>0){
+      this.myMap.set(text.value, "00:00:00");
+      let str = '';
+      this.myMap.forEach((key:any, val:any) => {
+        str += `<option value='${key}'>${val}</option>`
+      });
+      var select:any = document.getElementById('selectBar');
+      select.innerHTML = str;
+      this.obtenerRegistrosParaCalendario();
+      
+    }
+    else{
+      alert("No debes ingresar una materia en blanco");
+    }
+  
+    
   }
 
 
   title = '';
   calendarOptions: CalendarOptions = {
     initialView: 'dayGridMonth',
+    eventContent:this.renderEventContent,
     dateClick: this.diaClickeado.bind(this),
     events: [   
     ]
@@ -101,7 +122,6 @@ export class ControlDeEstudioComponent implements OnInit{
   ngOnInit(): void {
     this.myMap = new Map();
     var select:any = document.getElementById('selectBar');
-
     let str = '';
     this.myMap.forEach((key:any, val:any) => {
     });
@@ -115,7 +135,6 @@ export class ControlDeEstudioComponent implements OnInit{
         var fechaActual = MyDate.getFullYear()+ '-'
         + ('0' + (MyDate.getMonth()+1)).slice(-2) + '-'
         + ('0' + MyDate.getDate()).slice(-2);
-
     var controlJson=this.actualizarOperacionesPaciente.obtenerControlDeEstudio();
     controlJson.then((control:any) => {
       control.forEach((element:any) => {
@@ -127,28 +146,36 @@ export class ControlDeEstudioComponent implements OnInit{
             this.myMap.forEach((key:any, val:any) => {
               str += `<option value='${key}'>${val}</option>`
             });
+            var tiempo=materia.cantidadDeTiempo.split(":");
+            this.hora=parseInt(tiempo[0]);
+            this.minutos=parseInt(tiempo[1]);
+            this.segundos=parseInt(tiempo[2]);
+            this.segundosString=('0' + this.segundos).slice(-2);
+            this.minutosString=('0' + this.minutosString).slice(-2);
+            this.horaString=('0' + this.horaString).slice(-2);
             select.innerHTML = str;
+
           });
           
         }
       });
-      this.calendarOptions.events=this.actualizarOperacionesPaciente.convertirAEventosCalendario(control);
+      this.calendarOptions.events=this.actualizarOperacionesPaciente.convertirAEventosCalendario_ControlDeEstudio(control);
     }).catch((err:any) => {
       console.log(err);
     });
   }
   guardarRegistros(){
     var materiasEstudiadas:any=[];
-    console.log(this.myMap);
     this.myMap.forEach((key:any, val:any) => {
       materiasEstudiadas.push({"cantidadDeTiempo":key,"materia":val});
     });
     this.mandarOperacionesPaciente.actualizarControlDeEstudio(materiasEstudiadas).then((respuesta:any) => {
-      console.log(respuesta);
+      this.obtenerRegistrosParaCalendario();
+      this.diaYaControlado();
     }).catch((err:any) => {
       alert(err);
     });
-    this.obtenerRegistrosParaCalendario();
+    
   }
   
   diaClickeado(arg:any) {
@@ -167,18 +194,55 @@ export class ControlDeEstudioComponent implements OnInit{
   }
   diaYaControlado(){
     var diaFueControlado=this.diaDeControlActualizado.verControlDeEstudioActualizado();
+    
     diaFueControlado.then((control:any) => {
-    if(control){
-      console.log("Dia controlado");
-    }else{
-      console.log("Dia no controlado");
-    }
+      console.log(control);
+      if(control){
+        var text:any = document.getElementById("textoConfirmatorio");
+        text.style.color='green';
+        this.estadoActividad="Ya controlaste este día";
+      }else{
+        var text:any = document.getElementById("textoConfirmatorio");
+        text.style.color='red';
+        this.estadoActividad="No controlaste este día";
+      }
     }).catch((err:any) => {
       alert(err);
     });
   }
-   
+  renderEventContent(eventInfo:any, createElement:any) {
+    var innerHtml;
+    if (eventInfo) {
+       innerHtml = eventInfo.event._def.title+"<img style='width:30%; height:30%;margin-left: auto;margin-right: auto;display:block;' src='.../../../../assets/img/iconosCalendario/book.png'>";
+       return createElement = { html: '<div>'+innerHtml+'</div>' }
+    }
+    else{
+      return null;
+    }
+    }
+  borrarMateria(){
+    var e:any = document.getElementById("selectBar");
+    var strUser = e.options[e.selectedIndex].text;
+    this.myMap.delete(strUser);
+    var str="";
+    this.myMap.forEach((key:any, val:any) => {
+      str += `<option value='${key}'>${val}</option>`
+    });
+    console.log(this.myMap);
+    e.innerHTML = str;
+    this.hora=0;
+    this.minutos=0;
+    this.segundos=0;
+    this.horaString = "00";
+    this.minutosString = "00";
+    this.segundosString = "00";
 
+ 
+    clearInterval(this.contador);
+    this.contador = null;
+    this.guardarRegistros();
+    
+  }
   
 
 

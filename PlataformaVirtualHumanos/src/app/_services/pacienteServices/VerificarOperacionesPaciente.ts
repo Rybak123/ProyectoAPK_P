@@ -51,8 +51,10 @@ export class VerificarOperacionesPaciente{
             diasControlados.forEach((diaControlado: any) => {
                 var fechaEncontrada=diaControlado.fecha;
                 if(fechaActual==fechaEncontrada){
-                    
-                    diaActualizado=true;
+                    var materiasEstudiadas=diaControlado.materiasEstudiadas;
+                    if(materiasEstudiadas.length>0){
+                        diaActualizado=true;
+                    }
                 }
             });
             return diaActualizado;

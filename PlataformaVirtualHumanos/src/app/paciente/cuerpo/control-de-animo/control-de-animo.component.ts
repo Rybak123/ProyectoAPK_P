@@ -13,10 +13,14 @@ import { VerificarOperacionesPaciente } from 'src/app/_services/pacienteServices
 })
 export class ControlDeAnimoComponent implements OnInit {
 
+
+
+  estadoActividad="";
   calendarVisible = true;
   title = '';
   calendarOptions: CalendarOptions = {
     initialView: 'dayGridMonth',
+    eventContent:this.renderEventContent,
     dateClick: this.diaClickeado.bind(this),
     events: [   
     ]
@@ -46,11 +50,11 @@ export class ControlDeAnimoComponent implements OnInit {
   }
   guardarRegistros(valor:any){
     this.mandarOperacionesPaciente.actualizarControlDeAnimo(valor).then((respuesta:any) => {
-      console.log(respuesta);
+      this.obtenerRegistrosParaCalendario();
+      this.diaYaControlado()
     }).catch((err:any) => {
       alert(err);
     });
-    this.obtenerRegistrosParaCalendario();
   }
   
   diaClickeado(arg:any) {
@@ -59,7 +63,7 @@ export class ControlDeAnimoComponent implements OnInit {
     .then((control:any) => {
       var contenidoDia=this.verContenidoActividad.verContenidoActividad_Animo(control,arg.dateStr);
       if(contenidoDia!=""){
-        alert(contenidoDia);
+        alert("Este día te sentiste "+contenidoDia+".");
       }
     }).catch((err:any) => {
       alert(err);
@@ -69,14 +73,27 @@ export class ControlDeAnimoComponent implements OnInit {
     var diaFueControlado=this.diaDeControlActualizado.verControlDeAnimoActualizado();
     diaFueControlado.then((control:any) => {
     if(control){
-      console.log("Dia controlado");
+      var text:any = document.getElementById("textoConfirmatorio");
+      text.style.color='green';
+      this.estadoActividad="Ya controlaste este día";
     }else{
-      console.log("Dia no controlado");
+      var text:any = document.getElementById("textoConfirmatorio");
+      text.style.color='red';
+      this.estadoActividad="No controlaste este día";
     }
     }).catch((err:any) => {
       alert(err);
     });
   }
-  
+  renderEventContent(eventInfo:any, createElement:any) {
+    var innerHtml;
+    if (eventInfo) {
+       innerHtml = eventInfo.event._def.title+"<img style='width:30%; height:30%;margin-left: auto;margin-right: auto;display:block;' src='.../../../../assets/img/iconosCalendario/leave.png'>";
+       return createElement = { html: '<div>'+innerHtml+'</div>' }
+    }
+    else{
+      return null;
+    }
+    }
 }
 

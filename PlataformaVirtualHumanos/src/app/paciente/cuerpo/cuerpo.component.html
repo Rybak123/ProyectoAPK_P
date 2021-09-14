@@ -2,17 +2,92 @@
   <mat-sidenav-container class="example-container">
     <mat-sidenav #sidenav mode="over" opened="true" style="width: 20%; align-items: center; display: flex;
     justify-content: center;">
-      <button mat-flat-button color="primary" style="width: 90%; margin-top: 10%; margin-left: 5%;" (click)="renderControlDeEstudio()">Control de estudio</button><br>
-      <button mat-flat-button color="primary" style="width: 90%; margin-top: 10%; margin-left: 5%;" (click)="renderControlDeSueno()">Control de sueño</button><br>
-      <button mat-flat-button color="primary" style="width: 90%; margin-top: 10%; margin-left: 5%;" (click)="renderControlDeEnergia()">Control de energia</button><br>
-      <button mat-flat-button color="primary" style="width: 90%; margin-top: 10%; margin-left: 5%;" (click)="renderControlDeAnimo()">Control de emociones</button><br>
-      <button mat-flat-button color="primary" style="width: 90%; margin-top: 10%; margin-left: 5%;" (click)="renderControlDeConsumoDeAgua()">Control de consumo de agua</button><br>
+    
+    <section class="app">
+      <aside class="sidebar">
+             <header style=" width: 100%;;color: white;">
+            Menú
+          </header>
+        <nav class="sidebar-nav">
+     
+          <ul>
+            <li>
+              <a href="#"><i class="ion-bag" ></i> <span >Control de actividades</span></a>
+              <ul class="nav-flyout">
+                <li>
+                  <a href="#" class="myClase" style="color: white;" (click)="renderControlDeConsumoDeAgua()"><i class="ion-ios-color-filter-outline" ></i>Control de hidratación</a>
+                </li>
+                <li>
+                  <a href="#" class="myClase" style="color: white;" (click)="renderControlDeSueno()"><i class="ion-ios-clock-outline" ></i>Control de sueño</a>
+                </li>
+                <li>
+                  <a href="#" class="myClase" style="color: white;" (click)="renderControlDeAnimo()"><i class="ion-android-star-outline" ></i>Control de animo</a>
+                </li>
+                <li>
+                  <a href="#" class="myClase" style="color: white;" (click)="renderControlDeEstudio()"><i class="ion-heart-broken"  ></i>Control de estudio</a>
+                </li>
+                <li>
+                  <a href="#" class="myClase" style="color: white;" (click)="renderControlDeEnergia()"><i class="ion-heart-broken" ></i>Control de energia</a>
+                </li>
+              </ul>
+            </li>
+            <li style="margin-top: 1%;">
+              <a href="#"><i class="ion-ios-settings"></i> <span class="">Actividades en el calendario</span></a>
+              <ul class="nav-flyout">
+                <li>
+                  <a href="#" class="myClase" style="color: white;"><i class="ion-ios-alarm-outline"></i>Calendario</a>
+                </li>
+                <li>
+                  <a href="#" class="myClase" style="color: white;"><i class="ion-ios-camera-outline"></i>Metas personales</a>
+                </li>
+                <li>
+                  <a href="#" class="myClase" style="color: white;"><i class="ion-ios-chatboxes-outline"></i>Metas sociales</a>
+                </li>
+                <li>
+                  <a href="#" class="myClase" style="color: white;"><i class="ion-ios-cog-outline"></i>Recordatorios</a>
+                </li>
+              </ul>
+            </li>
+            <li  style="margin-top: 1%;">
+              <a href="#"><i class="ion-ios-briefcase-outline"></i> <span class="">Favoritos</span></a>
+              <ul class="nav-flyout">
+                <li>
+                  <a href="#" class="myClase" style="color: white;"><i class="ion-ios-flame-outline"></i>Musica</a>
+                </li>
+                <li>
+                  <a href="#" class="myClase" style="color: white;"><i class="ion-ios-lightbulb-outline"></i>Libros</a>
+                </li>
+                <li>
+                  <a href="#" class="myClase" style="color: white;"><i class="ion-ios-location-outline"></i>Momentos</a>
+                </li>
+                <li>
+                  <a href="#"  class="myClase" style="color: white;"><i class="ion-ios-locked-outline"></i>Lugares</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#"><i class="ion-ios-analytics-outline"></i> <span class="">Desarollo cognitivo</span></a>
+              <ul class="nav-flyout">
+                <li>
+                  <a href="#" class="myClase" style="color: white;"><i class="ion-ios-timer-outline"></i>Pruebas de desarollo cognitivo</a>
+                </li>
+                <li>
+                  <a href="#"  class="myClase" style="color: white;"><i class="ion-arrow-graph-down-left"></i>Entrenamiento cognitivo</a>
+                </li>
+              </ul>
+            </li>
+            <li style="float: inline-end; height: 50%;">
+              <a href="#" (click)="logout()"><i class="ion-ios-medical-outline"></i> <span class="">Cerrar sesión</span></a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+    </section>
     </mat-sidenav>
-  
     <mat-sidenav-content>
-
-      
-    <ng-template #dynamicComponent></ng-template>
+      <ng-template #dynamicComponent></ng-template>
     </mat-sidenav-content>
-  </mat-sidenav-container>
+     
+
+
   

@@ -1,90 +1,32 @@
-   
-    <div class="row align-items-md-stretch" style="width: 100%; height: 90.3%;">
-        <div class="col-md-6" style="background-color: rgb(221, 252, 252); width: 50%;">
-          <br>
-      <h2 class="estilo_letra">
-        
-        ¿COMO TE SIENTES HOY?
-      </h2>
+
+  <div class="row align-items-md-stretch" style="width: 100%; height: 90.3%;background-color: rgb(234, 243, 243)">
+    <div class="col-md-6" style="background:linear-gradient( rgba(196, 245, 18, 0.693),rgba(58, 238, 184, 0.898));width: 50%;">
       <br>
+  <h3 class="estilo_letra">
+    ¿COMO TE SENTISTE EL DIA DE HOY?
+  </h3>
+    <div>
+        <img src="assets/img/hoja_emocion.png" class="imagen" alt="">
+        <div class="contenedor_opciones">
+          <div> 
+            <button class="boton_agregar" (click)="guardarRegistros('Emocionado')">Emocionado</button><br>
+            <button class="boton_agregar" (click)="guardarRegistros('Triste')">Triste</button><br>
+            <button class="boton_agregar" (click)="guardarRegistros('Feliz')">Feliz</button><br>
+            <button class="boton_agregar" (click)="guardarRegistros('Ansioso')">Ansioso</button><br>
+          </div>
+      </div>
+    </div>
+    
+    </div>
+    <div class="col-md-6" style="background-color: rgb(234, 243, 243); height: 100%;width: 50%;">
       <div>
-        <img src="assets/img/HojaEmocion.png"  class="imagen" alt="">
-      </div>
-  
-        <div class="contenedor_opciones" style="margin-top: 13%;">
-  
-              <button class="estilo_boton"> 
-                <div class="dentro_boton">
-                  <div class="dentro_boton" id="icono">
-                    <img
-                    width="40"
-                     alt="Angular Logo"
-                     src="assets/img/hoja3.png"
-                     onmouseover="this.src='assets/img/hoja1.png'"
-                     onmouseout="this.src='assets/img/hoja3.png'"
-                   />
-                  </div>
-                  <div class="dentro_boton" id="inicio"  (click)="guardarRegistros('Emocionado/a')">EMOCIONADO/A</div>
-                </div>
-            </button>
-            <BR>
-              <br>
-              <button class="estilo_boton"> 
-                <div class="dentro_boton">
-                  <div class="dentro_boton" id="icono">
-                    <img
-                    width="40"
-                     alt="Angular Logo"
-                     src="assets/img/hoja3.png"
-                     onmouseover="this.src='assets/img/hoja2.png'"
-                     onmouseout="this.src='assets/img/hoja3.png'"
-                   />
-                  </div>
-                  <div class="dentro_boton" id="inicio"  (click)="guardarRegistros('Triste')">TRISTE</div>
-                </div>
-            </button>
-            <BR>
-              <br>
-              <button class="estilo_boton"> 
-                <div class="dentro_boton">
-                  <div class="dentro_boton" id="icono">
-                    <img
-                    width="40"
-                     alt="Angular Logo"
-                     src="assets/img/hoja3.png"
-                     
-                   />
-                  </div>
-                  <div class="dentro_boton" id="inicio"  (click)="guardarRegistros('Productivo/a')">PRODUCTIVO/A</div>
-                </div>
-            </button>
-            <BR>
-              <br>
-              <button class="estilo_boton"> 
-                <div class="dentro_boton">
-                  <div class="dentro_boton" id="icono">
-                    <img
-                    width="40"
-                     alt="Angular Logo"
-                     src="assets/img/hoja3.png"
-                     onmouseover="this.src='assets/img/hoja5.png'"
-                     onmouseout="this.src='assets/img/hoja3.png'"
-                   />
-                  </div>
-                  <div class="dentro_boton" id="inicio"  (click)="guardarRegistros('Feliz')">FELIZ</div>
-                </div>
-            </button>
-            <BR>
-           
-        </div>
-        </div>
-        <div class="col-md-6" style="background-color: rgb(234, 243, 243); width: 50%;">
-          
-           <div class="calendario" style="background-color: rgb(234, 243, 243); width: 100% !important;margin-top: 5%;">
-            <full-calendar [options]="calendarOptions"></full-calendar>
-           </div>  
-        </div>
-      
-      </div>
-    <router-outlet></router-outlet>
-  
+        <p id="textoConfirmatorio" style="font-size:x-large;width: 100%; text-align: center;margin-top: 2%;">{{estadoActividad}}</p>
+      </div>   
+       <div class="calendario" style="background-color: rgb(234, 243, 243);margin-top: 4%; width: 100% !important;;height: 100%; ">
+        <full-calendar [options]="calendarOptions"></full-calendar>
+       </div>  
+    </div>
+</div>
+
+
+
