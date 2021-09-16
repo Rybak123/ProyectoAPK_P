@@ -291,9 +291,7 @@ public class ControlDeEstudio extends Fragment {
         JSONObject diaDeEstudio1 = diasDeEstudio.getJSONObject(i);
         String fechaJson=diaDeEstudio1.getString("fecha");
         JSONArray materiasEstudiadas=diaDeEstudio1.getJSONArray("materiasEstudiadas");
-        Toast.makeText(getContext(), fechaJson+" "+fechaActualString, Toast.LENGTH_SHORT).show();
         if(fechaJson.equals(fechaActualString)){
-          Toast.makeText(getContext(), fechaJson+" "+fechaActualString, Toast.LENGTH_SHORT).show();
           for(int j=0;j<materiasEstudiadas.length();j++){
             JSONObject materiaDeEstudio=materiasEstudiadas.getJSONObject(j);
 

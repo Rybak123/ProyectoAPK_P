@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -41,6 +42,7 @@ import java.util.List;
 
 public class calendarioAguaConsumida extends Fragment {
 
+  private TextView tvAviso;
   private Button btn_volver;
   private View root;
   private CalendarView calendarView;
@@ -67,7 +69,10 @@ public class calendarioAguaConsumida extends Fragment {
           operaciones.verContenidoActividad_ControlDeAgua(eventDay.getCalendar(), new I_DevolverActividad() {
             @Override
             public void onSuccess(StringBuilder respuesta, Context context) {
-              Toast.makeText(context, respuesta.toString(), Toast.LENGTH_SHORT).show();
+              if(!respuesta.toString().equals("")){
+                Toast.makeText(context,"Este dia consumiste "+respuesta.toString()+" de agua.", Toast.LENGTH_SHORT).show();
+              }
+
             }
 
             @Override
@@ -85,7 +90,7 @@ public class calendarioAguaConsumida extends Fragment {
         @Override
         public void onSuccess(JSONArray listaDeEventos, Context context) {
 
-          List<EventDay> events=operaciones.convertirAEventoCalendario(listaDeEventos,context);
+          List<EventDay> events=operaciones.convertirAEventoCalendario_agua(listaDeEventos,context);
           calendarView.setEvents(events);
         }
 

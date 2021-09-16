@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const PacienteDao = require('./PacienteDao');
 
-// routes
+// rutas
 router.post('/registrarPaciente', registrar);
 router.get('/listarPacientes', listarPacientes);
 router.post('/obtenerPaciente', obtenerPaciente);

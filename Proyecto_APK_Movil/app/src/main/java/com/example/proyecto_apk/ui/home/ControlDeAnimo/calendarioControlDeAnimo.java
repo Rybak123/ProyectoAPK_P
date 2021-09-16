@@ -69,7 +69,9 @@ public class calendarioControlDeAnimo extends Fragment {
           operaciones.verContenidoActividad_ControlDeAnimo(eventDay.getCalendar(), new I_DevolverActividad() {
             @Override
             public void onSuccess(StringBuilder respuesta, Context context) {
-              Toast.makeText(context, respuesta.toString(), Toast.LENGTH_SHORT).show();
+              if(!respuesta.toString().equals("")){
+                Toast.makeText(context,"Este día te sentiste "+respuesta.toString()+".", Toast.LENGTH_SHORT).show();
+              }
             }
 
             @Override
@@ -87,7 +89,7 @@ public class calendarioControlDeAnimo extends Fragment {
       @Override
       public void onSuccess(JSONArray listaDeEventos, Context context) {
 
-        List<EventDay> events=operaciones.convertirAEventoCalendario(listaDeEventos,context);
+        List<EventDay> events=operaciones.convertirAEventoCalendario_animo(listaDeEventos,context);
         calendarView.setEvents(events);
       }
 

@@ -1,4 +1,3 @@
-﻿
 export class PacienteVO
 {
     carnetDeIdentidad:any;

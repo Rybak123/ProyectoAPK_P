@@ -75,7 +75,7 @@
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginStart="32dp"
-    android:layout_marginTop="32dp"
+    android:layout_marginTop="8dp"
     android:layout_marginEnd="32dp"
     android:text="Emocionado/a"
     android:textAlignment="center"
@@ -107,6 +107,7 @@
     app:layout_constraintHorizontal_bias="0.498"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/id_controlDeEstudioF_btn_irCalendario_animo"
-    tools:src="@drawable/hoja3" />
+    app:srcCompat="@drawable/leave"
+    tools:src="@drawable/leave" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -76,7 +76,6 @@ public class MandarPeticionOperacionsPaciente {
     actualizarControlDeActividad(consultaJson, route, new VolleyCallback() {
       @Override
       public void onSuccess(JSONObject result, Context context) {
-        Toast.makeText(context, result.toString(), Toast.LENGTH_SHORT).show();
         callback.onSuccess(true,context);
       }
 
@@ -98,7 +97,6 @@ public class MandarPeticionOperacionsPaciente {
     actualizarControlDeActividad(consultaJson, route, new VolleyCallback() {
       @Override
       public void onSuccess(JSONObject result, Context context) {
-        Toast.makeText(context, result.toString(), Toast.LENGTH_SHORT).show();
         callback.onSuccess(true,context);
       }
 
@@ -120,7 +118,6 @@ public class MandarPeticionOperacionsPaciente {
     actualizarControlDeActividad(consultaJson, route, new VolleyCallback() {
       @Override
       public void onSuccess(JSONObject result, Context context) {
-        Toast.makeText(context, result.toString(), Toast.LENGTH_SHORT).show();
         callback.onSuccess(true,context);
       }
 
@@ -142,7 +139,6 @@ public class MandarPeticionOperacionsPaciente {
     actualizarControlDeActividad(consultaJson, route, new VolleyCallback() {
       @Override
       public void onSuccess(JSONObject result, Context context) {
-        Toast.makeText(context, result.toString(), Toast.LENGTH_SHORT).show();
         callback.onSuccess(true,context);
       }
 
@@ -164,7 +160,6 @@ public class MandarPeticionOperacionsPaciente {
     actualizarControlDeActividad(consultaJson, route, new VolleyCallback() {
       @Override
       public void onSuccess(JSONObject result, Context context) {
-        Toast.makeText(context, result.toString(), Toast.LENGTH_SHORT).show();
         callback.onSuccess(true,context);
       }
 

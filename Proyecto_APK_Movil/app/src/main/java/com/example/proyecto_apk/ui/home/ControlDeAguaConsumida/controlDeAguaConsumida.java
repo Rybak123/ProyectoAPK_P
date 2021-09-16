@@ -73,7 +73,7 @@ public class controlDeAguaConsumida extends Fragment implements View.OnClickList
     MandarPeticionOperacionsPaciente peticion=new MandarPeticionOperacionsPaciente(getContext());
     switch (view.getId()){
       case R.id.id_controlAgua_1LitroYMedio:
-        peticion.actualizaControlDeAgua("1 litro y medio", new I_ActualizarControlDeActividad() {
+        peticion.actualizaControlDeAgua("8 Vasos", new I_ActualizarControlDeActividad() {
           @Override
           public void onSuccess(Boolean respuesta, Context context) {
             Toast.makeText(context, "Fecha registrada con exito", Toast.LENGTH_SHORT).show();
@@ -86,7 +86,7 @@ public class controlDeAguaConsumida extends Fragment implements View.OnClickList
         });
         break;
       case R.id.id_controlAgua_1Litro:
-        peticion.actualizaControlDeAgua("1 litro", new I_ActualizarControlDeActividad() {
+        peticion.actualizaControlDeAgua("7 Vasos", new I_ActualizarControlDeActividad() {
           @Override
           public void onSuccess(Boolean respuesta, Context context) {
             Toast.makeText(context, "Fecha registrada con exito", Toast.LENGTH_SHORT).show();
@@ -99,7 +99,7 @@ public class controlDeAguaConsumida extends Fragment implements View.OnClickList
         });
         break;
       case R.id.id_controlAgua_3vasos:
-        peticion.actualizaControlDeAgua("3 vasos", new I_ActualizarControlDeActividad() {
+        peticion.actualizaControlDeAgua("5 Vasos", new I_ActualizarControlDeActividad() {
           @Override
           public void onSuccess(Boolean respuesta, Context context) {
             Toast.makeText(context, "Fecha registrada con exito", Toast.LENGTH_SHORT).show();
@@ -112,7 +112,7 @@ public class controlDeAguaConsumida extends Fragment implements View.OnClickList
         });
         break;
       case R.id.id_controlAgua_2vasos:
-        peticion.actualizaControlDeAgua("2 vasos", new I_ActualizarControlDeActividad() {
+        peticion.actualizaControlDeAgua("3 Vasos", new I_ActualizarControlDeActividad() {
           @Override
           public void onSuccess(Boolean respuesta, Context context) {
             Toast.makeText(context, "Fecha registrada con exito", Toast.LENGTH_SHORT).show();

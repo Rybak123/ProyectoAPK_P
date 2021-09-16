@@ -184,4 +184,55 @@ public class VerActividadPaciente {
       }
     });
   }
+  public void verContenidoActividad_estudio(Calendar fecha, I_DevolverActividad callback){
+    //TODO Cambiar
+    OperacionesPaciente operaciones=new OperacionesPaciente(context);
+    String parametroNombreActividad="materiasEstudiadas";
+
+    StringBuilder mensajeActividad= new StringBuilder();
+    mensajeActividad.append("Este dia estudiaste: \n");
+    Calendar MyDate = fecha;
+    int month1=((MyDate.get(Calendar.MONTH)+1));
+    int day1=(MyDate.get(Calendar.DAY_OF_MONTH));
+    String month=String.valueOf(month1);
+    String day=String.valueOf(day1);
+    month="0"+month;
+    day="0"+day;
+    String fechaString = MyDate.get(Calendar.YEAR)+ "-"
+      + month.substring(month.length()-2) + "-"
+      + day.substring(day.length()-2);
+    operaciones.obtenerControlDeEstudio(new I_ObtenerControlDeActividadesPaciente() {
+      @Override
+      public void onSuccess(JSONArray listaDeEventos, Context context) {
+        for(int i=0;i<listaDeEventos.length();i++){
+          JSONObject diaDeEstudio1= null;
+          try {
+            diaDeEstudio1 = listaDeEventos.getJSONObject(i);
+            String fechaJson=diaDeEstudio1.getString("fecha");
+
+            if(fechaJson.equals(fechaString)){
+              JSONArray materiasEstudiadas=diaDeEstudio1.getJSONArray(parametroNombreActividad);
+              for(int j=0;j<materiasEstudiadas.length();j++){
+                JSONObject materia=materiasEstudiadas.getJSONObject(j);
+                String[] horasString=materia.getString("cantidadDeTiempo").split(":");
+                int horas=Integer.parseInt(horasString[0]) ;
+                int minutos=Integer.parseInt(horasString[1]) ;
+                int segundos=  Integer.parseInt(horasString[2]) ;
+                mensajeActividad.append(materia.getString("materia")).append(" durante un tiempo de: ").append(horas).append(" horas, ").append(minutos).append(" minutos y ").append(segundos).append(" segundos cronometrados.\n");
+                Toast.makeText(context, mensajeActividad.toString(), Toast.LENGTH_SHORT).show();
+              }
+            }
+          } catch (JSONException e) {
+            Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+          }
+        }
+        callback.onSuccess(mensajeActividad,context);
+      }
+      @Override
+      public void onErrorResponse(VolleyError error, Context context) {
+        callback.onErrorResponse(error,context);
+      }
+    });
+  }
 }

@@ -70,7 +70,9 @@ public class calendarioControlDeSueno extends Fragment {
           operaciones.verContenidoActividad_ControlDeSueno(eventDay.getCalendar(), new I_DevolverActividad() {
             @Override
             public void onSuccess(StringBuilder respuesta, Context context) {
-              Toast.makeText(context, respuesta.toString(), Toast.LENGTH_SHORT).show();
+              if(!respuesta.toString().equals("")){
+                Toast.makeText(context,"Este dia dormiste "+respuesta.toString(), Toast.LENGTH_SHORT).show();
+              }
             }
 
             @Override
@@ -88,7 +90,7 @@ public class calendarioControlDeSueno extends Fragment {
          @Override
          public void onSuccess(JSONArray listaDeEventos, Context context) {
 
-           List<EventDay> events=operaciones.convertirAEventoCalendario(listaDeEventos,context);
+           List<EventDay> events=operaciones.convertirAEventoCalendario_sueno(listaDeEventos,context);
            calendarView.setEvents(events);
          }
 

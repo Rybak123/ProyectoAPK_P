@@ -73,7 +73,9 @@ public class calendarioControlDeEnergia extends Fragment {
         operaciones.verContenidoActividad_ControlDeEnergia(eventDay.getCalendar(), new I_DevolverActividad() {
           @Override
           public void onSuccess(StringBuilder respuesta, Context context) {
-            Toast.makeText(context, respuesta.toString(), Toast.LENGTH_SHORT).show();
+            if(!respuesta.toString().equals("")){
+              Toast.makeText(context,"Este día estuviste con el "+respuesta.toString()+" de energia.", Toast.LENGTH_SHORT).show();
+            }
           }
 
           @Override
@@ -91,7 +93,7 @@ public class calendarioControlDeEnergia extends Fragment {
       @Override
       public void onSuccess(JSONArray listaDeEventos, Context context) {
 
-        List<EventDay> events=operaciones.convertirAEventoCalendario(listaDeEventos,context);
+        List<EventDay> events=operaciones.convertirAEventoCalendario_energia(listaDeEventos,context);
         calendarView.setEvents(events);
       }
 

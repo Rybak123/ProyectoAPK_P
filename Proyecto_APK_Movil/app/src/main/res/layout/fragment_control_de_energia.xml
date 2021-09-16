@@ -11,38 +11,41 @@
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginStart="32dp"
+    android:layout_marginTop="8dp"
     android:layout_marginEnd="32dp"
     android:text="25%"
     android:textAlignment="center"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintHorizontal_bias="0.0"
     app:layout_constraintStart_toStartOf="parent"
-    tools:layout_editor_absoluteY="514dp" />
+    app:layout_constraintTop_toBottomOf="@+id/id_controlDeEnergia_50Porciento" />
 
   <Button
     android:id="@+id/id_controlDeEnergia_50Porciento"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginStart="32dp"
+    android:layout_marginTop="8dp"
     android:layout_marginEnd="32dp"
     android:text="50%"
     android:textAlignment="center"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintHorizontal_bias="0.0"
     app:layout_constraintStart_toStartOf="parent"
-    tools:layout_editor_absoluteY="458dp" />
+    app:layout_constraintTop_toBottomOf="@+id/id_controlDeEnergia_45Porciento" />
 
   <Button
     android:id="@+id/id_controlDeEnergia_45Porciento"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginStart="32dp"
+    android:layout_marginTop="8dp"
     android:layout_marginEnd="32dp"
     android:text="75%"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintHorizontal_bias="0.0"
     app:layout_constraintStart_toStartOf="parent"
-    tools:layout_editor_absoluteY="402dp" />
+    app:layout_constraintTop_toBottomOf="@+id/id_controlDeEnergia_100Porciento" />
 
   <Button
     android:id="@+id/id_controlDeEstudioF_btn_irCalendario_energia"
@@ -72,7 +75,7 @@
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginStart="32dp"
-    android:layout_marginTop="31dp"
+    android:layout_marginTop="8dp"
     android:layout_marginEnd="32dp"
     android:text="100%"
     android:textAlignment="center"
@@ -104,6 +107,7 @@
     app:layout_constraintHorizontal_bias="0.498"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/id_controlDeEstudioF_btn_irCalendario_energia"
+    app:srcCompat="@drawable/energia_page"
     tools:src="@drawable/control_energia_rayo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

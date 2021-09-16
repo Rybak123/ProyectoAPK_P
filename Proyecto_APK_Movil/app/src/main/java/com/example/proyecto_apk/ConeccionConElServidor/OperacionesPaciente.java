@@ -206,7 +206,7 @@ public class OperacionesPaciente {
       }
     });
   }
-  public List<EventDay> convertirAEventoCalendario(JSONArray diasDeActividad,Context context){
+  public List<EventDay> convertirAEventoCalendario_estudio(JSONArray diasDeActividad,Context context){
     List<EventDay> events =new ArrayList<>();
     for(int i=0;i<diasDeActividad.length();i++){
       JSONObject diaDeEstudio1= null;
@@ -216,6 +216,78 @@ public class OperacionesPaciente {
         Calendar fecha=Calendar.getInstance();
         fecha.set(Integer.parseInt(fechaJson[0]),Integer.parseInt(fechaJson[1])-1,Integer.parseInt(fechaJson[2]));
         events.add(new EventDay(fecha, R.drawable.libro, Color.parseColor("#228B22")));
+
+      } catch (JSONException e) {
+        e.printStackTrace();
+
+      }
+    }
+    return events;
+  }
+  public List<EventDay> convertirAEventoCalendario_sueno(JSONArray diasDeActividad,Context context){
+    List<EventDay> events =new ArrayList<>();
+    for(int i=0;i<diasDeActividad.length();i++){
+      JSONObject diaDeEstudio1= null;
+      try {
+        diaDeEstudio1 = diasDeActividad.getJSONObject(i);
+        String[] fechaJson=diaDeEstudio1.getString("fecha").toString().split("-");
+        Calendar fecha=Calendar.getInstance();
+        fecha.set(Integer.parseInt(fechaJson[0]),Integer.parseInt(fechaJson[1])-1,Integer.parseInt(fechaJson[2]));
+        events.add(new EventDay(fecha, R.drawable.sonando, Color.parseColor("#228B22")));
+
+      } catch (JSONException e) {
+        e.printStackTrace();
+
+      }
+    }
+    return events;
+  }
+  public List<EventDay> convertirAEventoCalendario_agua(JSONArray diasDeActividad,Context context){
+    List<EventDay> events =new ArrayList<>();
+    for(int i=0;i<diasDeActividad.length();i++){
+      JSONObject diaDeEstudio1= null;
+      try {
+        diaDeEstudio1 = diasDeActividad.getJSONObject(i);
+        String[] fechaJson=diaDeEstudio1.getString("fecha").toString().split("-");
+        Calendar fecha=Calendar.getInstance();
+        fecha.set(Integer.parseInt(fechaJson[0]),Integer.parseInt(fechaJson[1])-1,Integer.parseInt(fechaJson[2]));
+        events.add(new EventDay(fecha, R.drawable.waterdrop, Color.parseColor("#228B22")));
+
+      } catch (JSONException e) {
+        e.printStackTrace();
+
+      }
+    }
+    return events;
+  }
+  public List<EventDay> convertirAEventoCalendario_animo(JSONArray diasDeActividad,Context context){
+    List<EventDay> events =new ArrayList<>();
+    for(int i=0;i<diasDeActividad.length();i++){
+      JSONObject diaDeEstudio1= null;
+      try {
+        diaDeEstudio1 = diasDeActividad.getJSONObject(i);
+        String[] fechaJson=diaDeEstudio1.getString("fecha").toString().split("-");
+        Calendar fecha=Calendar.getInstance();
+        fecha.set(Integer.parseInt(fechaJson[0]),Integer.parseInt(fechaJson[1])-1,Integer.parseInt(fechaJson[2]));
+        events.add(new EventDay(fecha, R.drawable.leave, Color.parseColor("#228B22")));
+
+      } catch (JSONException e) {
+        e.printStackTrace();
+
+      }
+    }
+    return events;
+  }
+  public List<EventDay> convertirAEventoCalendario_energia(JSONArray diasDeActividad,Context context){
+    List<EventDay> events =new ArrayList<>();
+    for(int i=0;i<diasDeActividad.length();i++){
+      JSONObject diaDeEstudio1= null;
+      try {
+        diaDeEstudio1 = diasDeActividad.getJSONObject(i);
+        String[] fechaJson=diaDeEstudio1.getString("fecha").toString().split("-");
+        Calendar fecha=Calendar.getInstance();
+        fecha.set(Integer.parseInt(fechaJson[0]),Integer.parseInt(fechaJson[1])-1,Integer.parseInt(fechaJson[2]));
+        events.add(new EventDay(fecha, R.drawable.lighting, Color.parseColor("#228B22")));
 
       } catch (JSONException e) {
         e.printStackTrace();
