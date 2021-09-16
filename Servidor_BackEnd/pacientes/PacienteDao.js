@@ -279,10 +279,8 @@ async function autenticacion({ nombreDeUsuario, contrasena }) {
     const paciente = await Paciente.findOne({ nombreDeUsuario });
     if (paciente && bcrypt.compareSync(contrasena, paciente.hash)) {
         const token = jwt.sign({ sub: paciente.id }, config.secret, { expiresIn: '7d' });
-        return {
-            ...paciente.toJSON(),
-            token
-        };
+        paciente["token"]=token;
+        return paciente;
     }
 }
 async function obtenerPacientePorID(id) {

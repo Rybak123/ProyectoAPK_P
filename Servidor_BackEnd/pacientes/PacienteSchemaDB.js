@@ -16,7 +16,7 @@ const schema = new Schema({
     //Este atributo es opcional en el documento
     parientes: { type: Object, required: false },
     hash: { type: String, required: false },
-
+    token: { type: String, required: false },
     agendaVirtual:{
         controlDeEstudio:{
             diasControlados:[
