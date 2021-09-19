@@ -1,7 +1,7 @@
 import { OnInit,Input,EventEmitter } from '@angular/core';
 import { Component,ViewEncapsulation } from '@angular/core';
 import { CalendarOptions, EventInput } from '@fullcalendar/angular';
-import {ConeccionServidor} from '../conectionServices/ConeccionServidor'
+import {ConeccionServidor} from '../coneccionFrontEndServices/ConeccionServidor'
 import {OperacionesPaciente} from './OperacionesPaciente';
 import {HttpClient} from "@angular/common/http";
 export class MandarOperacionesPaciente{
@@ -25,7 +25,7 @@ export class MandarOperacionesPaciente{
         + ('0' + MyDate.getDate()).slice(-2);
         jsonActividad.fecha=datetime;
         jsonActividad.carnetDeIdentidad=carnetDeIdentidad;
-        console.log(jsonActividad);
+  
         return await this.coneccionServidor.coneccionServidor(jsonActividad,route);
     }
     async actualizarControlDeAgua(actividadeDelDia:any){

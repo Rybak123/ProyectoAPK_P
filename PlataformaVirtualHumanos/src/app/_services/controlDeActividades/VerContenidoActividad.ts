@@ -1,7 +1,7 @@
 import { OnInit,Input,EventEmitter } from '@angular/core';
 import { Component,ViewEncapsulation } from '@angular/core';
 import { CalendarOptions, EventInput } from '@fullcalendar/angular';
-import {ConeccionServidor} from '../conectionServices/ConeccionServidor';
+import {ConeccionServidor} from '../coneccionFrontEndServices/ConeccionServidor';
 import {OperacionesPaciente} from './OperacionesPaciente';
 import { ActualizarOperacionesPaciente } from './ActualizarOperacionesPaciente';
 export class VerContenidoActividad{

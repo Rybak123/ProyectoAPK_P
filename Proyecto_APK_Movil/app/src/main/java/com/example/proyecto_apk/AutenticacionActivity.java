@@ -34,7 +34,7 @@ public class AutenticacionActivity extends AppCompatActivity {
         tv_NombreDeUsuario=findViewById(R.id.loginAutentication_username);
         tv_Contrasena=findViewById(R.id.loginAutentication_constrasena);
         Intent intent= new Intent (getApplicationContext(), MainActivity.class);
-        ((PacienteLogueado) getApplicationContext()).setURLApplication("http://192.168.0.3:4000");
+
         btnAutenticarse.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View view) {

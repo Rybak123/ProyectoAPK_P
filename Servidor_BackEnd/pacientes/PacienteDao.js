@@ -250,7 +250,11 @@ async function create_Paciente(pacienteJson) {
         cantidadDeAgua:""
     }
 
-    paciente.agendaVirtual.controlDeEstudio.diasDeEstudio.push(diaDeEstudio);
+    paciente.agendaVirtual.controlDeEstudio.diasControlados.push(diaDeEstudio);
+    paciente.agendaVirtual.controlDeSueno.diasControlados.push(diasControlados_Sueno);
+    paciente.agendaVirtual.controlDeEnergia.diasControlados.push(diasControlados_Energia);
+    paciente.agendaVirtual.controlDeAnimo.diasControlados.push(diasControlados_Animo);
+    paciente.agendaVirtual.controlDeConsumoDeAgua.diasControlados.push(diaDeEstudio_ConsumoDeAgua);
     await paciente.save();
 }
 

@@ -60,7 +60,13 @@ const schema = new Schema({
                 cantidadDeAgua:{type: String, default: ""}
                 }
             ],
-        }
+        },
+        misLibros:[
+            {
+
+            }
+        ]
+        
     }
 });
 

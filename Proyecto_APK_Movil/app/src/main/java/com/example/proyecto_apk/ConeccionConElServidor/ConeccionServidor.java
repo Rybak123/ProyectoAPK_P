@@ -19,7 +19,7 @@ import java.util.Map;
 
 public class ConeccionServidor {
   Context context;
-  String url = "http://192.168.0.3:4000";
+  String url = "http://192.168.0.14:4000";
   String route="";
 
   public ConeccionServidor(Context context) {
