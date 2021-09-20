@@ -15,7 +15,16 @@ router.post('/actualizarControlDeConsumoDeAgua', actualizarcontrolDeConsumoDeAgu
 router.post('/autenticacion', autenticacion);
 
 router.post('/listarLibros', autenticacion);
+router.post('/create_Libro', autenticacion);
+router.post('/read_Libro', autenticacion);
+router.post('/delete_Libro', autenticacion);
+router.post('/update_Libro', autenticacion);
 
+router.post('/listarCanciones', autenticacion);
+router.post('/create_Cancion', autenticacion);
+router.post('/read_Cancion', autenticacion);
+router.post('/delete_Cancion', autenticacion);
+router.post('/update_Cancion', autenticacion);
 
 module.exports = router;
 
