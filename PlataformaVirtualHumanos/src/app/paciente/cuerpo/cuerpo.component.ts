@@ -1,3 +1,5 @@
+//import { VerCancionesComponent } from './../paciente/cuerpo/misCanciones/ver-canciones/ver-canciones.component';
+//import { CrearCancionesComponent } from './misCanciones/crear-canciones/crear-canciones.component';
 import { Component, ElementRef, OnInit,ViewChild, ComponentFactoryResolver } from '@angular/core';
 import { CalendarOptions } from '@fullcalendar/angular';
 import { ViewEncapsulation,Directive, ViewContainerRef  } from '@angular/core';
@@ -16,6 +18,8 @@ import { Router } from '@angular/router';
 // paso 1  importar las clases de los componentes
 import { CrearLibroComponent } from '../cuerpo/misLibros/crear-libro/crear-libro.component';
 import { VerLibrosComponent } from '../cuerpo/misLibros/ver-libros/ver-libros.component';
+import { CrearCancionesComponent } from '../cuerpo/misCanciones/crear-canciones/crear-canciones.component';
+import { VerCancionesComponent } from '../cuerpo/misCanciones/ver-canciones/ver-canciones.component';
 
 @Component({
   selector: 'app-cuerpo',
@@ -34,6 +38,8 @@ export class CuerpoComponent implements OnInit {
     // Paso 2 crear un atributo de clase de la Imagen de los componentes
   factoryCrearLibro:any;
   factoryVerLibro:any;
+  factoryCrearCancion:any;
+  factoryVerCancion:any;
   
 
   @ViewChild('sidenav') sidenav: MatSidenav|any;
@@ -108,6 +114,27 @@ export class CuerpoComponent implements OnInit {
     }
     this.myRef.clear();
     const ref = this.myRef.createComponent(this.factoryVerLibro);
+    ref.changeDetectorRef.detectChanges();
+  }
+  // MIS CANCIONES 
+  public renderCrearCancion(): void {
+    // Paso 3 crear la imagen si no existe y asignaro a la etiqueta de componentes dinamicos
+    if(this.factoryCrearCancion==null){
+      this.factoryCrearCancion = this.componentFactoryResolver.resolveComponentFactory(CrearCancionesComponent);
+    }
+    
+    this.myRef.clear();
+    const ref = this.myRef.createComponent(this.factoryCrearCancion);
+    ref.changeDetectorRef.detectChanges();
+  }
+  public renderVerCancion(): void {
+    // Paso 3 crear la imagen si no existe y asignaro a la etiqueta de componentes dinamicos
+    if(this.factoryVerCancion==null){
+      this.factoryVerCancion = this.componentFactoryResolver.resolveComponentFactory(VerCancionesComponent);
+    }
+    
+    this.myRef.clear();
+    const ref = this.myRef.createComponent(this.factoryVerCancion);
     ref.changeDetectorRef.detectChanges();
   }
 

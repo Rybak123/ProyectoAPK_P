@@ -1,0 +1,14 @@
+<div  style="width: 100vh; height: 100vh;background-color: rgb(0, 255, 42)">
+   
+    <p>DATOS DE LA NUEVA CANCION</p>
+    <form [formGroup]="miformularioCanciones">
+        Titulo:<input type="text" class="form-control" formControlName="Titulo">
+        Genero:<input type="text" class="form-control" formControlName="Genero">
+        Artista:<input type="text" class="form-control" formControlName="Artista">
+        Fecha:<input type="date" class="form-control" formControlName="Fecha">
+        Descripcion:<input type="text" class="form-control" formControlName="Descripcion">
+        Imagen:<input type="image" class="form-control" formControlName="Imagen"><br/>
+        <button class="btn btn-primary" type="submit">Guardar</button>
+    </form>
+   
+</div>

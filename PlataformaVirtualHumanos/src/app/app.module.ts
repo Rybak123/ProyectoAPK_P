@@ -66,7 +66,10 @@ import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CrearLibroComponent } from './paciente/cuerpo/misLibros/crear-libro/crear-libro.component';
-import { VerLibrosComponent } from './paciente/cuerpo/misLibros/ver-libros/ver-libros.component'; 
+import { VerLibrosComponent } from './paciente/cuerpo/misLibros/ver-libros/ver-libros.component';
+import { CrearCancionComponent } from './paciente/paciente/cuerpo/misCanciones/crear-cancion/crear-cancion.component';
+import { VerCancionesComponent } from './paciente/paciente/cuerpo/misCanciones/ver-canciones/ver-canciones.component';
+import { CrearCancionesComponent } from './paciente/cuerpo/misCanciones/crear-canciones/crear-canciones.component'; 
 
 FullCalendarModule.registerPlugins([ 
   dayGridPlugin,
@@ -86,7 +89,10 @@ FullCalendarModule.registerPlugins([
     ControlDeConsumoDeAguaComponent,
     ControlDeEnergiaComponent,
     CrearLibroComponent,
-    VerLibrosComponent
+    VerLibrosComponent,
+    CrearCancionComponent,
+    VerCancionesComponent,
+    CrearCancionesComponent
   ],
   imports: [
     BrowserModule,
