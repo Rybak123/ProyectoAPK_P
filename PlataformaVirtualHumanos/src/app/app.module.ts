@@ -64,7 +64,9 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CrearLibroComponent } from './paciente/cuerpo/misLibros/crear-libro/crear-libro.component';
+import { VerLibrosComponent } from './paciente/cuerpo/misLibros/ver-libros/ver-libros.component'; 
 
 FullCalendarModule.registerPlugins([ 
   dayGridPlugin,
@@ -82,7 +84,9 @@ FullCalendarModule.registerPlugins([
     ControlDeSuenoComponent,
     ControlDeAnimoComponent,
     ControlDeConsumoDeAguaComponent,
-    ControlDeEnergiaComponent
+    ControlDeEnergiaComponent,
+    CrearLibroComponent,
+    VerLibrosComponent
   ],
   imports: [
     BrowserModule,

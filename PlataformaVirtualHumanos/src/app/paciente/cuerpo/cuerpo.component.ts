@@ -11,6 +11,12 @@ import { ControlDeEnergiaComponent } from '../cuerpo/control-de-energia/control-
 import { AuthenticationService } from '../../_services';
 import { AdDirective } from '../../_helpers/ad.directive';
 import { Router } from '@angular/router';
+
+
+// paso 1  importar las clases de los componentes
+import { CrearLibroComponent } from '../cuerpo/misLibros/crear-libro/crear-libro.component';
+import { VerLibrosComponent } from '../cuerpo/misLibros/ver-libros/ver-libros.component';
+
 @Component({
   selector: 'app-cuerpo',
   templateUrl: './cuerpo.component.html',
@@ -18,14 +24,22 @@ import { Router } from '@angular/router';
 })
 export class CuerpoComponent implements OnInit {
 
+
   factoryControlDeEstudio:any;
   factoryControlDeAnimo:any;
   factoryControlDeConsumoDeAgua:any;
   factoryControlDeEnergia:any;
   factoryControlDeSueno:any;
 
+    // Paso 2 crear un atributo de clase de la Imagen de los componentes
+  factoryCrearLibro:any;
+  factoryVerLibro:any;
+  
+
   @ViewChild('sidenav') sidenav: MatSidenav|any;
+
   @ViewChild('dynamicComponent', { read: ViewContainerRef }) myRef:any
+  
   constructor(private sidenavService: SidenavService,private componentFactoryResolver: ComponentFactoryResolver,private router: Router,
     private authenticationService: AuthenticationService) 
   {
@@ -42,6 +56,7 @@ export class CuerpoComponent implements OnInit {
     const ref = this.myRef.createComponent(this.factoryControlDeEstudio);
     ref.changeDetectorRef.detectChanges();
   }
+
   public renderControlDeSueno(): void {
     if(this.factoryControlDeSueno==null){
       this.factoryControlDeSueno = this.componentFactoryResolver.resolveComponentFactory(ControlDeSuenoComponent);
@@ -73,6 +88,26 @@ export class CuerpoComponent implements OnInit {
     
     this.myRef.clear();
     const ref = this.myRef.createComponent(this.factoryControlDeConsumoDeAgua);
+    ref.changeDetectorRef.detectChanges();
+  }
+
+
+  public renderCrearLibro(): void {
+    // Paso 3 crear la imagen si no existe y asignaro a la etiqueta de componentes dinamicos
+    if(this.factoryCrearLibro==null){
+      this.factoryCrearLibro = this.componentFactoryResolver.resolveComponentFactory(CrearLibroComponent);
+    }
+    
+    this.myRef.clear();
+    const ref = this.myRef.createComponent(this.factoryCrearLibro);
+    ref.changeDetectorRef.detectChanges();
+  }
+  public renderVerLibro(): void {
+    if(this.factoryVerLibro==null){
+      this.factoryVerLibro = this.componentFactoryResolver.resolveComponentFactory(VerLibrosComponent);
+    }
+    this.myRef.clear();
+    const ref = this.myRef.createComponent(this.factoryVerLibro);
     ref.changeDetectorRef.detectChanges();
   }
 

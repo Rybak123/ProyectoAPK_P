@@ -2,10 +2,10 @@ import { OnInit,Input,EventEmitter } from '@angular/core';
 import { Component,ViewEncapsulation } from '@angular/core';
 import { CalendarOptions, EventInput } from '@fullcalendar/angular';
 import {HttpClient} from "@angular/common/http";
-import {ActualizarOperacionesPaciente} from '../../../_services/pacienteServices/ActualizarOperacionesPaciente'
-import { MandarOperacionesPaciente } from 'src/app/_services/pacienteServices/MandarOperacionesPaciente';
-import { VerContenidoActividad } from 'src/app/_services/pacienteServices/VerContenidoActividad';
-import { VerificarOperacionesPaciente } from 'src/app/_services/pacienteServices/VerificarOperacionesPaciente';
+import {ActualizarOperacionesPaciente} from '../../../_services/controlDeActividades/ActualizarOperacionesPaciente'
+import { MandarOperacionesPaciente } from 'src/app/_services/controlDeActividades/MandarOperacionesPaciente';
+import { VerContenidoActividad } from 'src/app/_services/controlDeActividades/VerContenidoActividad';
+import { VerificarOperacionesPaciente } from 'src/app/_services/controlDeActividades/VerificarOperacionesPaciente';
 @Component({
   selector: 'app-control-de-sueno',
   templateUrl: './control-de-sueno.component.html',
