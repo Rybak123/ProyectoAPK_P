@@ -1,12 +1,10 @@
-export class LibroModel
+export class CancionModel
 {
     id:any;
     titulo:any;
-    autor:any;
-    editorial:any;
-    cantidadPaginas:any;
-    fecha:any;
     genero:any;
+    artista:any;
+    fecha:any;
     descripcion:any;
     imagenPortada:any;
     constructor(){
@@ -23,35 +21,23 @@ export class LibroModel
     get_titulo(){
         return this.titulo
     }
-    set_autor(autor:any){
-        this.autor=autor;
+    set_genero(genero:any){
+        this.genero=genero;
     }
-    get_autor(){
-        return this.autor
+    get_genero(){
+        return this.genero
     }
-    set_editorial(editorial:any){
-        this.editorial=editorial;
+    set_artista(artista:any){
+        this.artista=artista;
     }
-    get_editorial(){
-        return this.editorial
-    }
-    set_cantidadPaginas(cantidadPaginas:any){
-        this.cantidadPaginas=cantidadPaginas;
-    }
-    get_cantidadPaginas(){
-        return this.cantidadPaginas
+    get_artista(){
+        return this.artista
     }
     set_fecha(fecha:any){
         this.fecha=fecha;
     }
     get_fecha(){
         return this.fecha
-    }
-    set_genero(genero:any){
-        this.genero=genero;
-    }
-    get_genero(){
-        return this.genero
     }
     set_descripcion(descripcion:any){
         this.descripcion=descripcion;
