@@ -69,7 +69,9 @@ import { CrearLibroComponent } from './paciente/cuerpo/misLibros/crear-libro/cre
 import { VerLibrosComponent } from './paciente/cuerpo/misLibros/ver-libros/ver-libros.component';
 import { CrearCancionComponent } from './paciente/paciente/cuerpo/misCanciones/crear-cancion/crear-cancion.component';
 import { VerCancionesComponent } from './paciente/paciente/cuerpo/misCanciones/ver-canciones/ver-canciones.component';
-import { CrearCancionesComponent } from './paciente/cuerpo/misCanciones/crear-canciones/crear-canciones.component'; 
+import { CrearCancionesComponent } from './paciente/cuerpo/misCanciones/crear-canciones/crear-canciones.component';
+import { CrearMetasPersonalesComponent } from './paciente/cuerpo/metasPersonales/crear-metas-personales/crear-metas-personales.component';
+import { CrearMetasSocialesComponent } from './paciente/cuerpo/metasSociales/crear-metas-sociales/crear-metas-sociales.component'; 
 
 FullCalendarModule.registerPlugins([ 
   dayGridPlugin,
@@ -92,7 +94,9 @@ FullCalendarModule.registerPlugins([
     VerLibrosComponent,
     CrearCancionComponent,
     VerCancionesComponent,
-    CrearCancionesComponent
+    CrearCancionesComponent,
+    CrearMetasPersonalesComponent,
+    CrearMetasSocialesComponent
   ],
   imports: [
     BrowserModule,

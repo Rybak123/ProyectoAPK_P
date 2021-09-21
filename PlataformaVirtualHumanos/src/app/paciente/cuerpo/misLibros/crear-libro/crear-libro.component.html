@@ -2,7 +2,7 @@
 <div class="row align-items-md-stretch" style="width: 100%; height: 90.3%;background-color: rgb(234, 243, 243)">
     <p>DATOS DEL NUEVO LIBRO</p>
     <div class="col-md-6" style="background:linear-gradient( rgba(196, 245, 18, 0.693),rgba(58, 238, 184, 0.898));width: 50%;">
-    <form [formGroup]="miformularioLibros">
+    <form [formGroup]="formularioCrearLibro" (ngSubmit)="onSubmit()">
         Titulo:<input type="text" class="form-control" formControlName="Tituloo">
         Autor:<input type="text" class="form-control" formControlName="Autorr">
         Editorial:<input type="text" class="form-control" formControlName="Editoriall">
@@ -14,12 +14,8 @@
         <button class="btn btn-primary" type="submit" >Guardar</button><br/>
         <button class="btn btn-primary" type="submit" >Cancelar</button>
     </form>
-</div>
+    </div>
 <div class="col-md-6" style="background-color: rgb(221, 17, 221); height: 100%;width: 50%;">
     <p>SN XJOWSCNXJON </p>
-  </div>
 </div>
-
-
-
-
+</div>

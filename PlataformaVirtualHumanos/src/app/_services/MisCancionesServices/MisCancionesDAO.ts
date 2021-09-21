@@ -2,6 +2,7 @@ import {ConeccionServidor} from '../coneccionFrontEndServices/ConeccionServidor'
 import {HttpClient} from "@angular/common/http";
 import {CancionModel} from "./CancionModel";
 import { ReplaySubject } from 'rxjs';
+
 export class MisCancionesDAO
 {
     coneccionServidor:any;
@@ -20,7 +21,7 @@ export class MisCancionesDAO
     }
     async listarCanciones(){
         var parametros={"carnetDeIdentidad": this.carnetDeIdentidadPaciente}
-        return await this.coneccionServidor.coneccionServidor(parametros,"/paciente/listarCanciones");
+        return await this.coneccionServidor.coneccionServidor(parametros,"/pacientes/listarCanciones");
     }
 
     async read_Cancion(id_Cancion:any){
@@ -29,7 +30,7 @@ export class MisCancionesDAO
             "id_Cancion":id_Cancion
         }
 
-        var respuestaHTTP_cancion= await this.coneccionServidor.coneccionServidor(parametros,"/paciente/read_Cancion");
+        var respuestaHTTP_cancion= await this.coneccionServidor.coneccionServidor(parametros,"/pacientes/read_cancion");
         
         var CancionLeida=new CancionModel();
         CancionLeida.set_id(respuestaHTTP_cancion.id);
@@ -55,7 +56,7 @@ export class MisCancionesDAO
         var parametros={
             "carnetDeIdentidad": this.carnetDeIdentidadPaciente,
             "cancion":nuevaCancion};
-        var respuesta=await this.coneccionServidor.coneccionServidor(parametros,"/paciente/create_Cancion")
+        var respuesta=await this.coneccionServidor.coneccionServidor(parametros,"/pacientes/create_cancion")
         return respuesta;
     }
 
@@ -72,7 +73,7 @@ export class MisCancionesDAO
         var parametros={
             "carnetDeIdentidad": this.carnetDeIdentidadPaciente,
             "cancion":modificarCancion};
-        var respuesta=await this.coneccionServidor.coneccionServidor(parametros,"/paciente/update_Cancion")
+        var respuesta=await this.coneccionServidor.coneccionServidor(parametros,"/pacientes/update_cancion")
         return respuesta;
             
     }
@@ -80,7 +81,7 @@ export class MisCancionesDAO
         var parametros={
             "carnetDeIdentidad": this.carnetDeIdentidadPaciente,
             "id_Cancion":id_Cancion}
-        return await this.coneccionServidor.coneccionServidor(parametros,"/paciente/delete_Cancion");
+        return await this.coneccionServidor.coneccionServidor(parametros,"/pacientes/delete_cancion");
     }
 
 }

@@ -1,0 +1,31 @@
+<div class="row align-items-md-stretch" style="width: 100% !important; height: 90.3% !important;background-color: rgb(234, 243, 243)">
+    <div class="col-md-6" style=" background:linear-gradient( rgba(196, 245, 18, 0.693),rgba(58, 238, 184, 0.898));width: 50%;">
+      <br>
+  <div>
+        <h3 class="estilo_letra">
+        
+          CALENDARIOS DE METAS
+        </h3>
+        <!--<img src="assets/img/agua6.png" class="imagen">-->
+        <div class="contenedor_opciones">
+          <button class="boton_agregar">REGISTRA TU DIA</button> <br>
+       </div>
+       <div class="caja">
+        <select  id="selectBar" name="select" style="height: 25px; width: 200px; margin-top: 1%;">
+          
+        </select>
+      </div>
+    
+  </div>
+    </div>
+        <div class="col-md-6" style="background-color: rgb(234, 243, 243);width: 50%;">
+          <div>
+            <p id="textoConfirmatorio" style="font-size:x-large;width: 100%; text-align: center;margin-top: 2%;"></p>
+          </div> 
+           <div class="calendario" style="background-color: rgb(234, 243, 243) ; width: 100% !important;margin-top: 5%; width: 50%;">
+            <full-calendar [options]="calendarOptions"></full-calendar>
+           </div>  
+        </div>
+      
+      </div>
+    <router-outlet></router-outlet>

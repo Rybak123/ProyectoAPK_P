@@ -63,9 +63,26 @@ const schema = new Schema({
         },
         misLibros:[
             {
-
+                titulo:{type: String, default: "", require : false},
+                autor:{type: String, default: "", require : false},
+                editorial:{type: String, default: "", require : false},
+                cantidadPaginas:{type: Number, default: 0, require : false},
+                fecha:{type: String, default: "", require : false},
+                genero:{type: String, default: "", require : false},
+                descripcion:{type: String, default: "", require : false},
+                imagenPortada:{type: String, default: "", require : false}
             }
-        ]
+        ],
+        misCanciones:[
+            {
+                titulo:{type: String, default: "", require : false},
+                genero:{type: String, default: "", require : false},
+                artista:{type: String, default: "", require : false},
+                fecha:{type: String, default: "", require : false},
+                descripcion:{type: String, default: "", require : false},
+                imagenPortada:{type: String, default: "", require : false}
+            }
+        ],
         
     }
 });
