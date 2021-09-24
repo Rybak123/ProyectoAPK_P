@@ -1,21 +1,41 @@
 
-<div class="row align-items-md-stretch" style="width: 100%; height: 90.3%;background-color: rgb(234, 243, 243)">
-    <p>DATOS DEL NUEVO LIBRO</p>
-    <div class="col-md-6" style="background:linear-gradient( rgba(196, 245, 18, 0.693),rgba(58, 238, 184, 0.898));width: 50%;">
-    <form [formGroup]="formularioCrearLibro" (ngSubmit)="onSubmit()">
-        Titulo:<input type="text" class="form-control" formControlName="Tituloo">
-        Autor:<input type="text" class="form-control" formControlName="Autorr">
-        Editorial:<input type="text" class="form-control" formControlName="Editoriall">
-        Cantidad de paginas:<input type="number" class="form-control" formControlName="ControlDePAginass">
-        Fecha:<input type="date" class="form-control" formControlName="Fechaa">
-        Genero:<input type="text" class="form-control" formControlName="Generoo">
-        Descripcion:<input type="text" class="form-control" formControlName="Descripcionn">
-        Imagen:<input type="image" class="form-control" formControlName="Imagenn"><br/>
-        <button class="btn btn-primary" type="submit" >Guardar</button><br/>
-        <button class="btn btn-primary" type="submit" >Cancelar</button>
+<div class="row align-items-md-stretch" style="width: 100%; height: 90.3%;background:linear-gradient( rgba(230, 181, 136, 0.693),rgba(223, 233, 230, 0.898))">
+    
+    <div class="col-md-6" id="cajaP"style="background-color: rgb(239, 240, 236);width: 90%;">
+    <form [formGroup]="formularioCrearLibro" (ngSubmit)="onSubmit()" class="formulario">
+<div class="" id="caja1">
+    <h1 class="formulario__titulo">Informacion del libro</h1>
+    <input type="text" class="form-control" formControlName="Tituloo" id="titulo1">
+    <label for="" class="formulario__label">Titulo</label>
+    <input type="text" class="form-control" formControlName="Autorr" id="Autor1">
+    <label for="" class="formulario__label">Autor</label>
+    <input type="text" class="form-control" formControlName="Editoriall" id="Editorial1">
+    <label for="" class="formulario__label">Editorial</label>
+    <input type="number" class="form-control" formControlName="ControlDePAginass" id="ControlDePaginas1" >
+    <label for="" class="formulario__label">Cantidad de paginas</label>
+    <input type="date" class="form-control" formControlName="Fechaa" id="Fechas1">
+    <!--<label for="" class="formulario__label">Fecha</label>-->
+    <input type="text" class="form-control" formControlName="Generoo" id="Genero1">
+    <label for="" class="formulario__label">Genero</label>
+    <input type="text" class="form-control" formControlName=" ripcionn" id="Descripcion1">
+    <label for="" class="formulario__label">Descripcion</label>
+</div>
+<div class="" id="caja2" style="background:linear-gradient( rgba(26, 104, 248, 0.898),rgba(159, 240, 240, 0.693));"> 
+    <input type="file" class="form-control" formControlName="Imagenn" id="Imagen1" (change) ="capturarFile($event)">
+    <!--<div [src] = "archivos[0]" alt = ""></div>-->
+    <label for="" class="formulario__label">Imagen</label>
+    <button class="enviar" id="Imagen" type="submit" >Escoge una imagen</button><br/>
+    <button class="enviar" id="Enviar" type="submit" >Guardar</button><br/>
+    <button class="enviar" id="Cancelar" type="submit" >Cancelar</button>
+</div>
+       
+       
     </form>
     </div>
-<div class="col-md-6" style="background-color: rgb(221, 17, 221); height: 100%;width: 50%;">
+    <!--
+      <div class="col-md-6" style="background-color: rgb(221, 17, 221); height: 100%;width: 50%;">
     <p>SN XJOWSCNXJON </p>
 </div>
+  -->
+
 </div>

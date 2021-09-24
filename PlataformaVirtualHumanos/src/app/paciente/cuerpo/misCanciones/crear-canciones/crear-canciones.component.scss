@@ -1,1 +1,88 @@
 @import "~bootstrap/dist/css/bootstrap.css";
+
+.formulario{
+    width: 100%;
+    max-width: 100%;
+    margin-top: 30px;
+   
+}
+.formulario__titulo{
+    text-align: center;
+    margin-top: 0;
+    color: rgba(0,0,0,0.7);
+}
+.form-control,.formulario__label,.enviar{
+    display:block;
+    //width: 100%;
+    //border: ipx solid rgba(0,0,0,0.3);
+    font-size: 1.3em;
+}
+.form-control{
+    padding: 20px;
+    background:transparent;
+    border: 1px solid rgba(0,0,0,0.3);
+    margin-bottom: 40px;
+}
+.form-control:focus +
+.formulario__label{
+    margin-top:  -130px;
+}
+
+.formulario__label{
+    padding-left: 15px;
+    position: absolute;
+    margin-top: -85px;
+ 
+    color: rgba(0,0,0,0.5);
+    transition: all 0.2s;
+}
+.enviar{
+    border:3px solid(100,100,100,0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+    cursor: pointer;
+    border: none;
+    width: 300px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #FFF;
+    background-size: 300%;
+}
+#Imagen{
+    background-image: linear-gradient(to left , #00B7DA,#161559,#00B7DA);
+}
+#Enviar{
+    background-image: linear-gradient(to left , #4980c9,#161559,#4980c9);
+}
+#Cancelar{
+    background-image: linear-gradient(to left , #ca6255,#591515,#ca6255);
+}
+.fijar{
+    margin-top: -135px;
+}
+#caja1{
+    width: 45%;
+    float: left;
+    background:linear-gradient( rgba(202, 245, 247, 0.693),rgba(241, 241, 241, 0.898));
+    //background-color: seagreen;
+    margin:  auto;
+    padding: 20px;
+    box-shadow: 0 0 20px 1px rgba(0,0,0,0.3);
+    position: relative;
+    margin-left:2.5%;
+   // margin-left: 2%;
+}
+#caja2{
+    width: 45%;
+    float: left;
+    //background-color: rgb(119, 112, 151);
+    margin-left: 5%;
+    padding: 20px;
+    box-shadow: 0 0 20px 1px rgba(0,0,0,0.3);
+    position: relative;
+}
+#cajaP{
+    margin: auto;
+}

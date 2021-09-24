@@ -2,7 +2,7 @@ import {ConeccionServidor} from '../coneccionFrontEndServices/ConeccionServidor'
 import {HttpClient} from "@angular/common/http";
 import {MetasPersonalesModel} from "./MetasPersonalesModel";
 import { ReplaySubject } from 'rxjs';
-export class MisCancionesDAO
+export class MisMetasPersonalesDAO
 {
     coneccionServidor:any;
     carnetDeIdentidadPaciente:any;
@@ -20,7 +20,7 @@ export class MisCancionesDAO
     }
     async listarMetasPersonales(){
         var parametros={"carnetDeIdentidad": this.carnetDeIdentidadPaciente}
-        return await this.coneccionServidor.coneccionServidor(parametros,"/paciente/listarMetasPersonales");
+        return await this.coneccionServidor.coneccionServidor(parametros,"/pacientes/listarMetasPersonales");
     }
 
     //async read_Meta(id_Meta:any){
@@ -48,7 +48,7 @@ export class MisCancionesDAO
         var parametros={
             "carnetDeIdentidad": this.carnetDeIdentidadPaciente,
             "metaPersonal":nuevaMetaPersonal};
-        var respuesta=await this.coneccionServidor.coneccionServidor(parametros,"/paciente/create_MetaPersonal")
+        var respuesta=await this.coneccionServidor.coneccionServidor(parametros,"/pacientes/create_metas_personales")
         return respuesta;
     }
 

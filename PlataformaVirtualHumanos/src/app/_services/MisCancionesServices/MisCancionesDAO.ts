@@ -60,16 +60,17 @@ export class MisCancionesDAO
         return respuesta;
     }
 
-    async update_Cancion(titulo:any,artista:any,fecha:any,genero:any,descripcion:any,imagenPortada:any){
+    async update_Cancion(id:any,titulo:any,artista:any,fecha:any,genero:any,descripcion:any,imagenPortada:any){
         //Similar a create
         var modificarCancion=new CancionModel();
+        modificarCancion.set_id(id);
         modificarCancion.set_titulo(titulo);
         modificarCancion.set_genero(genero);
         modificarCancion.set_artista(artista);
         modificarCancion.set_fecha(fecha);
         modificarCancion.set_descripcion(descripcion);
         modificarCancion.set_imagenPortada(imagenPortada);
-
+        console.log(modificarCancion);
         var parametros={
             "carnetDeIdentidad": this.carnetDeIdentidadPaciente,
             "cancion":modificarCancion};
@@ -80,7 +81,7 @@ export class MisCancionesDAO
     async delete_Cancion(id_Cancion:any){
         var parametros={
             "carnetDeIdentidad": this.carnetDeIdentidadPaciente,
-            "id_Cancion":id_Cancion}
+            "id_cancion":id_Cancion}
         return await this.coneccionServidor.coneccionServidor(parametros,"/pacientes/delete_cancion");
     }
 

@@ -3,6 +3,9 @@ const router = express.Router();
 const PacienteDao = require('./PacienteDao');
 const PacienteLibrosDao = require('./misLibros/MisLibrosDAO');
 const PacienteCancionesDao = require('./misCanciones/MisCancionesDAO');
+const PacienteMetasDao = require('./misMetas/MisMetasDAO');
+const PacienteMetasPersonalesDao = require('./MisMetasPersonales/misMetasPersonales');
+const PacienteMisFavoritosDao = require('./misFavoritos/MisFavoritosDAO');
 // rutas
 router.post('/registrarPaciente', registrar);
 router.post('/listarPacientes', listarPacientes);
@@ -26,7 +29,21 @@ router.post('/create_cancion', createCancion);
 router.post('/read_cancion', ReadCancion);
 router.post('/update_cancion', updateCancion);
 router.post('/delete_cancion',deleteCancion)
-
+//Metas
+router.post('/listarMetas', listarMetasPacientes);
+router.post('/create_meta', createMetas);
+router.post('/read_meta', ReadMetas);
+router.post('/update_meta', updateMetas);
+router.post('/delete_meta',deleteMetas)
+//Metas personales
+router.post('/listarMetasPersonales', listarMetasPersonalesPacientes);
+router.post('/create_metas_personales', createMetasPersonales);
+//Favoritos
+router.post('/listarFavoritos',listarMisFavoritos);
+router.post('/create_favorito', createFavoritos);
+router.post('/read_favorito', ReadFavoritos);
+router.post('/update_favorito', updateFavoritos);
+router.post('/delete_favorito',deleteFavoritos)
 
 module.exports = router;
 
@@ -134,6 +151,78 @@ function updateCancion(req, res, next) {
 
 function deleteCancion(req, res, next) {
     PacienteCancionesDao.delete_CancionPaciente(req.body)
+        .then(user => user ? res.json(user) : res.sendStatus(500))
+        .catch(err => next(err));
+}
+////////////// Metas //////////////
+function listarMetasPacientes(req, res, next) {
+    PacienteMetasDao.listarMetasPaciente(req.body)
+        .then(user => user ? res.json(user) : res.sendStatus(500))
+        .catch(err => next(err));
+}
+
+function createMetas(req,res, next){
+    PacienteMetasDao.create_MetasPaciente(req.body)
+        .then(user => user ? res.json(user) : res.sendStatus(500))
+        .catch(err => next(err));
+}
+
+function ReadMetas(req,res, next){
+    PacienteMetasDao.Read_MetaPaciente(req.body)
+        .then(user => user ? res.json(user) : res.sendStatus(500))
+        .catch(err => next(err));
+}
+
+function updateMetas(req, res, next) {
+    PacienteMetasDao.update_MetaPaciente(req.body)
+        .then(user => user ? res.json(user) : res.sendStatus(500))
+        .catch(err => next(err));
+}
+
+function deleteMetas(req, res, next) {
+    PacienteMetasDao.delete_MetaPaciente(req.body)
+        .then(user => user ? res.json(user) : res.sendStatus(500))
+        .catch(err => next(err));
+}
+////////////// Metas personales //////////////
+function listarMetasPersonalesPacientes(req, res, next) {
+    PacienteMetasPersonalesDao.listarMetasPersonalesPaciente(req.body)
+        .then(user => user ? res.json(user) : res.sendStatus(500))
+        .catch(err => next(err));
+}
+
+function createMetasPersonales(req,res, next){
+    PacienteMetasPersonalesDao.create_MetasPersonalPaciente(req.body)
+        .then(user => user ? res.json(user) : res.sendStatus(500))
+        .catch(err => next(err));
+}
+////////////// Favoritos //////////////
+function listarMisFavoritos(req, res, next) {
+    PacienteMisFavoritosDao.listarMisFavoritosPaciente(req.body)
+        .then(user => user ? res.json(user) : res.sendStatus(500))
+        .catch(err => next(err));
+}
+
+function createFavoritos(req,res, next){
+    PacienteMisFavoritosDao.create_MisFavoritosPaciente(req.body)
+        .then(user => user ? res.json(user) : res.sendStatus(500))
+        .catch(err => next(err));
+}
+
+function ReadFavoritos(req,res, next){
+    PacienteMisFavoritosDao.ReadFavoritos(req.body)
+        .then(user => user ? res.json(user) : res.sendStatus(500))
+        .catch(err => next(err));
+}
+
+function updateFavoritos(req, res, next) {
+    PacienteMisFavoritosDao.update_Misfavoritos(req.body)
+        .then(user => user ? res.json(user) : res.sendStatus(500))
+        .catch(err => next(err));
+}
+
+function deleteFavoritos(req, res, next) {
+    PacienteMisFavoritosDao.deleteMisFavoritosPaciente(req.body)
         .then(user => user ? res.json(user) : res.sendStatus(500))
         .catch(err => next(err));
 }

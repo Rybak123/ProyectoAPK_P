@@ -1,6 +1,23 @@
+<div id="contenedorTarjetasCanciones"  style="width: 100vh; height: 100vh;background-color: rgb(0, 255, 42)">
+   <div *ngFor="let libro of listaDeLibros">
+       <button (click)="visualizarLibro(libro)">{{libro.titulo}}</button><br>
 
-<div  style="width: 100vh; height: 100vh;background-color: rgb(0, 255, 42)">
-   <p>Ver libro</p>
-  
-    
+       <p>{{libro.descripcion}}</p><br>
+   </div>
+
+   <div>
+      <form [formGroup]="formularioCrearLibro">
+         Titulo:<input type="text" class="form-control" formControlName="Tituloo"><br/>
+         Autor:<input type="text" class="form-control" formControlName="Autorr"><br/>
+         Editorial:<input type="text" class="form-control" formControlName="Editoriall"><br/>
+         Cantidad de paginas:<input type="number" class="form-control" formControlName="ControlDePAginass"><br/>
+         Fecha:<input type="date" class="form-control" formControlName="Fechaa"><br/>
+         Genero:<input type="text" class="form-control" formControlName="Generoo"><br/>
+         Descripcion:<input type="text" class="form-control" formControlName="Descripcionn"><br/>
+         Imagen:<input type="image" class="form-control" formControlName="Imagenn"><br/>
+         <button class="btn btn-primary" (click)="editarLibro()">Editar</button><br/>
+         <button class="btn btn-primary" (click)="GuardarCambiosLibro()">Guardar cambios</button>
+         <button class="btn btn-primary" (click)="eliminarLibro()">Eliminar</button>
+     </form>
+   </div>
 </div>

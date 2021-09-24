@@ -111,7 +111,6 @@ export class ActualizarOperacionesPaciente
         return calendarEvents;
     }
     convertirAEventosCalendario_ControlDeSueno(activiadaJsonArray:any){
-        console.log("fecha");
         var calendarEvents: EventInput[] = [];
         activiadaJsonArray.forEach((element: any) => {
             var anio:any=element.fecha.split("-")[0];

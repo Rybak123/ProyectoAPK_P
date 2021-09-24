@@ -1,6 +1,6 @@
 //import { VerCancionesComponent } from './../paciente/cuerpo/misCanciones/ver-canciones/ver-canciones.component';
 //import { CrearCancionesComponent } from './misCanciones/crear-canciones/crear-canciones.component';
-import { Component, ElementRef, OnInit,ViewChild, ComponentFactoryResolver } from '@angular/core';
+import { Component, ElementRef, OnInit,ViewChild, ComponentFactoryResolver, Compiler } from '@angular/core';
 import { CalendarOptions } from '@fullcalendar/angular';
 import { ViewEncapsulation,Directive, ViewContainerRef  } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
@@ -20,6 +20,14 @@ import { CrearLibroComponent } from '../cuerpo/misLibros/crear-libro/crear-libro
 import { VerLibrosComponent } from '../cuerpo/misLibros/ver-libros/ver-libros.component';
 import { CrearCancionesComponent } from '../cuerpo/misCanciones/crear-canciones/crear-canciones.component';
 import { VerCancionesComponent } from '../cuerpo/misCanciones/ver-canciones/ver-canciones.component';
+import { VerCancionesModule } from './misCanciones/ver-canciones/ver-canciones.module';
+import { VerLibrosModule } from './misLibros/ver-libros/ver-libros.module';
+import { CrearMetasPersonalesComponent } from './metasPersonales/crear-metas-personales/crear-metas-personales.component';
+import { CrearMetasSocialesComponent } from './metasSociales/crear-metas-sociales/crear-metas-sociales.component';
+import { CuerpoModule } from './cuerpo.module';
+import { VerMetasPersonalesComponent } from './metasPersonales/ver-metas-personales/ver-metas-personales.component';
+import { CrearFavoritoComponent } from './misFavoritos/crear-favorito/crear-favorito.component';
+import { VerFavoritosComponent } from './misFavoritos/ver-favoritos/ver-favoritos.component';
 
 @Component({
   selector: 'app-cuerpo',
@@ -40,13 +48,15 @@ export class CuerpoComponent implements OnInit {
   factoryVerLibro:any;
   factoryCrearCancion:any;
   factoryVerCancion:any;
+  factoryCrearMetasPersonales:any;
+  factoryCrearMetasSociales:any;
   
 
   @ViewChild('sidenav') sidenav: MatSidenav|any;
 
   @ViewChild('dynamicComponent', { read: ViewContainerRef }) myRef:any
   
-  constructor(private sidenavService: SidenavService,private componentFactoryResolver: ComponentFactoryResolver,private router: Router,
+  constructor(private compiler: Compiler,private sidenavService: SidenavService,private componentFactoryResolver: ComponentFactoryResolver,private router: Router,
     private authenticationService: AuthenticationService) 
   {
 
@@ -109,11 +119,10 @@ export class CuerpoComponent implements OnInit {
     ref.changeDetectorRef.detectChanges();
   }
   public renderVerLibro(): void {
-    if(this.factoryVerLibro==null){
-      this.factoryVerLibro = this.componentFactoryResolver.resolveComponentFactory(VerLibrosComponent);
-    }
+    const componentModule = this.compiler.compileModuleAndAllComponentsSync(VerLibrosModule);
+    const factory = componentModule.componentFactories.find(c => c.componentType === VerLibrosComponent);    
     this.myRef.clear();
-    const ref = this.myRef.createComponent(this.factoryVerLibro);
+    const ref = this.myRef.createComponent(factory);
     ref.changeDetectorRef.detectChanges();
   }
   // MIS CANCIONES 
@@ -128,13 +137,47 @@ export class CuerpoComponent implements OnInit {
     ref.changeDetectorRef.detectChanges();
   }
   public renderVerCancion(): void {
-    // Paso 3 crear la imagen si no existe y asignaro a la etiqueta de componentes dinamicos
-    if(this.factoryVerCancion==null){
-      this.factoryVerCancion = this.componentFactoryResolver.resolveComponentFactory(VerCancionesComponent);
-    }
-    
+    const componentModule = this.compiler.compileModuleAndAllComponentsSync(VerCancionesModule);
+    const factory = componentModule.componentFactories.find(c => c.componentType === VerCancionesComponent);    
     this.myRef.clear();
-    const ref = this.myRef.createComponent(this.factoryVerCancion);
+    const ref = this.myRef.createComponent(factory);
+    ref.changeDetectorRef.detectChanges();
+  }
+  public render_crearMetasPersonales(): void {
+    if(this.factoryCrearMetasPersonales==null){
+      this.factoryCrearMetasPersonales = this.componentFactoryResolver.resolveComponentFactory(CrearMetasPersonalesComponent);
+    }
+    this.myRef.clear();
+    const ref = this.myRef.createComponent(this.factoryCrearMetasPersonales);
+    ref.changeDetectorRef.detectChanges();
+  }
+  public render_crearMetasSociales(): void {
+    if(this.factoryCrearMetasSociales==null){
+      this.factoryCrearMetasSociales = this.componentFactoryResolver.resolveComponentFactory(CrearMetasSocialesComponent);
+    }
+    this.myRef.clear();
+    const ref = this.myRef.createComponent(this.factoryCrearMetasSociales);
+    ref.changeDetectorRef.detectChanges();
+  }
+  public render_verMetasPersonales(): void {
+    const componentModule = this.compiler.compileModuleAndAllComponentsSync(CuerpoModule);
+    const factory = componentModule.componentFactories.find(c => c.componentType === VerMetasPersonalesComponent);    
+    this.myRef.clear();
+    const ref = this.myRef.createComponent(factory);
+    ref.changeDetectorRef.detectChanges();
+  }
+  public render_crearFavorito(): void {
+    const componentModule = this.compiler.compileModuleAndAllComponentsSync(CuerpoModule);
+    const factory = componentModule.componentFactories.find(c => c.componentType === CrearFavoritoComponent);    
+    this.myRef.clear();
+    const ref = this.myRef.createComponent(factory);
+    ref.changeDetectorRef.detectChanges();
+  }
+  public render_verFavoritos(): void {
+    const componentModule = this.compiler.compileModuleAndAllComponentsSync(CuerpoModule);
+    const factory = componentModule.componentFactories.find(c => c.componentType === VerFavoritosComponent);    
+    this.myRef.clear();
+    const ref = this.myRef.createComponent(factory);
     ref.changeDetectorRef.detectChanges();
   }
 
@@ -144,7 +187,7 @@ export class CuerpoComponent implements OnInit {
     this.myRef.clear();
     const ref = this.myRef.createComponent(factory);
     ref.changeDetectorRef.detectChanges();
-}
+  }
 
   ngOnInit() {
  

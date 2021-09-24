@@ -20,10 +20,10 @@ async function create_MetasPersonalPaciente(infoJson) {
     var paciente=await Paciente.findOne({carnetDeIdentidad: infoJson.carnetDeIdentidad});
 
     var metasPersonales={
-        tipoDeActividad: infoJson.tipoDeActividad,
-        fechaDeCompletitud: infoJson.fechaDeCompletitud
+        tipoDeActividad: infoJson.metaPersonal.tipoDeActividad,
+        fechaDeCompletitud: infoJson.metaPersonal.fechaDeCompletitud
     }
 
     paciente.agendaVirtual.misMetasPersonales.push(metasPersonales);
-    await paciente.save();
+    return await paciente.save();
 }

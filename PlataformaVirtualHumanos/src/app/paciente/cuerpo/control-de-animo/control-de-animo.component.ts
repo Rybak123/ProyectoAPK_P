@@ -2,8 +2,6 @@ import { OnInit,Input,EventEmitter } from '@angular/core';
 import { Component,ViewEncapsulation } from '@angular/core';
 import { CalendarOptions, EventInput } from '@fullcalendar/angular';
 import {HttpClient} from "@angular/common/http";
-
-
 import {ActualizarOperacionesPaciente} from '../../../_services/controlDeActividades/ActualizarOperacionesPaciente'
 import { MandarOperacionesPaciente } from 'src/app/_services/controlDeActividades/MandarOperacionesPaciente';
 import { VerContenidoActividad } from 'src/app/_services/controlDeActividades/VerContenidoActividad';
@@ -36,7 +34,6 @@ export class ControlDeAnimoComponent implements OnInit {
       this.mandarOperacionesPaciente=new MandarOperacionesPaciente(this.http);
       this.diaDeControlActualizado=new VerificarOperacionesPaciente(this.http);
       this.verContenidoActividad=new VerContenidoActividad();
-      //RegistrarLibro()
   }
 
   ngOnInit(): void {

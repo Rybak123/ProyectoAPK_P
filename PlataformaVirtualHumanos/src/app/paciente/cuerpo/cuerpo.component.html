@@ -51,17 +51,15 @@
             <li style="margin-top: 1%;">
               <a href="#"><i class="ion-ios-settings"></i> <span class="">Actividades en el calendario</span></a>
               <ul class="nav-flyout">
+                
                 <li>
-                  <a href="#" class="myClase" style="color: white;"><i class="ion-ios-alarm-outline"></i>Calendario</a>
+                  <a href="#" class="myClase" style="color: white;" (click)="render_crearMetasPersonales()"><i class="ion-ios-camera-outline"></i>Crear metas personales</a>
                 </li>
                 <li>
-                  <a href="#" class="myClase" style="color: white;"><i class="ion-ios-camera-outline"></i>Metas personales</a>
+                  <a href="#" class="myClase" style="color: white;"(click)="render_verMetasPersonales()"><i class="ion-ios-cog-outline"></i>Ver metas personales</a>
                 </li>
                 <li>
-                  <a href="#" class="myClase" style="color: white;"><i class="ion-ios-chatboxes-outline"></i>Metas sociales</a>
-                </li>
-                <li>
-                  <a href="#" class="myClase" style="color: white;"><i class="ion-ios-cog-outline"></i>Recordatorios</a>
+                  <a href="#" class="myClase" style="color: white;" (click)="render_crearMetasSociales()"><i class="ion-ios-chatboxes-outline"></i>Metas diarias</a>
                 </li>
               </ul>
             </li>
@@ -69,16 +67,10 @@
               <a href="#"><i class="ion-ios-briefcase-outline"></i> <span class="">Favoritos</span></a>
               <ul class="nav-flyout">
                 <li>
-                  <a href="#" class="myClase" style="color: white;"><i class="ion-ios-flame-outline"></i>Musica</a>
+                  <a href="#" class="myClase" style="color: white;" (click)="render_crearFavorito()"><i class="ion-ios-flame-outline"></i>Crear favoritos</a>
                 </li>
                 <li>
-                  <a href="#" class="myClase" style="color: white;"><i class="ion-ios-lightbulb-outline"></i>Libros</a>
-                </li>
-                <li>
-                  <a href="#" class="myClase" style="color: white;"><i class="ion-ios-location-outline"></i>Momentos</a>
-                </li>
-                <li>
-                  <a href="#"  class="myClase" style="color: white;"><i class="ion-ios-locked-outline"></i>Lugares</a>
+                  <a href="#" class="myClase" style="color: white;" (click)="render_verFavoritos()"><i class="ion-ios-lightbulb-outline"></i>Ver favoritos</a>
                 </li>
               </ul>
             </li>

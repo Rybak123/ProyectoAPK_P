@@ -66,9 +66,10 @@ export class MisLibrosDAO
         var respuesta=await this.coneccionServidor.coneccionServidor(parametros,"/pacientes/create_libro")
         return respuesta;
     }
-    async update_Libro(titulo:any,autor:any,editorial:any,cantidadPaginas:any,fecha:any,genero:any,descripcion:any,imagenPortada:any){
+    async update_Libro(id:any,titulo:any,autor:any,editorial:any,cantidadPaginas:any,fecha:any,genero:any,descripcion:any,imagenPortada:any){
         //Similar a create
         var modificarLibro=new LibroModel();
+        modificarLibro.set_id(id);
         modificarLibro.set_titulo(titulo);
         modificarLibro.set_autor(autor);
         modificarLibro.set_editorial(editorial);
@@ -88,7 +89,7 @@ export class MisLibrosDAO
     async delete_Libro(id:any){
         var parametros={
             "carnetDeIdentidad": this.carnetDeIdentidadPaciente,
-            "id":id}
+            "id_libro":id}
         return await this.coneccionServidor.coneccionServidor(parametros,"/pacientes/delete_libro");
     }
 

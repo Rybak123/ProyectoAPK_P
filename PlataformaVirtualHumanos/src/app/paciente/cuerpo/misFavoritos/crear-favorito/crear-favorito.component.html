@@ -1,0 +1,16 @@
+<div id="contenedorTarjetasCanciones"  style="width: 100vh; height: 100vh;background-color: rgb(0, 255, 42)">
+    <form [formGroup]="formularioCrearFavorito" (ngSubmit)="onSubmit()">
+        <select  id="selectBar" name="select" style="height: 25px; width: 200px; margin-top: 1%;">
+            <option value="cancion">Cancion</option>
+            <option value="pelicula">Pelicula</option>
+            <option value="momento">Momento</option>
+            <option value="lugar">Lugar</option>
+          </select>
+        <br> 
+        Titulo:<input type="text" class="form-control" formControlName="Titulo"><br>
+        Imagen:<input type="image" class="form-control" formControlName="Imagen"><br/>
+        Clasificacion:<input type="number" class="form-control" formControlName="Clasificacion"><br>
+        Descripcion:<input type="text" class="form-control" formControlName="Descripcion"><br>
+        <button class="btn btn-primary" type="submit" >Guardar</button><br/>
+    </form>
+</div>

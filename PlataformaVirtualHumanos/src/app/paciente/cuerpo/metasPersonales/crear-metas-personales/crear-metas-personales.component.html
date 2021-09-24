@@ -3,9 +3,10 @@
       <br>
   <div>
     <p>MIS METAS PERSONALES</p>
-    <form [formGroup]="miformularioMetasPersonales">
+    <form [formGroup]="miformularioMetasPersonales" (ngSubmit)="onSubmit()">
         Titulo:<input type="text" class="form-control" formControlName="Titulo">
-        Fecha:<input type="date" class="form-control" formControlName="Fecha">
+        Fecha:<input type="date" class="form-control" formControlName="FechaInicio">
+        Fecha:<input type="date" class="form-control" formControlName="FechaFin">
         Prioridad:<input type="text" class="form-control" formControlName="Prioridad">
         Descripcion:<input type="text" class="form-control" formControlName="Descripcion"><br/>
         <button class="btn btn-primary" type="submit" >Guardar</button><br/>

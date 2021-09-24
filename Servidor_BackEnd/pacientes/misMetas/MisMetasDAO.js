@@ -8,7 +8,8 @@ module.exports = {
     listarMetasPaciente,
     create_MetasPaciente,
     Read_MetaPaciente,
-    update_MetaPaciente
+    update_MetaPaciente,
+    delete_MetaPaciente
 };
 
 
@@ -21,19 +22,17 @@ async function listarMetasPaciente(infoJson) {
 }
 
 async function create_MetasPaciente(infoJson) {
-    console.log("entro al metodo de crear metas");
+    
     var paciente=await Paciente.findOne({carnetDeIdentidad: infoJson.carnetDeIdentidad});
-
     var metas={
-        titulo: infoJson.titulo,
-        fechaDeRegistro: infoJson.fechaDeRegistro,
-        fechaDeLaMeta: infoJson.fechaDeLaMeta,
-        prioridad: infoJson.prioridad,
-        descripcion:infoJson.descripcion
+        titulo: infoJson.meta.titulo,
+        fechaDeRegistro: infoJson.meta.fechaDeRegistro,
+        fechaDeLaMeta: infoJson.meta.fechaDeLaMeta,
+        prioridad: infoJson.meta.prioridad,
+        descripcion:infoJson.meta.descripcion
     }
-
     paciente.agendaVirtual.misMetas.push(metas);
-    await paciente.save();
+    return await paciente.save();
 }
 
 async function Read_MetaPaciente(infoJson) {
@@ -45,59 +44,84 @@ async function Read_MetaPaciente(infoJson) {
 
 async function update_MetaPaciente(infoJson) {
 
+
     if (await Paciente.findOne({carnetDeIdentidad: infoJson.carnetDeIdentidad})) {   
-        var meta=await Paciente.find({carnetDeIdentidad: infoJson.carnetDeIdentidad,"agendaVirtual.misMetas._id":infoJson.id});   
+        var meta=await Paciente.find({carnetDeIdentidad: infoJson.carnetDeIdentidad,"agendaVirtual.misMetas._id":infoJson.meta.id});   
         if(meta.length>0){
-            if(infoJson.titulo){
+            if(infoJson.meta.titulo){
                 await Paciente.findOneAndUpdate({
                     carnetDeIdentidad: infoJson.carnetDeIdentidad,
-                    'agendaVirtual.misMetas._id': infoJson.id
+                    'agendaVirtual.misMetas._id': infoJson.meta.id
                   }, {
                     '$set': {
-                      'agendaVirtual.misMetas.$.titulo': infoJson.titulo
-                    }
-                })
-            } 
-            if(infoJson.fechaDeRegistro){
-                await Paciente.findOneAndUpdate({
-                    carnetDeIdentidad: infoJson.carnetDeIdentidad,
-                    'agendaVirtual.misMetas._id': infoJson.id
-                  }, {
-                    '$set': {
-                      'agendaVirtual.misMetas.$.fechaDeRegistro': infoJson.fechaDeRegistro
+                      'agendaVirtual.misMetas.$.titulo': infoJson.meta.titulo
                     }
                 })
             }
-            if(infoJson.fechaDeLaMeta){
+            else
+            {
+                throw "Error al cambiar el titulo"
+            }
+            if(infoJson.meta.fechaDeRegistro){
                 await Paciente.findOneAndUpdate({
                     carnetDeIdentidad: infoJson.carnetDeIdentidad,
-                    'agendaVirtual.misMetas._id': infoJson.id
+                    'agendaVirtual.misMetas._id': infoJson.meta.id
                   }, {
                     '$set': {
-                      'agendaVirtual.misMetas.$.fechaDeLaMeta': infoJson.fechaDeLaMeta
+                      'agendaVirtual.misMetas.$.fechaDeRegistro': infoJson.meta.fechaDeRegistro
                     }
                 })
             }
-            if(infoJson.prioridad){
+            else
+            {
+                throw "Error al cambiar la fecha de registro"
+            }
+            if(infoJson.meta.fechaDeLaMeta){
                 await Paciente.findOneAndUpdate({
                     carnetDeIdentidad: infoJson.carnetDeIdentidad,
-                    'agendaVirtual.misMetas._id': infoJson.id
+                    'agendaVirtual.misMetas._id': infoJson.meta.id
                   }, {
                     '$set': {
-                      'agendaVirtual.misMetas.$.prioridad': infoJson.prioridad
+                      'agendaVirtual.misMetas.$.fechaDeLaMeta': infoJson.meta.fechaDeLaMeta
                     }
                 })
             }
-            if(infoJson.descripcion){
+            else
+            {
+                throw "Error al cambiar la fecha de la meta"
+            }
+            if(infoJson.meta.prioridad){
                 await Paciente.findOneAndUpdate({
                     carnetDeIdentidad: infoJson.carnetDeIdentidad,
-                    'agendaVirtual.misMetas._id': infoJson.id
+                    'agendaVirtual.misMetas._id': infoJson.meta.id
                   }, {
                     '$set': {
-                      'agendaVirtual.misMetas.$.descripcion': infoJson.descripcion
+                      'agendaVirtual.misMetas.$.prioridad': infoJson.meta.prioridad
                     }
                 })
             }
+            else
+            {
+                throw "Error al cambiar la prioridad"
+            }
+            if(infoJson.meta.descripcion){
+                await Paciente.findOneAndUpdate({
+                    carnetDeIdentidad: infoJson.carnetDeIdentidad,
+                    'agendaVirtual.misMetas._id': infoJson.meta.id
+                  }, {
+                    '$set': {
+                      'agendaVirtual.misMetas.$.descripcion': infoJson.meta.descripcion
+                    }
+                })
+            }
+            else
+            {
+                throw "Error al cambiar la descripcion"
+            }
+        }
+        else
+        {
+                throw "No se encontró el paciente"
         }
         return await Paciente.findOne({carnetDeIdentidad: infoJson.carnetDeIdentidad});
     }
@@ -105,4 +129,19 @@ async function update_MetaPaciente(infoJson) {
         throw 'No se encontró el paciente';
     }
     
+}
+async function delete_MetaPaciente(infoJson) {
+    var deleteCancion=await Paciente.findOneAndUpdate({
+      carnetDeIdentidad: infoJson.carnetDeIdentidad,
+      'agendaVirtual.misMetas._id': infoJson.id
+    }, {
+      '$pull': {
+        'agendaVirtual.misMetas': {"_id":infoJson.id}
+      }
+    });
+    if(deleteCancion){
+        return await Paciente.findOne({carnetDeIdentidad: infoJson.carnetDeIdentidad});
+    }else{
+        throw "No se encontró el libro";
+    }
 }

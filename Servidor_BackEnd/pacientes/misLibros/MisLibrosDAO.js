@@ -172,5 +172,17 @@ async function update_LibroPaciente(infoJson) {
     
 }
 async function delete_LibroPaciente(infoJson) {
-    await Paciente.agendaVirtual.misLibros.findByIdAndRemove(infoJson.libro.id);
+    var deleteCancion=await Paciente.findOneAndUpdate({
+        carnetDeIdentidad: infoJson.carnetDeIdentidad,
+        'agendaVirtual.misLibros._id': infoJson.id_libro
+      }, {
+        '$pull': {
+          'agendaVirtual.misLibros': {"_id":infoJson.id_libro}
+        }
+    });
+    if(deleteCancion){
+        return await Paciente.findOne({carnetDeIdentidad: infoJson.carnetDeIdentidad});
+    }else{
+        throw "No se encontró el libro";
+    }
 }

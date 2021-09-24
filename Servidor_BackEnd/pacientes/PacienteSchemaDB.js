@@ -83,6 +83,55 @@ const schema = new Schema({
                 imagenPortada:{type: String, default: "", require : false}
             }
         ],
+        misMetas:[
+            {
+                titulo:{type: String, default: "", require : false},
+                fechaDeRegistro:{type: String, default: "", require : false},
+                fechaDeLaMeta:{type: String, default: "", require : false},
+                prioridad:{type: String, default: "", require : false},
+                descripcion:{type: String, default: "", require : false}
+            }
+        ],
+        misMetasPersonales:[
+            {
+                tipoDeActividad:{type: String, default: "", require : false},
+                fechaDeCompletitud:{type: String, default: "", require : false}
+            }
+        ],
+        misFavoritos:{
+            canciones:[
+                {
+                    titulo:{type: String, default: "", require : false},
+                    imagen:{type: String, default: "", require : false},
+                    clasificacion:{type: Number, default: 0, require : false},
+                    descripcion:{type: String, default: "", require : false}
+                }
+            ],
+            lugares:[
+                {
+                    titulo:{type: String, default: "", require : false},
+                    imagen:{type: String, default: "", require : false},
+                    clasificacion:{type: Number, default: "", require : false},
+                    descripcion:{type: String, default: "", require : false}
+                }
+            ],
+            peliculas:[
+                {
+                    titulo:{type: String, default: "", require : false},
+                    imagen:{type: String, default: "", require : false},
+                    clasificacion:{type: Number, default: "", require : false},
+                    descripcion:{type: String, default: "", require : false} 
+                }
+            ],
+            momentos:[
+                {
+                    titulo:{type: String, default: "", require : false},
+                    imagen:{type: String, default: "", require : false},
+                    clasificacion:{type: Number, default: "", require : false},
+                    descripcion:{type: String, default: "", require : false} 
+                }
+            ]
+        }
         
     }
 });

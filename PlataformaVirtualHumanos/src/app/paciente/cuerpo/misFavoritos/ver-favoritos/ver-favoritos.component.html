@@ -1,0 +1,20 @@
+<div id="contenedorTarjetasCanciones"  style="width: 100vh; height: 100vh;background-color: rgb(0, 255, 42)">
+    <button class="btn btn-primary" (click)="verFavoritos('lugar')">Mis lugares</button><br>
+    <button class="btn btn-primary" (click)="verFavoritos('momento')">Mis momentos</button><br>
+    <button class="btn btn-primary" (click)="verFavoritos('pelicula')">Mis peliculas</button><br>
+    <button class="btn btn-primary" (click)="verFavoritos('cancion')">Mis canciones</button><br><br><br>
+    <div *ngFor="let favorito of listaDeFavoritos">
+        <button (click)="visualizarFavorito(favorito)">{{favorito.titulo}}</button><br>
+    </div>
+    <div>
+        <form [formGroup]="formularioCrearFavorito">
+            Titulo:<input type="text" class="form-control" formControlName="Titulo"><br>
+        Imagen:<input type="image" class="form-control" formControlName="Imagen"><br/>
+        Clasificacion:<input type="number" class="form-control" formControlName="Clasificacion"><br>
+        Descripcion:<input type="text" class="form-control" formControlName="Descripcion"><br>
+            <button class="btn btn-primary" (click)="editarFavorito()">Editar</button>
+            <button class="btn btn-primary" (click)="GuardarCambiosFavorito()">Guardar cambios</button>
+            <button class="btn btn-primary" (click)="eliminarFavorito()">Eliminar</button>
+        </form>
+    </div>
+</div>

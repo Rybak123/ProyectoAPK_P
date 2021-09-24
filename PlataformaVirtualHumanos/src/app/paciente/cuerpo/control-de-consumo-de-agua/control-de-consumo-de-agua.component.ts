@@ -19,8 +19,7 @@ export class ControlDeConsumoDeAguaComponent implements OnInit {diasControlados:
     initialView: 'dayGridMonth',
     eventContent:this.renderEventContent,
     dateClick: this.diaClickeado.bind(this),
-    events: [   
-    ]
+    events: [   ]
   };
   mandarOperacionesPaciente:any;
   actualizarOperacionesPaciente:any;

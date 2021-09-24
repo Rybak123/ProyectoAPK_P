@@ -1,0 +1,17 @@
+<div id="contenedorTarjetasCanciones"  style="width: 100vh; height: 100vh;background-color: rgb(0, 255, 42)">
+    <div *ngFor="let metasPersonales of listaDeMetasPersonales">
+        <button (click)="visualizarMetaPersonal(metasPersonales)">{{metasPersonales.titulo}}</button><br>
+    </div>
+    <div>
+        <form [formGroup]="miformularioMetasPersonales">
+            Titulo:<input type="text" class="form-control" formControlName="Titulo"><br/>
+            Fecha:<input type="date" class="form-control" formControlName="FechaInicio"><br/>
+            Fecha:<input type="date" class="form-control" formControlName="FechaFin"><br/>
+            Prioridad:<input type="text" class="form-control" formControlName="Prioridad"><br/>
+            Descripcion:<input type="text" class="form-control" formControlName="Descripcion"><br/>
+            <button class="btn btn-primary" (click)="editarMetaPersonal()">Editar</button>
+            <button class="btn btn-primary" (click)="GuardarCambiosMetaPersonal()">Guardar cambios</button>
+            <button class="btn btn-primary" (click)="eliminarMetaPersonal()">Eliminar</button>
+        </form>
+    </div>
+</div>

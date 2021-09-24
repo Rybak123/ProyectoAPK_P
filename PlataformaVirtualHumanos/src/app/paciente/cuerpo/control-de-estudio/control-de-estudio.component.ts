@@ -13,7 +13,7 @@ import { VerificarOperacionesPaciente } from 'src/app/_services/controlDeActivid
   encapsulation: ViewEncapsulation.None
 })
 export class ControlDeEstudioComponent implements OnInit{
-  estadoActividad="";
+  estadoActividad=""; 
   myMap:any;
   public hora:number = 0;
   public minutos:number = 0;

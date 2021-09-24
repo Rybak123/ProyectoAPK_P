@@ -2,7 +2,7 @@ import {ConeccionServidor} from '../coneccionFrontEndServices/ConeccionServidor'
 import {HttpClient} from "@angular/common/http";
 import {FavoritoModel} from "./FavoritoModel";
 import { ReplaySubject } from 'rxjs';
-export class MisCancionesDAO
+export class MisFavoritosDAO
 {
     coneccionServidor:any;
     carnetDeIdentidadPaciente:any;
@@ -16,9 +16,9 @@ export class MisCancionesDAO
         var usuario:any =JSON.parse(pacienteInfo);
         this.carnetDeIdentidadPaciente=usuario.carnetDeIdentidad;
     }
-    async listarFavoritos(){
-        var parametros={"carnetDeIdentidad": this.carnetDeIdentidadPaciente}
-        return await this.coneccionServidor.coneccionServidor(parametros,"/paciente/listarFavoritos");
+    async listarFavoritos(tipoFavorito:any){
+        var parametros={"carnetDeIdentidad": this.carnetDeIdentidadPaciente,"tipoFavorito": tipoFavorito}
+        return await this.coneccionServidor.coneccionServidor(parametros,"/pacientes/listarFavoritos");
     }
 
     async read_Favorito(id_Favorito:any){
@@ -27,7 +27,7 @@ export class MisCancionesDAO
             "id_Favorito":id_Favorito
         }
 
-        var respuestaHTTP_favorito= await this.coneccionServidor.coneccionServidor(parametros,"/paciente/read_Favorito");
+        var respuestaHTTP_favorito= await this.coneccionServidor.coneccionServidor(parametros,"/pacientes/read_favorito");
         
         var FavoritoLeido=new FavoritoModel();
         FavoritoLeido.set_id(respuestaHTTP_favorito.id);
@@ -51,12 +51,13 @@ export class MisCancionesDAO
         var parametros={
             "carnetDeIdentidad": this.carnetDeIdentidadPaciente,
             "favorito":nuevoFavorito};
-        var respuesta=await this.coneccionServidor.coneccionServidor(parametros,"/paciente/create_Favorito")
+        var respuesta=await this.coneccionServidor.coneccionServidor(parametros,"/pacientes/create_favorito")
         return respuesta;
     }
 
-    async update_Favorito(titulo:any,imagen:any,clasificacion:any,descripcion:any,tipoDeFavorito:any){
+    async update_Favorito(id:any,titulo:any,imagen:any,clasificacion:any,descripcion:any,tipoDeFavorito:any){
         var modificarFavorito=new FavoritoModel();
+        modificarFavorito.set_id(id);
         modificarFavorito.set_titulo(titulo);
         modificarFavorito.set_imagen(imagen);
         modificarFavorito.set_clasificacion(clasificacion);
@@ -66,15 +67,16 @@ export class MisCancionesDAO
         var parametros={
             "carnetDeIdentidad": this.carnetDeIdentidadPaciente,
             "favorito":modificarFavorito};
-        var respuesta=await this.coneccionServidor.coneccionServidor(parametros,"/paciente/update_Favorito")
+        var respuesta=await this.coneccionServidor.coneccionServidor(parametros,"/pacientes/update_favorito")
         return respuesta;
             
     }
-    async delete_Favorito(id_Favorito:any){
+    async delete_Favorito(id_Favorito:any,tipoFavorito:any){
         var parametros={
             "carnetDeIdentidad": this.carnetDeIdentidadPaciente,
-            "id_Favorito":id_Favorito}
-        return await this.coneccionServidor.coneccionServidor(parametros,"/paciente/delete_Favorito");
+            "id_Favorito":id_Favorito,
+            "tipoDeFavorito":tipoFavorito}
+        return await this.coneccionServidor.coneccionServidor(parametros,"/pacientes/delete_favorito");
     }
 
 }

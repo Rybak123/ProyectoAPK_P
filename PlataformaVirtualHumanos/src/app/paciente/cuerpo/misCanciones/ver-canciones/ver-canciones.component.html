@@ -1,5 +1,27 @@
 <div id="contenedorTarjetasCanciones"  style="width: 100vh; height: 100vh;background-color: rgb(0, 255, 42)">
-    <div *ngIf="true" style="background-color:yellow;width: 100px;height:100px">
-
+    <div *ngFor="let cancion of listaDeCanciones">
+        <button (click)="visualizarCancion(cancion)">{{cancion.titulo}}</button><br>
+ 
+        <p>{{cancion.descripcion}}</p><br>
     </div>
-</div>
+ 
+    <div>
+       <form [formGroup]="formularioCrearCancion">
+        <label for="" class="formulario__label">Titulo</label><br>
+        <input type="text" class="form-control" formControlName="Titulo" id="titulo1"><br>
+        <label for="" class="formulario__label">Genero</label><br>
+        <input type="text" class="form-control" formControlName="Genero" id="Genero1"><br>
+        <label for="" class="formulario__label">Artista</label><br>
+        <input type="text" class="form-control" formControlName="Artista" id="Artista1"><br>
+        <label for="" class="formulario__label">Fecha</label><br>
+        <input type="date" class="form-control" formControlName="Fecha" id="Fechas1" ><br>
+        <label for="" class="formulario__label">Descripcion</label><br><br>
+        <input type="text" class="form-control" formControlName="Descripcion" id="Descripcion1"><br>
+
+        <button class="btn btn-primary" (click)="editarCancion()">Editar</button><br/>
+        <button class="btn btn-primary" (click)="GuardarCambiosCancion()">Guardar cambios</button>
+        <button class="btn btn-primary" (click)="eliminarCancion()">Eliminar</button>
+      </form>
+    </div>
+ </div>
+ 

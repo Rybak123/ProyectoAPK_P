@@ -63,13 +63,13 @@ async function update_CancionPaciente(infoJson) {
             {
                 throw "Error al cambiar el titulo"
             }
-            if(infoJson.cancion.autor){
+            if(infoJson.cancion.artista){
                 await Paciente.findOneAndUpdate({
                     carnetDeIdentidad: infoJson.carnetDeIdentidad,
                     'agendaVirtual.misCanciones._id': infoJson.cancion.id
                   }, {
                     '$set': {
-                      'agendaVirtual.misCanciones.$.autor': infoJson.cancion.autor
+                      'agendaVirtual.misCanciones.$.artista': infoJson.cancion.artista
                     }
                 })
             }
@@ -120,6 +120,7 @@ async function update_CancionPaciente(infoJson) {
                 throw "Error al cambiar la descripcion"
             }
             if(infoJson.cancion.imagenPortada){
+                
                 await Paciente.findOneAndUpdate({
                     carnetDeIdentidad: infoJson.carnetDeIdentidad,
                     'agendaVirtual.misCanciones._id': infoJson.cancion.id
@@ -127,7 +128,7 @@ async function update_CancionPaciente(infoJson) {
                     '$set': {
                       'agendaVirtual.misCanciones.$.imagenPortada': infoJson.cancion.imagenPortada
                     }
-                })
+                });
             }
             else
             {
@@ -142,5 +143,17 @@ async function update_CancionPaciente(infoJson) {
     
 }
 async function delete_CancionPaciente(infoJson) {
-    await Paciente.agendaVirtual.misCanciones.findByIdAndRemove(infoJson.cancion.id);
+    var deleteCancion=await Paciente.findOneAndUpdate({
+        carnetDeIdentidad: infoJson.carnetDeIdentidad,
+        'agendaVirtual.misCanciones._id': infoJson.id_cancion
+      }, {
+        '$pull': {
+          'agendaVirtual.misCanciones': {"_id":infoJson.id_cancion}
+        }
+    });
+    if(deleteCancion){
+        return await Paciente.findOne({carnetDeIdentidad: infoJson.carnetDeIdentidad});
+    }else{
+        throw "No se encontró la canción";
+    }
 }

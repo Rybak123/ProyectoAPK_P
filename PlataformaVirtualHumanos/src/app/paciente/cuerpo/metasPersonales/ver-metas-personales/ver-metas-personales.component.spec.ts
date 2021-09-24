@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CrearCancionComponent } from './crear-cancion.component';
+import { VerMetasPersonalesComponent } from './ver-metas-personales.component';
 
-describe('CrearCancionComponent', () => {
-  let component: CrearCancionComponent;
-  let fixture: ComponentFixture<CrearCancionComponent>;
+describe('VerMetasPersonalesComponent', () => {
+  let component: VerMetasPersonalesComponent;
+  let fixture: ComponentFixture<VerMetasPersonalesComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CrearCancionComponent ]
+      declarations: [ VerMetasPersonalesComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CrearCancionComponent);
+    fixture = TestBed.createComponent(VerMetasPersonalesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

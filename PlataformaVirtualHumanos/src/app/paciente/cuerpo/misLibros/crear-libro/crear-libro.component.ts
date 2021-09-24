@@ -13,9 +13,8 @@ import {MisLibrosDAO} from '../../../../_services/MisLibrosServices/MisLibrosDAO
 })
 export class CrearLibroComponent implements OnInit {
   formularioCrearLibro:FormGroup|any; 
-
+  public archivos: any = []
   constructor(private http:HttpClient) {
-    
     this.formularioCrearLibro = new FormGroup({
       Tituloo:new FormControl('',Validators.required),
       Autorr:new FormControl('',Validators.required),
@@ -26,8 +25,6 @@ export class CrearLibroComponent implements OnInit {
       Descripcionn:new FormControl('',Validators.required),
       Imagenn:new FormControl('',Validators.required)
       });
-
-
   }
   onSubmit(){
     var titulo=this.formularioCrearLibro.controls.Tituloo.value
@@ -50,6 +47,11 @@ export class CrearLibroComponent implements OnInit {
 
   ngOnInit(): void {
    
+  }
+  capturarFile(event:any){
+    const archicoCapturado = event.target.files[0]
+    this.archivos.push(archicoCapturado);
+    //console.log(event.target.files);
   }
  
 }
