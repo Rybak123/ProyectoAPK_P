@@ -42,7 +42,7 @@
     padding: 20px;
     cursor: pointer;
     border: none;
-    width: 300px;
+    width: 100%;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 16px;
     border-radius: 8px;
@@ -55,6 +55,7 @@
 }
 #Enviar{
     background-image: linear-gradient(to left , #4980c9,#161559,#4980c9);
+    width: 100%;
 }
 #Cancelar{
     background-image: linear-gradient(to left , #ca6255,#591515,#ca6255);

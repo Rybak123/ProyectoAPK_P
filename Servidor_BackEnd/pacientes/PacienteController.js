@@ -102,6 +102,7 @@ function listarLibrosPacientes(req, res, next) {
 }
 
 function crearLibro(req,res, next){
+    console.log(req);
     PacienteLibrosDao.create_LibroPaciente(req.body)
         .then(user => user ? res.json(user) : res.sendStatus(500))
         .catch(err => next(err));

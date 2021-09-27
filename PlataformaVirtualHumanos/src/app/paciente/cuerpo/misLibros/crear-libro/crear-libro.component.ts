@@ -13,7 +13,9 @@ import {MisLibrosDAO} from '../../../../_services/MisLibrosServices/MisLibrosDAO
 })
 export class CrearLibroComponent implements OnInit {
   formularioCrearLibro:FormGroup|any; 
-  public archivos: any = []
+  urlImage:any;
+  archivoActual:any;
+  public archivos: any;
   constructor(private http:HttpClient) {
     this.formularioCrearLibro = new FormGroup({
       Tituloo:new FormControl('',Validators.required),
@@ -36,8 +38,12 @@ export class CrearLibroComponent implements OnInit {
     var descripcion=this.formularioCrearLibro.controls.Descripcionn.value
     var imagen=this.formularioCrearLibro.controls.Imagenn.value
     
+    //EnviarDatosLibro
+    var formularioImagen=new FormData();
+    formularioImagen.append('file', this.archivoActual, this.archivoActual.name);
+
     var librosDao=new MisLibrosDAO(this.http);
-    librosDao.create_Libro(titulo,autor,editorial,controlDePaginas,fecha,genero,descripcion,imagen)
+    librosDao.create_Libro(titulo,autor,editorial,controlDePaginas,fecha,genero,descripcion,"")
     .then((respuesta:any) => {
       console.log(respuesta);
     }).catch((err:any) => {
@@ -49,8 +55,24 @@ export class CrearLibroComponent implements OnInit {
    
   }
   capturarFile(event:any){
-    const archicoCapturado = event.target.files[0]
-    this.archivos.push(archicoCapturado);
+    this.archivoActual=<File>event.target.files[0];
+    const files = event.target.files;
+    if (files.length === 0)
+        return;
+
+    const mimeType = files[0].type;
+    if (mimeType.match(/image\/*/) == null) {
+        alert("Only images are supported.");
+        return;
+    }
+
+    const reader = new FileReader();
+    this.archivos = files;
+    reader.readAsDataURL(files[0]); 
+    reader.onload = (_event) => { 
+      var imagenNuevoLibro:any=document.getElementById("imagenNuevoLibro");
+      imagenNuevoLibro.src=reader.result;
+    }
     //console.log(event.target.files);
   }
  

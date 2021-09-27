@@ -1,20 +1,137 @@
-<div id="contenedorTarjetasCanciones"  style="width: 100vh; height: 100vh;background-color: rgb(0, 255, 42)">
-    <button class="btn btn-primary" (click)="verFavoritos('lugar')">Mis lugares</button><br>
-    <button class="btn btn-primary" (click)="verFavoritos('momento')">Mis momentos</button><br>
-    <button class="btn btn-primary" (click)="verFavoritos('pelicula')">Mis peliculas</button><br>
-    <button class="btn btn-primary" (click)="verFavoritos('cancion')">Mis canciones</button><br><br><br>
-    <div *ngFor="let favorito of listaDeFavoritos">
-        <button (click)="visualizarFavorito(favorito)">{{favorito.titulo}}</button><br>
-    </div>
-    <div>
-        <form [formGroup]="formularioCrearFavorito">
-            Titulo:<input type="text" class="form-control" formControlName="Titulo"><br>
-        Imagen:<input type="image" class="form-control" formControlName="Imagen"><br/>
-        Clasificacion:<input type="number" class="form-control" formControlName="Clasificacion"><br>
-        Descripcion:<input type="text" class="form-control" formControlName="Descripcion"><br>
-            <button class="btn btn-primary" (click)="editarFavorito()">Editar</button>
-            <button class="btn btn-primary" (click)="GuardarCambiosFavorito()">Guardar cambios</button>
-            <button class="btn btn-primary" (click)="eliminarFavorito()">Eliminar</button>
-        </form>
+<div class="padre" style="width: 100vw; height: 89.8vh;background-color: rgb(255, 255, 255)">
+    <div class="hijo">
+        <div class="cabecera">
+            <div >
+                <div style="float: left;">
+                    <button mat-button color="primary" (click)="verFavoritos('cancion')">Cancion</button>
+                    <button mat-button color="primary" (click)="verFavoritos('pelicula')">Pelicula</button>
+                    <button mat-button color="primary" (click)="verFavoritos('momento')">Momento</button>
+                    <button mat-button color="primary" (click)="verFavoritos('lugar')">Lugar</button>
+                </div>
+                <div *ngFor="let btnItem of botonesPaginacion.slice().reverse()" style="float: right;">
+                    <button mat-button color="primary" (click)="cambiarPagina(btnItem)">{{btnItem}}</button>
+                </div>
+            </div>
+            <div class="lineaAzulCabecera" style="clear: both;">
+            </div>
+        </div>
+
+
+        <div class="contenedor1" style="" id="contenedor1">
+            <div class="row">
+                <div class="card-01" id="carta1" style="" (click)="visualizarFavorito('t1')">
+                    <div>
+                        <div style="float:left;width: 50%;height:100%;" >
+                            <img style="width:90%;height: 50%; margin-top: 15%;border-radius: 5%;margin-left: 15%;" src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
+                        </div>
+                        <div style="float:right;width: 50%; height:100%;">
+                            <p style="margin-left: 10%; margin-top: 15%; margin-right: 3%;">
+                                <b>{{tarjeta1_titulo}} </b><br>
+                                <b>{{tarjeta1_descripcion}} </b><br>
+                            </p>
+                            <img id="estrellas_targeta1" src="assets/img/imagenEnBlanco.jpg"  style="width: 135px; height:25px;margin-left: 10%;">
+                        </div>
+                    </div>
+                </div>
+                <div class="card-01" id="carta2" style="" (click)="visualizarFavorito('t2')">
+                    <div>
+                        <div style="float:left;width: 50%;height:100%;" >
+                            <img style="width:90%;height: 50%; margin-top: 15%;border-radius: 5%;margin-left: 15%;" src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
+                        </div>
+                        <div style="float:right;width: 50%; height:100%;">
+                            <p style="margin-left: 10%; margin-top: 15%; margin-right: 3%;">
+                                <b>{{tarjeta2_titulo}} </b><br>
+                                <b>{{tarjeta2_descripcion}} </b>
+                            </p>
+                            <img id="estrellas_targeta2" src="assets/img/imagenEnBlanco.jpg"  style="width: 135px; height:25px;margin-left: 10%;">
+                        </div>
+                    </div>
+                </div>
+                <div class="card-01" id="carta3" style="" (click)="visualizarFavorito('t3')" >
+                    <div>
+                        <div style="float:left;width: 50%;height:100%;" >
+                            <img style="width:90%;height: 50%; margin-top: 15%;border-radius: 5%;margin-left: 15%;" src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
+                        </div>
+                        <div style="float:right;width: 50%; height:100%;">
+                            <p style="margin-left: 10%; margin-top: 15%; margin-right: 3%;">
+                                <b>{{tarjeta3_titulo}} </b><br>
+                                <b>{{tarjeta3_descripcion}} </b>
+                            </p>
+                            <img id="estrellas_targeta3" src="assets/img/imagenEnBlanco.jpg"  style="width: 135px; height:25px;margin-left: 10%;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" >
+                <div class="card-01" id="carta4" style="" (click)="visualizarFavorito('t4')">
+                    <div>
+                        <div style="float:left;width: 50%;height:100%;" >
+                            <img style="width:90%;height: 50%; margin-top: 15%;border-radius: 5%;margin-left: 15%;" src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
+                        </div>
+                        <div style="float:right;width: 50%; height:100%;">
+                            <p style="margin-left: 10%; margin-top: 15%; margin-right: 3%;">
+                                <b>{{tarjeta4_titulo}} </b><br>
+                                <b>{{tarjeta4_descripcion}} </b>
+                            </p>
+                            <img id="estrellas_targeta4" src="assets/img/imagenEnBlanco.jpg"  style="width: 135px; height:25px;margin-left: 10%;">
+                        </div>
+                    </div>
+                </div>
+                <div class="card-01" id="carta5" style="" (click)="visualizarFavorito('t5')">
+                    <div>
+                        <div style="float:left;width: 50%;height:100%;" >
+                            <img style="width:90%;height: 50%; margin-top: 15%;border-radius: 5%;margin-left: 15%;" src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
+                        </div>
+                        <div style="float:right;width: 50%; height:100%;">
+                            <p style="margin-left: 10%; margin-top: 15%; margin-right: 3%;">
+                                <b>{{tarjeta5_titulo}} </b><br>
+                                <b>{{tarjeta5_descripcion}} </b>
+                            </p>
+                            <img id="estrellas_targeta5" src="assets/img/imagenEnBlanco.jpg" style="width: 135px; height:25px;margin-left: 10%;">
+                        </div>
+                    </div>
+                </div>
+                <div class="card-01" id="carta6" style="" (click)="visualizarFavorito('t6')">
+                    <div>
+                        <div style="float:left;width: 50%;height:100%;" >
+                            <img style="width:90%;height: 50%; margin-top: 15%;border-radius: 5%;margin-left: 15%;" src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
+                        </div>
+                        <div style="float:right;width: 50%; height:100%;">
+                            <p style="margin-left: 10%; margin-top: 15%; margin-right: 3%;">
+                                <b>{{tarjeta6_titulo}} </b><br>
+                                <b>{{tarjeta6_descripcion}} </b>
+                            </p>
+                            <img id="estrellas_targeta6" src="assets/img/imagenEnBlanco.jpg"  style="width: 135px; height:25px;margin-left: 10%;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="contenedor2"id="contenedor2">
+            <div class="row">
+                <div class="card-03" >
+                    <img style="margin-left:5%;margin-top: 3.5%;width:90%;height: 90%;" src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
+                </div>
+                <div class="card-03" >
+                    <form [formGroup]="formularioCrearFavorito" >
+                        <div style="margin-top: 2%;width: 100%;display: flex;justify-content: center;align-items: center;">
+                            <input  type="text" style="pointer-events: none;font-size:25px;font-weight:bold;border: 0;text-align: center; " class="form-control" formControlName="Titulo"><br>
+                        </div>
+                        <div style="margin-top: 2%;display: flex;justify-content: center;align-items: center;">
+                            <img id="estrellas_targetaMuestra" src="assets/img/imagenEnBlanco.jpg" style="width: 135px; height:25px;">
+                        </div>
+                        <div style="margin-top: 2%;display: flex;justify-content: center;align-items: center;">
+                            <textarea type="text" style="font-size:20px;pointer-events: none;font-family:'Times New Roman', Times, serif;  border: 0;width:90%;height: 40vh;" class="form-control" formControlName="Descripcion"></textarea>
+                        </div>
+                        <div style="clear: both;display: flex;justify-content: center;align-items: center;">
+                            <button mat-button color="primary" (click)="editarFavorito()">Editar</button>
+                            <button mat-button color="primary" (click)="GuardarCambiosFavorito()">Guardar</button>
+                            <button mat-button color="primary" (click)="eliminarFavorito()">Eliminar</button>
+                            <button style="float: right;" mat-button color="primary" (click)="verFavoritosDesdeEditar()">Volver</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

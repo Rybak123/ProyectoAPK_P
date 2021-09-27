@@ -21,6 +21,7 @@ async function listarLibrosPaciente(infoJson) {
     return libros;
 }
 async function create_LibroPaciente(infoJson) {
+    
     var paciente=await Paciente.findOne({carnetDeIdentidad: infoJson.carnetDeIdentidad});
     var libro={
         titulo: infoJson.libro.titulo,
