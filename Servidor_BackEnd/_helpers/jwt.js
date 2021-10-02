@@ -12,7 +12,12 @@ function jwt() {
         path: [
             //Rutas publicas con las que se puede acceder al servidor
             '/pacientes/registrarPaciente',
-            '/pacientes/autenticacion'
+            '/pacientes/autenticacion',
+            '/psicologo/registrarPsicologo',
+            '/psicologo/leerPsicologo',
+            '/psicologo/listarPsicologo',
+            '/psicologo/modificarPsicologo',
+            '/psicologo/deshabilitarPsicologo'
         ]
     });
 }
