@@ -17,7 +17,12 @@ function jwt() {
             '/psicologo/leerPsicologo',
             '/psicologo/listarPsicologo',
             '/psicologo/modificarPsicologo',
-            '/psicologo/deshabilitarPsicologo'
+            '/psicologo/deshabilitarPsicologo',
+            '/administrador/registrarAdministrador',
+            '/administrador/leerAdministrador',
+            '/administrador/listarAdministrador',
+            '/administrador/modificarAdministrador',
+            '/administrador/desabilitarAdministrador'
         ]
     });
 }

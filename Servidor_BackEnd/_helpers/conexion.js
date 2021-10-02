@@ -10,5 +10,6 @@ mongoose.Promise = global.Promise;
 module.exports = {
     Paciente: require('../pacientes/PacienteSchemaDB'),
     ControlDeEstudio: require('../users/user.model'),
-    Psicologo: require('../psicologo/Model/PsicologoModel')
+    Psicologo: require('../psicologo/Model/PsicologoModel'),
+    Administrador: require('../administrador/Model/AdministradorModel')
 };

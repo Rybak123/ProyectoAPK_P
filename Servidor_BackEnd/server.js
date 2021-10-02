@@ -21,6 +21,7 @@ app.use('/pacientes', require('./pacientes/PacienteController'));
 app.use('/psicologo', require('./psicologo/Controller/PsicologoController'));
 //requare es para alamacenar archivos dentro de la misma   // global error handler
 //ruta para administrador
+app.use('/administrador', require('./administrador/Controller/AdministradorController'));
 //app.use('/administrador', require('./administrador/Controller/AdministradorController'));
 app.use(errorHandler);
 
