@@ -17,7 +17,8 @@ module.exports = {
     actualizarControlDeSueno,
     actualizarControlDeEnergia,
     actualizarControlDeAnimo,
-    actualizarcontrolDeConsumoDeAgua
+    actualizarcontrolDeConsumoDeAgua,
+    deshabiltiar_Paciente
 
 };
 
@@ -275,8 +276,16 @@ async function update_paciente(carnetDeIdentidad, pacienteJson) {
     await pacienteEncontrado.save();
 }
 
-async function delete_Paciente(id) {
-    await User.findByIdAndRemove(id);
+async function deshabiltiar_Paciente(consultaJSON) {
+    const filter = { _id: consultaJSON.id };
+    const update = { estado: false };
+    let doc = await Paciente.findOneAndUpdate(filter, update, {
+    new: true
+    });
+
+    if(!doc){
+    throw "No se encontró el paciente";
+    }
 }
 
 async function autenticacion({ nombreDeUsuario, contrasena }) {

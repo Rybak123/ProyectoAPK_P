@@ -16,6 +16,7 @@ router.post('/actualizarControlDeEnergia', actualizarControlDeEnergia);
 router.post('/actualizarControlDeAnimo', actualizarControlDeAnimo);
 router.post('/actualizarControlDeConsumoDeAgua', actualizarcontrolDeConsumoDeAgua);
 router.post('/autenticacion', autenticacion);
+router.post('/deshabilitarPaciente', deshabilitarPaciente);
 
 //libros
 router.post('/listarLibros', listarLibrosPacientes);
@@ -95,6 +96,11 @@ function actualizarControlDeEnergia(req, res, next) {
 }
 function actualizarcontrolDeConsumoDeAgua(req, res, next) {
     PacienteDao.actualizarcontrolDeConsumoDeAgua(req.body)
+        .then(user => user ? res.json(user) : res.sendStatus(500))
+        .catch(err => next(err));
+}
+function deshabilitarPaciente(req, res, next) {
+    PacienteDao.deshabiltiar_Paciente(req.body)
         .then(user => user ? res.json(user) : res.sendStatus(500))
         .catch(err => next(err));
 }

@@ -17,6 +17,7 @@ const schema = new Schema({
     parientes: { type: Object, required: false },
     hash: { type: String, required: false },
     token: { type: String, required: false },
+    estado: { type: Boolean, required: false },
     agendaVirtual:{
         controlDeEstudio:{
             diasControlados:[
