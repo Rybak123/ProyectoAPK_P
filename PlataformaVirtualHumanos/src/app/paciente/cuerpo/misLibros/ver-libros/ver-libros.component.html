@@ -1,23 +1,51 @@
-<div id="contenedorTarjetasCanciones"  style="width: 100vh; height: 100vh;background-color: rgb(0, 255, 42)">
-   <div *ngFor="let libro of listaDeLibros">
-       <button (click)="visualizarLibro(libro)">{{libro.titulo}}</button><br>
-
-       <p>{{libro.descripcion}}</p><br>
+<div class=" row align-items-md-stretch" style="background-color: rgb(234, 243, 243)">
+   <div id="scroll" class="col-md-6" style=" background:linear-gradient( rgba(255, 178, 255, 0.693),rgba(194, 248, 232, 0.898));width: 50%;" >
+      <div style="width: 100%; text-align: center;">
+         <h2><i><b>Mis libros</b></i></h2>
+      </div>
+      <div *ngFor="let libro of listaDeLibros">
+         <button id="boton_libro" style="text-align: center;" class="boton" (click)="visualizarLibro(libro)">{{libro.titulo}}</button><br>
+     </div>
+     
    </div>
+   <div class="col-md-6" id="informacion" style="background:linear-gradient( rgba(194, 248, 232, 0.898),rgba(255, 178, 255, 0.693)); width: 49.5%;">
+      <form [formGroup]="formularioCrearLibro" class="formulario">
+      <div style="width: 60%;height: 60vh; margin-right: 10%;margin-left: 7%;display: block;">
+         <img  onerror='this.src = "assets/img/imagenEnBlanco.jpg"' style="width: 100%; height:100%;" src={{direccionLibroActual|authImage|async}} id="imagenVerLibro">
+      </div>
+      
+      <input style="visibility:hidden" type="file" class="form-control" formControlName="Imagenn"><br/>
+      <button class="btn btn-primary" (click)="irACrearLibro()" id="boton_form3">Registrar nuevo libro</button><br><br>
+      <p for="" id="mensaje">{{estadoCampo}}</p>
+      <label>Titulo: </label> 
+      <input type="text" class="form-control" formControlName="Tituloo"  id="titulo1" >
+      <p for="" id="mensaje2">{{estadoCampo2}}</p>
+      <label>Autor:</label>
+      <input type="text" class="form-control" formControlName="Autorr"  id="Autor1"><br/>
+      <p for="" id="mensaje3">{{estadoCampo3}}</p>
+      <label>Editorial:</label> 
+      <input type="text" class="form-control" formControlName="Editoriall" id="Editorial1"><br/>
+      <p for="" id="mensaje4">{{estadoCampo4}}</p>
+      <label> Cantidad de paginas:</label> 
+      <input type="number" class="form-control" formControlName="ControlDePAginass" id="ControlDePaginas1"><br/>
+      <p for="" id="mensaje9">{{estadoCampo9}}</p>
+      <label>Fecha:</label> 
+      <input (change)="verCalendario()"  [max]="maxDate" type="date" class="form-control" formControlName="Fechaa"  id="Fechas1"><br/>
+      <p for="" id="mensaje6">{{estadoCampo6}}</p>
+      
+      <label> Genero:</label> 
+      <input (change)="verCalendario()"  [max]="maxDate" type="text" class="form-control" formControlName="Generoo"  id="Genero1"><br/>
+      <p for="" id="mensaje7">{{estadoCampo7}}</p>
+      <label>Descripcion:</label>
+       <input type="text" class="form-control" formControlName="Descripcionn" id="Descripcion1"><br/>
+      
+      <button class="btn btn-primary" (click)="editarLibro()" id="boton_form">Editar</button>
+     
+      <button class="btn btn-primary" (click)="GuardarCambiosLibro()" id="boton_form">Guardar cambios</button>
+      <button class="btn btn-primary" (click)="eliminarLibro()" id="boton_form2">Eliminar</button>
+      <button class="btn btn-primary" (click)="cancelar()" id="boton_form2" style="width: 73%;">Cancelar</button>
+  </form>
+  
+</div>
 
-   <div>
-      <form [formGroup]="formularioCrearLibro">
-         Titulo:<input type="text" class="form-control" formControlName="Tituloo"><br/>
-         Autor:<input type="text" class="form-control" formControlName="Autorr"><br/>
-         Editorial:<input type="text" class="form-control" formControlName="Editoriall"><br/>
-         Cantidad de paginas:<input type="number" class="form-control" formControlName="ControlDePAginass"><br/>
-         Fecha:<input type="date" class="form-control" formControlName="Fechaa"><br/>
-         Genero:<input type="text" class="form-control" formControlName="Generoo"><br/>
-         Descripcion:<input type="text" class="form-control" formControlName="Descripcionn"><br/>
-         Imagen:<input type="image" class="form-control" formControlName="Imagenn"><br/>
-         <button class="btn btn-primary" (click)="editarLibro()">Editar</button><br/>
-         <button class="btn btn-primary" (click)="GuardarCambiosLibro()">Guardar cambios</button>
-         <button class="btn btn-primary" (click)="eliminarLibro()">Eliminar</button>
-     </form>
-   </div>
 </div>

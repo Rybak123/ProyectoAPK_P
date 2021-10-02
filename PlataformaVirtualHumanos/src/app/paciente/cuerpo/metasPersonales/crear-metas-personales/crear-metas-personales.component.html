@@ -1,17 +1,30 @@
-<div class="row align-items-md-stretch" style="width: 100% !important; height: 90.3% !important;background-color: rgb(234, 243, 243)">
-    <div class="col-md-6" style=" background:linear-gradient( rgba(196, 245, 18, 0.693),rgba(58, 238, 184, 0.898));width: 50%;">
-      <br>
-  <div>
-    <p>MIS METAS PERSONALES</p>
-    <form [formGroup]="miformularioMetasPersonales" (ngSubmit)="onSubmit()">
-        Titulo:<input type="text" class="form-control" formControlName="Titulo">
-        Fecha:<input type="date" class="form-control" formControlName="FechaInicio">
-        Fecha:<input type="date" class="form-control" formControlName="FechaFin">
-        Prioridad:<input type="text" class="form-control" formControlName="Prioridad">
-        Descripcion:<input type="text" class="form-control" formControlName="Descripcion"><br/>
-        <button class="btn btn-primary" type="submit" >Guardar</button><br/>
-        <button class="btn btn-primary" type="submit" >Cancelar</button>
+
+<div class="row align-items-md-stretch" style="width: 100%; height: 90.3%;background:linear-gradient( rgb(255, 115, 0),rgb(255, 218, 7))">
+    
+    <div class="col-md-6" id="cajaP"style="background-color: rgb(239, 240, 236);width: 90%;">
+    <form [formGroup]="miformularioMetasPersonales" (ngSubmit)="onSubmit()" class="formulario">
+<div class="" id="caja1">
+    <h1 class="formulario__titulo">Mis metas personales</h1>
+    <label for="" class="mensaje" id="mensaje">{{estadoCampo}}</label>
+    <input type="text" class="form-control" formControlName="Titulo" id="titulo1">
+    <label for="" class="formulario__label fijar">Titulo</label>
+
+    <label for="" class="mensaje" id="mensaje2">{{estadoCampo2}}</label>
+    <input type="date" class="form-control" formControlName="FechaFin" id="fechaFin1" >
+  
+    <label for="" class="mensaje" id="mensaje3">{{estadoCampo3}}</label>
+    <input type="number" class="form-control" formControlName="Prioridad" id="prioridad1" >
+    <label for="" class="formulario__label fijar">prioridad</label>
+
+    <label for="" class="mensaje" id="mensaje4">{{estadoCampo4}}</label>
+    <input type="text" class="form-control" formControlName="Descripcion" id="descripcion1">
+    <label for="" class="formulario__label fijar">descripcion</label>
+</div>
+<div class="" id="caja2" style="background:linear-gradient( rgb(245, 208, 0),rgb(225, 241, 241));"> 
+  <img src="assets/img/trofeo2.png" class="imagen" alt=""><br>
+    <button class="enviar" id="Imagen" type="submit" >Guardar</button><br/>
+    <button class="enviar" style="background-color: tomato;" type="submit" (click)="irAVerMetasPersonales()">Cancelar</button><br/>
+</div>
     </form>
-</div>
-</div>
+    </div>
 </div>

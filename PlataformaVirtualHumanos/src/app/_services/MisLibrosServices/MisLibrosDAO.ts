@@ -78,7 +78,7 @@ export class MisLibrosDAO
         modificarLibro.set_genero(genero);
         modificarLibro.set_descripcion(descripcion);
         modificarLibro.set_imagenPortada(imagenPortada);
-
+        console.log(this.carnetDeIdentidadPaciente)
         var parametros={
             "carnetDeIdentidad": this.carnetDeIdentidadPaciente,
             "libro":modificarLibro};
@@ -91,6 +91,9 @@ export class MisLibrosDAO
             "carnetDeIdentidad": this.carnetDeIdentidadPaciente,
             "id_libro":id}
         return await this.coneccionServidor.coneccionServidor(parametros,"/pacientes/delete_libro");
+    }
+    async create_LibroMandarImagen(id:any,formularioImagen:any){
+        return await this.coneccionServidor.coneccionServidor(formularioImagen,`/pacientes/mandar_imagen_libro?id=${id}&carnetDeIdentidad=${this.carnetDeIdentidadPaciente}`);
     }
 
 }

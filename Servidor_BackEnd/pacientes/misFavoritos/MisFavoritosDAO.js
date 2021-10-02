@@ -3,14 +3,18 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const db = require('_helpers/conexion');
 const Paciente=db.Paciente;
-
+const fs = require('fs');
+const path = require('path');
+const formidable = require('formidable');
+const informacionServidor=require('../../informacion_servidor/informacionServidor')
 
 module.exports = {
     create_MisFavoritosPaciente,
     listarMisFavoritosPaciente,
     update_Misfavoritos,
     readMisFavoritosPaciente,
-    deleteMisFavoritosPaciente
+    deleteMisFavoritosPaciente,
+    mandarImagen
 };
 
 async function listarMisFavoritosPaciente(infoJson) {
@@ -380,4 +384,101 @@ console.log("entro lugar");
 return await paciente.save();
 
   
+}
+
+async function mandarImagen(req, res, next){
+  var params=req.query;
+  console.log(params);
+  const form = new formidable.IncomingForm();
+  var uploadFolder="";
+  switch(params.tipoFavorito){
+        case "cancion":
+          uploadFolder = path.join(__dirname, "../", "../","datos","datos_pacientes",params.carnetDeIdentidad+"","misFavoritos/misCanciones");
+        break;
+        case "pelicula":
+          uploadFolder = path.join(__dirname, "../", "../","datos","datos_pacientes",params.carnetDeIdentidad+"","misFavoritos/misPeliculas");
+        break;
+        case "momento":
+          uploadFolder = path.join(__dirname, "../", "../","datos","datos_pacientes",params.carnetDeIdentidad+"","misFavoritos/misMomentos");
+        break;
+        case "lugar":
+          uploadFolder = path.join(__dirname, "../", "../","datos","datos_pacientes",params.carnetDeIdentidad+"","misFavoritos/misLugares");
+        break;
+  }
+  form.multiples = true;
+  form.maxFileSize = 50 * 1024 * 1024; // 5MB
+  form.uploadDir = uploadFolder;
+
+  if (!fs.existsSync(uploadFolder)){
+      fs.mkdirSync(uploadFolder, { recursive: true });
+  }
+  form.parse(req, async (err, fields, files) => {
+      if (err) {
+        console.log("Error parsing the files");
+      res.status(400).json({
+          status: "Fail",
+          message: "There was an error parsing the files",
+          error: err,
+        });
+      }
+      try {
+          const file = files.myFile;
+          const fileName = params.id+"."+file.name.split('.').pop();;
+          fs.renameSync(file.path, path.join(uploadFolder, fileName));
+          
+          switch(params.tipoFavorito){
+            case "cancion":
+              var direccionImagen=informacionServidor.getUrl()+"/"+"datosPacientes"+"/"+params.carnetDeIdentidad+"/"+"misFavoritos/misCanciones"+'/'+fileName;
+              await Paciente.findOneAndUpdate({
+                carnetDeIdentidad: params.carnetDeIdentidad,
+                'agendaVirtual.misFavoritos.canciones._id': params.id
+              }, {
+                '$set': {
+                  'agendaVirtual.misFavoritos.canciones.$.imagen': direccionImagen
+                }
+            });
+            break;
+            case "pelicula":
+              var direccionImagen=informacionServidor.getUrl()+"/"+"datosPacientes"+"/"+params.carnetDeIdentidad+"/"+"misFavoritos/misPeliculas"+'/'+fileName;
+              await Paciente.findOneAndUpdate({
+                carnetDeIdentidad: params.carnetDeIdentidad,
+                'agendaVirtual.misFavoritos.peliculas._id': params.id
+              }, {
+                '$set': {
+                  'agendaVirtual.misFavoritos.peliculas.$.imagen': direccionImagen
+                }
+            });
+            break;
+            case "momento":
+              var direccionImagen=informacionServidor.getUrl()+"/"+"datosPacientes"+"/"+params.carnetDeIdentidad+"/"+"misFavoritos/misMomentos"+'/'+fileName;
+              await Paciente.findOneAndUpdate({
+                carnetDeIdentidad: params.carnetDeIdentidad,
+                'agendaVirtual.misFavoritos.momentos._id': params.id
+              }, {
+                '$set': {
+                  'agendaVirtual.misFavoritos.momentos.$.imagen': direccionImagen
+                }
+            });
+            break;
+            case "lugar":
+              var direccionImagen=informacionServidor.getUrl()+"/"+"datosPacientes"+"/"+params.carnetDeIdentidad+"/"+"misFavoritos/misLugares"+'/'+fileName;
+              await Paciente.findOneAndUpdate({
+                carnetDeIdentidad: params.carnetDeIdentidad,
+                'agendaVirtual.misFavoritos.lugares._id': params.id
+              }, {
+                '$set': {
+                  'agendaVirtual.misFavoritos.lugares.$.imagen': direccionImagen
+                }
+            });
+            break;
+          }
+          
+          res.status(201).json({
+              type: 'GET',
+              url: direccionImagen
+          });
+      } catch (error) {
+        console.log(error);
+      }
+  });
 }

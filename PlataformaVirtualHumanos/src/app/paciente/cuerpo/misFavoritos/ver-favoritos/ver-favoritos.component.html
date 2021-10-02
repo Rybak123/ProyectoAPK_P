@@ -1,5 +1,5 @@
-<div class="padre" style="width: 100vw; height: 89.8vh;background-color: rgb(255, 255, 255)">
-    <div class="hijo">
+<div class="padre" style="width: 100vw; height: 89.8vh; background:linear-gradient( rgba(74, 16, 121, 0.693),rgba(223, 233, 230, 0.898))">
+    <div class="hijo" style="background-color: rgb(113, 0, 141);">
         <div class="cabecera">
             <div >
                 <div style="float: left;">
@@ -22,13 +22,18 @@
                 <div class="card-01" id="carta1" style="" (click)="visualizarFavorito('t1')">
                     <div>
                         <div style="float:left;width: 50%;height:100%;" >
-                            <img style="width:90%;height: 50%; margin-top: 15%;border-radius: 5%;margin-left: 15%;" src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
+                            <img style="width:100%;height: 100%;border-radius: 5%;" src={{direccionLibroActual1|authImage|async}} id="imagenVerLibro" >
                         </div>
                         <div style="float:right;width: 50%; height:100%;">
-                            <p style="margin-left: 10%; margin-top: 15%; margin-right: 3%;">
-                                <b>{{tarjeta1_titulo}} </b><br>
-                                <b>{{tarjeta1_descripcion}} </b><br>
-                            </p>
+                            <div style="margin-top: 20%;" >
+                                <b style="margin-left: 15%;text-align: left;margin-top: 10%;">Titulo:</b>
+                                <br>
+                                <b style="margin-left: 15%;  margin-right: 3%;width: 80%;text-align: center;">{{tarjeta1_titulo}} </b>
+                                <br>
+                                <b style="text-align: left;margin-left: 15%;">Calificación:</b>
+                            </div>
+                                  
+                            
                             <img id="estrellas_targeta1" src="assets/img/imagenEnBlanco.jpg"  style="width: 135px; height:25px;margin-left: 10%;">
                         </div>
                     </div>
@@ -36,7 +41,7 @@
                 <div class="card-01" id="carta2" style="" (click)="visualizarFavorito('t2')">
                     <div>
                         <div style="float:left;width: 50%;height:100%;" >
-                            <img style="width:90%;height: 50%; margin-top: 15%;border-radius: 5%;margin-left: 15%;" src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
+                            <img style="width:100%;height: 100%;border-radius: 5%;padding-top: 2%;padding-left: 2%;" src={{direccionLibroActual2|authImage|async}} id="imagenVerLibro" >
                         </div>
                         <div style="float:right;width: 50%; height:100%;">
                             <p style="margin-left: 10%; margin-top: 15%; margin-right: 3%;">
@@ -50,7 +55,7 @@
                 <div class="card-01" id="carta3" style="" (click)="visualizarFavorito('t3')" >
                     <div>
                         <div style="float:left;width: 50%;height:100%;" >
-                            <img style="width:90%;height: 50%; margin-top: 15%;border-radius: 5%;margin-left: 15%;" src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
+                            <img style="width:100%;height: 100%;border-radius: 5%;padding-top: 2%;padding-left: 2%;" src={{direccionLibroActual3|authImage|async}} id="imagenVerLibro" >
                         </div>
                         <div style="float:right;width: 50%; height:100%;">
                             <p style="margin-left: 10%; margin-top: 15%; margin-right: 3%;">
@@ -66,7 +71,7 @@
                 <div class="card-01" id="carta4" style="" (click)="visualizarFavorito('t4')">
                     <div>
                         <div style="float:left;width: 50%;height:100%;" >
-                            <img style="width:90%;height: 50%; margin-top: 15%;border-radius: 5%;margin-left: 15%;" src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
+                            <img style="width:100%;height: 100%;border-radius: 5%;padding-top: 2%;padding-left: 2%;" src={{direccionLibroActual4|authImage|async}} id="imagenVerLibro" >
                         </div>
                         <div style="float:right;width: 50%; height:100%;">
                             <p style="margin-left: 10%; margin-top: 15%; margin-right: 3%;">
@@ -80,7 +85,7 @@
                 <div class="card-01" id="carta5" style="" (click)="visualizarFavorito('t5')">
                     <div>
                         <div style="float:left;width: 50%;height:100%;" >
-                            <img style="width:90%;height: 50%; margin-top: 15%;border-radius: 5%;margin-left: 15%;" src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
+                            <img style="width:100%;height: 100%;border-radius: 5%;padding-top: 2%;padding-left: 2%;"src={{direccionLibroActual5|authImage|async}} id="imagenVerLibro" >
                         </div>
                         <div style="float:right;width: 50%; height:100%;">
                             <p style="margin-left: 10%; margin-top: 15%; margin-right: 3%;">
@@ -94,7 +99,7 @@
                 <div class="card-01" id="carta6" style="" (click)="visualizarFavorito('t6')">
                     <div>
                         <div style="float:left;width: 50%;height:100%;" >
-                            <img style="width:90%;height: 50%; margin-top: 15%;border-radius: 5%;margin-left: 15%;" src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
+                            <img style="width:100%;height: 100%;border-radius: 5%;padding-top: 2%;padding-left: 2%;" src={{direccionLibroActual6|authImage|async}} id="imagenVerLibro" >
                         </div>
                         <div style="float:right;width: 50%; height:100%;">
                             <p style="margin-left: 10%; margin-top: 15%; margin-right: 3%;">
@@ -110,7 +115,7 @@
         <div class="contenedor2"id="contenedor2">
             <div class="row">
                 <div class="card-03" >
-                    <img style="margin-left:5%;margin-top: 3.5%;width:90%;height: 90%;" src="https://material.angular.io/assets/img/examples/shiba2.jpg" >
+                    <img style="margin-left:5%;margin-top: 3.5%;width:90%;height: 90%;" src={{direccionLibroActualVisualizar|authImage|async}} id="imagenVerLibro">
                 </div>
                 <div class="card-03" >
                     <form [formGroup]="formularioCrearFavorito" >

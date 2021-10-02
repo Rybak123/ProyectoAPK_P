@@ -2,10 +2,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    
   }
   
 .hijo {
-    background: rgb(228, 227, 227);
+   
     width: 85vw;
     height: 80vh;
 }
@@ -65,7 +66,7 @@
   }
 
 .card-01{
-  background: #ffffff;
+  background: #faf0fa;
   position: relative;
   flex: 1;
   max-width: 60vh;

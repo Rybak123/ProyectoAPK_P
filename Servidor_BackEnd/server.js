@@ -2,17 +2,19 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const bodyParser = require('body-parser');
 const jwt = require('_helpers/jwt');
 const errorHandler = require('_helpers/error-handler');
+const formidable = require('express-formidable');
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(express.json());
+app.use(express.urlencoded({extended:false}));
+
+
 app.use(cors());
 
 // use JWT auth to secure the api
 app.use(jwt());
-
+app.use('/datosPacientes', express.static('datos/datos_pacientes'));
 // api routes
 app.use('/pacientes', require('./pacientes/PacienteController'));
 

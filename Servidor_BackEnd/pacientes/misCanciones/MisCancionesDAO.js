@@ -2,15 +2,19 @@ const config = require('config.json');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const db = require('_helpers/conexion');
+const fs = require('fs');
+const path = require('path');
 const Paciente=db.Paciente;
-
+const formidable = require('formidable');
+const informacionServidor=require('../../informacion_servidor/informacionServidor')
 
 module.exports = {
     listarCancionesPaciente,
     create_CancionPaciente,
     Read_CancionPaciente,
     update_CancionPaciente,
-    delete_CancionPaciente
+    delete_CancionPaciente,
+    mandarImagen
 };
 // Operaciones CRUD+Listar
 
@@ -156,4 +160,46 @@ async function delete_CancionPaciente(infoJson) {
     }else{
         throw "No se encontró la canción";
     }
+}
+async function mandarImagen(req, res, next){
+    var params=req.query;
+    const form = new formidable.IncomingForm();
+    const uploadFolder = path.join(__dirname, "../", "../","datos","datos_pacientes",params.carnetDeIdentidad+"","misCanciones");
+    form.multiples = true;
+    form.maxFileSize = 50 * 1024 * 1024; // 5MB
+    form.uploadDir = uploadFolder;
+
+    if (!fs.existsSync(uploadFolder)){
+        fs.mkdirSync(uploadFolder, { recursive: true });
+    }
+    form.parse(req, async (err, fields, files) => {
+        if (err) {
+          console.log("Error parsing the files");
+        res.status(400).json({
+            status: "Fail",
+            message: "There was an error parsing the files",
+            error: err,
+          });
+        }
+        try {
+            const file = files.myFile;
+            const fileName = params.id+"."+file.name.split('.').pop();;
+            fs.renameSync(file.path, path.join(uploadFolder, fileName));
+            var direccionImagen=informacionServidor.getUrl()+"/"+"datosPacientes"+"/"+params.carnetDeIdentidad+"/"+"misCanciones"+'/'+fileName;
+            await Paciente.findOneAndUpdate({
+                carnetDeIdentidad: params.carnetDeIdentidad,
+                'agendaVirtual.misCanciones._id': params.id
+              }, {
+                '$set': {
+                  'agendaVirtual.misCanciones.$.imagenPortada': direccionImagen
+                }
+            })
+            res.status(201).json({
+                type: 'GET',
+                url: direccionImagen
+            });
+        } catch (error) {
+          console.log(error);
+        }
+    });
 }

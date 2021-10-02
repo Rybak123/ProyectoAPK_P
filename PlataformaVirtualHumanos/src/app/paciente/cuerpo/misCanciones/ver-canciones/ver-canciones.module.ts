@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { VerCancionesComponent } from '../ver-canciones/ver-canciones.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
+
 @NgModule({
-  declarations: [VerCancionesComponent],
+  declarations: [],
   imports: [
     CommonModule,
     BrowserModule,
@@ -13,6 +13,6 @@ import {MatCardModule} from '@angular/material/card';
     ReactiveFormsModule,
     MatCardModule
   ],
-  exports:[VerCancionesComponent]
+  exports:[]
 })
 export class VerCancionesModule { }

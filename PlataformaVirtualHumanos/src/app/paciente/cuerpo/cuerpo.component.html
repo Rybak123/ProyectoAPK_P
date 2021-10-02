@@ -34,14 +34,9 @@
             <li>
               <a href="#"><i class="ion-bag" ></i> <span >Mis gustos</span></a>
               <ul class="nav-flyout">
-                <li>
-                  <a href="#" class="myClase" style="color: white;" (click)="renderCrearLibro()"><i class="ion-ios-color-filter-outline" ></i>Crear libro</a>
-                </li>
+        
                 <li>
                   <a href="#" class="myClase" style="color: white;" (click)="renderVerLibro()"><i class="ion-ios-clock-outline" ></i>Ver libro</a>
-                </li>
-                <li>
-                  <a href="#" class="myClase" style="color: white;" (click)="renderCrearCancion()"><i class="ion-ios-clock-outline" ></i>Crear Canciones</a>
                 </li>
                 <li>
                   <a href="#" class="myClase" style="color: white;" (click)="renderVerCancion()" ><i class="ion-heart-broken"></i>Ver Canciones</a>
@@ -53,13 +48,10 @@
               <ul class="nav-flyout">
                 
                 <li>
-                  <a href="#" class="myClase" style="color: white;" (click)="render_crearMetasPersonales()"><i class="ion-ios-camera-outline"></i>Crear metas personales</a>
-                </li>
-                <li>
                   <a href="#" class="myClase" style="color: white;"(click)="render_verMetasPersonales()"><i class="ion-ios-cog-outline"></i>Ver metas personales</a>
                 </li>
                 <li>
-                  <a href="#" class="myClase" style="color: white;" (click)="render_crearMetasSociales()"><i class="ion-ios-chatboxes-outline"></i>Metas diarias</a>
+                  <a href="#" class="myClase" style="color: white;" (click)="render_crearMetasSociales()"><i class="ion-ios-chatboxes-outline"></i>Ver metas diarias</a>
                 </li>
               </ul>
             </li>
@@ -72,6 +64,12 @@
                 <li>
                   <a href="#" class="myClase" style="color: white;" (click)="render_verFavoritos()"><i class="ion-ios-lightbulb-outline"></i>Ver favoritos</a>
                 </li>
+                <li>
+                  <a href="#" class="myClase" style="color: white;" (click)="render_calificarMes()"><i class="ion-ios-lightbulb-outline"></i>Calificar mes</a>
+                </li>
+                <li>
+                  <a href="#"  class="myClase" style="color: white;" (click)="render_ResumenAgenda()"><i ></i>Resumen de la agenda virtual</a>
+                </li>
               </ul>
             </li>
             <li>
@@ -83,8 +81,10 @@
                 <li>
                   <a href="#"  class="myClase" style="color: white;"><i class="ion-arrow-graph-down-left"></i>Entrenamiento cognitivo</a>
                 </li>
+               
               </ul>
             </li>
+            
             <li style="float: inline-end; height: 50%;">
               <a href="#" (click)="logout()"><i class="ion-ios-medical-outline"></i> <span class="">Cerrar sesión</span></a>
             </li>

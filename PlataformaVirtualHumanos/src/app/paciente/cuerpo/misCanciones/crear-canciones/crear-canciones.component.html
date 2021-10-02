@@ -4,23 +4,33 @@
     <form [formGroup]="formularioCrearCancion" (ngSubmit)="onSubmit()" class="formulario">
 <div class="" id="caja1">
     <h1 class="formulario__titulo">Informacion de la cancion</h1>
+    <label for="" class="mensaje" id="mensaje">{{estadoCampo}}</label>
     <input type="text" class="form-control" formControlName="Titulo" id="titulo1">
     <label for="" class="formulario__label">Titulo</label>
+    <label for="" class="mensaje" id="mensaje2">{{estadoCampo2}}</label>
     <input type="text" class="form-control" formControlName="Genero" id="Genero1">
     <label for="" class="formulario__label">Genero</label>
+    <label for="" class="mensaje" id="mensaje3">{{estadoCampo3}}</label>
     <input type="text" class="form-control" formControlName="Artista" id="Artista1">
     <label for="" class="formulario__label">Artista</label>
-    <input type="date" class="form-control" formControlName="Fecha" id="Fechas1" >
-    <!--<label for="" class="formulario__label">Fecha</label>-->
+    <label for="" class="mensaje" id="mensaje4">{{estadoCampo4}}</label>
+    <input (change)="verCalendario()" type="date" class="form-control" formControlName="Fecha" id="Fechas1" >
+    <label for="" class="mensaje" id="mensaje5">{{estadoCampo5}}</label>
     <input type="text" class="form-control" formControlName="Descripcion" id="Descripcion1">
     <label for="" class="formulario__label">Descripcion</label>
+   
+ 
 </div>
 <div class="" id="caja2" style="background:linear-gradient( rgba(26, 104, 248, 0.898),rgba(159, 240, 240, 0.693));"> 
-    <input type="image" class="form-control" formControlName="Imagen" id="Imagen1">
-    <label for="" class="formulario__label">Imagen</label>
-    <button class="enviar" id="Imagen" type="submit" >Escoge una imagen</button><br/>
+  <label for="" class="mensaje" id="mensaje6">{{estadoCampo6}}</label>
+  <img onerror='this.style.display = "none"' id="imagenNuevoLibro" src="" style="width: 100%; height:90%;"> 
+    <button class="enviar" id="Imagen" type="submit" (click)="fileInput.click()" >
+      <span>Escoge una imagen</span>
+      <input type="file" style="display:none;" #fileInput class="form-control" formControlName="Imagenn" id="Imagen1" (change) ="capturarFile($event)">
+    </button><br/>
+    
     <button class="enviar" id="Enviar" type="submit" >Guardar</button><br/>
-    <button class="enviar" id="Cancelar" type="submit" >Cancelar</button>
+    <button class="enviar" id="Cancelar" type="submit"(click)="irAVerCanciones()" >Cancelar</button>
 </div>
        
        

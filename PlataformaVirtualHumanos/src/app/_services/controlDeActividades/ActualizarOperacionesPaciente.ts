@@ -125,4 +125,53 @@ export class ActualizarOperacionesPaciente
         });
         return calendarEvents;
     }
+    convertirAEventosCalendario_ControlDEnergia(activiadaJsonArray:any){
+        var calendarEvents: EventInput[] = [];
+        activiadaJsonArray.forEach((element: any) => {
+            var anio:any=element.fecha.split("-")[0];
+            var mes:any=element.fecha.split("-")[1];
+            var dia:any=element.fecha.split("-")[2];
+            var mydate = new Date().setFullYear(parseInt(anio),(parseInt(mes)-1),parseInt(dia));
+    
+            switch(element.porcentajeDeEnergia){
+                case "100%":
+                    calendarEvents= calendarEvents.concat({ 
+                        date:mydate,
+                       imageurl:'img/controlDeEnergia/arcoirirs.png',
+                       title:'100%'
+
+                       })
+                break;
+                case "75%":
+                    calendarEvents= calendarEvents.concat({ 
+                        date:mydate,
+                       imageurl:'assets/img/controlDeEnergia/soleado.png',
+                       title:'75%'
+                       })
+                break;
+                case "50%":
+                    calendarEvents= calendarEvents.concat({ 
+                        date:mydate,
+                       imageurl:'assets/img/controlDeEnergia/nublado.png',
+                       title:'50%'
+                       })
+                break;
+                case "25%":
+                    calendarEvents= calendarEvents.concat({ 
+                        date:mydate,
+                       imageurl:'assets/img/controlDeEnergia/diaLluvioiso.png',
+                       title:'25%'
+                       })
+                break;
+                case "0%":
+                    calendarEvents= calendarEvents.concat({ 
+                        date:mydate,
+                       imageurl:'assets/img/controlDeEnergia/rayo.png',
+                       title:'0%'
+                       })
+                break;
+            } 
+        });
+        return calendarEvents;
+    }
 }

@@ -7,9 +7,25 @@ import { VerFavoritosComponent } from './misFavoritos/ver-favoritos/ver-favorito
 import { CrearFavoritoComponent } from './misFavoritos/crear-favorito/crear-favorito.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
+import { AuthImagePipe } from 'src/app/_helpers/basic.pipe';
+import { VerLibrosComponent } from './misLibros/ver-libros/ver-libros.component';
+import { VerCancionesComponent } from './misCanciones/ver-canciones/ver-canciones.component';
+import { CalificarMesComponent } from './calificar-mes/calificar-mes.component';
+import { FullCalendarModule } from '@fullcalendar/angular'; 
+import dayGridPlugin from '@fullcalendar/daygrid'; 
+import interactionPlugin from '@fullcalendar/interaction';
+
+FullCalendarModule.registerPlugins([ 
+  dayGridPlugin,
+  interactionPlugin
+]);
 @NgModule({
-  declarations: [VerMetasPersonalesComponent, VerFavoritosComponent, CrearFavoritoComponent],
+  declarations: [
+  
+  
+  ],
   imports: [
+    FullCalendarModule,
     CommonModule,
     BrowserModule,
     FormsModule,
@@ -17,6 +33,5 @@ import {MatButtonModule} from '@angular/material/button';
     MatCardModule,
     MatButtonModule
   ],
-  exports:[VerMetasPersonalesComponent]
 })
 export class CuerpoModule { }

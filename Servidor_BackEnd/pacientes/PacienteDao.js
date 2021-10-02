@@ -280,6 +280,8 @@ async function delete_Paciente(id) {
 }
 
 async function autenticacion({ nombreDeUsuario, contrasena }) {
+    console.log(nombreDeUsuario);
+    console.log(contrasena);
     const paciente = await Paciente.findOne({ nombreDeUsuario });
     if (paciente && bcrypt.compareSync(contrasena, paciente.hash)) {
         const token = jwt.sign({ sub: paciente.id }, config.secret, { expiresIn: '7d' });

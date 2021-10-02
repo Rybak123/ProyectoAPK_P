@@ -1,42 +1,44 @@
 <div class="row align-items-md-stretch" style="width: 100% !important; height: 90.3% !important;background-color: rgb(234, 243, 243)">
-    <div class="col-md-6" style=" background:linear-gradient( rgba(196, 245, 18, 0.693),rgba(58, 238, 184, 0.898));width: 50%;">
-      <br>
-  <div>
-        <h3 class="estilo_letra">
+  <div class="col-md-6" style="height: 89.8vh; background:radial-gradient(circle at 50% -20.71%, #ffdcf4 0, #ffd3f3 12.5%, #ffc9f2 25%, #ffbff2 37.5%, #f2b5f2 50%, #e2acf3 62.5%, #d0a4f4 75%, #bc9ff6 87.5%, #a69bf8 100%);width: 50%;">
+    <br>
+<div>
+      <h3 class="estilo_letra">
+      
+        CALENDARIOS DE METAS
+      </h3><br/><br/>
+      <!--<img src="assets/img/agua6.png" class="imagen">-->
+      <div class="contenedor_opciones">
+        <img src="assets/img/fondo1.png" class="imagen" alt=""><br/>
+        <button class="boton_agregar" (click)="marcarDiayActividad()">REGISTRA TU DIA</button> <br>
         
-          CALENDARIOS DE METAS
-        </h3>
-        <!--<img src="assets/img/agua6.png" class="imagen">-->
-        <div class="contenedor_opciones">
-          <button class="boton_agregar" (click)="marcarDiayActividad()">REGISTRA TU DIA</button> <br>
-       </div>
-       <div class="caja">
-        <select  id="selectBar" (change)="cambiarCalendario()" name="select" style="height: 25px; width: 200px; margin-top: 1%;">
-          <option value="">Tender la cama</option>
-          <option value="">Ordenar la habitación</option>
-          <option value="">Bañarse</option>
-          <option value="">Desayuno saludable</option>
-          <option value="">Ejercitarse</option>
-          <option value="">Mimarse</option>
-          <option value="">Almuerzo saludable</option>
-          <option value="">Estudiar</option>
-          <option value="">Hablar con amigos</option>
-          <option value="">Jugar con mi mascota</option>
-          <option value="">pasar tiempo en familia</option>
-          <option value="">Leer</option>
-        </select>
+     </div>
+     <div class="caja">
+      <select  id="selectBar" (change)="cambiarCalendario()" name="select" style="height: 25px; width: 227px;margin-top: 1%;">
+        <option value="">Tender la cama</option>
+        <option value="">Ordenar la habitación</option>
+        <option value="">Bañarse</option>
+        <option value="">Desayuno saludable</option>
+        <option value="">Ejercitarse</option>
+        <option value="">Mimarse</option>
+        <option value="">Almuerzo saludable</option>
+        <option value="">Estudiar</option>
+        <option value="">Hablar con amigos</option>
+        <option value="">Jugar con mi mascota</option>
+        <option value="">pasar tiempo en familia</option>
+        <option value="">Leer</option>
+      </select>
+    </div>
+  
+</div>
+  </div>
+      <div class="col-md-6" style="background-color: rgb(234, 243, 243);width: 50%;height: 89.8vh;">
+        <div>
+          <p id="textoConfirmatorio" style="font-size:x-large;width: 100%; text-align: center;margin-top: 2%;"></p>
+        </div> 
+         <div class="calendario" style="background-color: rgb(234, 243, 243) ; width: 100% !important;margin-top: 5%; width: 50%;">
+          <full-calendar [options]="calendarOptions"></full-calendar>
+         </div>  
       </div>
     
-  </div>
     </div>
-        <div class="col-md-6" style="background-color: rgb(234, 243, 243);width: 50%;">
-          <div>
-            <p id="textoConfirmatorio" style="font-size:x-large;width: 100%; text-align: center;margin-top: 2%;"></p>
-          </div> 
-           <div class="calendario" style="background-color: rgb(234, 243, 243) ; width: 100% !important;margin-top: 5%; width: 50%;">
-            <full-calendar [options]="calendarOptions"></full-calendar>
-           </div>  
-        </div>
-      
-      </div>
-    <router-outlet></router-outlet>
+  <router-outlet></router-outlet>

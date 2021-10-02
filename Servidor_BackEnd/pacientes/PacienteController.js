@@ -23,12 +23,15 @@ router.post('/create_libro', crearLibro);
 router.post('/read_libro', ReadLibro);
 router.post('/update_libro', actualizarLibro);
 router.post('/delete_libro',deleteLibro)
-//libros
+router.post('/mandar_imagen_libro',mandarImagenLibro);
+//cancion
 router.post('/listarCanciones', listarCancionesPacientes);
 router.post('/create_cancion', createCancion);
 router.post('/read_cancion', ReadCancion);
 router.post('/update_cancion', updateCancion);
-router.post('/delete_cancion',deleteCancion)
+router.post('/delete_cancion',deleteCancion);
+router.post('/mandar_imagen_cancion',mandarImagenCanciones);
+
 //Metas
 router.post('/listarMetas', listarMetasPacientes);
 router.post('/create_meta', createMetas);
@@ -44,6 +47,7 @@ router.post('/create_favorito', createFavoritos);
 router.post('/read_favorito', ReadFavoritos);
 router.post('/update_favorito', updateFavoritos);
 router.post('/delete_favorito',deleteFavoritos)
+router.post('/mandar_imagen_favorito',mandarImagenFavoritos);
 
 module.exports = router;
 
@@ -102,7 +106,6 @@ function listarLibrosPacientes(req, res, next) {
 }
 
 function crearLibro(req,res, next){
-    console.log(req);
     PacienteLibrosDao.create_LibroPaciente(req.body)
         .then(user => user ? res.json(user) : res.sendStatus(500))
         .catch(err => next(err));
@@ -124,6 +127,10 @@ function deleteLibro(req, res, next) {
     PacienteLibrosDao.delete_LibroPaciente(req.body)
         .then(user => user ? res.json(user) : res.sendStatus(500))
         .catch(err => next(err));
+}
+//mandarImagen
+async function mandarImagenLibro(req, res, next) {
+    PacienteLibrosDao.mandarImagen(req, res, next);
 }
 ////////////// Canciones //////////////
 function listarCancionesPacientes(req, res, next) {
@@ -154,6 +161,10 @@ function deleteCancion(req, res, next) {
     PacienteCancionesDao.delete_CancionPaciente(req.body)
         .then(user => user ? res.json(user) : res.sendStatus(500))
         .catch(err => next(err));
+}
+//mandarImagen
+async function mandarImagenCanciones(req, res, next) {
+    PacienteCancionesDao.mandarImagen(req, res, next);
 }
 ////////////// Metas //////////////
 function listarMetasPacientes(req, res, next) {
@@ -226,4 +237,8 @@ function deleteFavoritos(req, res, next) {
     PacienteMisFavoritosDao.deleteMisFavoritosPaciente(req.body)
         .then(user => user ? res.json(user) : res.sendStatus(500))
         .catch(err => next(err));
+}
+//mandarImagen
+async function mandarImagenFavoritos(req, res, next) {
+    PacienteMisFavoritosDao.mandarImagen(req, res, next);
 }

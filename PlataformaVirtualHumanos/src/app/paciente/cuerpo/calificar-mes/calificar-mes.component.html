@@ -1,0 +1,41 @@
+<div class="row align-items-md-stretch" style="width: 100% !important; height: 90.3% !important;background-color: rgb(234, 243, 243)">
+    <div class="col-md-6" style="height: 89.8vh; background:linear-gradient( rgba(164, 237, 240, 0.693),rgba(236, 241, 240, 0.898));width: 50%;">
+      <br>
+  <div>
+        
+       <!--<img src="assets/img/agua6.png" class="imagen">-->
+        <div class="contenedor_opciones" id="caja1">
+          <h3>
+        
+            MI CALENDARIO
+          </h3>
+          <h2 class="estilo_letra">Metas personales:</h2>
+          <button class="boton_agregar">Ver metas</button> <br>
+          <h2 class="estilo_letra">Metas socielas:</h2>
+          <button class="boton_agregar">Ver metas</button> <br>
+          <h2 class="estilo_letra">Calificacion:</h2>
+          <div class="rating">
+            <input type="radio" name="star" id="star1"><label for="star1"></label>
+            <input type="radio" name="star" id="star2"><label for="star2"></label>
+            <input type="radio" name="star" id="star3"><label for="star3"></label>
+            <input type="radio" name="star" id="star4"><label for="star4"></label>
+            <input type="radio" name="star" id="star5"><label for="star5"></label>
+          </div>
+         
+       
+       </div>
+    
+  </div>
+  
+ 
+    </div>
+        <div class="col-md-6" style="background-color: rgb(234, 243, 243);width: 50%;height: 89.8vh;">
+          <div>
+            <p id="textoConfirmatorio" style="font-size:x-large;width: 100%; text-align: center;margin-top: 2%;"></p>
+          </div> 
+           <div class="calendario" style="background-color: rgb(234, 243, 243) ; width: 100% !important;margin-top: 5%; width: 50%;">
+            <full-calendar [options]="calendarOptions"></full-calendar>
+           </div>  
+        </div>
+      
+      </div>

@@ -84,5 +84,8 @@ export class MisCancionesDAO
             "id_cancion":id_Cancion}
         return await this.coneccionServidor.coneccionServidor(parametros,"/pacientes/delete_cancion");
     }
+    async create_cancionMandarImagen(id:any,formularioImagen:any){
+        return await this.coneccionServidor.coneccionServidor(formularioImagen,`/pacientes/mandar_imagen_cancion?id=${id}&carnetDeIdentidad=${this.carnetDeIdentidadPaciente}`);
+    }
 
 }

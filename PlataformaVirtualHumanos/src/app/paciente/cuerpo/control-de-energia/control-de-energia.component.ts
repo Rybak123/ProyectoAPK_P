@@ -40,7 +40,7 @@ export class ControlDeEnergiaComponent implements OnInit {
   obtenerRegistrosParaCalendario(){
     var controlJson=this.actualizarOperacionesPaciente.obtenerControlDeEnergia();
     controlJson.then((control:any) => {
-      this.calendarOptions.events=this.actualizarOperacionesPaciente.convertirAEventosCalendario(control);
+      this.calendarOptions.events=this.actualizarOperacionesPaciente.convertirAEventosCalendario_ControlDEnergia(control);
     }).catch((err:any) => {
       alert(err);
     });
@@ -85,8 +85,26 @@ export class ControlDeEnergiaComponent implements OnInit {
   renderEventContent(eventInfo:any, createElement:any) {
     var innerHtml;
     if (eventInfo) {
-       innerHtml = eventInfo.event._def.title+"<img style='width:30%; height:30%;margin-left: auto;margin-right: auto;display:block;' src='.../../../../assets/img/iconosCalendario/lighting.png'>";
-       return createElement = { html: '<div>'+innerHtml+'</div>' }
+      switch(eventInfo.event._def.title){
+        case "100%":
+          innerHtml = "<img style='width:60%; height:60%;margin-left: auto;margin-right: auto;display:block;' src='.../../../../assets/img/controlDeEnergia/arcoirirs.png'>"
+        break;
+        case "75%":
+          innerHtml = "<img style='width:60%; height:60%;margin-left: auto;margin-right: auto;display:block;' src='.../../../../assets/img/controlDeEnergia/soleado.png'>"
+        break;
+        case "50%":
+          innerHtml = "<img style='width:60%; height:60%;margin-left: auto;margin-right: auto;display:block;' src='.../../../../assets/img/controlDeEnergia/diaLluvioiso.png'>"
+        break;
+        case "25%":
+          innerHtml = "<img style='width:60%; height:60%;margin-left: auto;margin-right: auto;display:block;' src='.../../../../assets/img/controlDeEnergia/nublado.png'>"
+        break;
+        case "0%":
+          innerHtml = "<img style='width:60%; height:60%;margin-left: auto;margin-right: auto;display:block;' src='.../../../../assets/img/controlDeEnergia/rayo.png'>"
+        break;
+      }
+      console.log(innerHtml);
+      return createElement = { html: '<div>'+innerHtml+'</div>' }
+      
     }
     else{
       return null;

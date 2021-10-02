@@ -78,5 +78,7 @@ export class MisFavoritosDAO
             "tipoDeFavorito":tipoFavorito}
         return await this.coneccionServidor.coneccionServidor(parametros,"/pacientes/delete_favorito");
     }
-
+    async create_favoritoMandarImagen(id:any,formularioImagen:any,tipoFavorito:any){
+        return await this.coneccionServidor.coneccionServidor(formularioImagen,`/pacientes/mandar_imagen_favorito?id=${id}&carnetDeIdentidad=${this.carnetDeIdentidadPaciente}&tipoFavorito=${tipoFavorito}`);
+    }
 }

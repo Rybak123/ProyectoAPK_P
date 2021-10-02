@@ -47,7 +47,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatListModule} from '@angular/material/list';
 import {MatMenuModule} from '@angular/material/menu';
-import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
+import {MatNativeDateModule, MatRippleModule, MAT_DATE_LOCALE} from '@angular/material/core';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
@@ -69,7 +69,16 @@ import { CrearLibroComponent } from './paciente/cuerpo/misLibros/crear-libro/cre
 import { CrearCancionesComponent } from './paciente/cuerpo/misCanciones/crear-canciones/crear-canciones.component';
 import { CrearMetasPersonalesComponent } from './paciente/cuerpo/metasPersonales/crear-metas-personales/crear-metas-personales.component';
 import { CrearMetasSocialesComponent } from './paciente/cuerpo/metasSociales/crear-metas-sociales/crear-metas-sociales.component'; 
-
+import { VerFavoritosComponent } from './paciente/cuerpo/misFavoritos/ver-favoritos/ver-favoritos.component';
+import { VerMetasPersonalesComponent } from './paciente/cuerpo/metasPersonales/ver-metas-personales/ver-metas-personales.component';
+import { AuthImagePipe } from './_helpers/basic.pipe';
+import { CrearFavoritoComponent } from './paciente/cuerpo/misFavoritos/crear-favorito/crear-favorito.component';
+import { VerLibrosComponent } from './paciente/cuerpo/misLibros/ver-libros/ver-libros.component';
+import { VerCancionesComponent } from './paciente/cuerpo/misCanciones/ver-canciones/ver-canciones.component';
+import { CalificarMesComponent } from './paciente/cuerpo/calificar-mes/calificar-mes.component';
+import { NavigationService } from './_services/navigationServices/navigationService';
+import { ResumenDeLaAgendaVirtualComponent } from './paciente/cuerpo/resumen-de-la-agenda-virtual/resumen-de-la-agenda-virtual.component';
+import { ChartsModule } from 'ng2-charts';
 FullCalendarModule.registerPlugins([ 
   dayGridPlugin,
   interactionPlugin
@@ -90,7 +99,16 @@ FullCalendarModule.registerPlugins([
     CrearLibroComponent,
     CrearCancionesComponent,
     CrearMetasPersonalesComponent,
-    CrearMetasSocialesComponent
+    CrearMetasSocialesComponent,
+    VerMetasPersonalesComponent,
+    VerFavoritosComponent,
+    CrearFavoritoComponent,
+    AuthImagePipe,
+    VerLibrosComponent,
+    VerCancionesComponent,
+    CalificarMesComponent,
+    ResumenDeLaAgendaVirtualComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -147,12 +165,15 @@ FullCalendarModule.registerPlugins([
     OverlayModule,
     PortalModule,
     ScrollingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ChartsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    SidenavService,
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
+    SidenavService,NavigationService,
+    
   ],
   bootstrap: [AppComponent]
 })

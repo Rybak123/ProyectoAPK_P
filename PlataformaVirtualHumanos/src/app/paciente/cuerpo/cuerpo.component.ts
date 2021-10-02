@@ -28,6 +28,10 @@ import { CuerpoModule } from './cuerpo.module';
 import { VerMetasPersonalesComponent } from './metasPersonales/ver-metas-personales/ver-metas-personales.component';
 import { CrearFavoritoComponent } from './misFavoritos/crear-favorito/crear-favorito.component';
 import { VerFavoritosComponent } from './misFavoritos/ver-favoritos/ver-favoritos.component';
+import { CalificarMesComponent } from './calificar-mes/calificar-mes.component';
+import { NavigationService } from 'src/app/_services/navigationServices/navigationService';
+import { AppModule } from 'src/app/app.module';
+import { ResumenDeLaAgendaVirtualComponent } from './resumen-de-la-agenda-virtual/resumen-de-la-agenda-virtual.component';
 
 @Component({
   selector: 'app-cuerpo',
@@ -56,8 +60,10 @@ export class CuerpoComponent implements OnInit {
 
   @ViewChild('dynamicComponent', { read: ViewContainerRef }) myRef:any
   
-  constructor(private compiler: Compiler,private sidenavService: SidenavService,private componentFactoryResolver: ComponentFactoryResolver,private router: Router,
-    private authenticationService: AuthenticationService) 
+  constructor(private compiler: Compiler,private sidenavService: SidenavService,
+    private componentFactoryResolver: ComponentFactoryResolver,private router: Router,
+    private authenticationService: AuthenticationService,
+    private navigationServices:NavigationService) 
   {
 
   }
@@ -116,13 +122,20 @@ export class CuerpoComponent implements OnInit {
     
     this.myRef.clear();
     const ref = this.myRef.createComponent(this.factoryCrearLibro);
+  
+    ref.instance.volverAVerLibroEmiter.subscribe(() => {
+      this.renderVerLibro();
+    });
     ref.changeDetectorRef.detectChanges();
   }
   public renderVerLibro(): void {
-    const componentModule = this.compiler.compileModuleAndAllComponentsSync(VerLibrosModule);
+    const componentModule = this.compiler.compileModuleAndAllComponentsSync(AppModule);
     const factory = componentModule.componentFactories.find(c => c.componentType === VerLibrosComponent);    
     this.myRef.clear();
     const ref = this.myRef.createComponent(factory);
+    ref.instance.irACrearLibroEmiter.subscribe(() => {
+      this.renderCrearLibro();
+    });
     ref.changeDetectorRef.detectChanges();
   }
   // MIS CANCIONES 
@@ -134,13 +147,20 @@ export class CuerpoComponent implements OnInit {
     
     this.myRef.clear();
     const ref = this.myRef.createComponent(this.factoryCrearCancion);
+    ref.instance.irAVerCancionesEventEmiter.subscribe(() => {
+      this.renderVerCancion();
+    });
     ref.changeDetectorRef.detectChanges();
+    
   }
   public renderVerCancion(): void {
-    const componentModule = this.compiler.compileModuleAndAllComponentsSync(VerCancionesModule);
+    const componentModule = this.compiler.compileModuleAndAllComponentsSync(AppModule);
     const factory = componentModule.componentFactories.find(c => c.componentType === VerCancionesComponent);    
     this.myRef.clear();
     const ref = this.myRef.createComponent(factory);
+    ref.instance.irACrearCancionesEventEmiter.subscribe(() => {
+      this.renderCrearCancion();
+    });
     ref.changeDetectorRef.detectChanges();
   }
   public render_crearMetasPersonales(): void {
@@ -149,6 +169,9 @@ export class CuerpoComponent implements OnInit {
     }
     this.myRef.clear();
     const ref = this.myRef.createComponent(this.factoryCrearMetasPersonales);
+    ref.instance.irAVerMetasPersonalesEventEmiter.subscribe(() => {
+      this.render_verMetasPersonales();
+    });
     ref.changeDetectorRef.detectChanges();
   }
   public render_crearMetasSociales(): void {
@@ -160,22 +183,39 @@ export class CuerpoComponent implements OnInit {
     ref.changeDetectorRef.detectChanges();
   }
   public render_verMetasPersonales(): void {
-    const componentModule = this.compiler.compileModuleAndAllComponentsSync(CuerpoModule);
+    const componentModule = this.compiler.compileModuleAndAllComponentsSync(AppModule);
     const factory = componentModule.componentFactories.find(c => c.componentType === VerMetasPersonalesComponent);    
     this.myRef.clear();
     const ref = this.myRef.createComponent(factory);
+    ref.instance.irACrearMetasPersonalesEventEmiter.subscribe(() => {
+      this.render_crearMetasPersonales();
+    });
     ref.changeDetectorRef.detectChanges();
   }
   public render_crearFavorito(): void {
-    const componentModule = this.compiler.compileModuleAndAllComponentsSync(CuerpoModule);
+    const componentModule = this.compiler.compileModuleAndAllComponentsSync(AppModule);
     const factory = componentModule.componentFactories.find(c => c.componentType === CrearFavoritoComponent);    
     this.myRef.clear();
     const ref = this.myRef.createComponent(factory);
     ref.changeDetectorRef.detectChanges();
   }
   public render_verFavoritos(): void {
-    const componentModule = this.compiler.compileModuleAndAllComponentsSync(CuerpoModule);
+    const componentModule = this.compiler.compileModuleAndAllComponentsSync(AppModule);
     const factory = componentModule.componentFactories.find(c => c.componentType === VerFavoritosComponent);    
+    this.myRef.clear();
+    const ref = this.myRef.createComponent(factory);
+    ref.changeDetectorRef.detectChanges();
+  }
+  public render_calificarMes(): void {
+    const componentModule = this.compiler.compileModuleAndAllComponentsSync(AppModule);
+    const factory = componentModule.componentFactories.find(c => c.componentType === CalificarMesComponent);    
+    this.myRef.clear();
+    const ref = this.myRef.createComponent(factory);
+    ref.changeDetectorRef.detectChanges();
+  }
+  public render_ResumenAgenda(): void {
+    const componentModule = this.compiler.compileModuleAndAllComponentsSync(AppModule);
+    const factory = componentModule.componentFactories.find(c => c.componentType === ResumenDeLaAgendaVirtualComponent);    
     this.myRef.clear();
     const ref = this.myRef.createComponent(factory);
     ref.changeDetectorRef.detectChanges();
@@ -191,7 +231,7 @@ export class CuerpoComponent implements OnInit {
 
   ngOnInit() {
  
-      this.sidenavService.asObservable().subscribe((isOpen: boolean) => {
+      this.sidenavService.asObservable().subscribe((isOpen: boolean) => { //Este parametro no es necesario
                   if(this.sidenav.opened) {  
                       this.sidenav.close();
                   }
@@ -199,6 +239,10 @@ export class CuerpoComponent implements OnInit {
                       this.sidenav.open();
                   }
           });
+
+
+
+
   }
 
   onOpenedChange() {

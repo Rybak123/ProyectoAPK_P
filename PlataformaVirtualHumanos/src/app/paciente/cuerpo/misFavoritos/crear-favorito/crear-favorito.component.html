@@ -1,16 +1,36 @@
-<div id="contenedorTarjetasCanciones"  style="width: 100vh; height: 100vh;background-color: rgb(0, 255, 42)">
-    <form [formGroup]="formularioCrearFavorito" (ngSubmit)="onSubmit()">
-        <select  id="selectBar" name="select" style="height: 25px; width: 200px; margin-top: 1%;">
-            <option value="cancion">Cancion</option>
-            <option value="pelicula">Pelicula</option>
-            <option value="momento">Momento</option>
-            <option value="lugar">Lugar</option>
-          </select>
-        <br> 
-        Titulo:<input type="text" class="form-control" formControlName="Titulo"><br>
-        Imagen:<input type="image" class="form-control" formControlName="Imagen"><br/>
-        Clasificacion:<input type="number" class="form-control" formControlName="Clasificacion"><br>
-        Descripcion:<input type="text" class="form-control" formControlName="Descripcion"><br>
-        <button class="btn btn-primary" type="submit" >Guardar</button><br/>
-    </form>
+<div class="row align-items-md-stretch" style="width: 100%; height: 90.3%;background:linear-gradient( rgba(255, 0, 200, 0.693),rgba(100, 227, 231, 0.898))">
+    
+    <div class="col-md-6" id="cajaP"style="background-color: rgb(239, 240, 236);width: 90%;">
+    <form [formGroup]="formularioCrearFavorito" (ngSubmit)="onSubmit()" class="formulario">
+<div class="" id="caja1">
+    <h1 class="formulario__titulo">Crear Favoritos</h1>
+    <input type="text" class="form-control" formControlName="Titulo" id="titulo1">
+    <label for="" class="formulario__label">Titulo</label>
+    <input type="number" class="form-control" formControlName="Clasificacion" id="Clasificacion1">
+    <label for="" class="formulario__label">Clasificacion</label>
+    <input type="text" class="form-control" formControlName="Descripcion" id="Descripcion1">
+    <label for="" class="formulario__label">Descripcion</label>
+    <select  id="selectBar" class="form-control" name="select" style="height: 25px; width: 200px; margin-top: 1%;">
+      <option value="cancion">Cancion</option>
+      <option value="pelicula">Pelicula</option>
+      <option value="momento">Momento</option>
+      <option value="lugar">Lugar</option>
+    </select>
+    <label for="" class="formulario__label_tipo">Tipo</label>
+    <button class="enviar" id="Enviar" type="submit" >Guardar</button>
+    <button class="enviar" id="Cancelar" type="submit" >Cancelar</button>
+</div>
+<div class="" id="caja2" style="background:linear-gradient( rgba(255, 3, 242, 0.898),rgba(253, 253, 253, 0.693));"> 
+  
+    <img  onerror='this.style.display = "none"' id="imagenNuevoLibro" src="" style="width: 100%; height:90%;"> <br>
+    <button class="enviar" id="Imagen" type="submit" (click)="fileInput.click()" >
+        <span>Escoge una imagen</span>
+        <input style="display: none;" type="file" class="form-control" #fileInput id="Imagen1" formControlName="Imagenn" (change) ="capturarFile($event)">
+    </button><br/>
+  
+</div>
+       
+       
+</form>
+</div>
 </div>

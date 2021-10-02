@@ -5,30 +5,44 @@
     <form [formGroup]="formularioCrearLibro" (ngSubmit)="onSubmit()" class="formulario">
 <div class="" id="caja1">
     <h1 class="formulario__titulo">Informacion del libro</h1>
+    <label for="" class="mensaje" id="mensaje">{{estadoCampo}}</label>
     <input type="text" class="form-control" formControlName="Tituloo" id="titulo1">
     <label for="" class="formulario__label">Titulo</label>
+    <label for="" class="mensaje" id="mensaje2">{{estadoCampo2}}</label>
     <input type="text" class="form-control" formControlName="Autorr" id="Autor1">
     <label for="" class="formulario__label">Autor</label>
+    <label for="" class="mensaje" id="mensaje3">{{estadoCampo3}}</label>
     <input type="text" class="form-control" formControlName="Editoriall" id="Editorial1">
     <label for="" class="formulario__label">Editorial</label>
+    <label for="" class="mensaje" id="mensaje4">{{estadoCampo4}}</label>
     <input type="number" class="form-control" formControlName="ControlDePAginass" id="ControlDePaginas1" >
     <label for="" class="formulario__label">Cantidad de paginas</label>
-    <input type="date" class="form-control" formControlName="Fechaa" id="Fechas1">
-    <!--<label for="" class="formulario__label">Fecha</label>-->
-    <input type="text" class="form-control" formControlName="Generoo" id="Genero1">
+    <label for="" class="mensaje" id="mensaje9">{{estadoCampo9}}</label>
+    <input min="2021-9-28" (change)="verCalendario()" [max]="maxDate" type="date" class="form-control" formControlName="Fechaa" id="Fechas1">
+    <label for="" class="mensaje" id="mensaje6">{{estadoCampo6}}</label>
+    <select name="select" class="form-control" formControlName="Generoo" id="Genero1" (change)="ver()">
+      <option value="value1" selected>ROMANTICO</option>
+      <option value="value2">FANTASIA</option>
+      <option value="value3">TERROR</option>
+      <option value="value3">SUSPENSO</option>
+      <option value="value3">CRISTIANA</option>
+      <option value="value3">DRAMA</option>
+    </select>
     <label for="" class="formulario__label">Genero</label>
-    <input type="text" class="form-control" formControlName=" ripcionn" id="Descripcion1">
+    <label for="" class="mensaje" id="mensaje7">{{estadoCampo7}}</label>
+    <input type="text" class="form-control" formControlName="Descripcionn" id="Descripcion1">
     <label for="" class="formulario__label">Descripcion</label>
 </div>
 <div class="" id="caja2" style="background:linear-gradient( rgba(26, 104, 248, 0.898),rgba(159, 240, 240, 0.693));">
-  <img id="imagenNuevoLibro" src="" style="width: 100%; height:90%;"> 
-  <label for="" class=""><b>Imagen portada</b></label><br>  
-  <input type="file" class="form-control" formControlName="Imagenn" id="Imagen1" (change) ="capturarFile($event)">
+  <label for="" class="mensaje" id="mensaje8">{{estadoCampo8}}</label>
+  <img onerror='this.style.display = "none"' id="imagenNuevoLibro" src="" style="width: 100%; height:90%;"> 
     <!--<div [src] = "archivos[0]" alt = ""></div>-->
-
-    <button class="enviar" id="Imagen" type="submit" >Escoge una imagen</button><br/>
+    <button type="button" class="enviar" id="Imagen" (click)="fileInput.click()" >
+      <span>Escoge una imagen</span>
+      <input   accept="image/png, image/gif, image/jpeg" type="file" style="display:none;" #fileInput class="form-control" formControlName="Imagenn" id="Imagen1" (change) ="capturarFile($event)">
+    </button><br/>
     <button class="enviar" id="Enviar" type="submit" >Guardar</button><br/>
-    <button class="enviar" id="Cancelar" type="submit" >Cancelar</button>
+    <button class="enviar" id="Cancelar"  (click)="volver()">Cancelar</button>
 </div>
        
        

@@ -46,11 +46,22 @@ export class CrearMetasSocialesComponent implements OnInit {
 
       var selectBox:any=document.getElementById("selectBar");
       let selectedOption = selectBox.options[selectBox.selectedIndex];
-      var actividadSeleccionada=selectedOption.text;
+      var actividadSeleccionada=selectedOption.text;//.value
       var metasPersonalesDao=new MisMetasPersonalesDAO(this.http);
       metasPersonalesDao.create_MetaPersonal(actividadSeleccionada,fechaActualMarcar)
       .then((respuesta:any) => {
         console.log(respuesta);
+        alert("Se ha marcado su actividad");
+
+        var metasPersonalesDao=new MisMetasPersonalesDAO(this.http);
+        metasPersonalesDao.listarMetasPersonales()
+        .then((respuesta:any) => {
+          respuesta;
+          this.seleccionarDatosYAñadirACalendario(respuesta);
+        }).catch((err:any) => {
+          alert(err);
+        });
+
       }).catch((err:any) => {
         alert(err);
       });
@@ -75,9 +86,12 @@ export class CrearMetasSocialesComponent implements OnInit {
     metasPersonalesDao.listarMetasPersonales()
     .then((respuesta:any) => {
       respuesta;
+      this.seleccionarDatosYAñadirACalendario(respuesta);
     }).catch((err:any) => {
       alert(err);
     });
+
+    
   }
   seleccionarDatosYAñadirACalendario(listaDeMetas:any){
     var calendarEvents: EventInput[] = [];

@@ -69,14 +69,16 @@ margin: 0.5em;
   font-family: Arial, Helvetica, Sans-serif;
   color: rgb(10, 10, 10);
   text-align: center;
+  font-weight: bold;
   //background-color: blue;
 }
 .imagen{
-  width:30vh;
-  height: 37vh;
+  width: 45vh;
+  height: 35vh;
   display: block;
   margin-left: auto;
   margin-right: auto;
+  
 }
 body {
   background:linear-gradient( rgba(0, 162, 255, 0.5),white)
@@ -91,41 +93,42 @@ body {
   //-color:orange;
   width: 50%;
 }
-.boton_agregar{
-  margin-top: 1%;
-  margin-bottom: 2%;
-  height: 7vh;
-  width: 30vh;
-  border-radius: 4px;
-  text-transform: uppercase;
-  background-color: transparent;
-  color: rgb(12, 12, 12);
-  font-size: 18px;
-  overflow: hidden;
-  transition: all 500ms ease;
-  border:2px solid #0210d1;
-  margin-left: 10px;
-  z-index: 0;
-  font-weight: 700;
- &::before{
+//.boton_agregar{
+  //margin-top: 1%;
+  //margin-bottom: 2%;
+  //height: 7vh;
+  //width: 30vh;
+  //border-radius: 4px;
+  //text-transform: uppercase;
+  //background-color: transparent;
+  //color: rgb(12, 12, 12);
+  //font-size: 18px;
+  //overflow: hidden;
+  //transition: all 500ms ease;
+  //border:2px solid #0210d1;
+  //margin-right: auto;
+  //margin-left: 10px;
+  //z-index: 0;
+  //font-weight: 700;
+ //&::before{
 
-   content: '';
-   position: absolute;
-   left: 0;
-   right: 0;
-   top: 0;
-   margin: auto;
-   background-color: #20e2d7;
-   transition: all 500ms ease;
-   z-index:-1;
- }
-}
-.boton_agregar:hover{
-  background-color: #20e2d7; 
-  box-shadow: 0 0 10px #20e2d7,0 0 20px #20e2d7,0 0 20px #20e2d7;
-  border: 2px solid #ffffff;
-  color:#ffffff ;
-}
+   //content: '';
+   //position: absolute;
+   //left: 0;
+  // right: 0;
+  // top: 0;
+  // margin: auto;
+  // background-color: #20e2d7;
+  // transition: all 500ms ease;
+  // z-index:-1;
+ //}
+//}
+//.boton_agregar:hover{
+  //background-color: #20e2d7; 
+ // box-shadow: 0 0 10px #20e2d7,0 0 20px #20e2d7,0 0 20px #20e2d7;
+ // border: 2px solid #ffffff;
+ // color:#ffffff ;
+//}
 
 full-calendar{
   width: 85%;
@@ -143,3 +146,32 @@ full-calendar{
     position:relative;
     background-color: rgb(244, 245, 236);
   }
+.boton_agregar{
+  text-decoration: none;
+  display: block;
+
+  border: 1px solid #28b19d;
+  width: 250px;
+  height: 40px;
+  text-align: center;
+  margin: auto;
+
+  background-color: #28b19d;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  box-shadow: -3px 3px 10px #000;
+  text-shadow: -3px 3px 10px #000;
+  cursor: pointer;
+
+  transition: 1s;
+  -webkit-transition: 1s;
+  -o-transition: 2s;
+  -moz-transition: 2s;
+  -ms-transtion: 2s;
+}
+.boton_agregar:hover{
+  background-color: #773480;
+  width: 50%;
+  //color: #28b19d;
+ // transform: rotate(360deg);
+}

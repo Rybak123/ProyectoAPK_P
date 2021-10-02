@@ -17,6 +17,13 @@ export class VerFavoritosComponent implements OnInit {
   listaDeFavoritos:any;
   tipoDeFavoritoActual:any;
 
+  direccionLibroActualVisualizar:any;
+  direccionLibroActual1:any;
+  direccionLibroActual2:any;
+  direccionLibroActual3:any;
+  direccionLibroActual4:any;
+  direccionLibroActual5:any;
+  direccionLibroActual6:any;
   botonesPaginacion:any;
   paginaActual:any;
   //Tarjeta1
@@ -95,6 +102,7 @@ export class VerFavoritosComponent implements OnInit {
     var misFavoritosDAO=new MisFavoritosDAO(this.http);
     misFavoritosDAO.listarFavoritos(tipoFavorito)
     .then((respuesta:any) => {
+      console.log(respuesta)
       var numeroConDecimal=respuesta.length/6;
       var numeroSinDecimal=Math.trunc(numeroConDecimal);
       if(numeroConDecimal>numeroSinDecimal){
@@ -134,6 +142,7 @@ export class VerFavoritosComponent implements OnInit {
           if(respuesta[indiceTargeta1].clasificacion==5){
             imagenTargeta1.src="assets/img/5estrellas.png"
           }
+          this.direccionLibroActual1=respuesta[indiceTargeta1].imagen;
         }
       }
       else{
@@ -162,6 +171,7 @@ export class VerFavoritosComponent implements OnInit {
           if(respuesta[indiceTargeta2].clasificacion==5){
             imagenTargeta2.src="assets/img/5estrellas.png"
           }
+          this.direccionLibroActual2=respuesta[indiceTargeta2].imagen;
         }
       }else{
         this.tarjeta2HTML.style.visibility="hidden";
@@ -189,6 +199,7 @@ export class VerFavoritosComponent implements OnInit {
           if(respuesta[indiceTargeta3].clasificacion==5){
             imagenTargeta3.src="assets/img/5estrellas.png"
           }
+          this.direccionLibroActual3=respuesta[indiceTargeta3].imagen;
         }
       }else{
         this.tarjeta3HTML.style.visibility="hidden";
@@ -216,6 +227,7 @@ export class VerFavoritosComponent implements OnInit {
           if(respuesta[indiceTargeta4].clasificacion==5){
             imagenTargeta4.src="assets/img/5estrellas.png"
           }
+          this.direccionLibroActual4=respuesta[indiceTargeta4].imagen;
         }
       }else{
         this.tarjeta4HTML.style.visibility="hidden";
@@ -243,6 +255,7 @@ export class VerFavoritosComponent implements OnInit {
           if(respuesta[indiceTargeta5].clasificacion==5){
             imagenTargeta5.src="assets/img/5estrellas.png"
           }
+          this.direccionLibroActual5=respuesta[indiceTargeta5].imagen;
         }
       }else{
         this.tarjeta5HTML.style.visibility="hidden";
@@ -270,6 +283,7 @@ export class VerFavoritosComponent implements OnInit {
           if(respuesta[indiceTargeta6].clasificacion==5){
             imagenTargeta6.src="assets/img/5estrellas.png"
           }
+          this.direccionLibroActual6=respuesta[indiceTargeta6].imagen;
         }
       }else{
         this.tarjeta6HTML.style.visibility="hidden";
@@ -330,6 +344,7 @@ export class VerFavoritosComponent implements OnInit {
     if(this.FavoritoActual.clasificacion==5){
       imagenTargetaMuestra.src="assets/img/5estrellas.png"
     }
+    this.direccionLibroActualVisualizar=this.FavoritoActual.imagen;
     //this.formularioCrearFavorito.controls['Clasificacion'].setValue(this.FavoritoActual.clasificacion);
     this.formularioCrearFavorito.controls['Descripcion'].setValue(this.FavoritoActual.descripcion);
   }
@@ -344,6 +359,7 @@ export class VerFavoritosComponent implements OnInit {
     misFavoritosDAO.update_Favorito(id,titulo,imagen,clasificacion,descripcion,this.tipoDeFavoritoActual)
     .then((respuesta:any) => {
       console.log(respuesta);
+      
     }).catch((err:any) => {
       alert(err);
     });
