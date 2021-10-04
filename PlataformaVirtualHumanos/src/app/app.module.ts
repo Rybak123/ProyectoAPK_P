@@ -1,3 +1,5 @@
+import { CuerpoAdministradorComponent } from './_viewmodels/administrador-app/cuerpo-administrador/cuerpo-administrador.component';
+import { BarraDeNavegacionAdministradorComponent } from './_viewmodels/administrador-app/barra-de-navegacion-administrador/barra-de-navegacion-administrador.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -79,6 +81,7 @@ import { ControlDeAnimoComponent } from './_viewmodels/paciente-app/cuerpo/contr
 import { ControlDeConsumoDeAguaComponent } from './_viewmodels/paciente-app/cuerpo/control-de-consumo-de-agua/control-de-consumo-de-agua.component';
 import { ControlDeEnergiaComponent } from './_viewmodels/paciente-app/cuerpo/control-de-energia/control-de-energia.component';
 import { NavigationService } from './_services/paciente_services/navigation_services/navigationService';
+
 FullCalendarModule.registerPlugins([ 
   dayGridPlugin,
   interactionPlugin
@@ -108,7 +111,10 @@ FullCalendarModule.registerPlugins([
     VerCancionesComponent,
     CalificarMesComponent,
     ResumenDeLaAgendaVirtualComponent,
-    AdministradorAppComponent
+    AdministradorAppComponent,
+    BarraDeNavegacionAdministradorComponent,
+    CuerpoAdministradorComponent
+    
     
   ],
   imports: [
