@@ -1,16 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PacienteComponent } from './paciente/paciente.component';
-import { BarraDeNavegacionComponent } from './paciente/barra-de-navegacion/barra-de-navegacion.component';
-import { CuerpoComponent } from './paciente/cuerpo/cuerpo.component';
-import { ControlDeEstudioComponent } from './paciente/cuerpo/control-de-estudio/control-de-estudio.component';
-import { ControlDeSuenoComponent } from './paciente/cuerpo/control-de-sueno/control-de-sueno.component';
-import { ControlDeAnimoComponent } from './paciente/cuerpo/control-de-animo/control-de-animo.component';
-import { ControlDeConsumoDeAguaComponent } from './paciente/cuerpo/control-de-consumo-de-agua/control-de-consumo-de-agua.component';
-import { ControlDeEnergiaComponent } from './paciente/cuerpo/control-de-energia/control-de-energia.component';
 import { FullCalendarModule } from '@fullcalendar/angular'; 
 import dayGridPlugin from '@fullcalendar/daygrid'; 
 import interactionPlugin from '@fullcalendar/interaction';
@@ -65,20 +56,29 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CrearLibroComponent } from './paciente/cuerpo/misLibros/crear-libro/crear-libro.component';
-import { CrearCancionesComponent } from './paciente/cuerpo/misCanciones/crear-canciones/crear-canciones.component';
-import { CrearMetasPersonalesComponent } from './paciente/cuerpo/metasPersonales/crear-metas-personales/crear-metas-personales.component';
-import { CrearMetasSocialesComponent } from './paciente/cuerpo/metasSociales/crear-metas-sociales/crear-metas-sociales.component'; 
-import { VerFavoritosComponent } from './paciente/cuerpo/misFavoritos/ver-favoritos/ver-favoritos.component';
-import { VerMetasPersonalesComponent } from './paciente/cuerpo/metasPersonales/ver-metas-personales/ver-metas-personales.component';
+import { CrearLibroComponent } from './_viewmodels/paciente-app/cuerpo/misLibros/crear-libro/crear-libro.component';
+import { CrearCancionesComponent } from './_viewmodels/paciente-app/cuerpo/misCanciones/crear-canciones/crear-canciones.component';
+import { CrearMetasPersonalesComponent } from './_viewmodels/paciente-app/cuerpo/metasPersonales/crear-metas-personales/crear-metas-personales.component';
+import { CrearMetasSocialesComponent } from './_viewmodels/paciente-app/cuerpo/metasSociales/crear-metas-sociales/crear-metas-sociales.component';
+import { VerFavoritosComponent } from './_viewmodels/paciente-app/cuerpo/misFavoritos/ver-favoritos/ver-favoritos.component';
+import { VerMetasPersonalesComponent } from './_viewmodels/paciente-app/cuerpo/metasPersonales/ver-metas-personales/ver-metas-personales.component';
 import { AuthImagePipe } from './_helpers/basic.pipe';
-import { CrearFavoritoComponent } from './paciente/cuerpo/misFavoritos/crear-favorito/crear-favorito.component';
-import { VerLibrosComponent } from './paciente/cuerpo/misLibros/ver-libros/ver-libros.component';
-import { VerCancionesComponent } from './paciente/cuerpo/misCanciones/ver-canciones/ver-canciones.component';
-import { CalificarMesComponent } from './paciente/cuerpo/calificar-mes/calificar-mes.component';
-import { NavigationService } from './_services/navigationServices/navigationService';
-import { ResumenDeLaAgendaVirtualComponent } from './paciente/cuerpo/resumen-de-la-agenda-virtual/resumen-de-la-agenda-virtual.component';
+import { CrearFavoritoComponent } from './_viewmodels/paciente-app/cuerpo/misFavoritos/crear-favorito/crear-favorito.component';
+import { VerLibrosComponent } from './_viewmodels/paciente-app/cuerpo/misLibros/ver-libros/ver-libros.component';
+import { VerCancionesComponent } from './_viewmodels/paciente-app/cuerpo/misCanciones/ver-canciones/ver-canciones.component';
+import { CalificarMesComponent } from './_viewmodels/paciente-app/cuerpo/calificar-mes/calificar-mes.component';
+import { ResumenDeLaAgendaVirtualComponent } from './_viewmodels/paciente-app/cuerpo/resumen-de-la-agenda-virtual/resumen-de-la-agenda-virtual.component';
 import { ChartsModule } from 'ng2-charts';
+import { AdministradorAppComponent } from './_viewmodels/administrador-app/administrador-app.component';
+import { BarraDeNavegacionComponent } from './_viewmodels/paciente-app/barra-de-navegacion/barra-de-navegacion.component';
+import { CuerpoComponent } from './_viewmodels/paciente-app/cuerpo/cuerpo.component';
+import { PacienteComponent } from './_viewmodels/paciente-app/paciente.component';
+import { ControlDeEstudioComponent } from './_viewmodels/paciente-app/cuerpo/control-de-estudio/control-de-estudio.component';
+import { ControlDeSuenoComponent } from './_viewmodels/paciente-app/cuerpo/control-de-sueno/control-de-sueno.component';
+import { ControlDeAnimoComponent } from './_viewmodels/paciente-app/cuerpo/control-de-animo/control-de-animo.component';
+import { ControlDeConsumoDeAguaComponent } from './_viewmodels/paciente-app/cuerpo/control-de-consumo-de-agua/control-de-consumo-de-agua.component';
+import { ControlDeEnergiaComponent } from './_viewmodels/paciente-app/cuerpo/control-de-energia/control-de-energia.component';
+import { NavigationService } from './_services/paciente_services/navigation_services/navigationService';
 FullCalendarModule.registerPlugins([ 
   dayGridPlugin,
   interactionPlugin
@@ -107,7 +107,8 @@ FullCalendarModule.registerPlugins([
     VerLibrosComponent,
     VerCancionesComponent,
     CalificarMesComponent,
-    ResumenDeLaAgendaVirtualComponent
+    ResumenDeLaAgendaVirtualComponent,
+    AdministradorAppComponent
     
   ],
   imports: [

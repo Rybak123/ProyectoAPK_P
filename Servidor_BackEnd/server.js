@@ -16,12 +16,12 @@ app.use(cors());
 app.use(jwt());
 app.use('/datosPacientes', express.static('datos/datos_pacientes'));//ruta para las imagenes
 // api routes
-app.use('/pacientes', require('./pacientes/PacienteController'));
+app.use('/paciente', require('./usuarios/paciente/controller/PacienteController'));
 //ruta a para los psicologos
-app.use('/psicologo', require('./psicologo/Controller/PsicologoController'));
+app.use('/psicologo', require('./usuarios/psicologo/Controller/PsicologoController'));
 //requare es para alamacenar archivos dentro de la misma   // global error handler
 //ruta para administrador
-app.use('/administrador', require('./administrador/Controller/AdministradorController'));
+app.use('/administrador', require('./usuarios/administrador/Controller/AdministradorController'));
 //app.use('/administrador', require('./administrador/Controller/AdministradorController'));
 app.use(errorHandler);
 

@@ -1,6 +1,6 @@
 const expressJwt = require('express-jwt');
 const config = require('config.json');
-const PacienteDao = require('../pacientes/PacienteDao');
+const PacienteDao = require('../usuarios/paciente/services/PacienteDao');
 
 module.exports = jwt;
 
@@ -11,18 +11,26 @@ function jwt() {
     return expressJwt({ secret, algorithms: ['HS256'], isRevoked }).unless({
         path: [
             //Rutas publicas con las que se puede acceder al servidor
-            '/pacientes/registrarPaciente',
-            '/pacientes/autenticacion',
+
+            //psicologo
             '/psicologo/registrarPsicologo',
             '/psicologo/leerPsicologo',
             '/psicologo/listarPsicologo',
             '/psicologo/modificarPsicologo',
             '/psicologo/deshabilitarPsicologo',
+            //administrador
             '/administrador/registrarAdministrador',
             '/administrador/leerAdministrador',
             '/administrador/listarAdministrador',
             '/administrador/modificarAdministrador',
-            '/administrador/desabilitarAdministrador'
+            '/administrador/desabilitarAdministrador',
+            //paciente
+            '/paciente/obtenerPaciente',
+            '/paciente/actualizarPaciente',
+            '/paciente/deshabilitarPaciente',
+            '/pacientes/registrarPaciente',
+            '/pacientes/autenticacion',
+            '/paciente/habiltiar_Paciente'
         ]
     });
 }

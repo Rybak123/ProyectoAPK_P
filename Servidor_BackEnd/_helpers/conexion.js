@@ -8,8 +8,7 @@ mongoose.connect(process.env.MONGODB_URI || config.connectionString, connectionO
 mongoose.Promise = global.Promise;
 
 module.exports = {
-    Paciente: require('../pacientes/PacienteSchemaDB'),
-    ControlDeEstudio: require('../users/user.model'),
-    Psicologo: require('../psicologo/Model/PsicologoModel'),
-    Administrador: require('../administrador/Model/AdministradorModel')
+    Paciente: require('../usuarios/paciente/model/Paciente_model'),
+    Psicologo: require('../usuarios/psicologo/Model/PsicologoModel'),
+    Administrador: require('../usuarios/administrador/Model/AdministradorModel')
 };
