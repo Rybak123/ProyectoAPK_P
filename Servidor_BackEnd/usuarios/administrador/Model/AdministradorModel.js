@@ -14,7 +14,7 @@ const schema = new Schema({
     token: { type: String, required: false },
     estado:{ type: Boolean, required: true },
     fechaDeRegistro: { type: Date, required: true },
-    fechaDeDesabilitacion: { type: Date, required: true }
+    fechaDeDesabilitacion: { type: Date, required: false }
 });
 
 schema.set('toJSON', {

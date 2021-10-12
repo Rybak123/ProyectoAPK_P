@@ -1,9 +1,9 @@
 ﻿import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import{ GlobalConstants } from '../global-constants';
 
 import { PacienteVO } from '../_models';
 
-import{ GlobalConstants } from '../../app/global-constants';
 @Injectable({ providedIn: 'root' })
 export class UserService {
     constructor(private http: HttpClient) { }

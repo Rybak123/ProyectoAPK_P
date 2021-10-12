@@ -1,6 +1,6 @@
 //import { VerCancionesComponent } from './../paciente/cuerpo/misCanciones/ver-canciones/ver-canciones.component';
 //import { CrearCancionesComponent } from './misCanciones/crear-canciones/crear-canciones.component';
-import { Component, ElementRef, OnInit,ViewChild, ComponentFactoryResolver, Compiler } from '@angular/core';
+import { Component, ElementRef, OnInit,ViewChild, ComponentFactoryResolver, Compiler, AfterViewInit } from '@angular/core';
 import { CalendarOptions } from '@fullcalendar/angular';
 import { ViewEncapsulation,Directive, ViewContainerRef  } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
@@ -24,7 +24,7 @@ import { VerCancionesModule } from './misCanciones/ver-canciones/ver-canciones.m
 import { VerLibrosModule } from './misLibros/ver-libros/ver-libros.module';
 import { CrearMetasPersonalesComponent } from './metasPersonales/crear-metas-personales/crear-metas-personales.component';
 import { CrearMetasSocialesComponent } from './metasSociales/crear-metas-sociales/crear-metas-sociales.component';
-import { CuerpoModule } from './cuerpo.module';
+
 import { VerMetasPersonalesComponent } from './metasPersonales/ver-metas-personales/ver-metas-personales.component';
 import { CrearFavoritoComponent } from './misFavoritos/crear-favorito/crear-favorito.component';
 import { VerFavoritosComponent } from './misFavoritos/ver-favoritos/ver-favoritos.component';
@@ -33,13 +33,14 @@ import { CalificarMesComponent } from './calificar-mes/calificar-mes.component';
 import { AppModule } from 'src/app/app.module';
 import { ResumenDeLaAgendaVirtualComponent } from './resumen-de-la-agenda-virtual/resumen-de-la-agenda-virtual.component';
 import { NavigationService } from '../../../_services/paciente_services/navigation_services/navigationService';
+import { PerfilPacienteComponent } from './perfil-paciente/perfil-paciente.component';
 
 @Component({
   selector: 'app-cuerpo',
   templateUrl: './cuerpo.component.html',
   styleUrls: ['./cuerpo.component.scss'],
 })
-export class CuerpoComponent implements OnInit {
+export class CuerpoComponent implements OnInit,AfterViewInit {
 
 
   factoryControlDeEstudio:any;
@@ -222,7 +223,21 @@ export class CuerpoComponent implements OnInit {
     ref.changeDetectorRef.detectChanges();
   }
 
+  public renderVerPerfilPaciente(): void {
+    const componentModule = this.compiler.compileModuleAndAllComponentsSync(AppModule);
+    const factory = componentModule.componentFactories.find(c => c.componentType === PerfilPacienteComponent);    
+    this.myRef.clear();
+    const ref = this.myRef.createComponent(factory);
+    ref.changeDetectorRef.detectChanges();
+  }
+
   ngAfterViewInit() {
+
+    this.navigationServices.asObservableIrVerPerfil().subscribe(() => { 
+      console.log("asdasd");
+      this.renderVerPerfilPaciente();
+    });
+
     this.sidenav.close();
     const factory = this.componentFactoryResolver.resolveComponentFactory(ControlDeConsumoDeAguaComponent);
     this.myRef.clear();
@@ -239,6 +254,7 @@ export class CuerpoComponent implements OnInit {
                       this.sidenav.open();
                   }
           });
+    
   }
 
   onOpenedChange() {

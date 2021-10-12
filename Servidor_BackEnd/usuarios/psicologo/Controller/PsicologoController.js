@@ -4,9 +4,13 @@ const psicologoServices= require('../Services/PsicologoServices')
 //rutas
 router.post('/registrarPsicologo', registrarPsicologo);
 router.post('/leerPsicologo', leerPsicologo);
-router.post('/listarPsicologo', listarPsicologo);
+router.get('/listarPsicologo', listarPsicologo);
 router.post('/modificarPsicologo', modificarPsicologo);
 router.post('/deshabilitarPsicologo', deshabilitarPsicologo);
+router.post('/habilitarPsicologo', habilitarPsicologo);
+router.post('/autenticarPsicologo', autenticarPsicologo);
+router.post('/recuperarContrasena', recuperarContrasena);
+router.post('/enlaceCambiarContrasena', cambiarContrasena);
 module.exports = router;
 //el async es una promesa_hace uso del then
 function registrarPsicologo(req, res, next) {
@@ -33,4 +37,25 @@ function deshabilitarPsicologo(req, res, next) {
     psicologoServices.deshabilitarPsicologo(req.body)
         .then((resultado) => res.json({resultado}))
         .catch(err => next(err));
+}
+function habilitarPsicologo(req, res, next) {
+    psicologoServices.habilitarPsicologo(req.body)
+        .then((resultado) => res.json({resultado}))
+        .catch(err => next(err));
+}
+
+function autenticarPsicologo(req, res, next) {
+    psicologoServices.autenticacionPsicologo(req.body)
+        .then((resultado) => res.json({resultado}))
+        .catch(err => next(err));
+}
+function cambiarContrasena(req, res, next) {
+    psicologoServices.cambiarContrasena(req.body)
+        .then(user => user ? res.json(user) : res.sendStatus(400))
+        .catch(err => next(err));
+}
+async function recuperarContrasena(req, res, next) {
+    psicologoServices.recuperarContrasena(req.body)
+    .then(user => user ? res.json(user) : res.sendStatus(500))
+    .catch(err => next(err));
 }

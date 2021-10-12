@@ -1,0 +1,55 @@
+<div class="bg-light"  style="min-height: 89vh; overflow: hidden;">
+<div class="p-2 container" style="min-height: 89vh;background-image: url('assets/img/cerebro.png');background-repeat: no-repeat;background-size: cover;">
+<h1>Administradores registrados</h1>
+<button (click)="irACrearAdministrador()" class="btn btn-sm btn-success mb-2">Añadir administrador</button>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width: 10%">Carnet de identidad</th>
+            <th style="width: 10%">Nombres y Apellidos</th>
+            <th style="width: 10%">Fecha de Nacimiento</th>
+            <th style="width: 10%">Numero Telefonico</th>
+            <th style="width: 10%">Correo Electronico</th>
+            <th style="width: 10%">Genero</th>
+            <th style="width: 10%">Fecha De Registro</th>
+            <th style="width: 10%">Estado</th>
+            <th style="width: 10%"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let administrador of administradores">
+
+            <td>{{administrador.carnetDeIdentidad}}</td>
+            <td>{{administrador.nombre}} {{administrador.apellidos}} </td>
+            <td>{{convertirFechaYQuitarHoras(administrador.fechaDeNacimiento)}}</td>
+            <td>{{administrador.numeroTelefonico}}</td>
+            <td>{{administrador.correoElectronico}}</td>
+            <td>{{administrador.sexo}}</td>
+            <td>{{administrador.fechaDeRegistro}}</td>
+            <td>
+                <span *ngIf="(administrador.estado == false)" >Deshabilitado</span>
+                <span *ngIf="(administrador.estado == true)" >Habilitado</span>
+            </td>
+           
+           
+            
+            <td style="white-space: nowrap">
+                <button  (click)="habilitarAdministrador(administrador.id)" class="btn btn-sm btn-primary mr-1" [disabled]="isHabilitar">
+                <span *ngIf="isHabilitar && idAdminsitradorActual==administrador.id" class="spinner-border spinner-border-sm">
+                </span>Habilitar</button>
+                <button  (click)="deshabilitarAdministrador(administrador.id)" class="btn btn-sm btn-danger btn-delete-user"
+                 [disabled]="isDisabling">
+                 <span *ngIf="isDisabling && idAdminsitradorActual==administrador.id" class="spinner-border spinner-border-sm">
+                 </span>Deshabilitar</button>
+                    
+            </td>
+        </tr>
+        <tr *ngIf="!administradores">
+            <td colspan="4" class="text-center">
+                <span class="spinner-border spinner-border-lg align-center"></span>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+</div>

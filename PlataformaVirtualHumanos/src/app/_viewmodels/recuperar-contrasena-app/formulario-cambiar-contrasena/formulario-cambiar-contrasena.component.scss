@@ -1,0 +1,26 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+
+#boton_usuario{
+background-color: rgb(255, 255, 255);
+height: 50px;
+width: 80%;
+margin-left: 10%;
+border-radius: 15px;
+}
+#label1{
+   margin-top: 10%;
+   text-align: center;
+}
+body{
+    background:linear-gradient( rgba(36, 147, 211, 0.5),white)
+}
+#boton_login{
+    margin-left: 10%;
+    width: 80%;
+    background-color: rgb(3, 52, 107);
+    color: seashell;
+    margin-top: 5%;
+    border-radius: 15px;
+}
+
+

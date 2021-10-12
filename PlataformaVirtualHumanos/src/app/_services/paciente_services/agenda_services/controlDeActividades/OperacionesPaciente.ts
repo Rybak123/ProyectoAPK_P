@@ -16,9 +16,9 @@ export class OperacionesPaciente
             throw console.error("Paciente no encontrado");
         }
         var usuario:any =JSON.parse(pacienteInfo);
-        var carnetDeIdentidad=usuario.carnetDeIdentidad;
-        var parametros={"carnetDeIdentidad": carnetDeIdentidad}
-        return await coneccionServidor.coneccionServidor(parametros,"/pacientes/obtenerPaciente");
+
+        var parametros={"id": usuario.id}
+        return await coneccionServidor.coneccionServidor(parametros,"/paciente/leerPaciente");
     }
     
 }

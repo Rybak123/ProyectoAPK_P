@@ -6,9 +6,9 @@ module.exports = jwt;
 
 //Interfiere con las peticiones  a las rutas en el servidor
 function jwt() {
-
+//return expressJwt({ secret, algorithms: ['HS256'], isRevoked }).unless({
     const secret = config.secret;
-    return expressJwt({ secret, algorithms: ['HS256'], isRevoked }).unless({
+    return expressJwt({ secret, algorithms: ['HS256'] }).unless({
         path: [
             //Rutas publicas con las que se puede acceder al servidor
 
@@ -18,27 +18,40 @@ function jwt() {
             '/psicologo/listarPsicologo',
             '/psicologo/modificarPsicologo',
             '/psicologo/deshabilitarPsicologo',
+            '/psicologo/autenticarPsicologo',
+            '/psicologo/habilitarPsicologo',
+            '/psicologo/recuperarContrasena',
+            '/psicologo/enlaceCambiarContrasena',
             //administrador
             '/administrador/registrarAdministrador',
             '/administrador/leerAdministrador',
             '/administrador/listarAdministrador',
             '/administrador/modificarAdministrador',
             '/administrador/desabilitarAdministrador',
+            '/administrador/autenticarAdministrador',
+            '/administrador/habilitarAdministrador',
+            '/administrador/recuperarContrasena',
+            '/administrador/enlaceCambiarContrasena',
             //paciente
             '/paciente/obtenerPaciente',
-            '/paciente/actualizarPaciente',
+            '/paciente/modificarPaciente',
             '/paciente/deshabilitarPaciente',
-            '/pacientes/registrarPaciente',
-            '/pacientes/autenticacion',
-            '/paciente/habiltiar_Paciente'
+            '/paciente/registrarPaciente',
+            '/paciente/autenticacion',
+            '/paciente/habiltiar_Paciente',
+            '/paciente/listarPacientes',
+            '/paciente/registrarPaciente',
+            '/paciente/leerPaciente',
+            '/paciente/recuperarContrasena',
+            '/paciente/enlaceCambiarContrasena'
         ]
     });
 }
 //Verficar si existe el usuario que entró al servidor
-async function isRevoked(req, payload, done) {
+/*async function isRevoked(req, payload, done) {
     const user = await PacienteDao.obtenerPacientePorID(payload.sub);
     if (!user) {
         return done(null, true);
     }
     done();
-};
+};*/
