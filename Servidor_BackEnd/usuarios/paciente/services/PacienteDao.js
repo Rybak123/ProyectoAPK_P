@@ -58,7 +58,7 @@ async function update_paciente(informacionJson) {
         throw 'La siguiente direccion de correo electronico "' +informacionJson.correoElectronico + '" ya a sido registrada';
     }
 
-
+    console.log(informacionJson);
     if (informacionJson.contrasena) {
         informacionJson.hash = bcrypt.hashSync(informacionJson.contrasena, 10);
     }
@@ -340,6 +340,26 @@ async function create_Paciente(pacienteJson) {
     paciente.agendaVirtual.controlDeEnergia.diasControlados.push(diasControlados_Energia);
     paciente.agendaVirtual.controlDeAnimo.diasControlados.push(diasControlados_Animo);
     paciente.agendaVirtual.controlDeConsumoDeAgua.diasControlados.push(diaDeEstudio_ConsumoDeAgua);
+
+    var fs = require('fs');
+    const path = require('path');
+    const uploadFolder = path.join(__dirname, "../../","../","excelInfoUsuario");
+
+    if (!fs.existsSync(uploadFolder)){
+        fs.mkdirSync(uploadFolder, { recursive: true });
+    }
+
+    var writeStream = fs.createWriteStream(uploadFolder+"/UsuarioRegistrado.csv");
+
+    var header="Carnet de identidad"+","+"Contrasena"+","+"Nombre"+","+"Apellido"+","+"Fecha de nacimiento"+","+"Genero"+","+"Numero telefonico"+","+"Correo electronico"+","+"Estado"+","+"Fecha de registro"+"\n";
+    var row1 = paciente.carnetDeIdentidad+","+paciente.contrasena+","+paciente.nombres+","+paciente.apellidos+","+paciente.fechaDeNacimiento+","+paciente.sexo+","+paciente.numeroTelefonico+","+paciente.correoElectronico+","+paciente.estado+","+paciente.fechaDeRegistro+"\n";
+
+    writeStream.write(header);
+    writeStream.write(row1);
+
+    writeStream.close();
+
+
     return await paciente.save();
 }
 
@@ -357,7 +377,7 @@ async function autenticacion({ correoElectronico, contrasena }) {
 }
 async function recuperarContrasena(jsonData) {
     const paciente = await Paciente.findOne({ correoElectronico:jsonData.correoElectronico });
-    if(!paciente){throw "Paciente no encontrado";}
+    if(!paciente){throw "Correo no encontrado";}
     let token = await Token.findOne({ userId: paciente._id });
     if (token) await token.deleteOne();
     let resetToken =  crypto.randomBytes(32).toString("hex");
@@ -368,7 +388,7 @@ async function recuperarContrasena(jsonData) {
         createdAt: Date.now(),
       }).save();
     const link = `localhost:4200/cambiarContrasenaRespuesta?token=${resetToken}&id=${paciente._id}&tipo=paciente`;
-    var succ= await sendEmail(paciente.correoElectronico,"Password Reset Request",{name: paciente.nombres,link: link,},"./template/requestResetPassword.handlebars");
+    var succ= await sendEmail(paciente.correoElectronico,"Peticion para cambiar la contrasena",{name: paciente.nombres,link: link,},"./template/requestResetPassword.handlebars");
     return link;
 }
 async function cambiarContrasena(jsonData) {

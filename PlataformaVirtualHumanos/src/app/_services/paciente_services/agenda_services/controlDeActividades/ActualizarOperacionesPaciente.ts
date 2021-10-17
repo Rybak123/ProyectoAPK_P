@@ -85,10 +85,11 @@ export class ActualizarOperacionesPaciente
             var mes:any=element.fecha.split("-")[1];
             var dia:any=element.fecha.split("-")[2];
             var mydate = new Date().setFullYear(parseInt(anio),(parseInt(mes)-1),parseInt(dia));
-            var descripcion= "estadoDeAnimo: "+element.estadoDeAnimo;
               calendarEvents= calendarEvents.concat({ 
-               date:mydate
+               date:mydate,
+               title:element.estadoDeAnimo
               })
+              
         });
         return calendarEvents;
     }

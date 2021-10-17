@@ -18,7 +18,8 @@
     <input type="number" class="form-control" formControlName="ControlDePAginass" id="ControlDePaginas1" >
     <label for="" class="formulario__label">Cantidad de paginas</label>
     <label for="" class="mensaje" id="mensaje9">{{estadoCampo9}}</label>
-    <input min="2021-9-28" (change)="verCalendario()" [max]="maxDate" type="date" class="form-control" formControlName="Fechaa" id="Fechas1">
+    <input (change)="verCalendario()" max="{{fechaActual}}" type="date" class="form-control" formControlName="Fechaa" id="Fechas1">
+    <label for="" class="formulario__label fijar">Fecha de publicación</label>
     <label for="" class="mensaje" id="mensaje6">{{estadoCampo6}}</label>
     <select name="select" class="form-control" formControlName="Generoo" id="Genero1" (change)="ver()">
       <option value="value1" selected>ROMANTICO</option>

@@ -43,7 +43,8 @@ function jwt() {
             '/paciente/registrarPaciente',
             '/paciente/leerPaciente',
             '/paciente/recuperarContrasena',
-            '/paciente/enlaceCambiarContrasena'
+            '/paciente/enlaceCambiarContrasena',
+            '/excelUsuario/UsuarioRegistrado.csv'
         ]
     });
 }

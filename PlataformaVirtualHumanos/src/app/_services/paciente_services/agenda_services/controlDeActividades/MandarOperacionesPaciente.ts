@@ -31,7 +31,7 @@ export class MandarOperacionesPaciente{
     async actualizarControlDeAgua(actividadeDelDia:any){
         //Cambiar
         var jsonActividad={"cantidadDeAgua":actividadeDelDia};
-        var route="/pacientes/actualizarControlDeConsumoDeAgua";
+        var route="/paciente/actualizarControlDeConsumoDeAgua";
         return await this.actualizarControlDeActividad(jsonActividad,route)
         .then((paciente:any) => {
             return true;
@@ -45,7 +45,7 @@ export class MandarOperacionesPaciente{
     async actualizarControlDeEnergia(actividadeDelDia:any){
         //Cambiar
         var jsonActividad={"porcentajeDeEnergia":actividadeDelDia};
-        var route="/pacientes/actualizarControlDeEnergia";
+        var route="/paciente/actualizarControlDeEnergia";
         return await this.actualizarControlDeActividad(jsonActividad,route)
         .then((paciente:any) => {
             return true;
@@ -58,7 +58,7 @@ export class MandarOperacionesPaciente{
     async actualizarControlDeEstudio(actividadeDelDia:any){
         //Cambiar
         var jsonActividad={"materiasEstudiadas":actividadeDelDia};
-        var route="/pacientes/actualizarHorasDeEstudio";
+        var route="/paciente/actualizarHorasDeEstudio";
         return await this.actualizarControlDeActividad(jsonActividad,route)
         .then((paciente:any) => {
 
@@ -73,7 +73,7 @@ export class MandarOperacionesPaciente{
     async actualizarControlDeSueno(actividadeDelDia:any){
         //Cambiar
         var jsonActividad={"horasDeSueno":actividadeDelDia};
-        var route="/pacientes/actualizarControlDeSueno";
+        var route="/paciente/actualizarControlDeSueno";
         return await this.actualizarControlDeActividad(jsonActividad,route)
         .then((paciente:any) => {
             return true;
@@ -87,7 +87,7 @@ export class MandarOperacionesPaciente{
     async actualizarControlDeAnimo(actividadeDelDia:any){
         //Cambiar
         var jsonActividad={"estadoDeAnimo":actividadeDelDia};
-        var route="/pacientes/actualizarControlDeAnimo";
+        var route="/paciente/actualizarControlDeAnimo";
         return await this.actualizarControlDeActividad(jsonActividad,route)
         .then((paciente:any) => {
             return true;

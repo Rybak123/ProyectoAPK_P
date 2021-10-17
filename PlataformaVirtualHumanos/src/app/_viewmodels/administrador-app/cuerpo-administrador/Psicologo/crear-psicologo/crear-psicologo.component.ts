@@ -22,7 +22,7 @@ export class CrearPsicologoComponent implements OnInit ,AfterViewInit{
     this.fechaActual=this.convertirFechaYQuitarHoras(fechaActualOriginal);
 
     var currentYear=fechaActualOriginal.getFullYear();
-    var fechaActual18AñosAntes= fechaActualOriginal.setFullYear(currentYear-5);
+    var fechaActual18AñosAntes= fechaActualOriginal.setFullYear(currentYear-20);
     this.minimoFechaDeNacimiento=this.convertirFechaYQuitarHoras(fechaActual18AñosAntes);
   }
   get f() { return this.form.controls; }
@@ -86,6 +86,7 @@ export class CrearPsicologoComponent implements OnInit ,AfterViewInit{
     this.psicologoService.registrarPsicologo(psicologo)
     .pipe(first())
     .subscribe(() => {
+      window.open("http://localhost:4000/excelUsuario/UsuarioRegistrado.csv", "_blank");
        this.irAListarPsicologo();
     }).add(()=>this.loading=false);
     

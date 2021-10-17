@@ -15,7 +15,7 @@ import { VerContenidoActividad } from '../../../../_services/paciente_services/a
 export class ControlDeAnimoComponent implements OnInit {
 
 
-
+  hojaEmocionActual!:any;
   estadoActividad="";
   calendarVisible = true;
   title = '';
@@ -38,6 +38,7 @@ export class ControlDeAnimoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.hojaEmocionActual = "assets/img/controlDeAnimo/HojaEnBlanco.png";
     this.obtenerRegistrosParaCalendario();
     this.diaYaControlado();
   }
@@ -88,13 +89,75 @@ export class ControlDeAnimoComponent implements OnInit {
   }
   renderEventContent(eventInfo:any, createElement:any) {
     var innerHtml;
+    var fechaActualString:any=this.convertirFechaYQuitarHoras((new Date()).toDateString());
+    var fechaIngresada:any=this.convertirFechaYQuitarHoras(new Date(eventInfo.event._instance.range.start).toDateString());
+    console.log()
+    if(fechaActualString==fechaIngresada){
+      switch(eventInfo.event._def.title){
+        case "Emocionada":
+          this.hojaEmocionActual = "assets/img/controlDeAnimo/HojaEmocionada.png";
+        break;
+        case "Triste":
+          this.hojaEmocionActual = "assets/img/controlDeAnimo/Triste.png"
+        break;
+        case "Productiva":
+          this.hojaEmocionActual = "assets/img/controlDeAnimo/Productiva.png"
+        break;
+        case "Feliz":
+          this.hojaEmocionActual = "assets/img/controlDeAnimo/Feliz.png"
+        break;
+        case "Cansada":
+          this.hojaEmocionActual = "assets/img/controlDeAnimo/Cansado.png"
+        break;
+        case "Enojada":
+          this.hojaEmocionActual = "assets/img/controlDeAnimo/Enojado.png"
+        break;
+        case "Ansiosa":
+          this.hojaEmocionActual = "assets/img/controlDeAnimo/Ansioso.png"
+        break;
+        case "Meeeeh":
+          this.hojaEmocionActual = "assets/img/controlDeAnimo/Meeeeh.png"
+        break;
+      }
+    }
     if (eventInfo) {
-       innerHtml = eventInfo.event._def.title+"<img style='width:30%; height:30%;margin-left: auto;margin-right: auto;display:block;' src='.../../../../assets/img/iconosCalendario/leave.png'>";
-       return createElement = { html: '<div>'+innerHtml+'</div>' }
+      switch(eventInfo.event._def.title){
+        case "Emocionada":
+          innerHtml = "<img style='width:60%; height:60%;margin-left: auto;margin-right: auto;display:block;' src='assets/img/controlDeAnimo/HojaEmocionada.png'>"
+        break;
+        case "Triste":
+          innerHtml = "<img style='width:60%; height:60%;margin-left: auto;margin-right: auto;display:block;' src='assets/img/controlDeAnimo/Triste.png'>"
+        break;
+        case "Productiva":
+          innerHtml = "<img style='width:60%; height:60%;margin-left: auto;margin-right: auto;display:block;' src='assets/img/controlDeAnimo/Productiva.png'>"
+        break;
+        case "Feliz":
+          innerHtml = "<img style='width:60%; height:60%;margin-left: auto;margin-right: auto;display:block;' src='assets/img/controlDeAnimo/Feliz.png'>"
+        break;
+        case "Cansada":
+          innerHtml = "<img style='width:60%; height:60%;margin-left: auto;margin-right: auto;display:block;' src='assets/img/controlDeAnimo/Cansado.png'>"
+        break;
+        case "Enojada":
+          innerHtml = "<img style='width:60%; height:60%;margin-left: auto;margin-right: auto;display:block;' src='assets/img/controlDeAnimo/Enojado.png'>"
+        break;
+        case "Ansiosa":
+          innerHtml = "<img style='width:60%; height:60%;margin-left: auto;margin-right: auto;display:block;' src='assets/img/controlDeAnimo/Ansioso.png'>"
+        break;
+        case "Meeeeh":
+          innerHtml = "<img style='width:60%; height:60%;margin-left: auto;margin-right: auto;display:block;' src='assets/img/controlDeAnimo/Meeeeh.png'>"
+        break;
+      }
+    
     }
-    else{
-      return null;
-    }
-    }
+    return createElement = { html: '<div>'+innerHtml+'</div>' }
+  }
+  convertirFechaYQuitarHoras(fecha:any){
+    var fechLibro = new Date(fecha);
+    var dd = String(fechLibro.getDate()).padStart(2, '0');
+    var mm = String(fechLibro.getMonth() + 1).padStart(2, '0'); 
+    var yyyy = fechLibro.getFullYear();
+    var fechaActualString= yyyy + '-' + mm+ '-' +dd;
+    return fechaActualString;
+  }
 }
 
