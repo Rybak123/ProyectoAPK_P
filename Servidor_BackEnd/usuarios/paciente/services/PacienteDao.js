@@ -10,7 +10,7 @@ const crypto = require("crypto");
 const Psicologo=db.Psicologo;
 const Paciente=db.Paciente;
 const Administrador = db.Administrador;
-
+//sdasd
 
 
 module.exports = {

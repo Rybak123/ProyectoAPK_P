@@ -16,6 +16,30 @@ const schema = new Schema({
     caducidadLicencia: { type: Date, required: true},
     hash: { type: String, required: false },
     token: { type: String, required: false },
+    pruebasDeDesarolloCognitivo:{
+        puntuacionFinal: { type: Number, required: false },
+        fecha: { type: Date, required: false },
+        horaInicio: { type: Date, required: false },
+        HoraFin: { type: Date, required: false },
+        duracion: { type: Date, required: false },
+        CodigoTipoPrueba: { type: String, required: false },
+        lamina: [
+            {
+                puntuacion:Number,
+                nombre:String,
+                duracion:Number,
+                tiempoLimite:Number,
+                tareas:[
+                    {
+                        puntuacion:Number,
+                        nombre:String,
+                        duracion:Number,
+                        tiempoLimite:Number
+                    }
+                ]
+            }
+        ],
+    },
     agendaVirtual:{
         controlDeEstudio:{
             diasControlados:[

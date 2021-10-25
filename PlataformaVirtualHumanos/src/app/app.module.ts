@@ -101,9 +101,17 @@ import { GestionAdministradorComponent } from './_viewmodels/administrador-app/c
 import { CrearAdministradorComponent } from './_viewmodels/administrador-app/cuerpo-administrador/Administradores/crear-administrador/crear-administrador.component';
 import { FormularioCambiarContrasenaComponent } from './_viewmodels/recuperar-contrasena-app/formulario-cambiar-contrasena/formulario-cambiar-contrasena.component';
 import { RespuestaCambiarContrasenaComponent } from './_viewmodels/recuperar-contrasena-app/respuesta-cambiar-contrasena/respuesta-cambiar-contrasena.component';
-
-
-
+import { PruebaGeneralComponent } from './_viewmodels/paciente-app/cuerpo/prueba-general/prueba-general.component';
+import { PruebaGeneralLamina2Component } from './_viewmodels/paciente-app/cuerpo/prueba-general-lamina2/prueba-general-lamina2.component';
+import { PruebaGeneralLamina3Component } from './_viewmodels/paciente-app/cuerpo/prueba-general-lamina3/prueba-general-lamina3.component';
+import { PruebaGeneralLamina4Component } from './_viewmodels/paciente-app/cuerpo/prueba-general-lamina4/prueba-general-lamina4.component';
+import { PruebaGeneralLamina5Component } from './_viewmodels/paciente-app/cuerpo/prueba-general-lamina5/prueba-general-lamina5.component';
+import { PruebaGeneralLamina6Component } from './_viewmodels/paciente-app/cuerpo/prueba-general-lamina6/prueba-general-lamina6.component';
+import {IvyCarouselModule} from 'angular-responsive-carousel';
+import { InicioPruebaGeneralComponent } from './_viewmodels/paciente-app/cuerpo/inicio-prueba-general/inicio-prueba-general.component';
+import { InicioPruebaActividadesComponent } from './_viewmodels/paciente-app/cuerpo/inicio-prueba-actividades/inicio-prueba-actividades.component';
+import { InicioPruebaMarcoComponent } from './_viewmodels/paciente-app/cuerpo/inicio-prueba-marco/inicio-prueba-marco.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 FullCalendarModule.registerPlugins([ 
   dayGridPlugin,
   interactionPlugin
@@ -152,8 +160,17 @@ FullCalendarModule.registerPlugins([
     GestionAdministradorComponent,
     CrearAdministradorComponent,
     FormularioCambiarContrasenaComponent,
-    RespuestaCambiarContrasenaComponent
-    
+    RespuestaCambiarContrasenaComponent,
+    PruebaGeneralComponent,
+    PruebaGeneralLamina2Component,
+    PruebaGeneralLamina3Component,
+    PruebaGeneralLamina4Component,
+    PruebaGeneralLamina5Component,
+    PruebaGeneralLamina6Component,
+    InicioPruebaGeneralComponent,
+    InicioPruebaActividadesComponent,
+    InicioPruebaMarcoComponent,
+     
   ],
   imports: [
     BrowserModule,
@@ -211,7 +228,9 @@ FullCalendarModule.registerPlugins([
     PortalModule,
     ScrollingModule,
     BrowserAnimationsModule,
-    ChartsModule
+    ChartsModule,
+    IvyCarouselModule,
+    NgbModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

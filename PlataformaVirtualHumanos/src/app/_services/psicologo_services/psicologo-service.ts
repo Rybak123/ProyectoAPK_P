@@ -55,4 +55,5 @@ export class PsicologoService {
     }
     return this.http.post(`${GlobalConstants.apiURL}/psicologo/enlaceCambiarContrasena`, objetoCuerpoPeticion);
   }
+  
 }

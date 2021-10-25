@@ -20,7 +20,7 @@ import { CrearLibroComponent } from '../cuerpo/misLibros/crear-libro/crear-libro
 import { VerLibrosComponent } from '../cuerpo/misLibros/ver-libros/ver-libros.component';
 import { CrearCancionesComponent } from '../cuerpo/misCanciones/crear-canciones/crear-canciones.component';
 import { VerCancionesComponent } from '../cuerpo/misCanciones/ver-canciones/ver-canciones.component';
-import { VerCancionesModule } from './misCanciones/ver-canciones/ver-canciones.module';
+
 import { VerLibrosModule } from './misLibros/ver-libros/ver-libros.module';
 import { CrearMetasPersonalesComponent } from './metasPersonales/crear-metas-personales/crear-metas-personales.component';
 import { CrearMetasSocialesComponent } from './metasSociales/crear-metas-sociales/crear-metas-sociales.component';
@@ -34,6 +34,15 @@ import { AppModule } from 'src/app/app.module';
 import { ResumenDeLaAgendaVirtualComponent } from './resumen-de-la-agenda-virtual/resumen-de-la-agenda-virtual.component';
 import { NavigationService } from '../../../_services/paciente_services/navigation_services/navigationService';
 import { PerfilPacienteComponent } from './perfil-paciente/perfil-paciente.component';
+import { PruebaGeneralComponent } from './prueba-general/prueba-general.component';
+import { PruebaGeneralLamina2Component } from './prueba-general-lamina2/prueba-general-lamina2.component';
+import { PruebaGeneralLamina3Component } from './prueba-general-lamina3/prueba-general-lamina3.component';
+import { PruebaGeneralLamina4Component } from './prueba-general-lamina4/prueba-general-lamina4.component';
+import { PruebaGeneralLamina5Component } from './prueba-general-lamina5/prueba-general-lamina5.component';
+import { PruebaGeneralLamina6Component } from './prueba-general-lamina6/prueba-general-lamina6.component';
+import { InicioPruebaGeneralComponent } from './inicio-prueba-general/inicio-prueba-general.component';
+import { InicioPruebaActividadesComponent } from './inicio-prueba-actividades/inicio-prueba-actividades.component';
+import { InicioPruebaMarcoComponent } from './inicio-prueba-marco/inicio-prueba-marco.component';
 
 @Component({
   selector: 'app-cuerpo',
@@ -230,14 +239,81 @@ export class CuerpoComponent implements OnInit,AfterViewInit {
     const ref = this.myRef.createComponent(factory);
     ref.changeDetectorRef.detectChanges();
   }
+  public renderPruebaGeneral(): void {
+    const componentModule = this.compiler.compileModuleAndAllComponentsSync(AppModule);
+    const factory = componentModule.componentFactories.find(c => c.componentType === PruebaGeneralComponent);    
+    this.myRef.clear();
+    const ref = this.myRef.createComponent(factory);
+    ref.changeDetectorRef.detectChanges();
+  }
+  public renderPruebaGeneralLamina2(): void {
+    const componentModule = this.compiler.compileModuleAndAllComponentsSync(AppModule);
+    const factory = componentModule.componentFactories.find(c => c.componentType === PruebaGeneralLamina2Component);    
+    this.myRef.clear();
+    const ref = this.myRef.createComponent(factory);
+    ref.changeDetectorRef.detectChanges();
+  }
+  public renderPruebaGeneralLamina3(): void {
+    const componentModule = this.compiler.compileModuleAndAllComponentsSync(AppModule);
+    const factory = componentModule.componentFactories.find(c => c.componentType === PruebaGeneralLamina3Component);    
+    this.myRef.clear();
+    const ref = this.myRef.createComponent(factory);
+    ref.changeDetectorRef.detectChanges();
+  }
+  public renderPruebaGeneralLamina4(): void {
+    const componentModule = this.compiler.compileModuleAndAllComponentsSync(AppModule);
+    const factory = componentModule.componentFactories.find(c => c.componentType === PruebaGeneralLamina4Component);    
+    this.myRef.clear();
+    const ref = this.myRef.createComponent(factory);
+    ref.changeDetectorRef.detectChanges();
+  }
+  public renderPruebaGeneralLamina5(): void {
+    const componentModule = this.compiler.compileModuleAndAllComponentsSync(AppModule);
+    const factory = componentModule.componentFactories.find(c => c.componentType === PruebaGeneralLamina5Component);    
+    this.myRef.clear();
+    const ref = this.myRef.createComponent(factory);
+    ref.changeDetectorRef.detectChanges();
+  }
+  public renderPruebaGeneralLamina6(): void {
+    const componentModule = this.compiler.compileModuleAndAllComponentsSync(AppModule)
+    const factory = componentModule.componentFactories.find(c => c.componentType === PruebaGeneralLamina6Component);    
+    this.myRef.clear();
+    const ref = this.myRef.createComponent(factory);
+    ref.changeDetectorRef.detectChanges();
+  }
+  public renderInicioPruebaGeneral(): void {
+    const componentModule = this.compiler.compileModuleAndAllComponentsSync(AppModule)
+    const factory = componentModule.componentFactories.find(c => c.componentType === InicioPruebaGeneralComponent);    
+    this.myRef.clear();
+    const ref = this.myRef.createComponent(factory);
+    ref.instance.iniciarPruebaGeneralEmiter.subscribe(() => {
+      this.renderInicioPruebaActividad();
+    });
+    ref.changeDetectorRef.detectChanges();
+  }
+  public renderInicioPruebaActividad(): void {
+    const componentModule = this.compiler.compileModuleAndAllComponentsSync(AppModule)
+    const factory = componentModule.componentFactories.find(c => c.componentType === InicioPruebaActividadesComponent);    
+    this.myRef.clear();
+    const ref = this.myRef.createComponent(factory);
+    ref.instance.iniciarPruebaGeneralEmiter.subscribe(() => {
+      this.renderInicioPruebaActividadMarco();
+    });
+    ref.changeDetectorRef.detectChanges();
+  }
+  
+  public renderInicioPruebaActividadMarco(): void {
+    const componentModule = this.compiler.compileModuleAndAllComponentsSync(AppModule)
+    const factory = componentModule.componentFactories.find(c => c.componentType === InicioPruebaMarcoComponent);    
+    this.myRef.clear();
+    const ref = this.myRef.createComponent(factory);
+    ref.changeDetectorRef.detectChanges();
+  }
 
   ngAfterViewInit() {
-
     this.navigationServices.asObservableIrVerPerfil().subscribe(() => { 
-      console.log("asdasd");
       this.renderVerPerfilPaciente();
     });
-
     this.sidenav.close();
     const factory = this.componentFactoryResolver.resolveComponentFactory(ControlDeConsumoDeAguaComponent);
     this.myRef.clear();

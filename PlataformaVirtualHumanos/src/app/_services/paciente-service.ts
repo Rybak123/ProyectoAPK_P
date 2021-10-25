@@ -12,13 +12,10 @@ export class PacienteService {
 
   listarPacientes(){    
     return this.http.get<Paciente[]>(`${GlobalConstants.apiURL}/paciente/listarPacientes`);               
-
   }
   registrarPaciente(paciente: Paciente){
-    console.log(paciente);
     return this.http.post(`${GlobalConstants.apiURL}/paciente/registrarPaciente`, paciente);
   }
-
   leerPaciente(idPaciente:String){
     var objetoCuerpoPeticion=
     {
@@ -26,11 +23,9 @@ export class PacienteService {
     }
     return this.http.post(`${GlobalConstants.apiURL}/paciente/leerPaciente`, objetoCuerpoPeticion);
   }
-
   modificarPaciente(paciente: Paciente){
     return this.http.post(`${GlobalConstants.apiURL}/paciente/modificarPaciente`, paciente);
   }
-  
   deshabilitarPaciente(idPaciente:String){
     var objetoCuerpoPeticion=
     {
@@ -61,5 +56,4 @@ export class PacienteService {
     }
     return this.http.post(`${GlobalConstants.apiURL}/paciente/enlaceCambiarContrasena`, objetoCuerpoPeticion);
   }
-
 }
