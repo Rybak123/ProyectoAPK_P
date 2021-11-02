@@ -1,0 +1,109 @@
+
+<div class="bg-light"  style="min-height: 320px; overflow: hidden;height:79vh">
+    <div class="p-2 container" style="height:100%">
+        <div class="row" >
+            <div class="col-6">
+                <button  (click)="intento1()" type="button" mat-button color="primary" style="width: 100%; background-color: rgb(127, 127, 243); margin-top: 5%;">Intentar otra vez</button>
+
+                <ngb-carousel (slide)="onSlide($event)" #clotheCarousel="ngbCarousel" *ngIf="images"[interval]="500" [showNavigationArrows]="showNavigationArrows" [showNavigationIndicators]="showNavigationIndicators" style="color: rgba(0, 0, 0, 0) !important">
+                    <ng-template ngbSlide >
+                      <div class="picsum-img-wrapper" >
+                        <img [src]="images[0]" alt="Random first slide" class="slide-images-selector">
+                      </div>
+                    </ng-template>
+                    <ng-template ngbSlide >
+                      <div class="picsum-img-wrapper" >
+                        <img [src]="images[1]" alt="Random second slide" class="slide-images-selector">
+                      </div>
+                    </ng-template>
+                    <ng-template ngbSlide >
+                      <div class="picsum-img-wrapper" >
+                        <img [src]="images[2]" alt="Random third slide" class="slide-images-selector">
+                      </div>
+                    </ng-template>
+                    <ng-template ngbSlide >
+                        <div class="picsum-img-wrapper" >
+                          <img [src]="images[3]" alt="Random first slide" class="slide-images-selector">
+                        </div>
+                      </ng-template>
+                      <ng-template ngbSlide >
+                        <div class="picsum-img-wrapper" >
+                          <img [src]="images[4]" alt="Random second slide" class="slide-images-selector">
+                        </div>
+                      </ng-template>
+                      <ng-template ngbSlide >
+                        <div class="picsum-img-wrapper" >
+                          <img [src]="images[5]" alt="Random third slide" class="slide-images-selector">
+                        </div>
+                      </ng-template>
+                      <ng-template ngbSlide >
+                        <div class="picsum-img-wrapper" >
+                          <img [src]="images[6]" alt="Random third slide" class="slide-images-selector">
+                        </div>
+                      </ng-template>
+                      <ng-template ngbSlide >
+                        <div class="picsum-img-wrapper" >
+                          <img [src]="images[7]" alt="Random third slide" class="slide-images-selector">
+                        </div>
+                      </ng-template>
+                </ngb-carousel>
+              
+            </div>
+            <div class="col-6" style="padding-left: 10%;">
+                <h1><b>Actividad 8 - reconocimiento y denominación</b></h1>
+                <h3>Identifique el nombre de todas las imagenes que se presentan.</h3>
+                <form [formGroup]="form"   >
+                        <div class="row" >
+                            <div class="col-6">
+                                <input type="radio" value="Guitarra" formControlName="Guitarra"> Guitarra
+                                <br>
+                                <br>
+                                <input type="radio" value="Barco" formControlName="Barco"> Barco
+          
+                                <br>
+                                <br>
+                                <input type="radio" value="Trompeta" formControlName="Trompeta"> Trompeta
+                                <br>
+                                <br>
+                                <input type="radio" value="Dedo" formControlName="Dedo"> Dedo
+                                <br>
+                                <br>
+                                <input type="radio" value="Mani" formControlName="Mani"> Mani
+
+                                <br>
+                                <br>
+                                <input type="radio" value="Serpiente" formControlName="Serpiente"> Serpiente
+                                <br>
+                                <br>
+                            </div>
+                            <div class="col-6">
+                                <input type="radio" value="Reloj" formControlName="Reloj"> Reloj
+                                <br>
+                                <br>
+                                <input type="radio" value="Bicicleta" formControlName="Bicicleta"> Bicicleta
+                                <br>
+                                <br>
+                                <input type="radio" value="Papas" formControlName="Papas"> Papas
+                                <br>
+                                <br>
+                                <input type="radio" value="Llave" formControlName="Llave"> Llave
+                                <br>
+                                <br>
+                                <input type="radio" value="Lata" formControlName="Lata"> Lata
+                                <br>
+                                <br>
+                                <input type="radio" value="Chivo" formControlName="Chivo"> Burro
+                                <br>
+                                <br>
+                            </div>
+                            
+                        </div>
+                       
+                    
+                    <button (click)="enviarActividad2()" type="button" mat-button color="primary" style="width: 65%; background-color: rgb(127, 127, 243);">Enviar y pasar a la siguiente actividad</button>
+                </form>
+            </div>
+        </div>       
+    </div>
+</div>
+

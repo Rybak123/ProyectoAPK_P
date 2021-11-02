@@ -1,0 +1,33 @@
+.cuadradoBtn{
+    width: 278px;
+    height: 142px;
+}
+.quitarBordes{
+    border:0ch;
+    outline:none;
+}
+.cuadroSeleccionadoRojo{
+    border-color: #ff0000;
+   border-width: 1px;
+   border-style: solid;
+}
+.fig1{
+  background-image: url("../../../../../assets/img/FigurasActividad7/ImagenOriginal.png");
+}
+.fig2{
+    background-image: url("../../../../../assets/img/FigurasActividad7/ImagenOriginal2.png");
+  }
+  .fig3{
+    background-image: url("../../../../../assets/img/FigurasActividad7/ImagenOriginal3.png");
+  }
+  .fig4{
+    background-image: url("../../../../../assets/img/FigurasActividad7/ImagenOriginal4.png");
+  }
+.center{
+    display: block;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}

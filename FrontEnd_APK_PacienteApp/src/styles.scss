@@ -1,0 +1,112 @@
+
+@use '~@angular/material' as mat;
+@import "~bootstrap/dist/css/bootstrap.css";
+@include mat.core();
+
+
+
+$md-primary1: (
+    50 : #ede6f8,
+    100 : #d2c1ed,
+    200 : #b498e1,
+    300 : #966ed5,
+    400 : #804fcc,
+    500 : #6930c3,
+    600 : #612bbd,
+    700 : #5624b5,
+    800 : #4c1eae,
+    900 : #3b13a1,
+    A100 : #ded3ff,
+    A200 : #b7a0ff,
+    A400 : #906dff,
+    A700 : #7d53ff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #ffffff,
+    )
+);
+
+$md-secondary1: (
+    50 : #ececf9,
+    100 : #cfcff0,
+    200 : #afb0e7,
+    300 : #8e90dd,
+    400 : #7678d5,
+    500 : #5e60ce,
+    600 : #5658c9,
+    700 : #4c4ec2,
+    800 : #4244bc,
+    900 : #3133b0,
+    A100 : #f6f7ff,
+    A200 : #c3c4ff,
+    A400 : #9092ff,
+    A700 : #7779ff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+
+$PlataformaVirtualHumanos-primary: mat.define-palette($md-primary1,3100);
+$PlataformaVirtualHumanos-accent: mat.define-palette($md-secondary1,900,900,900);
+$PlataformaVirtualHumanos-warn: mat.define-palette(mat.$red-palette);
+
+$PlataformaVirtualHumanos-theme: mat.define-light-theme((
+  color: (
+    primary: $PlataformaVirtualHumanos-primary,
+    accent: $PlataformaVirtualHumanos-accent,
+    warn: $PlataformaVirtualHumanos-warn,
+  )
+));
+mat-icon{
+  color: white;
+}
+
+@include mat.all-component-themes($PlataformaVirtualHumanos-theme);
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+
+@import "/src/assets/scss/functions.scss";
+@import "~@angular/material/theming";
+
+// You have to define one of those for every theme you offer
+.dark-theme {
+    @import "themes/dark-theme";
+    @include angular-material-theme($dark-theme);
+    @include generate-theme-vars($dark-theme);
+}
+
+.light-theme {
+    @import "themes/light-theme";
+    @include angular-material-theme($light-theme);
+    @include generate-theme-vars($light-theme);
+}

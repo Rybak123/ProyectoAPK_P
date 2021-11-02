@@ -1,0 +1,36 @@
+<div class="row align-items-md-stretch" style="height: 100%;">   
+    
+    <!--   <main class="login-desing">  --> 
+        <div class="col-md-6" style="width: 50%;display: grid; height: 100%;" id="imagen">
+            <img src="assets/img/fondo1.png" style="margin-top: 10%;height: 70%;">
+        </div>
+    
+        <div class="col-md-6" style="color: white;width: 50%; background-color: rgb(77, 115, 241);">
+            <h2 id="label1" >Recuperar mi contraseña</h2>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()"style="margin-top: 10%;">
+            <div class="form-group" > 
+                <!--<label for="username" id="label1">Username</label>-->
+                <input type="text" placeholder="Correo electronico" id="boton_usuario" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                <div *ngIf="submitted && f.username.errors" class="invalid-feedback" style="margin-left: 10%;">
+                    <div *ngIf="f.username.errors.required">No debe dejar este espacio en blanco</div>
+                    <div *ngIf="f.username.errors.email">El correo electronico debe estar en un formato correcto</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button [disabled]="loading" class="btn btn-primary" id="boton_login">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Recuperar contraseña
+                </button>
+            </div>
+            <button (click)="volverAlLogin()" type="button" class="btn btn-primary" id="boton_login">
+                Volver
+            </button>
+        </form>
+       
+        </div>
+    <!--</main>-->
+    </div>
+    
+    
+    
+    

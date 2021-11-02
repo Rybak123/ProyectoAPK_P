@@ -1,0 +1,183 @@
+<div class="bg-light"  style="height:75vh">
+    <div class="p-2 container">
+        <div class="row" >
+            <div class="col-6">
+                <h1><b>Actividad 4 - detección visual</b></h1>
+                <p>Reconoce esta imagen entre las distintas figuras</p>
+                <img type="text" src="assets/img/estrellaEjemplo.png" style="max-width: 400px;max-height: 600px;" class="center centrar"/>
+                <br>
+                <button (click)="enviarActividad2()" type="button" mat-button color="primary" class="centrar" style="width: 50%; background-color: rgb(127, 127, 243);">Enviar y pasar a la siguiente actividad</button>
+                <br>
+            </div>
+            <div class="col-6">
+                <br>
+                <table style="background-color: white;">
+                    <tr >
+                      <td><button class="cuadradoBtn quitarBordes fig1" (click)="cambiarColorMarco($event,'no')"> </button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig2" (click)="cambiarColorMarco($event,'si')" id="c1"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig3" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig4" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig5" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig6" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig4" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig7" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig8" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig9" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig10"(click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig11"(click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig12"(click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig13" (click)="cambiarColorMarco($event,'si')" id="c2"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig14" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig15" (click)="cambiarColorMarco($event,'no')"></button></td>
+                    </tr>
+                    <tr>
+                      <td><button class="cuadradoBtn quitarBordes fig16" (click)="cambiarColorMarco($event,'no')"> </button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig1" (click)="cambiarColorMarco($event,'si')" id="c3"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig3" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig6" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig9" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig1" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig3" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig6" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig9" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig12" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig15"(click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig1"(click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig2"(click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig4" (click)="cambiarColorMarco($event,'si')" id="c4"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig6" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig8" (click)="cambiarColorMarco($event,'no')"></button></td>
+                    </tr>
+                    <tr>
+                      <td><button class="cuadradoBtn quitarBordes fig10" (click)="cambiarColorMarco($event,'no')"> </button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig12" (click)="cambiarColorMarco($event,'si')" id="c5"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig14" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig16" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig1" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig4" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig8" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig12" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig16" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig1" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig5"(click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig10"(click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig15"(click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig1" (click)="cambiarColorMarco($event,'si')" id="c6"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig2" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig3" (click)="cambiarColorMarco($event,'no')"></button></td>
+                    </tr>
+                    <tr>
+                      <td><button class="cuadradoBtn quitarBordes fig2" (click)="cambiarColorMarco($event,'no')"> </button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig4" (click)="cambiarColorMarco($event,'si')" id="c7"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig6" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig8" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig10" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig12" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig14" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig16" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig16" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig1" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig5"(click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig7"(click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig8"(click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig9" (click)="cambiarColorMarco($event,'si')" id="c8"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig7" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig6" (click)="cambiarColorMarco($event,'no')"></button></td>
+                    </tr>
+                    <tr>
+                      <td><button class="cuadradoBtn quitarBordes fig15" (click)="cambiarColorMarco($event,'no')"> </button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig2" (click)="cambiarColorMarco($event,'si')" id="c9"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig7" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig9" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig7" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig6" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig4" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig2" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig1" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig4" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig3"(click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig11"(click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig13"(click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig15" (click)="cambiarColorMarco($event,'si')" id="c10"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig16" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig4" (click)="cambiarColorMarco($event,'no')"></button></td>
+                    </tr>
+                    <tr>
+                      <td><button class="cuadradoBtn quitarBordes fig4" (click)="cambiarColorMarco($event,'no')"> </button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig6" (click)="cambiarColorMarco($event,'si')" id="c11"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig1" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig2" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig4" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig9" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig11" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig14" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig13" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig6" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig16"(click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig2"(click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig4"(click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig7" (click)="cambiarColorMarco($event,'si')" id="c12"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig9" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig5" (click)="cambiarColorMarco($event,'no')"></button></td>
+                    </tr>
+                    <tr>
+                      <td><button class="cuadradoBtn quitarBordes fig3" (click)="cambiarColorMarco($event,'no')"> </button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig5" (click)="cambiarColorMarco($event,'si')" id="c13"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig8" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig1" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig3" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig5" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig9" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig10" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig13" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig14" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig16"(click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig3"(click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig5"(click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig3" (click)="cambiarColorMarco($event,'si')" id="c14"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig6" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig7" (click)="cambiarColorMarco($event,'no')"></button></td>
+                    </tr>
+                    <tr>
+                      <td><button class="cuadradoBtn quitarBordes fig9" (click)="cambiarColorMarco($event,'no')"> </button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig10" (click)="cambiarColorMarco($event,'si')" id="c15"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig13" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig15" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig15" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig16" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig14" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig12" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig14" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig1" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig2"(click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig3"(click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig4"(click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig5" (click)="cambiarColorMarco($event,'si')" id="c16"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig6" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig9" (click)="cambiarColorMarco($event,'no')"></button></td>
+                    </tr>
+                    <tr>
+                      <td><button class="cuadradoBtn quitarBordes fig8" (click)="cambiarColorMarco($event,'no')"> </button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig7" (click)="cambiarColorMarco($event,'si')" id="c17"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig4" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig6" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig8" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig15" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig14" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig11" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig6" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig8" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig6"(click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig9"(click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig11"(click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig2" (click)="cambiarColorMarco($event,'si')" id="c18"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig4" (click)="cambiarColorMarco($event,'no')"></button></td>
+                      <td><button class="cuadradoBtn quitarBordes fig7" (click)="cambiarColorMarco($event,'no')"></button></td>
+                    </tr>
+                  
+                   
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

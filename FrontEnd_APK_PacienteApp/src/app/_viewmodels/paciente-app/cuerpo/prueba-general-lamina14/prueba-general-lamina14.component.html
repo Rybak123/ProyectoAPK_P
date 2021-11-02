@@ -1,0 +1,59 @@
+<div class="bg-light"  style="min-height: 320px; overflow: hidden;height:79vh">
+    <div class="p-2 container" style="height:100%;margin-left: 20%;">
+        <br>
+            <h1><b>Actividad 14 - Memoria verbal espontanea</b></h1>
+            <h3>Escriba las palabras que se le presentan en el ejercicio de codificación, sin importar el orden.</h3>
+            <form [formGroup]="form"  style="height:100%" >
+                <div class="row" >
+                    <div class="form-group col-4">
+                        <h3>Palabra 1</h3>
+                    </div>
+                    <div class="form-group col-4">
+                        <input type="text" formControlName="palabra1" class="form-control"/>
+                    </div>
+                </div>
+                <div class="row" >
+                    <div class="form-group col-4">
+                        <h3>Palabra 2</h3>
+                    </div>
+                    <div class="form-group col-4">
+                        <input type="text" formControlName="palabra2" class="form-control"/>
+                    </div>
+                </div>
+                <div class="row"  >
+                    <div class="form-group col-4">
+                        <h3>Palabra 3</h3>
+                    </div>
+                    <div class="form-group col-4">
+                        <input type="text" formControlName="palabra3" class="form-control"/>
+                    </div>
+                </div>
+                <div class="row" >
+                    <div class="form-group col-4">
+                        <h3>Palabra 4</h3>
+                    </div>
+                    <div class="form-group col-4">
+                        <input type="text" formControlName="palabra4" class="form-control"/>
+                    </div>
+                </div>
+                <div class="row" >
+                    <div class="form-group col-4">
+                        <h3>Palabra 5</h3>
+                    </div>
+                    <div class="form-group col-4">
+                        <input type="text" formControlName="palabra5" class="form-control"/>
+                    </div>
+                </div>
+                <div class="row"  >
+                    <div class="form-group col-4">
+                        <h3>Palabra 6</h3>
+                    </div>
+                    <div class="form-group col-4">
+                        <input type="text" formControlName="palabra6" class="form-control"/>
+                    </div>
+                </div>
+                <button (click)="enviarActividad2()" type="button" mat-button color="primary" style="width: 65%; background-color: rgb(127, 127, 243);">Enviar y pasar a la siguiente actividad</button>
+            </form>
+    </div>
+</div>
+

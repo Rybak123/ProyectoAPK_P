@@ -1,0 +1,82 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+
+$md-primary1: (
+    50 : #ede6f8,
+    100 : #d2c1ed,
+    200 : #b498e1,
+    300 : #966ed5,
+    400 : #804fcc,
+    500 : #6930c3,
+    600 : #612bbd,
+    700 : #5624b5,
+    800 : #4c1eae,
+    900 : #3b13a1,
+    A100 : #ded3ff,
+    A200 : #b7a0ff,
+    A400 : #906dff,
+    A700 : #7d53ff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #ffffff,
+    )
+);
+
+$md-secondary1: (
+    50 : #ececf9,
+    100 : #cfcff0,
+    200 : #afb0e7,
+    300 : #8e90dd,
+    400 : #7678d5,
+    500 : #5e60ce,
+    600 : #5658c9,
+    700 : #4c4ec2,
+    800 : #4244bc,
+    900 : #3133b0,
+    A100 : #f6f7ff,
+    A200 : #c3c4ff,
+    A400 : #9092ff,
+    A700 : #7779ff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+// Set variables to whatever colors you want for your app
+$dark-theme-primary: mat-palette($md-primary1,300);
+$dark-theme-accent: mat-palette($md-secondary1,700);
+$dark-theme-warn: mat-palette($mat-red);
+
+$dark-theme: mat-dark-theme(
+    $dark-theme-primary,
+    $dark-theme-accent,
+    $dark-theme-warn
+);
+
+@include angular-material-theme($dark-theme);

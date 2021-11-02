@@ -1,0 +1,54 @@
+<div class="bg-light"  style="min-height: 320px; overflow: hidden;height:79vh">
+    <div class="p-2 container" style="height:100%;">
+            <h1><b>Actividad 16 - Reconocimiento</b></h1>
+            <h3>Reconozca en las palabras memorizadas cuales son partes del cuerpo, cuales son frutas, y cuales animales</h3>
+            <form [formGroup]="form"  style="height:100%" >
+                <div class="row" >
+                    <div class="form-group col-4">
+                        <div class="example-container">
+                            <h2>Partes del cuerpo</h2>
+                            <div
+                              cdkDropList
+                              #parteDelCuerpoList="cdkDropList"
+                              [cdkDropListData]="partesDelCuerpo"
+                              [cdkDropListConnectedTo]="[frutaList,animalesList]"
+                              class="example-list"
+                              (cdkDropListDropped)="drop($event)">
+                              <div class="example-box" *ngFor="let item of partesDelCuerpo" cdkDrag>{{item}}</div>
+                            </div>
+                          </div>
+                    </div>
+                    <div class="form-group col-4">
+                        <div class="example-container">
+                            <h2>Frutas</h2>
+                            <div
+                              cdkDropList
+                              #frutaList="cdkDropList"
+                              [cdkDropListData]="frutas"
+                              [cdkDropListConnectedTo]="[parteDelCuerpoList,animalesList]"
+                              class="example-list"
+                              (cdkDropListDropped)="drop($event)">
+                              <div class="example-box" *ngFor="let item of frutas" cdkDrag>{{item}}</div>
+                            </div>
+                          </div>
+                    </div>
+                    <div class="form-group col-4">
+                        <div class="example-container">
+                            <h2>Animales</h2>
+                            <div
+                              cdkDropList
+                              #animalesList="cdkDropList"
+                              [cdkDropListData]="animales"
+                              [cdkDropListConnectedTo]="[parteDelCuerpoList,frutaList]"
+                              class="example-list"
+                              (cdkDropListDropped)="drop($event)">
+                              <div class="example-box" *ngFor="let item of animales" cdkDrag>{{item}}</div>
+                            </div>
+                          </div>
+                    </div>
+                </div>    
+                <button (click)="enviarActividad2()" class="center" type="button" mat-button color="primary" style="width: 65%; background-color: rgb(127, 127, 243);">Enviar y pasar a la siguiente actividad</button>
+            </form>
+    </div>
+</div>
+

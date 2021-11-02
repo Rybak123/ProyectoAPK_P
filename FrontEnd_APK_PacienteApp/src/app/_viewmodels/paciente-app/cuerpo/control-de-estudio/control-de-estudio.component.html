@@ -1,0 +1,72 @@
+   
+    <div class="row" style="width: 100%; height: 90.3%;background-color: rgb(230, 245, 245)">
+      <div class="col-md-6" style="width: 50%;">
+        <br>
+    <h2 class="estilo_letra">
+      
+      ¿CUANTAS HORAS ESTUDIASTE HOY?
+    </h2>
+    <div>
+      <img src="assets/img/libro1.png" class="imagen" alt="">
+    </div>
+    <div class="contenedor_opciones" >
+      <div  class="estilo_letra2">
+        <p>{{horaString}} : {{minutosString}} : {{segundosString}}</p>
+      </div>
+      
+      <div style="margin-top: 5%;">
+        
+        <input type="text" id="nuevaMateria" class="input" placeholder="Escribe tu materia">
+        <button class="boton_agregar" (click)="aumentarMateria()">AGREGAR</button>
+        <button class="boton_agregar" (click)="borrarMateria()">ELIMINAR</button>
+        <div class="">
+          <select (change)="verCantidadHorasEstudiadas()" id="selectBar">
+            
+          </select>
+        </div>
+        <br>
+      </div>
+  </div>
+      <div class="contenedor_opciones" style="margin-top: 12%;">
+
+          <button class="estilo_boton"> 
+            <div class="dentro_boton">
+              <div class="dentro_boton" id="icono">
+                <img
+                width="40"
+                 alt="Angular Logo"
+                 src="assets/img/reloj1_icon.png"
+                 
+               />
+              </div>
+              <div (click)="start()" class="dentro_boton" id="inicio">INICIAR</div>
+            </div>
+          </button>
+         
+            <button class="estilo_boton"> 
+              <div class="dentro_boton">
+                <div class="dentro_boton" id="icono">
+                  <img
+                  width="40"
+                   alt="Angular Logo"
+                   src="assets/img/reloj2_icon.png"
+                   
+                 />
+                </div>
+                <div (click)="stop()" class="dentro_boton" id="inicio">FINALIZAR</div>
+              </div>
+          </button><BR>
+         
+      </div>
+      </div>
+      <div class="col-md-6" style=" width: 50%;">
+        <div>
+          <p id="textoConfirmatorio" style="font-size:x-large;width: 100%; text-align: center;margin-top: 2%;">{{estadoActividad}}</p>
+        </div> 
+         <div class="calendario" style="width: 100% !important;margin-top: 5%;">
+          <full-calendar [options]="calendarOptions"></full-calendar>
+         </div>  
+      </div>
+    
+    </div>
+  <router-outlet></router-outlet>

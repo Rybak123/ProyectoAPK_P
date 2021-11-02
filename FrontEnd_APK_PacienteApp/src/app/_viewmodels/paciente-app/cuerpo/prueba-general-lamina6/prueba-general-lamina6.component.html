@@ -1,0 +1,60 @@
+<div class="bg-light"  style="min-height: 320px; overflow: hidden;height:79vh">
+    <div class="p-4 container" style="height:100%">
+        <div class="row" >
+            <div class="col-6">
+                <h1><b>Actividad 6 - Codificación</b></h1>
+                <p>Se le presentaran distintas palabras, las cuales las tiene que escribir en el mismo orden. Al mismo tiempo debe memorizar las palabras</p>
+                <form [formGroup]="form"  style="height:100%;margin-left: auto; 
+                margin-right: 0;" >
+                    <div class="row" >
+                        <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+                            <div class="example-box" *ngFor="let movie of movies" cdkDrag>{{movie}}</div>
+                        </div>
+                    </div>
+                    <br>
+                    <button  (click)="enviarActividad2()" type="button" mat-button color="primary" style="width: 65%; background-color: rgb(127, 127, 243);">Enviar y pasar a la siguiente actividad</button>
+                </form>
+            </div>
+            <div class="col-6">
+                <button  (click)="intento1()" type="button" mat-button color="primary" style="width: 100%; background-color: rgb(127, 127, 243);">Intentar otra vez</button> <br>
+                <button  (click)="enviarActividad2()" type="button" mat-button color="primary" style="width: 100%; background-color: rgb(127, 127, 243);">Enviar y pasar a la siguiente actividad </button>
+                <ngb-carousel (slide)="onSlide($event)" #clotheCarousel="ngbCarousel" *ngIf="images"[interval]="500" [showNavigationArrows]="showNavigationArrows" [showNavigationIndicators]="showNavigationIndicators" style="color: rgba(0, 0, 0, 0) !important">
+                    <ng-template ngbSlide >
+                      <div class="picsum-img-wrapper" >
+                        <img [src]="images[0]" alt="Random first slide" class="slide-images-selector">
+                      </div>
+                    </ng-template>
+                    <ng-template ngbSlide >
+                      <div class="picsum-img-wrapper" >
+                        <img [src]="images[1]" alt="Random second slide" class="slide-images-selector">
+                      </div>
+                    </ng-template>
+                    <ng-template ngbSlide >
+                      <div class="picsum-img-wrapper" >
+                        <img [src]="images[2]" alt="Random third slide" class="slide-images-selector">
+                      </div>
+                    </ng-template>
+                    <ng-template ngbSlide >
+                        <div class="picsum-img-wrapper" >
+                          <img [src]="images[3]" alt="Random first slide" class="slide-images-selector">
+                        </div>
+                      </ng-template>
+                      <ng-template ngbSlide >
+                        <div class="picsum-img-wrapper" >
+                          <img [src]="images[4]" alt="Random second slide" class="slide-images-selector">
+                        </div>
+                      </ng-template>
+                      <ng-template ngbSlide >
+                        <div class="picsum-img-wrapper" >
+                          <img [src]="images[5]" alt="Random third slide" class="slide-images-selector">
+                        </div>
+                      </ng-template>
+                </ngb-carousel>
+
+              
+              
+            </div>
+        </div>       
+    </div>
+</div>
+

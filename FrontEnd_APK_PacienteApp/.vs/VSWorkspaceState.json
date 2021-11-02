@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\_models",
+    "\\src\\app\\_services\\paciente_services\\agenda_services\\pacienteServices",
+    "\\src\\app\\_viewmodels\\paciente-app",
+    "\\src\\app\\_viewmodels\\paciente-app\\cuerpo\\metasPersonales\\crear-metas-personales",
+    "\\src\\app\\_viewmodels\\paciente-app\\cuerpo\\metasSociales\\crear-metas-sociales",
+    "\\src\\app\\_viewmodels\\paciente-app\\cuerpo\\misCanciones\\ver-canciones",
+    "\\src\\app\\_viewmodels\\paciente-app\\cuerpo\\resumen-de-la-agenda-virtual"
+  ],
+  "SelectedNode": "\\src\\app\\_models\\paciente_model\\paciente_model.ts",
+  "PreviewInSolutionExplorer": false
+}

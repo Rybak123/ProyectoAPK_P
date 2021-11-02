@@ -1,0 +1,36 @@
+
+  <div class="row align-items-md-stretch" style="width: 100%; height: 90.3%;background-color: rgb(220, 235, 218)">
+    <div class="col-md-6" style="width: 50%;">
+      <br>
+  <h1 class="estilo_letra">
+    <b>¿COMO TE SENTISTE EL DIA DE HOY?</b>
+  </h1>
+    <div>
+        <img src="{{hojaEmocionActual}}" class="imagen" alt="">
+        <div class="contenedor_opciones">
+          <div> 
+            <button class="boton_agregar" (click)="guardarRegistros('Emocionada')">Emocionada</button><br>
+            <button class="boton_agregar" (click)="guardarRegistros('Triste')">Triste</button><br>
+            <button class="boton_agregar" (click)="guardarRegistros('Productiva')">Productiva</button><br>
+            <button class="boton_agregar" (click)="guardarRegistros('Feliz')">Feliz</button><br>
+            <button class="boton_agregar" (click)="guardarRegistros('Cansada')">Cansado</button><br>
+            <button class="boton_agregar" (click)="guardarRegistros('Enojada')">Enojado</button><br>
+            <button class="boton_agregar" (click)="guardarRegistros('Ansiosa')">Ansioso</button><br>
+            <button class="boton_agregar" (click)="guardarRegistros('Meeeeh')">Meeeeh</button><br>
+          </div>
+      </div>
+    </div>
+    
+    </div>
+    <div class="col-md-6" style="background-color: rgb(220, 235, 218); height: 100%;width: 50%;">
+      <div>
+        <p id="textoConfirmatorio" style="font-size:x-large;width: 100%; text-align: center;margin-top: 2%;">{{estadoActividad}}</p>
+      </div>   
+       <div class="calendario" style="margin-top: 4%; width: 100% !important;;height: 100%; ">
+        <full-calendar #calendar  [options]="calendarOptions"></full-calendar>
+       </div>  
+    </div>
+</div>
+
+
+

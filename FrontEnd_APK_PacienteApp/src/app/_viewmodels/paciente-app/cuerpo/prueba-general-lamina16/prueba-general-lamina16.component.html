@@ -1,0 +1,29 @@
+<div class="bg-light"  style="min-height: 320px; overflow: hidden;height:79vh">
+    <div class="p-2 container" style="height:100%;">
+            <br>
+            <h1><b>Actividad 16 - Reconocimiento</b></h1>
+            <h3>Se presentarán distintas palabras, debe seleccionar las palabras que haya memorizado en la actividad:</h3>
+            <div class="row" >
+                <div class="col-6" style="width: 60%;">
+                    <br>
+                    <button (click)="cardAnimation('swipeleft')"  type="button" mat-button color="primary" style="width: 65%; background-color: rgb(243, 186, 40);">No</button>
+                    <button (click)="cardAnimation('swiperight')" type="button" mat-button color="primary" style="margin-top: 5%;width: 65%; background-color: rgb(243, 186, 40);">Si</button>
+                    
+                    <button (click)="enviarActividad2()" type="button" mat-button color="primary" style="margin-top: 10%;width: 65%; background-color: rgb(127, 127, 243);">Enviar finalizar las pruebas</button>
+                </div>
+                <div class="col-6" style="width: 40%;">
+                    <div class="tphoto"
+                    [@cardAnimator]="animationState"
+                    (@cardAnimator.done)="resetAnimationState($event)"
+                    (swipeleft)='startAnimation("swipeleft")' 
+                    (swiperight)='startAnimation("swiperight")'
+                    id="tarjeta">
+                    <p>
+                    {{currentValue}}
+                    </p>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+

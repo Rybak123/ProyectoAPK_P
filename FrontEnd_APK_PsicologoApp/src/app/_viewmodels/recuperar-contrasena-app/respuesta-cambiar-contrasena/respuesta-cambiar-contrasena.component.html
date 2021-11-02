@@ -1,0 +1,39 @@
+<div class="row align-items-md-stretch" style="height: 100%;">   
+    
+    <!--   <main class="login-desing">  --> 
+        <div class="col-md-6" style="width: 50%;display: grid; height: 100%;" id="imagen">
+            <img src="assets/img/fondo1.png" style="margin-top: 10%;height: 70%;">
+        </div>
+    
+        <div class="col-md-6" style="color: white;width: 50%; background-color: rgb(77, 115, 241);">
+            <h2 id="label1" >Cambiar mi contraseña</h2>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()"style="margin-bottom: 5%;">
+            <div class="form-group" style="margin-top: 15%;margin-bottom: 5%;"> 
+                <input type="password" placeholder="Nueva contraseña" id="boton_usuario"  formControlName="contrasena" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.contrasena.errors }" />
+                <div *ngIf="submitted && f.contrasena.errors" class="invalid-feedback" style="margin-left: 10%;">
+                    <div *ngIf="f.contrasena.errors.required">No debe dejar este espacio en blanco</div>
+                    <div *ngIf="f.contrasena.errors.minlength">La contraseña debe tener almenos 6 caracteres</div>
+                </div>
+            </div>
+            <div class="form-group" style="margin-bottom: 5%;"> 
+                <input type="password" placeholder="Repita la contraseña" id="boton_usuario"  formControlName="contrasenaRepetida" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.contrasenaRepetida.errors }" />
+                <div *ngIf="submitted && f.contrasenaRepetida.errors" class="invalid-feedback" style="margin-left: 10%;">
+                    <div *ngIf="f.contrasenaRepetida.errors.required">No debe dejar este espacio en blanco</div>
+                    <div *ngIf="f.contrasenaRepetida.errors.mustMatch">Las contraseñas deben coincidir</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button [disabled]="loading" class="btn btn-primary" id="boton_login">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Cambiar mi contraseña
+                </button>
+            </div>
+        </form>
+       
+        </div>
+    <!--</main>-->
+    </div>
+    
+    
+    
+    
