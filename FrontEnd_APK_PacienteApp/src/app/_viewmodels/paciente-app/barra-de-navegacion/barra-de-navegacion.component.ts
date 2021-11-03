@@ -37,5 +37,8 @@ export class BarraDeNavegacionComponent implements OnInit {
   clickMenu() { 
     this.sideNavService.toggle();
   }
+  verNotificaciones(){
+    this.sideNavService.abrirNotificaciones();
+  }
 
 }

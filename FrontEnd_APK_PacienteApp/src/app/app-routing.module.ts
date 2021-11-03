@@ -5,8 +5,8 @@ import { AuthGuard } from '../app/_helpers';
 import { PacienteComponent } from './_viewmodels/paciente-app/paciente.component';
 import { FormularioCambiarContrasenaComponent } from './_viewmodels/recuperar-contrasena-app/formulario-cambiar-contrasena/formulario-cambiar-contrasena.component';
 import { RespuestaCambiarContrasenaComponent } from './_viewmodels/recuperar-contrasena-app/respuesta-cambiar-contrasena/respuesta-cambiar-contrasena.component';
-import { InicioPruebaGeneralComponent } from './_viewmodels/paciente-app/cuerpo/inicio-prueba-general/inicio-prueba-general.component';
-import { InicioPruebaMarcoComponent } from './_viewmodels/paciente-app/cuerpo/inicio-prueba-marco/inicio-prueba-marco.component';
+import { InicioPruebaGeneralComponent } from './_viewmodels/paciente-app/cuerpo/PruebasDesarolloCognitivo/PruebaGeneral/inicio-prueba-general/inicio-prueba-general.component';
+import { InicioPruebaMarcoComponent } from './_viewmodels/paciente-app/cuerpo/PruebasDesarolloCognitivo/PruebaGeneral/inicio-prueba-marco/inicio-prueba-marco.component';
 
 const routes: Routes = [
 

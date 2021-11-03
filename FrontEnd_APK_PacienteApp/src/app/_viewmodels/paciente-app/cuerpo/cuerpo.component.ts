@@ -5,45 +5,43 @@ import { CalendarOptions } from '@fullcalendar/angular';
 import { ViewEncapsulation,Directive, ViewContainerRef  } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { SidenavService } from '../../../_services/sidenavService';
-import { ControlDeEstudioComponent } from '../cuerpo/control-de-estudio/control-de-estudio.component';
-import { ControlDeSuenoComponent } from '../cuerpo/control-de-sueno/control-de-sueno.component';
-import { ControlDeAnimoComponent } from '../cuerpo/control-de-animo/control-de-animo.component';
-import { ControlDeConsumoDeAguaComponent } from '../cuerpo/control-de-consumo-de-agua/control-de-consumo-de-agua.component';
-import { ControlDeEnergiaComponent } from '../cuerpo/control-de-energia/control-de-energia.component';
+import { ControlDeEstudioComponent } from './AgendaVirtual_ActividadesControl/control-de-estudio/control-de-estudio.component';
+import { ControlDeSuenoComponent } from './AgendaVirtual_ActividadesControl/control-de-sueno/control-de-sueno.component';
+import { ControlDeAnimoComponent } from '../cuerpo/AgendaVirtual_ActividadesControl/control-de-animo/control-de-animo.component';
+import { ControlDeConsumoDeAguaComponent } from './AgendaVirtual_ActividadesControl/control-de-consumo-de-agua/control-de-consumo-de-agua.component';
+import { ControlDeEnergiaComponent } from './AgendaVirtual_ActividadesControl/control-de-energia/control-de-energia.component';
 import { AuthenticationService } from '../../../_services';
 import { AdDirective } from '../../../_helpers/ad.directive';
 import { Router } from '@angular/router';
 
 
 // paso 1  importar las clases de los componentes
-import { CrearLibroComponent } from '../cuerpo/misLibros/crear-libro/crear-libro.component';
-import { VerLibrosComponent } from '../cuerpo/misLibros/ver-libros/ver-libros.component';
-import { CrearCancionesComponent } from '../cuerpo/misCanciones/crear-canciones/crear-canciones.component';
-import { VerCancionesComponent } from '../cuerpo/misCanciones/ver-canciones/ver-canciones.component';
-
-import { VerLibrosModule } from './misLibros/ver-libros/ver-libros.module';
-import { CrearMetasPersonalesComponent } from './metasPersonales/crear-metas-personales/crear-metas-personales.component';
-import { CrearMetasSocialesComponent } from './metasSociales/crear-metas-sociales/crear-metas-sociales.component';
-
-import { VerMetasPersonalesComponent } from './metasPersonales/ver-metas-personales/ver-metas-personales.component';
-import { CrearFavoritoComponent } from './misFavoritos/crear-favorito/crear-favorito.component';
-import { VerFavoritosComponent } from './misFavoritos/ver-favoritos/ver-favoritos.component';
-import { CalificarMesComponent } from './calificar-mes/calificar-mes.component';
+import { CrearLibroComponent } from '../cuerpo/AgendaVirtual_ActividadesRegistro/misLibros/crear-libro/crear-libro.component';
+import { VerLibrosComponent } from '../cuerpo/AgendaVirtual_ActividadesRegistro/misLibros/ver-libros/ver-libros.component';
+import { CrearCancionesComponent } from '../cuerpo/AgendaVirtual_ActividadesRegistro/misCanciones/crear-canciones/crear-canciones.component';
+import { VerCancionesComponent } from '../cuerpo/AgendaVirtual_ActividadesRegistro/misCanciones/ver-canciones/ver-canciones.component';
+import { CrearMetasPersonalesComponent } from './AgendaVirtual_ActividadesRegistro/metasPersonales/crear-metas-personales/crear-metas-personales.component';
+import { CrearMetasSocialesComponent } from './AgendaVirtual_ActividadesRegistro/metasSociales/crear-metas-sociales/crear-metas-sociales.component';
+import { VerMetasPersonalesComponent } from './AgendaVirtual_ActividadesRegistro/metasPersonales/ver-metas-personales/ver-metas-personales.component';
+import { CrearFavoritoComponent } from './AgendaVirtual_ActividadesRegistro//misFavoritos/crear-favorito/crear-favorito.component';
+import { VerFavoritosComponent } from './AgendaVirtual_ActividadesRegistro//misFavoritos/ver-favoritos/ver-favoritos.component';
+import { CalificarMesComponent } from './AgendaVirtual_ActividadesRegistro/calificar-mes/calificar-mes.component';
 
 import { AppModule } from 'src/app/app.module';
 import { ResumenDeLaAgendaVirtualComponent } from './resumen-de-la-agenda-virtual/resumen-de-la-agenda-virtual.component';
 import { NavigationService } from '../../../_services/paciente_services/navigation_services/navigationService';
 import { PerfilPacienteComponent } from './perfil-paciente/perfil-paciente.component';
-import { PruebaGeneralComponent } from './prueba-general/prueba-general.component';
-import { PruebaGeneralLamina2Component } from './prueba-general-lamina2/prueba-general-lamina2.component';
-import { PruebaGeneralLamina3Component } from './prueba-general-lamina3/prueba-general-lamina3.component';
-import { PruebaGeneralLamina4Component } from './prueba-general-lamina4/prueba-general-lamina4.component';
-import { PruebaGeneralLamina5Component } from './prueba-general-lamina5/prueba-general-lamina5.component';
-import { PruebaGeneralLamina6Component } from './prueba-general-lamina6/prueba-general-lamina6.component';
-import { InicioPruebaGeneralComponent } from './inicio-prueba-general/inicio-prueba-general.component';
-import { InicioPruebaActividadesComponent } from './inicio-prueba-actividades/inicio-prueba-actividades.component';
-import { InicioPruebaMarcoComponent } from './inicio-prueba-marco/inicio-prueba-marco.component';
-import { PruebaDeDesarolloCognitivoComponent } from './prueba-de-desarollo-cognitivo/prueba-de-desarollo-cognitivo.component';
+import { PruebaGeneralComponent } from './PruebasDesarolloCognitivo/PruebaGeneral/prueba-general/prueba-general.component';
+import { PruebaGeneralLamina2Component } from './PruebasDesarolloCognitivo/PruebaGeneral/prueba-general-lamina2/prueba-general-lamina2.component';
+import { PruebaGeneralLamina3Component } from './PruebasDesarolloCognitivo/PruebaGeneral/prueba-general-lamina3/prueba-general-lamina3.component';
+import { PruebaGeneralLamina4Component } from './PruebasDesarolloCognitivo/PruebaGeneral/prueba-general-lamina4/prueba-general-lamina4.component';
+import { PruebaGeneralLamina5Component } from './PruebasDesarolloCognitivo/PruebaGeneral/prueba-general-lamina5/prueba-general-lamina5.component';
+import { PruebaGeneralLamina6Component } from './PruebasDesarolloCognitivo/PruebaGeneral/prueba-general-lamina6/prueba-general-lamina6.component';
+import { InicioPruebaGeneralComponent } from './PruebasDesarolloCognitivo/PruebaGeneral/inicio-prueba-general/inicio-prueba-general.component';
+import { InicioPruebaActividadesComponent } from './PruebasDesarolloCognitivo/PruebaGeneral/inicio-prueba-actividades/inicio-prueba-actividades.component';
+import { InicioPruebaMarcoComponent } from './PruebasDesarolloCognitivo/PruebaGeneral/inicio-prueba-marco/inicio-prueba-marco.component';
+import { PruebaDeDesarolloCognitivoComponent } from './PruebasDesarolloCognitivo/prueba-de-desarollo-cognitivo/prueba-de-desarollo-cognitivo.component';
+
 
 @Component({
   selector: 'app-cuerpo',
@@ -320,6 +318,7 @@ export class CuerpoComponent implements OnInit,AfterViewInit {
     });
     ref.changeDetectorRef.detectChanges();
   }
+ 
 
   ngAfterViewInit() {
     this.navigationServices.asObservableIrVerPerfil().subscribe(() => { 
@@ -341,6 +340,7 @@ export class CuerpoComponent implements OnInit,AfterViewInit {
                       this.sidenav.open();
                   }
           });
+    
     
   }
 
