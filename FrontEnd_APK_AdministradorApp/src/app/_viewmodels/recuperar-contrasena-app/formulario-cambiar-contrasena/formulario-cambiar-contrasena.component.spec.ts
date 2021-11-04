@@ -19,7 +19,5 @@ describe('FormularioCambiarContrasenaComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+
 });

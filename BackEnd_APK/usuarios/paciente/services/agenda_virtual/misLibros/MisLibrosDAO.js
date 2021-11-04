@@ -46,10 +46,8 @@ async function create_LibroPaciente(infoJson) {
   async function mandarImagen(req, res, next){
   
     var params=req.query;
-    console.log(params);
     const form = new formidable.IncomingForm();
     const uploadFolder = path.join(__dirname, "../../../../../","datos","datos_pacientes",params.carnetDeIdentidad+"","misLibros");
-    console.log(uploadFolder);
     form.multiples = true;
     form.maxFileSize = 50 * 1024 * 1024; // 5MB
     form.uploadDir = uploadFolder;

@@ -34,39 +34,46 @@ export class LoginAdministradorComponent implements OnInit {
   this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
   get f() { return this.loginForm.controls; }
-  onSubmit() {
+
+  async autenticacion(){
+    let userLogged = 'invalid_form';
+    return await this.authenticationService.login(this.f.username.value, this.f.password.value)
+    .then(
+        data => {
+            if(data.resultado.estado){
+              this.router.navigate([this.returnUrl]);
+              userLogged = 'login_valid';
+              return userLogged;
+            }
+            else{
+              this.authenticationService.logout();
+              userLogged = 'login_invalid';
+              this.router.navigate(["/loginAdministrador"]);
+              alert("Usuario deshabilitado");
+              this.loading = false;
+              return userLogged;
+            }
+        },
+        error => {
+            this.alertService.error(error);
+            this.loading = false;
+            userLogged = 'login_invalid';
+            return userLogged;
+        });
+  }
+
+  async onSubmit() {
+    let userLogged = 'invalid_form';
     this.submitted = true;
 
-    // reset alerts on submit
-    this.alertService.clear();
-
-    // stop here if form is invalid
     if (this.loginForm.invalid) {
-        return;
+        return userLogged;
     }
-
-    this.loading = true;
-    this.authenticationService.login(this.f.username.value, this.f.password.value)
-        .pipe(first())
-        .subscribe(
-            data => {
-                if(data.resultado.estado){
-                  this.router.navigate([this.returnUrl]);
-                }
-                else{
-     
-                  this.authenticationService.logout();
-                  this.router.navigate(["/loginAdministrador"]);
-                  alert("Usuario deshabilitado");
-                  this.loading = false;
-                }
-                
-            },
-            error => {
-                this.alertService.error(error);
-                this.loading = false;
-            });
+    return await this.autenticacion();
+    //Retorna "login_valid" si la autenticación es correcta
+    //Retorna "login_invalid" si la autenticación es incorrecta
   }
+
   irARecuperarContrasena(){
     this.router.navigate(["/cambiarContrasenaFormulario"],{ queryParams: { tipo: "administrador"}});
   }
