@@ -1,0 +1,51 @@
+<div class="bg-light"  style="min-height: 89vh; overflow: hidden;">
+    <div class="p-2 container" style="min-height: 89vh;background-image: url('assets/img/cerebro.png');background-repeat: no-repeat;background-size: cover;">
+    <h1>Eventos registrados</h1>
+    <button (click)="irACrearEvento()" class="btn btn-sm btn-success mb-2">Añadir Evento</button>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th style="width: 20%">Titulo: </th>
+                <th style="width: 20%">Descripcion: </th>
+                <th style="width: 20%">Fecha de la publicación:</th>
+                <th style="width: 20%">Fecha del evento</th>
+                <th style="width: 20%">Imagen</th>
+                <th style="width: 20%"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let evento of eventos">
+    
+                <td>{{evento.Titulo}}</td>
+                <td>{{evento.Descripcion}}</td>
+                <td>{{convertirFechaYQuitarHoras(evento.FechaDePublicacion)}}</td>
+                <td>{{convertirFechaYQuitarHoras(evento.FechaDelEvento)}}</td>
+                <td>{{evento.Imagen}}</td>
+                <td>
+                    <span *ngIf="(evento.Estado == false)" >Deshabilitado</span>
+                    <span *ngIf="(evento.Estado == true)" >Habilitado</span>
+                </td>
+               
+               
+                
+                <td style="white-space: nowrap">
+                    <button  (click)="habilitarEvento(evento._id)" class="btn btn-sm btn-primary mr-1" [disabled]="isHabilitar">
+                    <span *ngIf="isHabilitar && eventoActual==evento._id" class="spinner-border spinner-border-sm">
+                    </span>Habilitar</button>
+                    <button  (click)="deshabilitarEvento(evento._id)" class="btn btn-sm btn-danger btn-delete-user"
+                     [disabled]="isDisabling">
+                     <span *ngIf="isDisabling && eventoActual==evento._id" class="spinner-border spinner-border-sm">
+                     </span>Deshabilitar</button>
+                        
+                </td>
+            </tr>
+            <tr *ngIf="!eventos">
+                <td colspan="4" class="text-center">
+                    <span class="spinner-border spinner-border-lg align-center"></span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    </div>
+    

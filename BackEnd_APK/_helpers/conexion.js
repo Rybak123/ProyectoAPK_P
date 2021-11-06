@@ -13,5 +13,6 @@ module.exports = {
     Paciente: require('../usuarios/paciente/model/Paciente_model'),
     Psicologo: require('../usuarios/psicologo/Model/PsicologoModel'),
     Administrador: require('../usuarios/administrador/Model/AdministradorModel'),
-    PruebaGeneral: require('../pruebasDeDesarrolloCognitivo/pruebasGenerales/Model/PruebaGeneralModel')
+    PruebaGeneral: require('../pruebasDeDesarrolloCognitivo/pruebasGenerales/Model/PruebaGeneralModel'),
+    Eventos:require('../eventos/Model/EventosModel')
 };

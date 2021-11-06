@@ -106,10 +106,12 @@ import { PruebaGeneralLamina13Component } from './_viewmodels/paciente-app/cuerp
 import { PruebaGeneralLamina14Component } from './_viewmodels/paciente-app/cuerpo/PruebasDesarolloCognitivo/PruebaGeneral/prueba-general-lamina14/prueba-general-lamina14.component';
 import { PruebaGeneralLamina15Component } from './_viewmodels/paciente-app/cuerpo/PruebasDesarolloCognitivo/PruebaGeneral/prueba-general-lamina15/prueba-general-lamina15.component';
 import { PruebaGeneralLamina16Component } from './_viewmodels/paciente-app/cuerpo/PruebasDesarolloCognitivo/PruebaGeneral/prueba-general-lamina16/prueba-general-lamina16.component';
-import { CardComponent } from './_components/card/card.component';
+
 import { PruebaGeneralResultadosComponent } from './_viewmodels/paciente-app/cuerpo/PruebasDesarolloCognitivo/PruebaGeneral/prueba-general-resultados/prueba-general-resultados.component';
 import { PruebaDeDesarolloCognitivoComponent } from './_viewmodels/paciente-app/cuerpo/PruebasDesarolloCognitivo/prueba-de-desarollo-cognitivo/prueba-de-desarollo-cognitivo.component';
 import { LoginComponent } from './_viewmodels/login-app/login-paciente/login.component';
+import { EventosNotificacionesComponent } from './_viewmodels/paciente-app/cuerpo/eventos-notificaciones/eventos-notificaciones.component';
+
 FullCalendarModule.registerPlugins([ 
   dayGridPlugin,
   interactionPlugin
@@ -162,9 +164,9 @@ FullCalendarModule.registerPlugins([
     PruebaGeneralLamina14Component,
     PruebaGeneralLamina15Component,
     PruebaGeneralLamina16Component,
-    CardComponent,
     PruebaGeneralResultadosComponent,
     PruebaDeDesarolloCognitivoComponent,
+    EventosNotificacionesComponent
      
   ],
   imports: [
