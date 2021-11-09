@@ -49,7 +49,7 @@ app.use('/administrador', require('./usuarios/administrador/Controller/Administr
 
 app.use('/pruebasGenerales', require('./pruebasDeDesarrolloCognitivo/pruebasGenerales/Controller/PruebaGeneralController'));
 
-app.use('/eventos', require('./eventos/controller/EventosController'));
+app.use('/eventos', require('./eventos/Controller/EventosController'));
 
 app.use(errorHandler);
 

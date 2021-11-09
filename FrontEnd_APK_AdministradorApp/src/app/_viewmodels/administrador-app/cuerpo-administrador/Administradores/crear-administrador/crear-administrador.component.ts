@@ -89,7 +89,7 @@ export class CrearAdministradorComponent implements OnInit,AfterViewInit {
     this.administradorService.registrarAdminstrador(administrador)
     .pipe(first())
     .subscribe(() => {
-        window.open("http://localhost:4000/excelUsuario/UsuarioRegistrado.csv", "_blank");
+        window.open(`${GlobalConstants.apiURL}/excelUsuario/UsuarioRegistrado.csv`, "_blank");
         this.irAListarAdministrador();
     }).add(() => this.loading = false);
   }
