@@ -65,6 +65,8 @@ export class CuerpoComponent implements OnInit,AfterViewInit {
   factoryVerCancion:any;
   factoryCrearMetasPersonales:any;
   factoryCrearMetasSociales:any;
+
+  factoryNotificaciones:any;
   
 
   @ViewChild('sidenav') sidenav: MatSidenav|any;
@@ -140,10 +142,9 @@ export class CuerpoComponent implements OnInit,AfterViewInit {
     ref.changeDetectorRef.detectChanges();
   }
   public renderVerLibro(): void {
-    const componentModule = this.compiler.compileModuleAndAllComponentsSync(AppModule);
-    const factory = componentModule.componentFactories.find(c => c.componentType === VerLibrosComponent);    
     this.myRef.clear();
-    const ref = this.myRef.createComponent(factory);
+    const ref = this.myRef.createComponent(this.componentFactoryResolver.resolveComponentFactory(VerLibrosComponent));
+    ref.changeDetectorRef.detectChanges();
     ref.instance.irACrearLibroEmiter.subscribe(() => {
       this.renderCrearLibro();
     });
@@ -165,137 +166,101 @@ export class CuerpoComponent implements OnInit,AfterViewInit {
     
   }
   public renderVerCancion(): void {
-    const componentModule = this.compiler.compileModuleAndAllComponentsSync(AppModule);
-    const factory = componentModule.componentFactories.find(c => c.componentType === VerCancionesComponent);    
     this.myRef.clear();
-    const ref = this.myRef.createComponent(factory);
+    const ref = this.myRef.createComponent(this.componentFactoryResolver.resolveComponentFactory(VerCancionesComponent));
+    ref.changeDetectorRef.detectChanges();
     ref.instance.irACrearCancionesEventEmiter.subscribe(() => {
       this.renderCrearCancion();
     });
     ref.changeDetectorRef.detectChanges();
   }
   public render_crearMetasPersonales(): void {
-    if(this.factoryCrearMetasPersonales==null){
-      this.factoryCrearMetasPersonales = this.componentFactoryResolver.resolveComponentFactory(CrearMetasPersonalesComponent);
-    }
     this.myRef.clear();
-    const ref = this.myRef.createComponent(this.factoryCrearMetasPersonales);
-    ref.instance.irAVerMetasPersonalesEventEmiter.subscribe(() => {
-      this.render_verMetasPersonales();
-    });
+    const ref = this.myRef.createComponent(this.componentFactoryResolver.resolveComponentFactory(CrearMetasPersonalesComponent));
     ref.changeDetectorRef.detectChanges();
   }
   public render_crearMetasSociales(): void {
-    if(this.factoryCrearMetasSociales==null){
-      this.factoryCrearMetasSociales = this.componentFactoryResolver.resolveComponentFactory(CrearMetasSocialesComponent);
-    }
     this.myRef.clear();
-    const ref = this.myRef.createComponent(this.factoryCrearMetasSociales);
+    const ref = this.myRef.createComponent(this.componentFactoryResolver.resolveComponentFactory(CrearMetasSocialesComponent));
     ref.changeDetectorRef.detectChanges();
   }
   public render_verMetasPersonales(): void {
-    const componentModule = this.compiler.compileModuleAndAllComponentsSync(AppModule);
-    const factory = componentModule.componentFactories.find(c => c.componentType === VerMetasPersonalesComponent);    
     this.myRef.clear();
-    const ref = this.myRef.createComponent(factory);
+    const ref = this.myRef.createComponent(this.componentFactoryResolver.resolveComponentFactory(VerMetasPersonalesComponent));
+    ref.changeDetectorRef.detectChanges();
     ref.instance.irACrearMetasPersonalesEventEmiter.subscribe(() => {
       this.render_crearMetasPersonales();
     });
     ref.changeDetectorRef.detectChanges();
   }
   public render_crearFavorito(): void {
-    const componentModule = this.compiler.compileModuleAndAllComponentsSync(AppModule);
-    const factory = componentModule.componentFactories.find(c => c.componentType === CrearFavoritoComponent);    
     this.myRef.clear();
-    const ref = this.myRef.createComponent(factory);
+    const ref = this.myRef.createComponent(this.componentFactoryResolver.resolveComponentFactory(CrearFavoritoComponent));
     ref.changeDetectorRef.detectChanges();
   }
   public render_verFavoritos(): void {
-    const componentModule = this.compiler.compileModuleAndAllComponentsSync(AppModule);
-    const factory = componentModule.componentFactories.find(c => c.componentType === VerFavoritosComponent);    
     this.myRef.clear();
-    const ref = this.myRef.createComponent(factory);
+    const ref = this.myRef.createComponent(this.componentFactoryResolver.resolveComponentFactory(VerFavoritosComponent));
     ref.changeDetectorRef.detectChanges();
   }
   public render_calificarMes(): void {
-    const componentModule = this.compiler.compileModuleAndAllComponentsSync(AppModule);
-    const factory = componentModule.componentFactories.find(c => c.componentType === CalificarMesComponent);    
     this.myRef.clear();
-    const ref = this.myRef.createComponent(factory);
+    const ref = this.myRef.createComponent(this.componentFactoryResolver.resolveComponentFactory(CalificarMesComponent));
     ref.changeDetectorRef.detectChanges();
   }
   public render_ResumenAgenda(): void {
-    const componentModule = this.compiler.compileModuleAndAllComponentsSync(AppModule);
-    const factory = componentModule.componentFactories.find(c => c.componentType === ResumenDeLaAgendaVirtualComponent);    
     this.myRef.clear();
-    const ref = this.myRef.createComponent(factory);
+    const ref = this.myRef.createComponent(this.componentFactoryResolver.resolveComponentFactory(ResumenDeLaAgendaVirtualComponent));
     ref.changeDetectorRef.detectChanges();
   }
 
   public renderVerPerfilPaciente(): void {
-    const componentModule = this.compiler.compileModuleAndAllComponentsSync(AppModule);
-    const factory = componentModule.componentFactories.find(c => c.componentType === PerfilPacienteComponent);    
     this.myRef.clear();
-    const ref = this.myRef.createComponent(factory);
+    const ref = this.myRef.createComponent(this.componentFactoryResolver.resolveComponentFactory(PerfilPacienteComponent));
     ref.changeDetectorRef.detectChanges();
   }
   public renderPruebaGeneral(): void {
-    const componentModule = this.compiler.compileModuleAndAllComponentsSync(AppModule);
-    const factory = componentModule.componentFactories.find(c => c.componentType === PruebaGeneralComponent);    
     this.myRef.clear();
-    const ref = this.myRef.createComponent(factory);
+    const ref = this.myRef.createComponent(this.componentFactoryResolver.resolveComponentFactory(PruebaGeneralComponent));
     ref.changeDetectorRef.detectChanges();
   }
   public renderPruebaGeneralLamina2(): void {
-    const componentModule = this.compiler.compileModuleAndAllComponentsSync(AppModule);
-    const factory = componentModule.componentFactories.find(c => c.componentType === PruebaGeneralLamina2Component);    
     this.myRef.clear();
-    const ref = this.myRef.createComponent(factory);
+    const ref = this.myRef.createComponent(this.componentFactoryResolver.resolveComponentFactory(PruebaGeneralLamina2Component));
     ref.changeDetectorRef.detectChanges();
   }
   public renderPruebaGeneralLamina3(): void {
-    const componentModule = this.compiler.compileModuleAndAllComponentsSync(AppModule);
-    const factory = componentModule.componentFactories.find(c => c.componentType === PruebaGeneralLamina3Component);    
     this.myRef.clear();
-    const ref = this.myRef.createComponent(factory);
+    const ref = this.myRef.createComponent(this.componentFactoryResolver.resolveComponentFactory(PruebaGeneralLamina3Component));
     ref.changeDetectorRef.detectChanges();
   }
   public renderPruebaGeneralLamina4(): void {
-    const componentModule = this.compiler.compileModuleAndAllComponentsSync(AppModule);
-    const factory = componentModule.componentFactories.find(c => c.componentType === PruebaGeneralLamina4Component);    
     this.myRef.clear();
-    const ref = this.myRef.createComponent(factory);
+    const ref = this.myRef.createComponent(this.componentFactoryResolver.resolveComponentFactory(PruebaGeneralLamina4Component));
     ref.changeDetectorRef.detectChanges();
   }
   public renderPruebaGeneralLamina5(): void {
-    const componentModule = this.compiler.compileModuleAndAllComponentsSync(AppModule);
-    const factory = componentModule.componentFactories.find(c => c.componentType === PruebaGeneralLamina5Component);    
     this.myRef.clear();
-    const ref = this.myRef.createComponent(factory);
+    const ref = this.myRef.createComponent(this.componentFactoryResolver.resolveComponentFactory(PruebaGeneralLamina5Component));
     ref.changeDetectorRef.detectChanges();
   }
   public renderPruebaGeneralLamina6(): void {
-    const componentModule = this.compiler.compileModuleAndAllComponentsSync(AppModule)
-    const factory = componentModule.componentFactories.find(c => c.componentType === PruebaGeneralLamina6Component);    
     this.myRef.clear();
-    const ref = this.myRef.createComponent(factory);
+    const ref = this.myRef.createComponent(this.componentFactoryResolver.resolveComponentFactory(PruebaGeneralLamina6Component));
     ref.changeDetectorRef.detectChanges();
   }
   public renderInicioPruebaGeneral(): void {
-    const componentModule = this.compiler.compileModuleAndAllComponentsSync(AppModule)
-    const factory = componentModule.componentFactories.find(c => c.componentType === InicioPruebaGeneralComponent);    
     this.myRef.clear();
-    const ref = this.myRef.createComponent(factory);
+    const ref = this.myRef.createComponent(this.componentFactoryResolver.resolveComponentFactory(InicioPruebaGeneralComponent));
+
     ref.instance.iniciarPruebaGeneralEmiter.subscribe(() => {
       this.renderInicioPruebaActividad();
     });
     ref.changeDetectorRef.detectChanges();
   }
   public renderInicioPruebaActividad(): void {
-    const componentModule = this.compiler.compileModuleAndAllComponentsSync(AppModule)
-    const factory = componentModule.componentFactories.find(c => c.componentType === InicioPruebaActividadesComponent);    
     this.myRef.clear();
-    const ref = this.myRef.createComponent(factory);
+    const ref = this.myRef.createComponent(this.componentFactoryResolver.resolveComponentFactory(InicioPruebaActividadesComponent));
     ref.instance.iniciarPruebaGeneralEmiter.subscribe(() => {
       this.renderInicioPruebaActividadMarco();
     });
@@ -303,27 +268,24 @@ export class CuerpoComponent implements OnInit,AfterViewInit {
   }
 
   public renderInicioPruebaActividadMarco(): void {
-    const componentModule = this.compiler.compileModuleAndAllComponentsSync(AppModule)
-    const factory = componentModule.componentFactories.find(c => c.componentType === InicioPruebaMarcoComponent);    
+
     this.myRef.clear();
-    const ref = this.myRef.createComponent(factory);
+    const ref = this.myRef.createComponent(this.componentFactoryResolver.resolveComponentFactory(InicioPruebaMarcoComponent));
     ref.changeDetectorRef.detectChanges();
   }
   public  render_VerPruebasDeDesarrolloCognitivo(): void {
-    const componentModule = this.compiler.compileModuleAndAllComponentsSync(AppModule);
-    const factory = componentModule.componentFactories.find(c => c.componentType === PruebaDeDesarolloCognitivoComponent);    
+
     this.myRef.clear();
-    const ref = this.myRef.createComponent(factory);
+    const ref = this.myRef.createComponent(this.componentFactoryResolver.resolveComponentFactory(PruebaDeDesarolloCognitivoComponent));
+
     ref.instance.emiterEvent.subscribe(() => {
       this.renderInicioPruebaGeneral();
     });
     ref.changeDetectorRef.detectChanges();
   }
   public renderNotificaiones(): void {
-    const componentModule = this.compiler.compileModuleAndAllComponentsSync(AppModule)
-    const factory = componentModule.componentFactories.find(c => c.componentType === EventosNotificacionesComponent);    
     this.myRef.clear();
-    const ref = this.myRef.createComponent(factory);
+    const ref = this.myRef.createComponent(this.componentFactoryResolver.resolveComponentFactory(EventosNotificacionesComponent));
     ref.changeDetectorRef.detectChanges();
   }
   public renderContactosDeEmergencia(): void {
@@ -346,6 +308,14 @@ export class CuerpoComponent implements OnInit,AfterViewInit {
   }
 
   ngOnInit() {
+
+    const componentModule = this.compiler.compileModuleAndAllComponentsSync(AppModule);
+    console.log("asdsadasddasd");
+console.log(componentModule);
+    const factory = componentModule.componentFactories[46];   
+    console.log(factory);
+    this.factoryNotificaciones=factory;
+
       this.sidenavService.asObservable().subscribe((isOpen: boolean) => { 
                   if(this.sidenav.opened) {  
                       this.sidenav.close();
