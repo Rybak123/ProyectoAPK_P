@@ -21,23 +21,9 @@
                 <td>{{convertirFechaYQuitarHoras(evento.FechaDePublicacion)}}</td>
                 <td>{{convertirFechaYQuitarHoras(evento.FechaDelEvento)}}</td>
                 <td style="width: 20%"><a href="{{evento.Imagen}}" >{{evento.Imagen}}</a></td>
-                <td>
-                    <span *ngIf="(evento.Estado == false)" >Deshabilitado</span>
-                    <span *ngIf="(evento.Estado == true)" >Habilitado</span>
-                </td>
-               
-               
+                          
                 
-                <td style="white-space: nowrap">
-                    <button  (click)="habilitarEvento(evento._id)" class="btn btn-sm btn-primary mr-1" [disabled]="isHabilitar">
-                    <span *ngIf="isHabilitar && eventoActual==evento._id" class="spinner-border spinner-border-sm">
-                    </span>Habilitar</button>
-                    <button  (click)="deshabilitarEvento(evento._id)" class="btn btn-sm btn-danger btn-delete-user"
-                     [disabled]="isDisabling">
-                     <span *ngIf="isDisabling && eventoActual==evento._id" class="spinner-border spinner-border-sm">
-                     </span>Deshabilitar</button>
-                        
-                </td>
+              
             </tr>
             <tr *ngIf="!eventos">
                 <td colspan="4" class="text-center">

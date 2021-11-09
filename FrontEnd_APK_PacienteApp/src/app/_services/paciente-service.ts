@@ -75,4 +75,20 @@ export class PacienteService {
       return this.http.post(`${GlobalConstants.apiURL}/pruebasGenerales/leerPruebaGeneral`,objetoCuerpoPeticion);
 
   }
+  marcarComoVistoUnEvento(idPaciente:any,idEvento:any){
+    var objetoCuerpoPeticion=
+    {
+      carnetDeIdentidad:idPaciente,
+      idEvento:idEvento,
+    }
+    return this.http.post(`${GlobalConstants.apiURL}/paciente/aumentarNotificacionesVistas`, objetoCuerpoPeticion);
+  }
+  desmarcarComoVistoUnEvento(idPaciente:any,idEvento:any){
+    var objetoCuerpoPeticion=
+    {
+      carnetDeIdentidad:idPaciente,
+      idEvento:idEvento,
+    }
+    return this.http.post(`${GlobalConstants.apiURL}/paciente/quitarNotificacionVista`, objetoCuerpoPeticion);
+  }
 }

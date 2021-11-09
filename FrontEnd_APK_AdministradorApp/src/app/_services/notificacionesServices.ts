@@ -8,7 +8,7 @@ import { GlobalConstants } from '../global-constants';
 export class NotificacionesService {
 
   public socket:any;  
-  readonly URL = `${GlobalConstants.apiURL}/eventos/listarEvento`;
+  readonly URL = `${GlobalConstants.apiURL}`;
   constructor() {
     this.socket = io.io(this.URL);
   }  

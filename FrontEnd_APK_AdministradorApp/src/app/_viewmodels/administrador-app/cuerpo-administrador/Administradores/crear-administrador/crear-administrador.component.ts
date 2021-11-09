@@ -3,6 +3,7 @@ import { Component, EventEmitter, OnInit, Output, AfterViewInit } from '@angular
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Administrador } from 'src/app/_models/administrador_model/administrador';
 import { first } from 'rxjs/operators';
+import { GlobalConstants } from 'src/app/global-constants';
 //import { Console } from 'console';
 
 @Component({

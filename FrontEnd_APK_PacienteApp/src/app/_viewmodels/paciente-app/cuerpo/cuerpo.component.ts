@@ -289,10 +289,8 @@ export class CuerpoComponent implements OnInit,AfterViewInit {
     ref.changeDetectorRef.detectChanges();
   }
   public renderContactosDeEmergencia(): void {
-    const componentModule = this.compiler.compileModuleAndAllComponentsSync(AppModule)
-    const factory = componentModule.componentFactories.find(c => c.componentType === ContactosDeEmergenciaComponent);    
     this.myRef.clear();
-    const ref = this.myRef.createComponent(factory);
+    const ref = this.myRef.createComponent(this.componentFactoryResolver.resolveComponentFactory(ContactosDeEmergenciaComponent));
     ref.changeDetectorRef.detectChanges();
   }
 
@@ -310,8 +308,6 @@ export class CuerpoComponent implements OnInit,AfterViewInit {
   ngOnInit() {
 
     const componentModule = this.compiler.compileModuleAndAllComponentsSync(AppModule);
-    console.log("asdsadasddasd");
-console.log(componentModule);
     const factory = componentModule.componentFactories[46];   
     console.log(factory);
     this.factoryNotificaciones=factory;

@@ -36,20 +36,28 @@ module.exports = {
 
 //La constante Paciente es de tipo Schema de Mongoose
 async function aumentarNotificacionesVistas(infoJson) {
-    return await Paciente.findOneAndUpdate({
-        carnetDeIdentidad: infoJson.carnetDeIdentidad,
-      }, {
-        '$push': {
-          'notificacionesVistas': infoJson.idEvento
-        }
-    })
+    console.log(infoJson);
+    var resultado=await Paciente.findOne({carnetDeIdentidad: infoJson.carnetDeIdentidad,"notificacionesVistas": infoJson.idEvento });
+
+    if(!resultado){
+        await Paciente.findOneAndUpdate({
+            carnetDeIdentidad: infoJson.carnetDeIdentidad,
+          }, {
+            '$push': {
+              'notificacionesVistas': infoJson.idEvento
+            }
+        })
+    }
+    return await Paciente.findOne({carnetDeIdentidad: infoJson.carnetDeIdentidad,"notificacionesVistas": infoJson.idEvento })
+    
 }
 
 async function quitarNotificacionVista(infoJson) {
+    console.log(infoJson);
     return await Paciente.findOneAndUpdate({
         carnetDeIdentidad: infoJson.carnetDeIdentidad,
       }, {
-        '$push': {
+        '$pull': {
             'notificacionesVistas': infoJson.idEvento
           }
       })
