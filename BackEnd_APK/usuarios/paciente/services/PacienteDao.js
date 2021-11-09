@@ -28,11 +28,33 @@ module.exports = {
     deshabiltiar_Paciente,
     habiltiar_Paciente,
     recuperarContrasena,
-    cambiarContrasena
+    cambiarContrasena,
+    aumentarNotificacionesVistas,
+    quitarNotificacionVista
 
 };
 
 //La constante Paciente es de tipo Schema de Mongoose
+async function aumentarNotificacionesVistas(infoJson) {
+    return await Paciente.findOneAndUpdate({
+        carnetDeIdentidad: infoJson.carnetDeIdentidad,
+      }, {
+        '$push': {
+          'notificacionesVistas': infoJson.idEvento
+        }
+    })
+}
+
+async function quitarNotificacionVista(infoJson) {
+    return await Paciente.findOneAndUpdate({
+        carnetDeIdentidad: infoJson.carnetDeIdentidad,
+      }, {
+        '$push': {
+            'notificacionesVistas': infoJson.idEvento
+          }
+      })
+}
+
 async function paciente_listarTodos() {
     return await Paciente.find();
 }

@@ -15,14 +15,9 @@ module.exports = {
     modificarEvento
 };
 async function registrarEvento(req, res, next) {
-    /*
-  
-
-    */
-
 
     const form = new formidable.IncomingForm();
-    const uploadFolder = path.join(__dirname, "../../","EventosImagenes");
+    const uploadFolder = path.join(__dirname, "../../","EventosImagenes/EventosAdministradores");
     form.multiples = true;
     form.maxFileSize = 50 * 1024 * 1024; // 5MB
     form.uploadDir = uploadFolder;
@@ -43,14 +38,24 @@ async function registrarEvento(req, res, next) {
 
 
             const file = files.myFile;
-            const fileName = eventoGuardado._id+"."+file.name.split('.').pop();;
+
+            const fileName = eventoGuardado._id+"."+file.name.split('.').pop();
+
             fs.renameSync(file.path, path.join(uploadFolder, fileName));
-            var direccionImagen=informacionServidor.getUrl()+"/"+"Eventos"+"/"+eventoGuardado._id+"/"+fileName;
             
-            res.status(201).json({
-                type: 'Post',
-                url: direccionImagen
-            });
+            var direccionImagen=informacionServidor.getUrl()+"/"+"eventosImagenes"+"/"+fileName;
+            
+            await Eventos.findOneAndUpdate({
+                '_id': eventoGuardado._id
+              }, {
+                '$set': {
+                  'Imagen': direccionImagen
+                }
+            })
+
+            res.status(201).json({});
+
+
         } catch (error) {
           console.log(error);
         }
@@ -64,14 +69,11 @@ async function listarEvento() {
     return await Eventos.find();
 }
 async function modificarEvento(peticionJSON) {
-    console.log(peticionJSON);
     const eventos = await Eventos.findById(peticionJSON.id);
-    // validate
     if (!eventos) throw 'Evento no encontrado';
     if (eventos.Descripcion !== peticionJSON.Descripcion && await Administrador.findOne({ correoElectronico: peticionJSON.correoElectronico })) {
         throw 'La siguiente direccion de correo electronico "' +peticionJSON.correoElectronico + '" ya a sido registrada';
     }
- 
     console.log(peticionJSON);
     Object.assign(eventos, peticionJSON);
     return await eventos.save();

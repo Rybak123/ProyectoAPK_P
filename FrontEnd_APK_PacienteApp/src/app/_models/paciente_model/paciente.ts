@@ -14,7 +14,7 @@ export class Paciente{
     public estado: any; 
     public token: any; 
     public idPsicologo:any;
-
+    public notificacionesVistas:any;
     constructor(){
         
     }

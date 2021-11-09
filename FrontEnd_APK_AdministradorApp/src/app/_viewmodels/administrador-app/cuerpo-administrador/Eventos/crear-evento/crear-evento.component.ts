@@ -6,7 +6,7 @@ import { Evento } from 'src/app/_models/evento_model/Evento';
 import { Paciente } from 'src/app/_models/paciente_model/paciente';
 import { EventoService } from 'src/app/_services/eventosServices/evento.service';
 import { PacienteService } from 'src/app/_services/paciente-service';
-
+import { NotificacionesService } from 'src/app/_services/notificacionesServices';
 
 @Component({
   selector: 'app-crear-evento',
@@ -20,7 +20,7 @@ export class CrearEventoComponent implements OnInit {
   submitted:any;
   loading = false;
 
-  constructor(private formBuilder: FormBuilder, private eventoService:EventoService) { }
+  constructor(private formBuilder: FormBuilder, private eventoService:EventoService,private notificacionesService:NotificacionesService) { }
 
   ngAfterViewInit(): void {
     var fechaActualOriginal:any=new Date();
@@ -54,10 +54,7 @@ export class CrearEventoComponent implements OnInit {
       return;
     }
     this.loading = true;
-   
-
-
-
+  
     var evento= new Evento();
     evento.Titulo=this.form.controls.titulo.value;
     evento.Descripcion=this.form.controls.descripcion.value;
@@ -74,11 +71,13 @@ export class CrearEventoComponent implements OnInit {
     formularioImagen.append('FechaDelEvento', evento.FechaDelEvento);
     formularioImagen.append('Imagen', evento.Imagen);
     formularioImagen.append('Estado', evento.Estado);
-    
+   
     this.eventoService.registrarEventos(formularioImagen)
     .pipe(first())
     .subscribe(() => {
+      this.notificacionesService.sendMessage("Hola a todos");
       this.irAListarEvento();
+      
     }).add(() => this.loading = false);
     
   }
@@ -98,6 +97,7 @@ export class CrearEventoComponent implements OnInit {
 
   archivoActual:any;
   archivos=[];
+  
   capturarFile(event:any){
     this.archivoActual=<File>event.target.files[0];
     const files = event.target.files;

@@ -2,6 +2,7 @@
 import { CalendarOptions } from '@fullcalendar/angular';
 import { Component,OnInit,ViewEncapsulation } from '@angular/core';
 import{ GlobalConstants } from '../app/global-constants';
+import {NotificacionesService} from './_services/notificacionesServices';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,7 +10,7 @@ import{ GlobalConstants } from '../app/global-constants';
 })
 export class AppComponent  {
 
-    constructor() { 
+    constructor(private notificacionesServices:NotificacionesService) { 
 
         console.log(GlobalConstants.apiURL);
 

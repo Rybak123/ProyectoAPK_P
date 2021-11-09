@@ -9,7 +9,7 @@
                 <th style="width: 20%">Descripcion: </th>
                 <th style="width: 20%">Fecha de la publicación:</th>
                 <th style="width: 20%">Fecha del evento</th>
-                <th style="width: 20%">Imagen</th>
+                <th style="max-width: 20%">Imagen</th>
                 <th style="width: 20%"></th>
             </tr>
         </thead>
@@ -20,7 +20,7 @@
                 <td>{{evento.Descripcion}}</td>
                 <td>{{convertirFechaYQuitarHoras(evento.FechaDePublicacion)}}</td>
                 <td>{{convertirFechaYQuitarHoras(evento.FechaDelEvento)}}</td>
-                <td>{{evento.Imagen}}</td>
+                <td style="width: 20%"><a href="{{evento.Imagen}}" >{{evento.Imagen}}</a></td>
                 <td>
                     <span *ngIf="(evento.Estado == false)" >Deshabilitado</span>
                     <span *ngIf="(evento.Estado == true)" >Habilitado</span>

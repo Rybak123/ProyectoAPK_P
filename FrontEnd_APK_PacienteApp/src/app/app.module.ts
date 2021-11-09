@@ -52,7 +52,6 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { CrearMetasPersonalesComponent } from './_viewmodels/paciente-app/cuerpo/AgendaVirtual_ActividadesRegistro/metasPersonales/crear-metas-personales/crear-metas-personales.component';
 import { CrearMetasSocialesComponent } from './_viewmodels/paciente-app/cuerpo/AgendaVirtual_ActividadesRegistro/metasSociales/crear-metas-sociales/crear-metas-sociales.component';
 import { VerFavoritosComponent } from './_viewmodels/paciente-app/cuerpo/AgendaVirtual_ActividadesRegistro/misFavoritos/ver-favoritos/ver-favoritos.component';
@@ -61,11 +60,8 @@ import { AuthImagePipe } from './_helpers/basic.pipe';
 import { CrearFavoritoComponent } from './_viewmodels/paciente-app/cuerpo//AgendaVirtual_ActividadesRegistro/misFavoritos/crear-favorito/crear-favorito.component';
 import { VerLibrosComponent } from './_viewmodels/paciente-app/cuerpo//AgendaVirtual_ActividadesRegistro/misLibros/ver-libros/ver-libros.component';
 import { VerCancionesComponent } from './_viewmodels/paciente-app/cuerpo//AgendaVirtual_ActividadesRegistro/misCanciones/ver-canciones/ver-canciones.component';
-
 import { CrearLibroComponent } from './_viewmodels/paciente-app/cuerpo//AgendaVirtual_ActividadesRegistro/misLibros/crear-libro/crear-libro.component';
 import { CrearCancionesComponent } from './_viewmodels/paciente-app/cuerpo//AgendaVirtual_ActividadesRegistro/misCanciones/crear-canciones/crear-canciones.component';
-
-
 import { CalificarMesComponent } from './_viewmodels/paciente-app/cuerpo/AgendaVirtual_ActividadesRegistro/calificar-mes/calificar-mes.component';
 import { ResumenDeLaAgendaVirtualComponent } from './_viewmodels/paciente-app/cuerpo/resumen-de-la-agenda-virtual/resumen-de-la-agenda-virtual.component';
 import { ChartsModule } from 'ng2-charts';
@@ -106,17 +102,18 @@ import { PruebaGeneralLamina13Component } from './_viewmodels/paciente-app/cuerp
 import { PruebaGeneralLamina14Component } from './_viewmodels/paciente-app/cuerpo/PruebasDesarolloCognitivo/PruebaGeneral/prueba-general-lamina14/prueba-general-lamina14.component';
 import { PruebaGeneralLamina15Component } from './_viewmodels/paciente-app/cuerpo/PruebasDesarolloCognitivo/PruebaGeneral/prueba-general-lamina15/prueba-general-lamina15.component';
 import { PruebaGeneralLamina16Component } from './_viewmodels/paciente-app/cuerpo/PruebasDesarolloCognitivo/PruebaGeneral/prueba-general-lamina16/prueba-general-lamina16.component';
-
 import { PruebaGeneralResultadosComponent } from './_viewmodels/paciente-app/cuerpo/PruebasDesarolloCognitivo/PruebaGeneral/prueba-general-resultados/prueba-general-resultados.component';
 import { PruebaDeDesarolloCognitivoComponent } from './_viewmodels/paciente-app/cuerpo/PruebasDesarolloCognitivo/prueba-de-desarollo-cognitivo/prueba-de-desarollo-cognitivo.component';
 import { LoginComponent } from './_viewmodels/login-app/login-paciente/login.component';
 import { EventosNotificacionesComponent } from './_viewmodels/paciente-app/cuerpo/eventos-notificaciones/eventos-notificaciones.component';
 
+import { NotificacionesService } from './_services/notificacionesService';
+
 FullCalendarModule.registerPlugins([ 
-  dayGridPlugin,
-  interactionPlugin
-]);
-@NgModule({
+  dayGridPlugin, 
+  interactionPlugin 
+]); 
+@NgModule({ 
   declarations: [
     AppComponent,
     BarraDeNavegacionComponent,
@@ -141,7 +138,6 @@ FullCalendarModule.registerPlugins([
     ResumenDeLaAgendaVirtualComponent,
     AlertComponent,
     LoginComponent,
-    
     PerfilPacienteComponent,
     FormularioCambiarContrasenaComponent,
     RespuestaCambiarContrasenaComponent,
@@ -167,7 +163,6 @@ FullCalendarModule.registerPlugins([
     PruebaGeneralResultadosComponent,
     PruebaDeDesarolloCognitivoComponent,
     EventosNotificacionesComponent
-     
   ],
   imports: [
     BrowserModule,
@@ -227,14 +222,14 @@ FullCalendarModule.registerPlugins([
     BrowserAnimationsModule,
     ChartsModule,
     IvyCarouselModule,
-    NgbModule
+    NgbModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
-    SidenavService,NavigationService,PacienteService,AdministradorNavigationService,PsicologoNavigationService
-    
+    SidenavService,NavigationService,PacienteService,AdministradorNavigationService,PsicologoNavigationService,
+    NotificacionesService
   ],
   bootstrap: [AppComponent]
 })
