@@ -28,7 +28,7 @@ export class CuerpoAdministradorComponent implements OnInit,AfterViewInit {
   @ViewChild('dynamicComponent', { read: ViewContainerRef }) myRef:any
   @ViewChild('sidenav') sidenav: MatSidenav|any;
   constructor(private compiler: Compiler,
-              private administradorNavegacionService: AdministradorNavigationService,private autenticacionService:AuthenticacionAdministradorService,private router:Router) { }
+              private administradorNavegacionService: AdministradorNavigationService,private componentFactoryResolver: ComponentFactoryResolver,private autenticacionService:AuthenticacionAdministradorService,private router:Router) { }
 
   ngAfterViewInit(): void {
     this.sidenav.close();
@@ -53,10 +53,8 @@ export class CuerpoAdministradorComponent implements OnInit,AfterViewInit {
 
   
   public renderlistarPacientes(): void {
-    const componentModule = this.compiler.compileModuleAndAllComponentsSync(AppModule);
-    const factory = componentModule.componentFactories.find(c => c.componentType === GestionPacientesComponent);    
     this.myRef.clear();
-    const ref = this.myRef.createComponent(factory);
+    const ref = this.myRef.createComponent(this.componentFactoryResolver.resolveComponentFactory(GestionPacientesComponent));
 
     ref.instance.irACrearPacienteEmiter.subscribe(() => {
       this.idPacienteSeleccionado=null;
@@ -71,10 +69,8 @@ export class CuerpoAdministradorComponent implements OnInit,AfterViewInit {
     ref.changeDetectorRef.detectChanges();
   }
   public renderCrearPacientes(): void {
-    const componentModule = this.compiler.compileModuleAndAllComponentsSync(AppModule);
-    const factory = componentModule.componentFactories.find(c => c.componentType === CrearPacienteComponent);    
     this.myRef.clear();
-    const ref = this.myRef.createComponent(factory);
+    const ref = this.myRef.createComponent(this.componentFactoryResolver.resolveComponentFactory(CrearPacienteComponent));
 
     ref.instance.idPacienteSeleccionado = this.idPacienteSeleccionado;
     ref.instance.irAListarPacienteEmiter.subscribe(() => {
@@ -83,27 +79,21 @@ export class CuerpoAdministradorComponent implements OnInit,AfterViewInit {
     ref.changeDetectorRef.detectChanges();
   }
   public rendeVerPerfilAdministrador(): void {
-    const componentModule = this.compiler.compileModuleAndAllComponentsSync(AppModule);
-    const factory = componentModule.componentFactories.find(c => c.componentType === PerfilAdministradorComponent);    
     this.myRef.clear();
-    const ref = this.myRef.createComponent(factory);
+    const ref = this.myRef.createComponent(this.componentFactoryResolver.resolveComponentFactory(PerfilAdministradorComponent));
     ref.changeDetectorRef.detectChanges();
   }
   public renderlistarPsicologos():void{
-    const componentModule=this.compiler.compileModuleAndAllComponentsSync(AppModule);
-    const factory=componentModule.componentFactories.find(c=>c.componentType===GestionPsicologoComponent);
     this.myRef.clear();
-    const ref=this.myRef.createComponent(factory);
+    const ref = this.myRef.createComponent(this.componentFactoryResolver.resolveComponentFactory(GestionPsicologoComponent));
     ref.instance.irACrearPsicologoEmiter.subscribe(()=>{
       this.renderCrearPsicologos();
     })
     ref.changeDetectorRef.detectChanges();
   }
   public renderCrearPsicologos():void{
-    const componentModule=this.compiler.compileModuleAndAllComponentsSync(AppModule);
-    const factory=componentModule.componentFactories.find(c=>c.componentType===CrearPsicologoComponent);
     this.myRef.clear();
-    const ref=this.myRef.createComponent(factory);
+    const ref = this.myRef.createComponent(this.componentFactoryResolver.resolveComponentFactory(CrearPsicologoComponent));
     ref.instance.irAListarPsicologoEmiter.subscribe(()=>{
       this.renderlistarPsicologos();
     })
@@ -112,30 +102,24 @@ export class CuerpoAdministradorComponent implements OnInit,AfterViewInit {
    
   }
   public renderlistarAdministrador(): void {
-    const componentModule = this.compiler.compileModuleAndAllComponentsSync(AppModule);
-    const factory = componentModule.componentFactories.find(c => c.componentType === GestionAdministradorComponent);    
     this.myRef.clear();
-    const ref = this.myRef.createComponent(factory);
+    const ref = this.myRef.createComponent(this.componentFactoryResolver.resolveComponentFactory(GestionPsicologoComponent));
     ref.instance.irACrearAdministradorEmiter.subscribe(() =>{
       this.renderCrearAdministrador();
     });
     ref.changeDetectorRef.detectChanges();
   }
   public renderCrearAdministrador(): void {
-    const componentModule = this.compiler.compileModuleAndAllComponentsSync(AppModule);
-    const factory = componentModule.componentFactories.find(c => c.componentType === CrearAdministradorComponent);    
     this.myRef.clear();
-    const ref = this.myRef.createComponent(factory);
+    const ref = this.myRef.createComponent(this.componentFactoryResolver.resolveComponentFactory(CrearAdministradorComponent));
     ref.instance.irAListarAdministardorEmiter.subscribe(() =>{
       this.renderlistarAdministrador();
     });
     ref.changeDetectorRef.detectChanges();
   }
   public renderGestionEventos(): void {
-    const componentModule = this.compiler.compileModuleAndAllComponentsSync(AppModule);
-    const factory = componentModule.componentFactories.find(c => c.componentType === GestionEventosComponent);    
     this.myRef.clear();
-    const ref = this.myRef.createComponent(factory);
+    const ref = this.myRef.createComponent(this.componentFactoryResolver.resolveComponentFactory(GestionEventosComponent));
 
     ref.instance.irACrearEventoEmiter.subscribe(() =>{
       this.renderCrearEventos();
@@ -143,10 +127,8 @@ export class CuerpoAdministradorComponent implements OnInit,AfterViewInit {
     ref.changeDetectorRef.detectChanges();
   }
   public renderCrearEventos(): void {
-    const componentModule = this.compiler.compileModuleAndAllComponentsSync(AppModule);
-    const factory = componentModule.componentFactories.find(c => c.componentType === CrearEventoComponent);    
     this.myRef.clear();
-    const ref = this.myRef.createComponent(factory);
+    const ref = this.myRef.createComponent(this.componentFactoryResolver.resolveComponentFactory(CrearEventoComponent));
 
     ref.instance.irAListarEventoEmiter.subscribe(() =>{
       this.renderGestionEventos();
