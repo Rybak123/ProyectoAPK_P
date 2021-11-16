@@ -7,6 +7,9 @@ import { FormularioCambiarContrasenaComponent } from './_viewmodels/recuperar-co
 import { RespuestaCambiarContrasenaComponent } from './_viewmodels/recuperar-contrasena-app/respuesta-cambiar-contrasena/respuesta-cambiar-contrasena.component';
 import { InicioPruebaGeneralComponent } from './_viewmodels/paciente-app/cuerpo/PruebasDesarolloCognitivo/PruebaGeneral/inicio-prueba-general/inicio-prueba-general.component';
 import { InicioPruebaMarcoComponent } from './_viewmodels/paciente-app/cuerpo/PruebasDesarolloCognitivo/PruebaGeneral/inicio-prueba-marco/inicio-prueba-marco.component';
+import { InicioComponent } from './_viewmodels/pagina-principal-app/cuerpo-pagina-principal/inicio/inicio.component';
+import { PaginaPrincipalAppComponent } from './_viewmodels/pagina-principal-app/pagina-principal-app.component';
+import { HistoriaComponent } from './_viewmodels/pagina-principal-app/cuerpo-pagina-principal/historia/historia.component';
 
 const routes: Routes = [
 
@@ -20,10 +23,16 @@ const routes: Routes = [
 { path: '', component: PacienteComponent, canActivate: [AuthGuard]},
 //PaginaPsicologo
 { path: 'pruebaDeDesarollo', component: InicioPruebaMarcoComponent},
-
+//PaginaPsicologo
+{ path: 'pruebaDeDesarollo', component: InicioPruebaMarcoComponent},
 // otherwise redirect to home
-{ path: '**', redirectTo: '' }
+//{ path: '**', redirectTo: '' },
 
+{ path: 'paginaPrincipal', component: PaginaPrincipalAppComponent,
+  children:[
+    { path: 'Inicio', component: InicioComponent},
+    { path: 'Historia', component: HistoriaComponent},
+  ] },
 ];
 
 

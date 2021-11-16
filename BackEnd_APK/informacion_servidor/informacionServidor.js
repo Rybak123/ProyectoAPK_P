@@ -1,5 +1,5 @@
 function getUrl(){
-    var url="http://18.218.63.80:4000";
+    var url="http://localhost:4000";
     return url;
 }
 

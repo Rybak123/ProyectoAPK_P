@@ -74,8 +74,6 @@ export class BarraDeNavegacionComponent implements OnInit,OnDestroy {
       }).add((eventoObtenido:any)=>{
         
       })
-     
-
     })
   }
   getIdEventos(testResults:any){

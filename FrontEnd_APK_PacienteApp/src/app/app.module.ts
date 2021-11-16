@@ -109,6 +109,11 @@ import { EventosNotificacionesComponent } from './_viewmodels/paciente-app/cuerp
 
 import { NotificacionesService } from './_services/notificacionesService';
 import { ContactosDeEmergenciaComponent } from './_viewmodels/paciente-app/cuerpo/contactos-de-emergencia/contactos-de-emergencia.component';
+import { PaginaPrincipalAppComponent } from './_viewmodels/pagina-principal-app/pagina-principal-app.component';
+import { BarraDeNavegacionPaginaPrincipalComponent } from './_viewmodels/pagina-principal-app/barra-de-navegacion-pagina-principal/barra-de-navegacion-pagina-principal.component';
+import { CuerpoPaginaPrincipalComponent } from './_viewmodels/pagina-principal-app/cuerpo-pagina-principal/cuerpo-pagina-principal.component';
+import { InicioComponent } from './_viewmodels/pagina-principal-app/cuerpo-pagina-principal/inicio/inicio.component';
+import { HistoriaComponent } from './_viewmodels/pagina-principal-app/cuerpo-pagina-principal/historia/historia.component';
 
 FullCalendarModule.registerPlugins([ 
   dayGridPlugin, 
@@ -164,7 +169,12 @@ FullCalendarModule.registerPlugins([
     PruebaGeneralResultadosComponent,
     PruebaDeDesarolloCognitivoComponent,
     EventosNotificacionesComponent,
-    ContactosDeEmergenciaComponent
+    ContactosDeEmergenciaComponent,
+    PaginaPrincipalAppComponent,
+    BarraDeNavegacionPaginaPrincipalComponent,
+    CuerpoPaginaPrincipalComponent,
+    InicioComponent,
+    HistoriaComponent
   ],
   imports: [
     BrowserModule,
