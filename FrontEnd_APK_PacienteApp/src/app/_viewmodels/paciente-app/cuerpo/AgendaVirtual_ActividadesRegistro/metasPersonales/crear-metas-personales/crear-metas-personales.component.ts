@@ -98,9 +98,15 @@ export class CrearMetasPersonalesComponent implements OnInit,AfterViewInit {
       });
   }
   onSubmit(){
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); 
+    var yyyy = today.getFullYear();
+    var fechaActualString= yyyy + '-' + mm+ '-' +dd ;
+    
     if(this.validarCampos()){
       var titulo=this.miformularioMetasPersonales.controls.Titulo.value
-      var fechaInicial=this.miformularioMetasPersonales.controls.FechaInicio.value
+      var fechaInicial=fechaActualString
       var fechaFin=this.miformularioMetasPersonales.controls.FechaFin.value
       var prioridad=this.miformularioMetasPersonales.controls.Prioridad.value
       var descripcion=this.miformularioMetasPersonales.controls.Descripcion.value

@@ -1,4 +1,4 @@
-import { AfterViewInit, Compiler, Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { AfterViewInit, Compiler, Component, EventEmitter, OnInit, Output, ViewChild, ViewContainerRef } from '@angular/core';
 import { AppModule } from 'src/app/app.module';
 import { PruebaGeneralLamina10Component } from '../prueba-general-lamina10/prueba-general-lamina10.component';
 import { PruebaGeneralLamina11Component } from '../prueba-general-lamina11/prueba-general-lamina11.component';
@@ -27,6 +27,11 @@ export class InicioPruebaMarcoComponent implements OnInit,AfterViewInit {
 
   @ViewChild('dynamicComponent', { read: ViewContainerRef }) myRef:any
   constructor(private compiler: Compiler) { }
+  @Output() emiterEvent= new EventEmitter();
+  enviarActividad2(){
+    this.emiterEvent.emit();
+  }
+
   ngOnInit(): void {
   
   }     
@@ -201,6 +206,9 @@ export class InicioPruebaMarcoComponent implements OnInit,AfterViewInit {
     const factory = componentModule.componentFactories.find(c => c.componentType === PruebaGeneralResultadosComponent);    
     this.myRef.clear();
     const ref = this.myRef.createComponent(factory);
+    ref.instance.emiterEvent.subscribe(() => {
+      this.enviarActividad2();
+    });
     ref.changeDetectorRef.detectChanges();
   }
   

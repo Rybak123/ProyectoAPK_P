@@ -1,6 +1,7 @@
-<div class="bg-light"  style="min-height: 320px; overflow: hidden;height:79vh">
-    <div class="p-2 container" style="height:100%;margin-left: 20%;">
+<div class="bg-light"  style="overflow: hidden;min-height:79vh">
+    <div class="p-2 container" style="height:100%;margin-left: 25%;">
         <br>
+        <table>
             <h1><b>Resultados de la prueba</b></h1>
             <thead>
                 <tr>
@@ -11,7 +12,7 @@
             <tbody>
                 <tr>
                     <td>
-                        Actividad 1
+                        Actividad 1 - Registro
                     </td>
                     <td>
                         {{puntajeActividad1}} / 3
@@ -19,7 +20,7 @@
                 </tr>
                 <tr>
                     <td>
-                        Actividad 2
+                        Actividad 2 - Reconocimiento
                     </td>
                     <td>
                         {{puntajeActividad2}} / 4
@@ -27,7 +28,7 @@
                 </tr>
                 <tr>
                     <td>
-                        Actividad 3
+                        Actividad 3 - Memoria
                     </td>
                     <td>
                         {{puntajeActividad3}} / 6
@@ -35,7 +36,7 @@
                 </tr>
                 <tr>
                     <td>
-                        Actividad 4
+                        Actividad 4 - Detección visual
                     </td>
                     <td>
                         {{puntajeActividad4}} / 10
@@ -43,7 +44,7 @@
                 </tr>
                 <tr>
                     <td>
-                        Actividad 5
+                        Actividad 5 - Lógico matematico
                     </td>
                     <td>
                         {{puntajeActividad5}} / 5
@@ -51,7 +52,7 @@
                 </tr>
                 <tr>
                     <td>
-                        Actividad 6
+                        Actividad 6 - Codificación
                     </td>
                     <td>
                         {{puntajeActividad6}} / 1 
@@ -59,7 +60,7 @@
                 </tr>
                 <tr>
                     <td>
-                        Actividad 7
+                        Actividad 7 - Proceso visoespacial
                     </td>
                     <td>
                         {{puntajeActividad7}} / 1
@@ -67,7 +68,7 @@
                 </tr>
                 <tr>
                     <td>
-                        Actividad 8
+                        Actividad 8 - Reconocimiento y denominación
                     </td>
                     <td>
                         {{puntajeActividad8}} / 8
@@ -75,7 +76,7 @@
                 </tr>
                 <tr>
                     <td>
-                        Actividad 9
+                        Actividad 9 - Comprención
                     </td>
                     <td>
                         {{puntajeActividad9}} / 8
@@ -83,7 +84,7 @@
                 </tr>
                 <tr>
                     <td>
-                        Actividad 10
+                        Actividad 10 - Fluidez verbal
                     </td>
                     <td>
                         {{puntajeActividad10}} / 4
@@ -91,7 +92,7 @@
                 </tr>
                 <tr>
                     <td>
-                        Actividad 11
+                        Actividad 11 - Conceptualización
                     </td>
                     <td>
                         {{puntajeActividad11}} / 16
@@ -99,7 +100,7 @@
                 </tr>
                 <tr>
                     <td>
-                        Actividad 12
+                        Actividad 12 - Fluidez verbal
                     </td>
                     <td>
                         {{puntajeActividad12}} / 3
@@ -107,7 +108,7 @@
                 </tr>
                 <tr>
                     <td>
-                        Actividad 13
+                        Actividad 13 - Fluidez verbal 2
                     </td>
                     <td>
                         {{puntajeActividad13}} / 3
@@ -115,7 +116,7 @@
                 </tr>
                 <tr>
                     <td>
-                        Actividad 14
+                        Actividad 14 - Memoria verbal espontanea
                     </td>
                     <td>
                         {{puntajeActividad14}} / 6
@@ -123,7 +124,7 @@
                 </tr>
                 <tr>
                     <td>
-                        Actividad 15
+                        Actividad 15 - Memoria verbal espontanea por claves
                     </td>
                     <td>
                         {{puntajeActividad15}} / 3
@@ -131,14 +132,19 @@
                 </tr>
                 <tr>
                     <td>
-                        Actividad 16
+                        Actividad 16 - Reconocimiento
                     </td>
                     <td>
                         {{puntajeActividad16}} / 5
                     </td>
                 </tr>
+               
             </tbody>
+         
+        </table>
+        <button (click)="enviarActividad2()" type="button" mat-button color="primary" style="margin-top: 10%;width: 55%; background-color: rgb(127, 127, 243);">Ir al menú de resultados</button>
+          
+       
     </div>
 </div>
 
->

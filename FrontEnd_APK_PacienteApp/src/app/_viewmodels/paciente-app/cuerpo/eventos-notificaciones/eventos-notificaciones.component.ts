@@ -27,9 +27,9 @@ export class EventosNotificacionesComponent implements OnInit {
     var pacienteInfo=localStorage.getItem('currentUser');
     if(pacienteInfo==null){
         pacienteInfo="null";
-        throw console.error("Paciente no encontrado");
+        throw console.error("Usuario no encontrado");
     }
-this.usuario=JSON.parse(pacienteInfo);
+    this.usuario=JSON.parse(pacienteInfo);
 
     this.listarEventos();
   }
