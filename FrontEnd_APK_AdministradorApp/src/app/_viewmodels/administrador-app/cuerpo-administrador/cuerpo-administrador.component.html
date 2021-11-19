@@ -1,6 +1,6 @@
 
   <mat-sidenav-container class="example-container">
-    <mat-sidenav #sidenav mode="over" opened="true" style="width: 17%; align-items: center; display: flex;
+    <mat-sidenav #sidenav mode="over" opened="true" style="width: 22%; align-items: center; display: flex;
     justify-content: center;">
     <section class="app">
       <aside class="sidebar">
@@ -10,25 +10,31 @@
         <nav class="sidebar-nav">
           <ul>
             <li>
-              <a><i class="ion-bag" ></i> <span >Usuarios</span></a>
+              <a><i class="ion-bag" ></i> <span ><img src="assets/img/iconos/cliente.png" width="30" height="30" class="d-inline-block align-top" alt="">&nbsp;
+                Usuarios</span></a>
               <ul class="nav-flyout">
         
                 <li>
-                  <a  (click)="mostrarPacientes()" class="myClase" style="color: white;" ><i class="ion-ios-clock-outline" ></i>Pacientes</a>
+                  <a  (click)="mostrarPacientes()" class="myClase" style="color: white;" ><i class="ion-ios-clock-outline" ></i>
+                    <img src="assets/img/iconos/programador.png" width="30" height="30" class="d-inline-block align-top" alt="">&nbsp;Pacientes</a>
                 </li>
                 <li>
-                  <a (click)="mostrarPsicologos()" class="myClase" style="color: white;"  ><i class="ion-heart-broken"></i>Psicologos</a>
+                  <a (click)="mostrarPsicologos()" class="myClase" style="color: white;"  ><i class="ion-heart-broken"></i>
+                    <img src="assets/img/iconos/psicologo.png" width="30" height="30" class="d-inline-block align-top" alt="">&nbsp;Psicologos</a>
                 </li>
                 <li>
-                    <a (click)="renderlistarAdministrador()" class="myClase" style="color: white;"  ><i class="ion-heart-broken"></i>Adminsitradores</a>
+                    <a (click)="renderlistarAdministrador()" class="myClase" style="color: white;"  ><i class="ion-heart-broken"></i>
+                      <img src="assets/img/iconos/administrador.png" width="30" height="30" class="d-inline-block align-top" alt="">&nbsp; Adminsitradores</a>
                   </li>
               </ul>
             </li>
             <li style="float: inline-end; height: 50%;">
-              <a href="#" (click)="renderGestionEventos()"><i class="ion-ios-medical-outline"></i> <span class="">Eventos del centro psicologico</span></a>
+              <a href="#" (click)="renderGestionEventos()"><i class="ion-ios-medical-outline"></i> <span class="">
+                <img src="assets/img/iconos/evento.png" width="30" height="30" class="d-inline-block align-top" alt="">&nbsp; Eventos del centro psicologico</span></a>
             </li>
             <li style="float: inline-end; height: 50%;">
-              <a href="#" (click)="logout()"><i class="ion-ios-medical-outline"></i> <span class="">Cerrar sesión</span></a>
+              <a href="#" (click)="logout()"><i class="ion-ios-medical-outline"></i> <span class="">
+                <img src="assets/img/iconos/cerrar-sesion1.png" width="30" height="30" class="d-inline-block align-top" alt="">&nbsp;Cerrar sesión</span></a>
             </li>
           </ul>
         </nav>
