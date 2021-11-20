@@ -283,6 +283,9 @@ export class CuerpoComponent implements OnInit,AfterViewInit {
     ref.instance.emiterEvent.subscribe(() => {
       this.renderInicioPruebaGeneral();
     });
+    ref.instance.emiterEventIrResultados.subscribe(() => {
+      this.render_ResultadosDesarolloCognitivoDesarrolloCognitivo();
+    });
     ref.changeDetectorRef.detectChanges();
   }
   public renderNotificaiones(): void {

@@ -16,9 +16,8 @@ export class InicioPruebaActividadesComponent implements OnInit {
     this.iniciarPruebaGeneralEmiter.emit();
     var pruebaGeneral={
       puntuacionFinal:0,
-      fecha:Date.now(),
-      horaInicio:Date.now(),
-      horaFin:Date.now(),
+      FechaYhoraInicio:Date.now(),
+      FechaYhoraFin:Date.now(),
       duracion:0,
       actividad1:"",
       actividad2:"",

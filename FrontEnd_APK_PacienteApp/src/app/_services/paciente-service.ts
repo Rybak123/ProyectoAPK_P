@@ -91,4 +91,16 @@ export class PacienteService {
     }
     return this.http.post(`${GlobalConstants.apiURL}/paciente/quitarNotificacionVista`, objetoCuerpoPeticion);
   }
+  ingresarPruebaDeDesarolloCognitivo(idPaciente:any,pruebaDeDesarolloCognitivo:any){
+    var objetoCuerpoPeticion=
+    {
+      id:idPaciente,
+      pruebasDeDesarolloCognitivo:pruebaDeDesarolloCognitivo,
+    }
+    return this.http.post(`${GlobalConstants.apiURL}/paciente/ingresarPruebaDeDesarolloCognitivo`, objetoCuerpoPeticion).toPromise();
+  }
+  leerPruebasDeDesarolloCognitivo(idPaciente:any){
+    
+    return this.http.post(`${GlobalConstants.apiURL}/paciente/leerPruebaDeDesarolloCognitivo`,{idPaciente}).toPromise();
+  }
 }

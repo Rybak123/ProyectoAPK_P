@@ -64,6 +64,7 @@ router.post('/aumentarNotificacionesVistas',aumentarNotificacionesVistas);
 router.post('/quitarNotificacionVista',quitarNotificacionVista);
 
 router.post('/ingresarPruebaDeDesarolloCognitivo',ingresarPruebaDeSarolloCognitivo);
+router.post('/leerPruebaDeDesarolloCognitivo',leerTodasLasPruebaDeSarolloCognitivo);
 module.exports = router;
 
 function aumentarNotificacionesVistas(req, res, next) {
@@ -297,6 +298,11 @@ async function mandarImagenFavoritos(req, res, next) {
 
 function ingresarPruebaDeSarolloCognitivo(req, res, next) {
     pruebasDesarolloCognitivoDao.ingresar_PruebasDeDesarolloCognitivo(req.body)
+        .then(user => user ? res.json(user) : res.sendStatus(500))
+        .catch(err => next(err));
+}
+function leerTodasLasPruebaDeSarolloCognitivo(req, res, next) {
+    pruebasDesarolloCognitivoDao.obtenerTodos_PruebasDeDesarolloCognitivo(req.body)
         .then(user => user ? res.json(user) : res.sendStatus(500))
         .catch(err => next(err));
 }

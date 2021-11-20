@@ -1,4 +1,132 @@
-.boton a{
+.boton_agregar a{
    text-decoration: none;
    color: white;
+}
+.boton_agregar_llamar a{
+  text-decoration: none;
+  color: white;
+}
+.titulo{
+  text-decoration: none;
+  color: blueviolet;
+  text-align: center;
+  font-style:italic;
+}
+.center {
+   display: block;
+   margin-top: auto;
+   margin-bottom: auto;
+   margin-left: auto;
+   margin-right: auto;
+   width: 50%;
+ }
+ .boton_agregar{
+   margin-top: 1%;
+   margin-bottom: 2%;
+   //position: relative;
+   //display: block;
+   height: 7vh;
+   width: 30vh;
+   border-radius: 4px;
+   text-transform: uppercase;
+   background-color: transparent;
+   color: rgb(0, 0, 0);
+   font-size: 18px;
+   overflow: hidden;
+   transition: all 500ms ease;
+   border:2px solid #00ff55;
+   margin-left: 10px;
+   //margin:0px auto;
+   z-index: 0;
+   font-weight: 700;
+  &::before{
+ 
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    margin: auto;
+    background-color: #ff9900;
+    transition: all 500ms ease;
+    z-index:-1;
+  }
+ }
+ .boton_agregar:hover{
+   background-color: #00ff40; 
+   box-shadow: 0 0 10px #00ff4c,0 0 20px #15ff00,0 0 20px #00ff6a;
+   color:#434343 ;
+   //color:#434343;
+   //.boton_agregar::before{
+       //width: 100%;
+   //}
+ }
+ .boton_agregar_llamar{
+  margin-top: 1%;
+  margin-bottom: 2%;
+  //position: relative;
+  //display: block;
+  height: 7vh;
+  width: 30vh;
+  border-radius: 4px;
+  text-transform: uppercase;
+  background-color: transparent;
+  color: rgb(0, 0, 0);
+  font-size: 18px;
+  overflow: hidden;
+  transition: all 500ms ease;
+  border:2px solid #0084ff;
+  margin-left: 10px;
+  //margin:0px auto;
+  z-index: 0;
+  font-weight: 700;
+ &::before{
+
+   content: '';
+   position: absolute;
+   left: 0;
+   right: 0;
+   top: 0;
+   margin: auto;
+   background-color: #ff9900;
+   transition: all 500ms ease;
+   z-index:-1;
+ }
+}
+.boton_agregar_llamar:hover{
+  background-color: #0084ff; 
+  box-shadow: 0 0 10px #0084ff,0 0 20px #0084ff,0 0 20px #0084ff;
+  color:#434343 ;
+  //color:#434343;
+  //.boton_agregar::before{
+      //width: 100%;
+  //}
+}
+.estilo_letra{
+  //background-color: orchid;
+  //margin-top: 50px;
+  //width: 50%;
+  font-size: 50px;
+  //margin-left: 50%;
+  //margin-right: 100%;
+  color:rgb(0, 0, 0);
+  text-align: left;
+}
+.estilo_letra1{
+  //background-color: orchid;
+  //margin-top: 100px;
+  //width: 50%;
+  font-size: 20px;
+  //margin-left: 50%;
+  //margin-right: 100%;
+  color:rgb(0, 0, 0);
+  text-align: center;
+}
+.estilo_letra2{
+  margin-top: 10px;
+  font-size: 20px;
+  //margin-left: 50%;
+  //margin-right: 100%;
+  color:rgb(0, 0, 0);
+  //text-align: center;
 }
