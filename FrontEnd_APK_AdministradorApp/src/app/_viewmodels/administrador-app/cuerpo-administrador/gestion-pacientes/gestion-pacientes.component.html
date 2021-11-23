@@ -32,9 +32,11 @@
                     </td>
                     <td>{{nombrePsicologo(paciente.idPsicologo)}}</td>
                     <td>
-                        <select (change)="actualizarPsicologo(paciente)" id="listaPsicologo">
-                            <option *ngFor="let psicologo of psicologosHabilitado" [value]="psicologo.carnetDeIdentidad" >
-                                {{ psicologo.nombres }}
+                        <select #searchBar class="selects" (change)="actualizarPsicologo(paciente,searchBar.value)" [id]="paciente.id">
+                            <option  [value]="" >
+                            </option>
+                            <option *ngFor="let psicologo of psicologosHabilitado" [value]="psicologo.id" >
+                                {{ psicologo.nombres }} {{ psicologo.apellidos }}
                             </option>
                         </select>
                     </td>  

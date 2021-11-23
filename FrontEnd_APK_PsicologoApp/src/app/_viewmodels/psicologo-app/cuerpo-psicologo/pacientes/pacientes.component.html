@@ -1,0 +1,44 @@
+<div class="bg-light"  style="min-height: 89vh; overflow: hidden;">
+    <div class="p-2 container" style="min-height: 89vh;background-size: cover;background-image: url('assets/img/cerebro.png');">
+        <h1>Pacientes registrados</h1>
+       <!-- <button (click)="irACrearPaciente()" class="btn btn-sm btn-success mb-2">Añadir paciente</button>-->
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th style="width: 10%">Carnet de identidad</th>
+                    <th style="width: 10%">Nombres y apellidos</th>
+                    <th style="width: 10%">Fecha de nacimiento</th>
+                    <th style="width: 10%">Número telefónico</th>
+                    <th style="width: 10%">Correo electrónico</th>
+                    <th style="width: 10%">Género</th>
+                    <th style="width: 10%">Ver agenda virtual</th>
+                    <th style="width: 10%">Ver resultados de pruebas de cognitivas</th>
+                    <th style="width: 5%"></th>
+                </tr>
+            </thead>
+            <tbody>
+               <tr *ngFor="let paciente of psicologosid">
+                    <td>{{paciente.carnetDeIdentidad}}</td>
+                    <td>{{paciente.nombres}} {{paciente.apellidos}}</td>
+                    <td>{{convertirFechaYQuitarHoras(paciente.fechaDeNacimiento)}}</td>
+                    <td>{{paciente.numeroTelefonico}}</td>
+                    <td>{{paciente.correoElectronico}}</td>
+                    <td>{{paciente.sexo}}</td>
+                    <td>
+                        <button (click)="irAResumenAgenda(paciente.id)">Ver agenda </button>
+                    </td>
+                    <td>
+                        <button  (click)="irAResultados(paciente.id)">Ver resultados</button>
+                    </td>
+                </tr>
+                <tr *ngIf="!pacientes">
+                    <td colspan="4" class="text-center">
+                        <span class="spinner-border spinner-border-lg align-center"></span>
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+</div>
+

@@ -5,18 +5,12 @@ import { ReplaySubject } from 'rxjs';
 export class MisMetasDAO
 {
     coneccionServidor:any;
-    carnetDeIdentidadPaciente:any;
-    constructor(private http:HttpClient) {
+  
+    constructor(private http:HttpClient,private carnetDeIdentidadPaciente:any) {
+        console.log("UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU");
+        console.log(carnetDeIdentidadPaciente);
+        console.log("UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU");
         this.coneccionServidor=new ConeccionServidor(this.http)
-
-        //ObtenerCarnetDeIdentiudad
-        var pacienteInfo=localStorage.getItem('currentUser');
-        if(pacienteInfo==null){
-            pacienteInfo="null";
-            throw console.error("Paciente no encontrado");
-        }
-        var usuario:any =JSON.parse(pacienteInfo);
-        this.carnetDeIdentidadPaciente=usuario.carnetDeIdentidad;
     }
     async listarMetas(){
         var parametros={"carnetDeIdentidad": this.carnetDeIdentidadPaciente}

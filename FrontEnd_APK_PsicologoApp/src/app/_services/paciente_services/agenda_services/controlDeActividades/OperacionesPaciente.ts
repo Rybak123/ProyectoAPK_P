@@ -6,19 +6,13 @@ import {HttpClient} from "@angular/common/http";
 export class OperacionesPaciente
 {
    
-    constructor(private http:HttpClient) { }
+    constructor(private http:HttpClient,private idpaciente:any) {
+
+     }
 
     async obtenerPaciente(){
         var coneccionServidor=new ConeccionServidor(this.http);
-        var pacienteInfo=localStorage.getItem('currentUser');
-        if(pacienteInfo==null){
-            pacienteInfo="null";
-            throw console.error("Paciente no encontrado");
-        }
-        var usuario:any =JSON.parse(pacienteInfo);
-
-        var parametros={"id": usuario.id}
+        var parametros={"id": this.idpaciente}
         return await coneccionServidor.coneccionServidor(parametros,"/paciente/leerPaciente");
-    }
-    
+    }    
 }

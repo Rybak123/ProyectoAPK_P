@@ -48,7 +48,7 @@ export class GestionPacientesComponent implements OnInit {
   nombrePsicologo(idPsicologo:any){
     var nombrePsicologoEncontrado="";
     this.psicologos.forEach((psicologos)=>{
-      if(psicologos.carnetDeIdentidad==idPsicologo)
+      if(psicologos.id==idPsicologo)
       {
         nombrePsicologoEncontrado=psicologos.nombres;
       }
@@ -56,17 +56,36 @@ export class GestionPacientesComponent implements OnInit {
     })
     return nombrePsicologoEncontrado;
   }
-  actualizarPsicologo(pacientes:any){
-    var listarPsicologoComboBox:any=document.getElementById("listaPsicologo");
-   pacientes.idPsicologo=listarPsicologoComboBox.value;
-   console.log(listarPsicologoComboBox.value);
-    this.gestionPaciente.modificarPaciente(pacientes)
-    .pipe(first())
-    .subscribe(() => {
-      alert("Datos modificados");
-    }).add(() => {
-     this.listarPacientes();
-    });
+  actualizarPsicologo(pacientes:any,selectvalue:any){
+    var list:any = document.getElementsByClassName("selects");
+    var selected:any;
+    for(var i=0;i<list.length;i++){
+      if(list[i].id==pacientes.id){
+         selected=list[i];
+      }
+
+    }
+
+    var value = selected.options[selected.selectedIndex].value;
+    var text =selected.options[selected.selectedIndex].text; 
+    console.log(value);
+    console.log(text);
+    //list.forEach((element:any) => {
+    //  
+    //});
+   
+    console.log(list);
+    if(selectvalue!=""){
+      pacientes.idPsicologo=value;
+       this.gestionPaciente.modificarPaciente(pacientes)
+       .pipe(first())
+       .subscribe(() => {
+         alert("Datos modificados");
+       }).add(() => {
+        this.listarPacientes();
+       });
+    }
+   
   }
   verPacientes(){
     console.log(this.pacientes);
@@ -75,7 +94,7 @@ export class GestionPacientesComponent implements OnInit {
     this.pacienteActual=pacienteSeleccionado;
   }
   deshabilitarPaciente(idPacienteSeleccionado:any){
-    console.log(idPacienteSeleccionado);
+
     this.idpacienteActual=idPacienteSeleccionado;
     this.isDisabling=true;
     this.gestionPaciente.deshabilitarPaciente(idPacienteSeleccionado)

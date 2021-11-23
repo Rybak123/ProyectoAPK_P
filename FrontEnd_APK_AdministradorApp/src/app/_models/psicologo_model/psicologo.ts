@@ -14,6 +14,7 @@ export class Psicologo{
         public  fechaDeRegistro: any;
         public  fechaDeDeshabilitacion: any;
         public  token: any;
+    
         constructor(){
 
         }

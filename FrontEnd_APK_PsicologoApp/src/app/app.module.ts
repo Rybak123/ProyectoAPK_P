@@ -68,6 +68,9 @@ import { FormularioCambiarContrasenaComponent } from './_viewmodels/recuperar-co
 import { RespuestaCambiarContrasenaComponent } from './_viewmodels/recuperar-contrasena-app/respuesta-cambiar-contrasena/respuesta-cambiar-contrasena.component';
 import {IvyCarouselModule} from 'angular-responsive-carousel';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PacientesComponent } from './_viewmodels/psicologo-app/cuerpo-psicologo/pacientes/pacientes.component';
+import { ResumenDeLaAgendaVirtualComponent } from './_viewmodels/psicologo-app/cuerpo-psicologo/pacientes/resumen-de-la-agenda-virtual/resumen-de-la-agenda-virtual.component';
+import { ResultadosPruebasDeDesarolloCognitivoComponent } from './_viewmodels/psicologo-app/cuerpo-psicologo/pacientes/resultados-pruebas-de-desarollo-cognitivo/resultados-pruebas-de-desarollo-cognitivo.component';
 FullCalendarModule.registerPlugins([ 
   dayGridPlugin,
   interactionPlugin
@@ -83,7 +86,10 @@ FullCalendarModule.registerPlugins([
     BarraDeNavegacionPsicologoComponent,
     PerfilPsicologoComponent,
     FormularioCambiarContrasenaComponent,
-    RespuestaCambiarContrasenaComponent
+    RespuestaCambiarContrasenaComponent,
+    PacientesComponent,
+    ResumenDeLaAgendaVirtualComponent,
+    ResultadosPruebasDeDesarolloCognitivoComponent
   ],
   imports: [
     BrowserModule,
