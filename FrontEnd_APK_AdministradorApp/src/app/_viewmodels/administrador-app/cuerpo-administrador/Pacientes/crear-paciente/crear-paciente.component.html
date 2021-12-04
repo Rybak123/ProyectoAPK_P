@@ -6,7 +6,7 @@
                 <div class="row" style="height:21%">
                     <div class="form-group col-4">
                         <label>Carnet de identidad</label>
-                        <input type="number" formControlName="carnetDeIdentidad" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.carnetDeIdentidad.errors }"/>
+                        <input type="text" formControlName="carnetDeIdentidad" id="paciente_carnetdeidentidad"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.carnetDeIdentidad.errors }"/>
                         <div *ngIf="submitted && f.carnetDeIdentidad.errors" class="invalid-feedback">
                             <div *ngIf="f.carnetDeIdentidad.errors.required">Carnet de identidad requerido</div>
                         </div>
@@ -14,14 +14,14 @@
 
                     <div class="form-group col-4">
                         <label>Nombres</label>
-                        <input type="text" formControlName="nombres" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.nombres.errors }" />
+                        <input type="text" formControlName="nombres" id="paciente_nombres" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.nombres.errors }" />
                         <div *ngIf="submitted && f.nombres.errors" class="invalid-feedback">
                             <div *ngIf="f.nombres.errors.required">Nombres requeridos</div>
                         </div>
                     </div>
                     <div class="form-group col-4">
                         <label>Apellidos</label>
-                        <input type="text" formControlName="apellidos" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.apellidos.errors }" />
+                        <input type="text" formControlName="apellidos" id="paciente_apellidos" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.apellidos.errors }" />
                         <div *ngIf="submitted && f.apellidos.errors" class="invalid-feedback">
                             <div *ngIf="f.apellidos.errors.required">Apellidos requeridos</div>
                         </div>
@@ -30,14 +30,14 @@
                 <div class="row"  style="height:21%">
                     <div class="form-group col-4">
                         <label>Fecha de nacimiento</label>
-                        <input type="date" max="{{minimoFechaDeNacimiento}}"  formControlName="fechaDeNacimiento" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.fechaDeNacimiento.errors }" />
+                        <input type="date" max="{{minimoFechaDeNacimiento}}" id="paciente_fechadenacimiento"  formControlName="fechaDeNacimiento" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.fechaDeNacimiento.errors }" />
                         <div *ngIf="submitted && f.fechaDeNacimiento.errors" class="invalid-feedback">
                             <div *ngIf="f.fechaDeNacimiento.errors.required"> Fecha de nacimiento requerido</div>
                         </div>
                     </div>
                     <div class="form-group col-4">
                         <label>Género</label>
-                        <select formControlName="sexo" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.sexo.errors }">
+                        <select formControlName="sexo" class="form-control" id="paciente_genero" [ngClass]="{ 'is-invalid': submitted && f.sexo.errors }">
                             <option value="Masculino">Masculino</option>
                             <option value="Femenino">Femenino</option>
                             <option value="No binario">No binario</option>
@@ -52,7 +52,7 @@
                     </div>
                     <div class="form-group col-4">
                         <label>Número telefónico</label>
-                        <input type="number" formControlName="numeroTelefonico" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.numeroTelefonico.errors }" />
+                        <input type="number" formControlName="numeroTelefonico" id="paciente_numerodetelefono" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.numeroTelefonico.errors }" />
                         <div *ngIf="submitted && f.numeroTelefonico.errors" class="invalid-feedback">
                             <div *ngIf="f.numeroTelefonico.errors.required"> Fecha de nacimiento requerido</div>
                         </div>
@@ -61,7 +61,7 @@
                 <div class="row"  style="height:21%">
                     <div class="form-group col-4">
                         <label>Correo electrónico</label>
-                        <input type="email" formControlName="correoElectronico" class="form-control" autocomplete="off"  [ngClass]="{ 'is-invalid': submitted && f.correoElectronico.errors }" />
+                        <input type="email" formControlName="correoElectronico" id="paciente_correoelectronico" class="form-control" autocomplete="off"  [ngClass]="{ 'is-invalid': submitted && f.correoElectronico.errors }" />
                         <div *ngIf="submitted && f.correoElectronico.errors" class="invalid-feedback">
                             <div *ngIf="f.correoElectronico.errors.required"> Fecha de nacimiento requerido</div>
                             <div *ngIf="f.correoElectronico.errors.email">El correo electronico debe estar en un formato correcto</div>
@@ -69,9 +69,9 @@
                     </div>
                     <div class="form-group col-4">
                         <label>Estado</label>
-                        <select formControlName="estado" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.estado.errors }">
-                            <option value="true">Habilitado</option>
-                            <option value="false">Deshabilitado</option>
+                        <select formControlName="estado" class="form-control" id="paciente_estado1" [ngClass]="{ 'is-invalid': submitted && f.estado.errors }">
+                            <option value="true" id="habilitado_btn">Habilitado</option>
+                            <option value="false"  id="deshabilitado_btn">Deshabilitado</option>
                         </select>
                         <div *ngIf="submitted && f.estado.errors" class="invalid-feedback">
                             <div *ngIf="f.estado.errors.required"> Fecha de nacimiento requerido</div>
@@ -80,7 +80,7 @@
                     
                     <div class="form-group col-4">
                         <label>Fecha de caducidad de la licencia</label>
-                        <input type="date" min="{{fechaActual}}" formControlName="caducidadLicencia" class="form-control" autocomplete="off" [ngClass]="{ 'is-invalid': submitted && f.caducidadLicencia.errors }"/>
+                        <input type="date" min="{{fechaActual}}" formControlName="caducidadLicencia" id="paciente_fechacaducidadlicencia" class="form-control" autocomplete="off" [ngClass]="{ 'is-invalid': submitted && f.caducidadLicencia.errors }"/>
                         <div *ngIf="submitted && f.caducidadLicencia.errors" class="invalid-feedback">
                             <div *ngIf="f.caducidadLicencia.errors.required"> Fecha de nacimiento requerido</div>
                         </div>
@@ -94,7 +94,7 @@
                 </div>
                 <br>
                 <div class="form-group">
-                    <button type="submit" [disabled]="loading" class="btn btn-primary">
+                    <button type="submit" [disabled]="loading" class="btn btn-primary" id="paciente_enviar">
                         <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                         Enviar
                     </button>
