@@ -57,22 +57,6 @@ export class PacienteService {
     }
     return this.http.post(`${GlobalConstants.apiURL}/paciente/enlaceCambiarContrasena`, objetoCuerpoPeticion);
   }
-  marcarComoVistoUnEvento(idPaciente:any,idEvento:any){
-    var objetoCuerpoPeticion=
-    {
-      carnetDeIdentidad:idPaciente,
-      idEvento:idEvento,
-    }
-    return this.http.post(`${GlobalConstants.apiURL}/paciente/enlaceCambiarContrasena`, objetoCuerpoPeticion);
-  }
-  desmarcarComoVistoUnEvento(idPaciente:any,idEvento:any){
-    var objetoCuerpoPeticion=
-    {
-      carnetDeIdentidad:idPaciente,
-      idEvento:idEvento,
-    }
-    return this.http.post(`${GlobalConstants.apiURL}/paciente/enlaceCambiarContrasena`, objetoCuerpoPeticion);
-  }
   //para ver las pruebas de desarrollo cognitivo
   listarPruebasDeDesarolloCognitivo(){
 

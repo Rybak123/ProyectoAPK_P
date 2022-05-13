@@ -15,7 +15,6 @@ export class Paciente{
     public token: any; 
     public idPsicologo:any;
 
-
     constructor(){
         
     }

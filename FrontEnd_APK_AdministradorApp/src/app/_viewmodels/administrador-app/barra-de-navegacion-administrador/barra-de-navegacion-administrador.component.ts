@@ -10,7 +10,6 @@ import { AuthenticacionAdministradorService } from 'src/app/_services/login_serv
 })
 export class BarraDeNavegacionAdministradorComponent implements OnInit {
 
-  
   constructor(private autenticacionService:AuthenticacionAdministradorService,
     private router:Router,
     private administradorNavegacionService:AdministradorNavigationService) { }

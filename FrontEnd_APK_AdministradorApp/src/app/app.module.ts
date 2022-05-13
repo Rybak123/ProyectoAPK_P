@@ -73,7 +73,6 @@ import { PsicologoService } from './_services/psicologo_services/psicologo-servi
 import { PacienteService } from './_services/paciente-service';
 import { GestionEventosComponent } from './_viewmodels/administrador-app/cuerpo-administrador/Eventos/gestion-eventos/gestion-eventos.component';
 import { CrearEventoComponent } from './_viewmodels/administrador-app/cuerpo-administrador/Eventos/crear-evento/crear-evento.component';
-import { NotificacionesService } from './_services/notificacionesServices';
 
 FullCalendarModule.registerPlugins([ 
   dayGridPlugin,
@@ -159,14 +158,13 @@ FullCalendarModule.registerPlugins([
     ScrollingModule,
     BrowserAnimationsModule,
     ChartsModule,
-    NgbModule,
-
+    NgbModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
-    AdministradorNavigationService,PsicologoService,PacienteService,NotificacionesService
+    AdministradorNavigationService,PsicologoService,PacienteService
     
   ],
   bootstrap: [AppComponent]

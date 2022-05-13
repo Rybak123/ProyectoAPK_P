@@ -57,21 +57,9 @@ router.post('/read_favorito', ReadFavoritos);
 router.post('/update_favorito', updateFavoritos);
 router.post('/delete_favorito',deleteFavoritos)
 router.post('/mandar_imagen_favorito',mandarImagenFavoritos);
-//notificaciones vistas
-router.post('/aumentarNotificacionesVistas',aumentarNotificacionesVistas);
-router.post('/quitarNotificacionVista',quitarNotificacionVista);
+
 module.exports = router;
 
-function aumentarNotificacionesVistas(req, res, next) {
-    PacienteDao.aumentarNotificacionesVistas(req.body)
-    .then(() => res.json({}))
-    .catch(err => next(err));
-}
-function quitarNotificacionVista(req, res, next) {
-    PacienteDao.quitarNotificacionVista(req.body)
-    .then(() => res.json({}))
-    .catch(err => next(err));
-}
 
 function registrar(req, res, next) {
     PacienteDao.create_Paciente(req.body)

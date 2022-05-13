@@ -17,7 +17,6 @@ const schema = new Schema({
     idPsicologo:{type: String, required: false},
     hash: { type: String, required: false },
     token: { type: String, required: false },
-    notificacionesVistas:[],
     pruebasDeDesarolloCognitivo:{
         puntuacionFinal: { type: Number, required: false },
         fecha: { type: Date, required: false },

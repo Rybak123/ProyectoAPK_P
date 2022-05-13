@@ -55,9 +55,7 @@ function jwt() {
             '/eventos/listarEvento',
             '/eventos/modificarEvento',
             '/eventosImagenes',
-            '/EventosImagenes',
-            '/socket.io',
-          
+            '/EventosImagenes'
         ]
     });
 }
