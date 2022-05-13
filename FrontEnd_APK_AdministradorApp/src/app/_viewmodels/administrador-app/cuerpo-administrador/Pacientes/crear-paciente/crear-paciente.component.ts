@@ -3,7 +3,6 @@ import { Output,EventEmitter } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-import { GlobalConstants } from 'src/app/global-constants';
 import { Paciente } from 'src/app/_models/paciente_model/paciente';
 import { PacienteService } from 'src/app/_services/paciente-service';
 
@@ -88,7 +87,7 @@ export class CrearPacienteComponent implements OnInit, AfterViewInit {
     this.pacienteService.registrarPaciente(paciente)
     .pipe(first())
     .subscribe(() => {
-      window.open(`${GlobalConstants.apiURL}/excelUsuario/UsuarioRegistrado.csv`, "_blank");
+      window.open("http://localhost:4000/excelUsuario/UsuarioRegistrado.csv", "_blank");
       this.irAListarPaciente();
    
     }).add(() => this.loading = false);

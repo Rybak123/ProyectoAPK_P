@@ -108,7 +108,6 @@ import { LoginComponent } from './_viewmodels/login-app/login-paciente/login.com
 import { EventosNotificacionesComponent } from './_viewmodels/paciente-app/cuerpo/eventos-notificaciones/eventos-notificaciones.component';
 
 import { NotificacionesService } from './_services/notificacionesService';
-import { ContactosDeEmergenciaComponent } from './_viewmodels/paciente-app/cuerpo/contactos-de-emergencia/contactos-de-emergencia.component';
 
 FullCalendarModule.registerPlugins([ 
   dayGridPlugin, 
@@ -163,8 +162,7 @@ FullCalendarModule.registerPlugins([
     PruebaGeneralLamina16Component,
     PruebaGeneralResultadosComponent,
     PruebaDeDesarolloCognitivoComponent,
-    EventosNotificacionesComponent,
-    ContactosDeEmergenciaComponent
+    EventosNotificacionesComponent
   ],
   imports: [
     BrowserModule,

@@ -3,12 +3,11 @@ import { Socket } from 'ngx-socket-io';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import * as io from 'socket.io-client';
-import { GlobalConstants } from '../global-constants';
 @Injectable()
 export class NotificacionesService {
 
   public socket:any;  
-  readonly URL = `${GlobalConstants.apiURL}/eventos/listarEvento`;
+  readonly URL = 'http://localhost:4000';
   constructor() {
     this.socket = io.io(this.URL);
   }  

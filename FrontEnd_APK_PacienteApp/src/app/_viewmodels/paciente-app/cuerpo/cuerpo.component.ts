@@ -43,7 +43,6 @@ import { InicioPruebaMarcoComponent } from './PruebasDesarolloCognitivo/PruebaGe
 import { PruebaDeDesarolloCognitivoComponent } from './PruebasDesarolloCognitivo/prueba-de-desarollo-cognitivo/prueba-de-desarollo-cognitivo.component';
 
 import {EventosNotificacionesComponent} from '../cuerpo/eventos-notificaciones/eventos-notificaciones.component';
-import { ContactosDeEmergenciaComponent } from '../cuerpo/contactos-de-emergencia/contactos-de-emergencia.component';
 @Component({
   selector: 'app-cuerpo',
   templateUrl: './cuerpo.component.html',
@@ -322,13 +321,6 @@ export class CuerpoComponent implements OnInit,AfterViewInit {
   public renderNotificaiones(): void {
     const componentModule = this.compiler.compileModuleAndAllComponentsSync(AppModule)
     const factory = componentModule.componentFactories.find(c => c.componentType === EventosNotificacionesComponent);    
-    this.myRef.clear();
-    const ref = this.myRef.createComponent(factory);
-    ref.changeDetectorRef.detectChanges();
-  }
-  public renderContactosDeEmergencia(): void {
-    const componentModule = this.compiler.compileModuleAndAllComponentsSync(AppModule)
-    const factory = componentModule.componentFactories.find(c => c.componentType === ContactosDeEmergenciaComponent);    
     this.myRef.clear();
     const ref = this.myRef.createComponent(factory);
     ref.changeDetectorRef.detectChanges();
