@@ -10,9 +10,6 @@ import { AuthenticacionPsicologoService } from 'src/app/_services/login_services
 import { PsicologoNavigationService } from 'src/app/_services/psicologo_services/psicologo.navigation.service';
 import { SidenavService } from 'src/app/_services/sidenavService';
 import { PerfilPsicologoComponent } from './perfil-psicologo/perfil-psicologo.component';
-import { PacientesComponent } from './pacientes/pacientes.component';
-import { ResumenDeLaAgendaVirtualComponent } from './pacientes/resumen-de-la-agenda-virtual/resumen-de-la-agenda-virtual.component';
-import { ResultadosPruebasDeDesarolloCognitivoComponent } from './pacientes/resultados-pruebas-de-desarollo-cognitivo/resultados-pruebas-de-desarollo-cognitivo.component';
 
 @Component({
   selector: 'app-cuerpo-psicologo',
@@ -23,13 +20,12 @@ export class CuerpoPsicologoComponent implements OnInit,AfterViewInit {
 
   @ViewChild('dynamicComponent', { read: ViewContainerRef }) myRef:any
   @ViewChild('sidenav') sidenav: MatSidenav|any;
-  constructor(private compiler: Compiler,private componentFactoryResolver: ComponentFactoryResolver,private psicologoNavegacionService:PsicologoNavigationService,private autenticacionService:AuthenticacionPsicologoService,private router:Router) { }
+  constructor(private compiler: Compiler,private psicologoNavegacionService:PsicologoNavigationService,private autenticacionService:AuthenticacionPsicologoService,private router:Router) { }
   ngAfterViewInit(): void {
     this.sidenav.close();
     this.renderPerfilPsicologo();
     this.psicologoNavegacionService.asObservableIrVerPerfil().subscribe(() => { 
         this.renderPerfilPsicologo();
-       // this.renderlistarPacientes();
     });
   }
   ngOnInit() {
@@ -43,50 +39,12 @@ export class CuerpoPsicologoComponent implements OnInit,AfterViewInit {
         });
   
 }
-public idPacienteSeleccionado:any=null;
-
-  
-public renderlistarPacientes(): void {
-  this.myRef.clear();
-  const ref = this.myRef.createComponent(this.componentFactoryResolver.resolveComponentFactory(PacientesComponent));
-  ref.instance.irResumen.subscribe((idPaciente:any) => {
-    this.renderResumenAgenda(idPaciente);
-  });
-  ref.instance.irResultados.subscribe((idPaciente:any) => {
-    this.renderResultadosPruebasCognitivas(idPaciente);
-  });
-  ref.changeDetectorRef.detectChanges();
-
-}
-
   public renderPerfilPsicologo(): void {
+    const componentModule = this.compiler.compileModuleAndAllComponentsSync(AppModule);
+    const factory = componentModule.componentFactories.find(c => c.componentType === PerfilPsicologoComponent);    
     this.myRef.clear();
-    const ref = this.myRef.createComponent(this.componentFactoryResolver.resolveComponentFactory(PerfilPsicologoComponent));
-    
+    const ref = this.myRef.createComponent(factory);
     ref.changeDetectorRef.detectChanges();
-    
-  }
-  public renderResumenAgenda(idPaciente:any): void {
-    this.myRef.clear();
-    const ref = this.myRef.createComponent(this.componentFactoryResolver.resolveComponentFactory(ResumenDeLaAgendaVirtualComponent));
-    ref.instance.idPaciente=idPaciente;
-    ref.instance.irPacientes.subscribe(() => {
-     
-    });
-    ref.changeDetectorRef.detectChanges();
-  }
-  public renderResultadosPruebasCognitivas(idPaciente:any): void {
-    this.myRef.clear();
-    const ref = this.myRef.createComponent(this.componentFactoryResolver.resolveComponentFactory(ResultadosPruebasDeDesarolloCognitivoComponent));
-    ref.instance.idPaciente=idPaciente;
-    ref.instance.irPacientes.subscribe(() => {
-     
-    });
-    ref.changeDetectorRef.detectChanges();
-  }
-  
-  mostrarPacientes(){
-    this.renderlistarPacientes();
   }
   logout(){
     this.autenticacionService.logout()

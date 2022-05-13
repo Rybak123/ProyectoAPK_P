@@ -10,13 +10,22 @@
           </header>
         <nav class="sidebar-nav">
           <ul>
-            <li style="float: inline-end; height: 50%;">
-              <a href="#" (click)="mostrarPacientes()"><i class="ion-ios-medical-outline"></i> <span class="">
-                <img src="assets/img/iconos/programador.png" width="30" height="30" class="d-inline-block align-top" alt="">&nbsp;Pacientes</span></a>
+            <li>
+              <a href="#"><i class="ion-bag" ></i> <span >Mis gustos</span></a>
+              <ul class="nav-flyout">
+                <li>
+                  <a href="#" class="myClase" style="color: white;" ><i class="ion-ios-clock-outline" ></i>Ver libro</a>
+                </li>
+                <li>
+                  <a href="#" class="myClase" style="color: white;"  ><i class="ion-heart-broken"></i>Ver Canciones</a>
+                </li>
+                <li>
+                    <a href="#" class="myClase" style="color: white;"  ><i class="ion-heart-broken"></i>Ver Canciones</a>
+                  </li>
+              </ul>
             </li>
             <li style="float: inline-end; height: 50%;">
-              <a href="#" (click)="logout()"><i class="ion-ios-medical-outline"></i> <span class="">
-                <img src="assets/img/iconos/cerrar-sesion1.png" width="30" height="30" class="d-inline-block align-top" alt="">&nbsp;Cerrar sesión</span></a>
+              <a href="#" (click)="logout()"><i class="ion-ios-medical-outline"></i> <span class="">Cerrar sesión</span></a>
             </li>
           </ul>
         </nav>

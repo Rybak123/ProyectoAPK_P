@@ -6,8 +6,8 @@ import {OperacionesPaciente} from './OperacionesPaciente';
 import {HttpClient} from "@angular/common/http";
 export class VerificarOperacionesPaciente{
     operacionesPaciente:any;
-    constructor(private http:HttpClient, private idpaciente:any) {
-        this.operacionesPaciente=new OperacionesPaciente(idpaciente,this.http);
+    constructor(private http:HttpClient) {
+        this.operacionesPaciente=new OperacionesPaciente(this.http);
     }
     async verControlDeAnimoActualizado(){
         var diaActualizado=false;

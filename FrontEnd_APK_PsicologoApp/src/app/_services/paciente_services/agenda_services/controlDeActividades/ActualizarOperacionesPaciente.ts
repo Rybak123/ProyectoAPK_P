@@ -7,8 +7,8 @@ import {HttpClient} from "@angular/common/http";
 export class ActualizarOperacionesPaciente
 {
     operacionesPaciente:any;
-    constructor(private http:HttpClient,idpaciente:any) {
-        this.operacionesPaciente=new OperacionesPaciente(idpaciente,this.http);
+    constructor(private http:HttpClient) {
+        this.operacionesPaciente=new OperacionesPaciente(this.http);
     }
     async obtenerControlDeAnimo(){
         return this.operacionesPaciente.obtenerPaciente()

@@ -5,8 +5,18 @@ import { ReplaySubject } from 'rxjs';
 export class MisMetasPersonalesDAO
 {
     coneccionServidor:any;
-    constructor(private http:HttpClient,private carnetDeIdentidadPaciente:any) {
+    carnetDeIdentidadPaciente:any;
+    constructor(private http:HttpClient) {
         this.coneccionServidor=new ConeccionServidor(this.http)
+
+        //ObtenerCarnetDeIdentiudad
+        var pacienteInfo=localStorage.getItem('currentUser');
+        if(pacienteInfo==null){
+            pacienteInfo="null";
+            throw console.error("Paciente no encontrado");
+        }
+        var usuario:any =JSON.parse(pacienteInfo);
+        this.carnetDeIdentidadPaciente=usuario.carnetDeIdentidad;
     }
     async listarMetasPersonales(){
         var parametros={"carnetDeIdentidad": this.carnetDeIdentidadPaciente}

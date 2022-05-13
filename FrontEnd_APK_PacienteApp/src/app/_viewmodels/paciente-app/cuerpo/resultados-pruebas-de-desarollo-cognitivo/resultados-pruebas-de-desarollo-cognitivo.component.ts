@@ -17,9 +17,12 @@ export class ResultadosPruebasDeDesarolloCognitivoComponent implements OnInit {
         pacienteInfo="null";
         throw console.error("Usuario no encontrado");
     }
+
     this.usuario=JSON.parse(pacienteInfo);
-    this.pacienteService.leerPruebasDeDesarolloCognitivo(this.usuario.id).then((resutlado:any)=>{
-    this.resultadorPruebasDesarolloCognitivo=resutlado;
+
+   this.pacienteService.leerPruebasDeDesarolloCognitivo(this.usuario.id).then((resutlado:any)=>{
+     console.log(resutlado);
+     this.resultadorPruebasDesarolloCognitivo=resutlado;
    })
   }
   convertirDirferenciaFechas(fechaIn:any,fechaFin:any){

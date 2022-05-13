@@ -75,8 +75,4 @@ export class PacienteService {
       return this.http.post(`${GlobalConstants.apiURL}/pruebasGenerales/leerPruebaGeneral`,objetoCuerpoPeticion);
 
   }
-  leerPruebasDeDesarolloCognitivo(idPaciente:any){
-    
-    return this.http.post(`${GlobalConstants.apiURL}/paciente/leerPruebaDeDesarolloCognitivo`,{idPaciente}).toPromise();
-  }
 }
