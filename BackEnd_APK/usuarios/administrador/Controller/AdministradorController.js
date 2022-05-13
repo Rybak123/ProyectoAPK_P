@@ -13,12 +13,6 @@ router.post('/recuperarContrasena', recuperarContrasena);
 router.post('/enlaceCambiarContrasena', cambiarContrasena);
 module.exports = router;
 
-
-
-
-
-
-
 function registrarAdministrador(req, res, next) {
     administradorServices.registrarAdministrador(req.body)
         .then((resultado) => res.json({resultado}))

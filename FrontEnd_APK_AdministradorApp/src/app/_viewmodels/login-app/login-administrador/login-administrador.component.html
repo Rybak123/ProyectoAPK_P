@@ -9,22 +9,14 @@
             <h2 id="label1" >Autenticación para administradores</h2>
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" autocomplete="off">
             <div class="form-group" style="margin-top: 10%;margin-bottom: 3%;"> 
-                <input type="text" placeholder="Carnet de identidad" id="boton_carnetusuario" class="boton_usuario" style="background-color: rgb(255, 255, 255);
-                height: 50px;
-                width: 80%;
-                margin-left: 10%;
-                border-radius: 15px;"  formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                <input type="text" placeholder="Carnet de identidad" id="boton_usuario"  formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
                 <div *ngIf="submitted && f.username.errors" class="invalid-feedback" style="margin-left: 10%;">
                     <div *ngIf="f.username.errors.required">No debe dejar este espacio en blanco</div>
                 </div>
             </div>
             <div class="form-group" style="margin-bottom: 3%;">
                 <!--<label for="password">Password</label>-->
-                <input type="password" placeholder="Contraseña" id="boton_contrasena" class="boton_usuario" style="background-color: rgb(255, 255, 255);
-                height: 50px;
-                width: 80%;
-                margin-left: 10%;
-                border-radius: 15px;"  formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                <input type="password" placeholder="Contraseña" id="boton_usuario"  formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
                 <div *ngIf="submitted && f.password.errors" class="invalid-feedback"  style="margin-left: 10%;">
                     <div *ngIf="f.password.errors.required">No debe dejar este espacio en blanco</div>
                 </div>

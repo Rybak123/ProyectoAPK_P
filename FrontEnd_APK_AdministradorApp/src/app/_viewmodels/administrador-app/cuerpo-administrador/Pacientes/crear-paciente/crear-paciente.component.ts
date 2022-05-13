@@ -55,7 +55,6 @@ export class CrearPacienteComponent implements OnInit, AfterViewInit {
     this.irAListarPacienteEmiter.emit();
   }
   onSubmit(){
-    console.log(this.form.value);
     this.submitted=true;
 
     if (this.form.invalid) {
