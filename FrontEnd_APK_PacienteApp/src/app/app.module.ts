@@ -52,31 +52,27 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { CrearMetasPersonalesComponent } from './_viewmodels/paciente-app/cuerpo/AgendaVirtual_ActividadesRegistro/metasPersonales/crear-metas-personales/crear-metas-personales.component';
-import { CrearMetasSocialesComponent } from './_viewmodels/paciente-app/cuerpo/AgendaVirtual_ActividadesRegistro/metasSociales/crear-metas-sociales/crear-metas-sociales.component';
-import { VerFavoritosComponent } from './_viewmodels/paciente-app/cuerpo/AgendaVirtual_ActividadesRegistro/misFavoritos/ver-favoritos/ver-favoritos.component';
-import { VerMetasPersonalesComponent } from './_viewmodels/paciente-app/cuerpo/AgendaVirtual_ActividadesRegistro/metasPersonales/ver-metas-personales/ver-metas-personales.component';
+import { CrearLibroComponent } from './_viewmodels/paciente-app/cuerpo/misLibros/crear-libro/crear-libro.component';
+import { CrearCancionesComponent } from './_viewmodels/paciente-app/cuerpo/misCanciones/crear-canciones/crear-canciones.component';
+import { CrearMetasPersonalesComponent } from './_viewmodels/paciente-app/cuerpo/metasPersonales/crear-metas-personales/crear-metas-personales.component';
+import { CrearMetasSocialesComponent } from './_viewmodels/paciente-app/cuerpo/metasSociales/crear-metas-sociales/crear-metas-sociales.component';
+import { VerFavoritosComponent } from './_viewmodels/paciente-app/cuerpo/misFavoritos/ver-favoritos/ver-favoritos.component';
+import { VerMetasPersonalesComponent } from './_viewmodels/paciente-app/cuerpo/metasPersonales/ver-metas-personales/ver-metas-personales.component';
 import { AuthImagePipe } from './_helpers/basic.pipe';
-import { CrearFavoritoComponent } from './_viewmodels/paciente-app/cuerpo//AgendaVirtual_ActividadesRegistro/misFavoritos/crear-favorito/crear-favorito.component';
-import { VerLibrosComponent } from './_viewmodels/paciente-app/cuerpo//AgendaVirtual_ActividadesRegistro/misLibros/ver-libros/ver-libros.component';
-import { VerCancionesComponent } from './_viewmodels/paciente-app/cuerpo//AgendaVirtual_ActividadesRegistro/misCanciones/ver-canciones/ver-canciones.component';
-
-import { CrearLibroComponent } from './_viewmodels/paciente-app/cuerpo//AgendaVirtual_ActividadesRegistro/misLibros/crear-libro/crear-libro.component';
-import { CrearCancionesComponent } from './_viewmodels/paciente-app/cuerpo//AgendaVirtual_ActividadesRegistro/misCanciones/crear-canciones/crear-canciones.component';
-
-
-import { CalificarMesComponent } from './_viewmodels/paciente-app/cuerpo/AgendaVirtual_ActividadesRegistro/calificar-mes/calificar-mes.component';
+import { CrearFavoritoComponent } from './_viewmodels/paciente-app/cuerpo/misFavoritos/crear-favorito/crear-favorito.component';
+import { VerLibrosComponent } from './_viewmodels/paciente-app/cuerpo/misLibros/ver-libros/ver-libros.component';
+import { VerCancionesComponent } from './_viewmodels/paciente-app/cuerpo/misCanciones/ver-canciones/ver-canciones.component';
+import { CalificarMesComponent } from './_viewmodels/paciente-app/cuerpo/calificar-mes/calificar-mes.component';
 import { ResumenDeLaAgendaVirtualComponent } from './_viewmodels/paciente-app/cuerpo/resumen-de-la-agenda-virtual/resumen-de-la-agenda-virtual.component';
 import { ChartsModule } from 'ng2-charts';
 import { BarraDeNavegacionComponent } from './_viewmodels/paciente-app/barra-de-navegacion/barra-de-navegacion.component';
 import { CuerpoComponent } from './_viewmodels/paciente-app/cuerpo/cuerpo.component';
 import { PacienteComponent } from './_viewmodels/paciente-app/paciente.component';
-import { ControlDeEstudioComponent } from './_viewmodels/paciente-app/cuerpo/AgendaVirtual_ActividadesControl/control-de-estudio/control-de-estudio.component';
-import { ControlDeSuenoComponent } from './_viewmodels/paciente-app/cuerpo/AgendaVirtual_ActividadesControl/control-de-sueno/control-de-sueno.component';
-import { ControlDeAnimoComponent } from './_viewmodels/paciente-app/cuerpo/AgendaVirtual_ActividadesControl/control-de-animo/control-de-animo.component';
-import { ControlDeConsumoDeAguaComponent } from './_viewmodels/paciente-app/cuerpo/AgendaVirtual_ActividadesControl/control-de-consumo-de-agua/control-de-consumo-de-agua.component';
-import { ControlDeEnergiaComponent } from './_viewmodels/paciente-app/cuerpo/AgendaVirtual_ActividadesControl/control-de-energia/control-de-energia.component';
+import { ControlDeEstudioComponent } from './_viewmodels/paciente-app/cuerpo/control-de-estudio/control-de-estudio.component';
+import { ControlDeSuenoComponent } from './_viewmodels/paciente-app/cuerpo/control-de-sueno/control-de-sueno.component';
+import { ControlDeAnimoComponent } from './_viewmodels/paciente-app/cuerpo/control-de-animo/control-de-animo.component';
+import { ControlDeConsumoDeAguaComponent } from './_viewmodels/paciente-app/cuerpo/control-de-consumo-de-agua/control-de-consumo-de-agua.component';
+import { ControlDeEnergiaComponent } from './_viewmodels/paciente-app/cuerpo/control-de-energia/control-de-energia.component';
 import { NavigationService } from './_services/paciente_services/navigation_services/navigationService';
 import { PacienteService } from './_services/paciente-service';
 import { AlertComponent } from './_components/alert.component';
@@ -85,30 +81,30 @@ import { PsicologoNavigationService } from './_services/psicologo_services/psico
 import { PerfilPacienteComponent } from './_viewmodels/paciente-app/cuerpo/perfil-paciente/perfil-paciente.component';
 import { FormularioCambiarContrasenaComponent } from './_viewmodels/recuperar-contrasena-app/formulario-cambiar-contrasena/formulario-cambiar-contrasena.component';
 import { RespuestaCambiarContrasenaComponent } from './_viewmodels/recuperar-contrasena-app/respuesta-cambiar-contrasena/respuesta-cambiar-contrasena.component';
-import { PruebaGeneralComponent } from './_viewmodels/paciente-app/cuerpo/PruebasDesarolloCognitivo/PruebaGeneral/prueba-general/prueba-general.component';
-import { PruebaGeneralLamina2Component } from './_viewmodels/paciente-app/cuerpo/PruebasDesarolloCognitivo/PruebaGeneral/prueba-general-lamina2/prueba-general-lamina2.component';
-import { PruebaGeneralLamina3Component } from './_viewmodels/paciente-app/cuerpo/PruebasDesarolloCognitivo/PruebaGeneral/prueba-general-lamina3/prueba-general-lamina3.component';
-import { PruebaGeneralLamina4Component } from './_viewmodels/paciente-app/cuerpo/PruebasDesarolloCognitivo/PruebaGeneral/prueba-general-lamina4/prueba-general-lamina4.component';
-import { PruebaGeneralLamina5Component } from './_viewmodels/paciente-app/cuerpo/PruebasDesarolloCognitivo/PruebaGeneral/prueba-general-lamina5/prueba-general-lamina5.component';
-import { PruebaGeneralLamina6Component } from './_viewmodels/paciente-app/cuerpo/PruebasDesarolloCognitivo/PruebaGeneral/prueba-general-lamina6/prueba-general-lamina6.component';
+import { PruebaGeneralComponent } from './_viewmodels/paciente-app/cuerpo/prueba-general/prueba-general.component';
+import { PruebaGeneralLamina2Component } from './_viewmodels/paciente-app/cuerpo/prueba-general-lamina2/prueba-general-lamina2.component';
+import { PruebaGeneralLamina3Component } from './_viewmodels/paciente-app/cuerpo/prueba-general-lamina3/prueba-general-lamina3.component';
+import { PruebaGeneralLamina4Component } from './_viewmodels/paciente-app/cuerpo/prueba-general-lamina4/prueba-general-lamina4.component';
+import { PruebaGeneralLamina5Component } from './_viewmodels/paciente-app/cuerpo/prueba-general-lamina5/prueba-general-lamina5.component';
+import { PruebaGeneralLamina6Component } from './_viewmodels/paciente-app/cuerpo/prueba-general-lamina6/prueba-general-lamina6.component';
 import {IvyCarouselModule} from 'angular-responsive-carousel';
-import { InicioPruebaGeneralComponent } from './_viewmodels/paciente-app/cuerpo/PruebasDesarolloCognitivo/PruebaGeneral/inicio-prueba-general/inicio-prueba-general.component';
-import { InicioPruebaActividadesComponent } from './_viewmodels/paciente-app/cuerpo/PruebasDesarolloCognitivo/PruebaGeneral/inicio-prueba-actividades/inicio-prueba-actividades.component';
-import { InicioPruebaMarcoComponent } from './_viewmodels/paciente-app/cuerpo/PruebasDesarolloCognitivo/PruebaGeneral/inicio-prueba-marco/inicio-prueba-marco.component';
+import { InicioPruebaGeneralComponent } from './_viewmodels/paciente-app/cuerpo/inicio-prueba-general/inicio-prueba-general.component';
+import { InicioPruebaActividadesComponent } from './_viewmodels/paciente-app/cuerpo/inicio-prueba-actividades/inicio-prueba-actividades.component';
+import { InicioPruebaMarcoComponent } from './_viewmodels/paciente-app/cuerpo/inicio-prueba-marco/inicio-prueba-marco.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { PruebaGeneralLamina7Component } from './_viewmodels/paciente-app/cuerpo/PruebasDesarolloCognitivo/PruebaGeneral/prueba-general-lamina7/prueba-general-lamina7.component';
-import { PruebaGeneralLamina8Component } from './_viewmodels/paciente-app/cuerpo/PruebasDesarolloCognitivo/PruebaGeneral/prueba-general-lamina8/prueba-general-lamina8.component';
-import { PruebaGeneralLamina9Component } from './_viewmodels/paciente-app/cuerpo/PruebasDesarolloCognitivo/PruebaGeneral/prueba-general-lamina9/prueba-general-lamina9.component';
-import { PruebaGeneralLamina10Component } from './_viewmodels/paciente-app/cuerpo/PruebasDesarolloCognitivo/PruebaGeneral/prueba-general-lamina10/prueba-general-lamina10.component';
-import { PruebaGeneralLamina11Component } from './_viewmodels/paciente-app/cuerpo/PruebasDesarolloCognitivo/PruebaGeneral/prueba-general-lamina11/prueba-general-lamina11.component';
-import { PruebaGeneralLamina12Component } from './_viewmodels/paciente-app/cuerpo/PruebasDesarolloCognitivo/PruebaGeneral/prueba-general-lamina12/prueba-general-lamina12.component';
-import { PruebaGeneralLamina13Component } from './_viewmodels/paciente-app/cuerpo/PruebasDesarolloCognitivo/PruebaGeneral/prueba-general-lamina13/prueba-general-lamina13.component';
-import { PruebaGeneralLamina14Component } from './_viewmodels/paciente-app/cuerpo/PruebasDesarolloCognitivo/PruebaGeneral/prueba-general-lamina14/prueba-general-lamina14.component';
-import { PruebaGeneralLamina15Component } from './_viewmodels/paciente-app/cuerpo/PruebasDesarolloCognitivo/PruebaGeneral/prueba-general-lamina15/prueba-general-lamina15.component';
-import { PruebaGeneralLamina16Component } from './_viewmodels/paciente-app/cuerpo/PruebasDesarolloCognitivo/PruebaGeneral/prueba-general-lamina16/prueba-general-lamina16.component';
+import { PruebaGeneralLamina7Component } from './_viewmodels/paciente-app/cuerpo/prueba-general-lamina7/prueba-general-lamina7.component';
+import { PruebaGeneralLamina8Component } from './_viewmodels/paciente-app/cuerpo/prueba-general-lamina8/prueba-general-lamina8.component';
+import { PruebaGeneralLamina9Component } from './_viewmodels/paciente-app/cuerpo/prueba-general-lamina9/prueba-general-lamina9.component';
+import { PruebaGeneralLamina10Component } from './_viewmodels/paciente-app/cuerpo/prueba-general-lamina10/prueba-general-lamina10.component';
+import { PruebaGeneralLamina11Component } from './_viewmodels/paciente-app/cuerpo/prueba-general-lamina11/prueba-general-lamina11.component';
+import { PruebaGeneralLamina12Component } from './_viewmodels/paciente-app/cuerpo/prueba-general-lamina12/prueba-general-lamina12.component';
+import { PruebaGeneralLamina13Component } from './_viewmodels/paciente-app/cuerpo/prueba-general-lamina13/prueba-general-lamina13.component';
+import { PruebaGeneralLamina14Component } from './_viewmodels/paciente-app/cuerpo/prueba-general-lamina14/prueba-general-lamina14.component';
+import { PruebaGeneralLamina15Component } from './_viewmodels/paciente-app/cuerpo/prueba-general-lamina15/prueba-general-lamina15.component';
+import { PruebaGeneralLamina16Component } from './_viewmodels/paciente-app/cuerpo/prueba-general-lamina16/prueba-general-lamina16.component';
 import { CardComponent } from './_components/card/card.component';
-import { PruebaGeneralResultadosComponent } from './_viewmodels/paciente-app/cuerpo/PruebasDesarolloCognitivo/PruebaGeneral/prueba-general-resultados/prueba-general-resultados.component';
-import { PruebaDeDesarolloCognitivoComponent } from './_viewmodels/paciente-app/cuerpo/PruebasDesarolloCognitivo/prueba-de-desarollo-cognitivo/prueba-de-desarollo-cognitivo.component';
+import { PruebaGeneralResultadosComponent } from './_viewmodels/paciente-app/cuerpo/prueba-general-resultados/prueba-general-resultados.component';
+import { PruebaDeDesarolloCognitivoComponent } from './_viewmodels/paciente-app/cuerpo/prueba-de-desarollo-cognitivo/prueba-de-desarollo-cognitivo.component';
 import { LoginComponent } from './_viewmodels/login-app/login-paciente/login.component';
 FullCalendarModule.registerPlugins([ 
   dayGridPlugin,
@@ -164,7 +160,7 @@ FullCalendarModule.registerPlugins([
     PruebaGeneralLamina16Component,
     CardComponent,
     PruebaGeneralResultadosComponent,
-    PruebaDeDesarolloCognitivoComponent,
+    PruebaDeDesarolloCognitivoComponent
      
   ],
   imports: [

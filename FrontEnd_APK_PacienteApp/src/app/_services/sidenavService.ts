@@ -4,14 +4,9 @@ import { BehaviorSubject, Subject } from 'rxjs';
 @Injectable()
 export class SidenavService {
     private menuIsOpen$ : Subject<boolean>;
-
-    private notifiacionesToggle : Subject<null>;
-
-
     private menuIsOpen: boolean = false;
     constructor() { 
         this.menuIsOpen$ = new Subject<boolean>();
-        this.notifiacionesToggle= new Subject<null>();
     }
 
 
@@ -49,12 +44,5 @@ export class SidenavService {
     public asObservable() 
     {
         return this.menuIsOpen$.asObservable();
-    }
-    public abrirNotificaciones(){
-        this.notifiacionesToggle.next();
-    }
-    public asObservableNotificaciones() 
-    {
-        return this.notifiacionesToggle.asObservable();
     }
 }
