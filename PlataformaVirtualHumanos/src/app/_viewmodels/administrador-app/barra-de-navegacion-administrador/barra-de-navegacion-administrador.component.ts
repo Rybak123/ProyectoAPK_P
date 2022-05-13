@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { AdministradorNavigationService } from 'src/app/_services/administrador_services/administrador.navigation.service';
-import { AuthenticacionAdministradorService } from 'src/app/_services/login_services/authentication-administrador.service';
 
 @Component({
   selector: 'app-barra-de-navegacion-administrador',
@@ -10,21 +7,9 @@ import { AuthenticacionAdministradorService } from 'src/app/_services/login_serv
 })
 export class BarraDeNavegacionAdministradorComponent implements OnInit {
 
-  constructor(private autenticacionService:AuthenticacionAdministradorService,
-    private router:Router,
-    private administradorNavegacionService:AdministradorNavigationService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
-  cerrarSesion(){
-    this.autenticacionService.logout()
-    this.router.navigate(['/loginAdministrador']);
-  }
-  verPerfilPsicologo(){
-    this.administradorNavegacionService.iraVerPerfil();
-  }
-  toggle(){
-    console.log("sadsad");
-    this.administradorNavegacionService.toggle();
-  }
+
 }

@@ -17,7 +17,7 @@ const schema = new Schema({
     hashContrasena: { type: String, required: false },
     estado: { type: Boolean, required: true },
     fechaDeRegistro: { type: Date, required: true },
-    fechaDeDeshabilitacion: { type: Date, required: false },
+    fechaDeDeshabilitacion: { type: Date, required: true },
     
     token: { type: String, required: false }
     

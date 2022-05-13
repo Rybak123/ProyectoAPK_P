@@ -7,7 +7,8 @@ import { AppComponent } from './app.component';
 import { FullCalendarModule } from '@fullcalendar/angular'; 
 import dayGridPlugin from '@fullcalendar/daygrid'; 
 import interactionPlugin from '@fullcalendar/interaction';
-import { LoginComponent } from '../app/_viewmodels/login-app/login-paciente/login.component';
+import { LoginComponent } from './login/login.component';
+import { RegistroComponent } from './registro/registro.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {SidenavService} from '../app/_services/sidenavService'
@@ -80,29 +81,6 @@ import { ControlDeAnimoComponent } from './_viewmodels/paciente-app/cuerpo/contr
 import { ControlDeConsumoDeAguaComponent } from './_viewmodels/paciente-app/cuerpo/control-de-consumo-de-agua/control-de-consumo-de-agua.component';
 import { ControlDeEnergiaComponent } from './_viewmodels/paciente-app/cuerpo/control-de-energia/control-de-energia.component';
 import { NavigationService } from './_services/paciente_services/navigation_services/navigationService';
-import { GestionPacientesComponent } from './_viewmodels/administrador-app/cuerpo-administrador/gestion-pacientes/gestion-pacientes.component';
-import { PacienteService } from './_services/paciente-service';
-import { CrearPacienteComponent } from './_viewmodels/administrador-app/cuerpo-administrador/Pacientes/crear-paciente/crear-paciente.component';
-import { EditarPacienteComponent } from './_viewmodels/administrador-app/cuerpo-administrador/Pacientes/editar-paciente/editar-paciente.component';
-import { AlertComponent } from './_components/alert.component';
-import { LoginAdministradorComponent } from './_viewmodels/login-app/login-administrador/login-administrador.component';
-import { LoginPsicologoComponent } from './_viewmodels/login-app/login-psicologo/login-psicologo.component';
-import { PsicologoAppComponent } from './_viewmodels/psicologo-app/psicologo-app.component';
-import { CuerpoPsicologoComponent } from './_viewmodels/psicologo-app/cuerpo-psicologo/cuerpo-psicologo.component';
-import { BarraDeNavegacionPsicologoComponent } from './_viewmodels/psicologo-app/barra-de-navegacion-psicologo/barra-de-navegacion-psicologo.component';
-import { PerfilPsicologoComponent } from './_viewmodels/psicologo-app/cuerpo-psicologo/perfil-psicologo/perfil-psicologo.component';
-import { AdministradorNavigationService } from './_services/administrador_services/administrador.navigation.service';
-import { PsicologoNavigationService } from './_services/psicologo_services/psicologo.navigation.service';
-import { PerfilAdministradorComponent } from './_viewmodels/administrador-app/cuerpo-administrador/perfil-administrador/perfil-administrador.component';
-import { PerfilPacienteComponent } from './_viewmodels/paciente-app/cuerpo/perfil-paciente/perfil-paciente.component';
-import { GestionPsicologoComponent } from './_viewmodels/administrador-app/cuerpo-administrador/gestion-psicologo/gestion-psicologo.component';
-import { CrearPsicologoComponent } from './_viewmodels/administrador-app/cuerpo-administrador/Psicologo/crear-psicologo/crear-psicologo.component';
-import { GestionAdministradorComponent } from './_viewmodels/administrador-app/cuerpo-administrador/gestion-administrador/gestion-administrador.component';
-import { CrearAdministradorComponent } from './_viewmodels/administrador-app/cuerpo-administrador/Administradores/crear-administrador/crear-administrador.component';
-import { FormularioCambiarContrasenaComponent } from './_viewmodels/recuperar-contrasena-app/formulario-cambiar-contrasena/formulario-cambiar-contrasena.component';
-import { RespuestaCambiarContrasenaComponent } from './_viewmodels/recuperar-contrasena-app/respuesta-cambiar-contrasena/respuesta-cambiar-contrasena.component';
-
-
 
 FullCalendarModule.registerPlugins([ 
   dayGridPlugin,
@@ -116,6 +94,7 @@ FullCalendarModule.registerPlugins([
     PacienteComponent,
     ControlDeEstudioComponent,
     LoginComponent,
+    RegistroComponent,
     ControlDeSuenoComponent,
     ControlDeAnimoComponent,
     ControlDeConsumoDeAguaComponent,
@@ -134,25 +113,8 @@ FullCalendarModule.registerPlugins([
     ResumenDeLaAgendaVirtualComponent,
     AdministradorAppComponent,
     BarraDeNavegacionAdministradorComponent,
-    CuerpoAdministradorComponent,
-    GestionPacientesComponent,
-    CrearPacienteComponent,
-    EditarPacienteComponent,
-    AlertComponent,
-    LoginAdministradorComponent,
-    LoginPsicologoComponent,
-    PsicologoAppComponent,
-    CuerpoPsicologoComponent,
-    BarraDeNavegacionPsicologoComponent,
-    PerfilPsicologoComponent,
-    PerfilAdministradorComponent,
-    PerfilPacienteComponent,
-    GestionPsicologoComponent,
-    CrearPsicologoComponent,
-    GestionAdministradorComponent,
-    CrearAdministradorComponent,
-    FormularioCambiarContrasenaComponent,
-    RespuestaCambiarContrasenaComponent
+    CuerpoAdministradorComponent
+    
     
   ],
   imports: [
@@ -217,7 +179,7 @@ FullCalendarModule.registerPlugins([
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
-    SidenavService,NavigationService,PacienteService,AdministradorNavigationService,PsicologoNavigationService
+    SidenavService,NavigationService,
     
   ],
   bootstrap: [AppComponent]

@@ -7,15 +7,13 @@ const PacienteMetasDao = require('../services/agenda_virtual/misMetas/MisMetasDA
 const PacienteMetasPersonalesDao = require('../services/agenda_virtual/MisMetasPersonales/misMetasPersonales');
 const PacienteMisFavoritosDao = require('../services/agenda_virtual/misFavoritos/MisFavoritosDAO');
 // rutas
-router.get('/listarPacientes', listarPacientes);
 router.post('/registrarPaciente', registrar);
-router.post('/leerPaciente', obtenerPaciente);
-router.post('/modificarPaciente', actualizarPaciente);
+router.post('/listarPacientes', listarPacientes);
+router.post('/obtenerPaciente', obtenerPaciente);
+router.post('/actualizarPaciente', actualizarPaciente);
 router.post('/deshabilitarPaciente', deshabilitarPaciente);
-router.post('/habiltiar_Paciente', habiltiar_Paciente);
 router.post('/autenticacion', autenticacion);
-router.post('/recuperarContrasena', recuperarContrasena);
-router.post('/enlaceCambiarContrasena', cambiarContrasena);
+router.post('/habiltiar_Paciente', habiltiar_Paciente);
 
 //ControlesDeActividades
 router.post('/actualizarHorasDeEstudio', actualizarHorasDeEstudio);
@@ -73,7 +71,7 @@ function listarPacientes(req, res, next) {
 function obtenerPaciente(req, res, next) {
     PacienteDao.obtenerPacientePorID(req.body)
         .then(user => user ? res.json(user) : res.sendStatus(400))
-        .catch(err => {next(err);});
+        .catch(err => {next(err);console.log(res);});
 }
 function actualizarPaciente(req, res, next) {
     PacienteDao.update_paciente(req.body)
@@ -85,17 +83,6 @@ function autenticacion(req, res, next) {
         .then(user => user ? res.json(user) : res.status(400).json({ message: 'nombre de usuario o contraseña incorrectos' }))
         .catch(err => next(err));
 }
-function cambiarContrasena(req, res, next) {
-    PacienteDao.cambiarContrasena(req.body)
-        .then(user => user ? res.json(user) : res.sendStatus(400))
-        .catch(err => next(err));
-}
-async function recuperarContrasena(req, res, next) {
-    PacienteDao.recuperarContrasena(req.body)
-    .then(user => user ? res.json(user) : res.sendStatus(500))
-    .catch(err => next(err));
-}
-
 function actualizarHorasDeEstudio(req, res, next) {
     PacienteDao.actualizarHoraDeEstudio(req.body)
         .then(user => user ? res.json(user) : res.sendStatus(500))
@@ -131,7 +118,6 @@ function habiltiar_Paciente(req, res, next) {
         .then(user => user ? res.json(user) : res.sendStatus(500))
         .catch(err => next(err));
 }
-
 ////////////// libros //////////////
 function listarLibrosPacientes(req, res, next) {
     PacienteLibrosDao.listarLibrosPaciente(req.body)

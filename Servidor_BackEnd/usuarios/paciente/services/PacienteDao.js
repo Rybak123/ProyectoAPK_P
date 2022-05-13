@@ -2,15 +2,7 @@ const config = require('config.json');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const db = require('_helpers/conexion');
-
-var generator = require('generate-password');
-const Token = require("../../Tokens/token.model");
-const sendEmail = require("../../../utils/email/sendEmail");
-const crypto = require("crypto");
-const Psicologo=db.Psicologo;
 const Paciente=db.Paciente;
-const Administrador = db.Administrador;
-
 
 
 module.exports = {
@@ -26,9 +18,7 @@ module.exports = {
     actualizarControlDeAnimo,
     actualizarcontrolDeConsumoDeAgua,
     deshabiltiar_Paciente,
-    habiltiar_Paciente,
-    recuperarContrasena,
-    cambiarContrasena
+    habiltiar_Paciente
 
 };
 
@@ -38,26 +28,21 @@ async function paciente_listarTodos() {
 }
 
 async function read_Paciente(infoJson) {
-    return await Paciente.findOne({_id:infoJson});
+    return await Paciente.findOne({carnetDeIdentidad:infoJson.carnetDeIdentidad});
 }
 async function obtenerPacientePorID(informacionJson) {
-
     return await Paciente.findById(informacionJson.id);
 }
 async function update_paciente(informacionJson) {
     const pacienteEncontrado = await Paciente.findById(informacionJson.id);
-    // validate
-    if (!pacienteEncontrado) throw 'Paciente no encontrado';
-    if (await Administrador.findOne({ correoElectronico: informacionJson.correoElectronico })) {
-        throw 'La siguiente direccion de correo electronico "' +informacionJson.correoElectronico + '" ya a sido registrada';
-    }
-    if (await Psicologo.findOne({correoElectronico:informacionJson.correoElectronico})) {
-        throw 'La siguiente direccion de correo electronico"' + informacionJson.correoElectronico+ '" ya a sido registrada';
-    }
+
+    if (!pacienteEncontrado) throw 'Administrador no encontrado';
     if (pacienteEncontrado.correoElectronico !== informacionJson.correoElectronico && await pacienteEncontrado.findOne({ correoElectronico: informacionJson.correoElectronico })) {
         throw 'La siguiente direccion de correo electronico "' +informacionJson.correoElectronico + '" ya a sido registrada';
     }
-
+    if (pacienteEncontrado.carnetDeIdentidad !== informacionJson.carnetDeIdentidad && await pacienteEncontrado.findOne({ carnetDeIdentidad: informacionJson.carnetDeIdentidad })) {
+        throw 'El siguiente carned de identidad "' +informacionJson.carnetDeIdentidad + '" ya a sido registrada';
+    }
 
     if (informacionJson.contrasena) {
         informacionJson.hash = bcrypt.hashSync(informacionJson.contrasena, 10);
@@ -108,6 +93,8 @@ async function actualizarHoraDeEstudio(infoJson) {
                 }
               })
               return await Paciente.findOne({carnetDeIdentidad: infoJson.carnetDeIdentidad});
+
+
         }
         else{
             var MyDate = new Date(); // 2021-5-1
@@ -279,36 +266,13 @@ async function actualizarcontrolDeConsumoDeAgua(infoJson) {
     }
 }
 async function create_Paciente(pacienteJson) {
-    if (await Administrador.findOne({ carnetDeIdentidad: pacienteJson.carnetDeIdentidad }))
-    {
-        throw 'El presente carnet de identidad ya a sido registrado';
-    }
-    if (await Administrador.findOne({ correoElectronico: pacienteJson.correoElectronico }))
-    {
-        throw 'La siguiente direccion de correo electronico ya a sido registrada';
-    }
-    if (await Psicologo.findOne({ carnetDeIdentidad: pacienteJson.carnetDeIdentidad }) ){
-        throw 'El presente carnet de identidad ya a sido registrado';
-    }
-    if (await Psicologo.findOne({correoElectronico:pacienteJson.correoElectronico})) {
-        throw 'La siguiente direccion de correo electronico ya a sido registrada';
-    }
     if (await Paciente.findOne({ carnetDeIdentidad: pacienteJson.carnetDeIdentidad })) {
-        throw 'El presente carnet de identidad ya a sido registrado';
-    }
-    if (await Paciente.findOne({ correoElectronico: pacienteJson.correoElectronico })) {
-        throw 'La siguiente direccion de correo electronico ya a sido registrada';
+        throw 'Ya hay un paciente con este carnet de identidad';
     }
     const paciente = new Paciente(pacienteJson);
 
-    var contrasenaGenerada = generator.generate({
-        length: 10,
-    });
-
-    paciente.contrasena=contrasenaGenerada;
-    
     if (pacienteJson.contrasena) {
-        paciente.hash = bcrypt.hashSync(paciente.contrasena, 10);
+        paciente.hash = bcrypt.hashSync(pacienteJson.contrasena, 10);
     }
 
     var diaDeEstudio={
@@ -340,65 +304,19 @@ async function create_Paciente(pacienteJson) {
     paciente.agendaVirtual.controlDeEnergia.diasControlados.push(diasControlados_Energia);
     paciente.agendaVirtual.controlDeAnimo.diasControlados.push(diasControlados_Animo);
     paciente.agendaVirtual.controlDeConsumoDeAgua.diasControlados.push(diaDeEstudio_ConsumoDeAgua);
-    return await paciente.save();
+    await paciente.save();
 }
 
-async function autenticacion({ correoElectronico, contrasena }) {
-  
-    const paciente = await Paciente.findOne({carnetDeIdentidad: correoElectronico });
-    console.log(paciente);
+
+
+
+async function autenticacion({ nombreDeUsuario, contrasena }) {
+    console.log(nombreDeUsuario);
+    console.log(contrasena);
+    const paciente = await Paciente.findOne({ nombreDeUsuario });
     if (paciente && bcrypt.compareSync(contrasena, paciente.hash)) {
         const token = jwt.sign({ sub: paciente.id }, config.secret, { expiresIn: '7d' });
         paciente["token"]=token;
         return paciente;
-    }else{
-        throw "Carnet de identidad o contraseña incorrecta"
     }
-}
-async function recuperarContrasena(jsonData) {
-    const paciente = await Paciente.findOne({ correoElectronico:jsonData.correoElectronico });
-    if(!paciente){throw "Paciente no encontrado";}
-    let token = await Token.findOne({ userId: paciente._id });
-    if (token) await token.deleteOne();
-    let resetToken =  crypto.randomBytes(32).toString("hex");
-    const hash = await bcrypt.hash(resetToken, 10);
-    await new Token({
-        userId: paciente._id,
-        token: hash,
-        createdAt: Date.now(),
-      }).save();
-    const link = `localhost:4200/cambiarContrasenaRespuesta?token=${resetToken}&id=${paciente._id}&tipo=paciente`;
-    var succ= await sendEmail(paciente.correoElectronico,"Password Reset Request",{name: paciente.nombres,link: link,},"./template/requestResetPassword.handlebars");
-    return link;
-}
-async function cambiarContrasena(jsonData) {
-    var token=jsonData.token;
-    var id=jsonData.id;
-    var contrasena=jsonData.contrasena;
-    let passwordResetToken = await Token.findOne({userId: id });
-   
-    if (!passwordResetToken) {
-        throw new Error("Enlace expirado");
-    }
-    const isValid = await bcrypt.compare(token, passwordResetToken.token);
-    if (!isValid) {
-        throw new Error("Enlace expirado");
-    }
-    const hash = await bcrypt.hash(contrasena, 10);
-    await Paciente.updateOne(
-        { _id: id },
-        { $set: { hash: hash, contrasena: contrasena} },
-        { new: true }
-    );
-    const paciente = await Paciente.findById({ _id: id });
-    sendEmail(
-        paciente.correoElectronico,
-        "Password Reset Successfully",
-        {
-        name: paciente.nombres,
-        },
-        "./template/resetPassword.handlebars"
-    );
-    await passwordResetToken.deleteOne();
-    return true;
 }

@@ -1,45 +1,43 @@
 ﻿import { Injectable } from '@angular/core';
+import { Router, NavigationStart } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
-import { filter } from 'rxjs/operators';
-
-import { Alert, AlertType } from '../_models/alert';
 
 @Injectable({ providedIn: 'root' })
 export class AlertService {
-    private subject = new Subject<Alert>();
-    private defaultId = 'default-alert';
+    private subject = new Subject<any>();
+    private keepAfterRouteChange = false;
 
-    // enable subscribing to alerts observable
-    onAlert(id = this.defaultId): Observable<Alert> {
-        return this.subject.asObservable().pipe(filter(x => x && x.id === id));
+    constructor(private router: Router) {
+        // clear alert messages on route change unless 'keepAfterRouteChange' flag is true
+        this.router.events.subscribe(event => {
+            if (event instanceof NavigationStart) {
+                if (this.keepAfterRouteChange) {
+                    // only keep for a single route change
+                    this.keepAfterRouteChange = false;
+                } else {
+                    // clear alert message
+                    this.clear();
+                }
+            }
+        });
     }
 
-    // convenience methods
-    success(message: string, options?: Partial<Alert>) {
-        this.alert(message, AlertType.Success, options);
+    getAlert(): Observable<any> {
+        return this.subject.asObservable();
     }
 
-    error(message: string, options?: Partial<Alert>) {
-        this.alert(message, AlertType.Error, options);
+    success(message: string, keepAfterRouteChange = false) {
+        this.keepAfterRouteChange = keepAfterRouteChange;
+        this.subject.next({ type: 'success', text: message });
     }
 
-    info(message: string, options?: Partial<Alert>) {
-        this.alert(message, AlertType.Info, options);
+    error(message: string, keepAfterRouteChange = false) {
+        this.keepAfterRouteChange = keepAfterRouteChange;
+        this.subject.next({ type: 'error', text: message });
     }
 
-    warn(message: string, options?: Partial<Alert>) {
-        this.alert(message, AlertType.Warning, options);
-    }
-
-    // main alert method    
-    alert(message: string, type: AlertType, options: Partial<Alert> = {}) {
-        const id = options.id || this.defaultId;
-        const alert = new Alert(id, type, message, options.autoClose, options.keepAfterRouteChange);
-        this.subject.next(alert);
-    }
-
-    // clear alerts
-    clear(id = this.defaultId) {
-        this.subject.next(new Alert(id));
+    clear() {
+        // clear by calling subject.next() without parameters
+        this.subject.next();
     }
 }

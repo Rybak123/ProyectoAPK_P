@@ -5,14 +5,9 @@ import { BehaviorSubject, Subject } from 'rxjs';
 export class NavigationService {
     private menuIsOpen$ : Subject<null>;
     private obsernverIrCrearLibro : Subject<null>;
-    private obsernverIrPerfil : Subject<null>;
     constructor() { 
         this.menuIsOpen$ = new Subject<null>();
         this.obsernverIrCrearLibro=new Subject<null>();
-        this.obsernverIrPerfil=new Subject<null>();
-    }
-    public iraVerPerfil() {
-        this.obsernverIrPerfil.next();
     }
     public iraVerLibros() {
         console.log("verlibros");
@@ -31,8 +26,5 @@ export class NavigationService {
     {
         return this.obsernverIrCrearLibro.asObservable();
     }
-    public asObservableIrVerPerfil() 
-    {
-        return this.obsernverIrPerfil.asObservable();
-    }
+
 }
