@@ -1,5 +1,4 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { PacienteService } from 'src/app/_services/paciente-service';
 
 @Component({
   selector: 'app-prueba-general-resultados',
@@ -9,8 +8,10 @@ import { PacienteService } from 'src/app/_services/paciente-service';
 export class PruebaGeneralResultadosComponent implements OnInit {
 
   @Output() emiterEvent= new EventEmitter();
- 
-  constructor(private pacienteService:PacienteService) { }
+  enviarActividad2(){
+    this.emiterEvent.emit();
+  }
+  constructor() { }
   puntajeActividad1:any=0;
   puntajeActividad2:any=0;
   puntajeActividad3:any=0;
@@ -29,22 +30,13 @@ export class PruebaGeneralResultadosComponent implements OnInit {
   puntajeActividad16:any=0;
 
   pruebaGeneral:any;
-  usuario:any;
+
   ngOnInit(): void {
     var prueba=localStorage.getItem('pruebaGeneralActual');
     if(prueba==null){
       prueba="null";
     }
     this.pruebaGeneral=JSON.parse(prueba);
-
-    var pacienteInfo=localStorage.getItem('currentUser');
-    if(pacienteInfo==null){
-        pacienteInfo="null";
-        throw console.error("Usuario no encontrado");
-    }
-
-    this.usuario=JSON.parse(pacienteInfo);
-
     this.calificarActividad1();
     this.calificarActividad2();
     this.calificarActividad3();
@@ -62,69 +54,6 @@ export class PruebaGeneralResultadosComponent implements OnInit {
     this.calificarActividad15();
     this.calificarActividad16();
     
-  }
-  enviarActividad2(){
-    var tipoDePrueba="Prueba general";
-    var prueba=localStorage.getItem('pruebaGeneralActual');
-    if(prueba==null){
-      prueba="null";
-    }
-    var pruebaGeneral=JSON.parse(prueba);
-    pruebaGeneral.FechaYhoraFin=Date.now();
-
-    var puntajeFinal=
-      this.puntajeActividad1+
-      this.puntajeActividad2+
-      this.puntajeActividad3+
-      this.puntajeActividad4+
-      this.puntajeActividad5+
-      this.puntajeActividad6+
-      this.puntajeActividad7+
-      this.puntajeActividad8+
-      this.puntajeActividad9+
-      this.puntajeActividad10+
-      this.puntajeActividad11+
-      this.puntajeActividad12+
-      this.puntajeActividad13+
-      this.puntajeActividad14+
-      this.puntajeActividad15+
-      this.puntajeActividad16;
-      puntajeFinal = puntajeFinal/16;
-
-    var pruebaDeDesarolloCognitivoResuelta={
-      tipoDePrueba:tipoDePrueba,
-      FechaYHoraDeInicio:pruebaGeneral.FechaYhoraInicio,
-      FechaYHoraDeFin:pruebaGeneral.FechaYhoraFin,
-      puntajeFinal:puntajeFinal,
-      actividades:{
-        actividad1:this.puntajeActividad1,
-        actividad2:this.puntajeActividad2,
-        actividad3:this.puntajeActividad3,
-        actividad4:this.puntajeActividad4,
-        actividad5:this.puntajeActividad5,
-        actividad6:this.puntajeActividad6,
-        actividad7:this.puntajeActividad7,
-        actividad8:this.puntajeActividad8,
-        actividad9:this.puntajeActividad9,
-        actividad10:this.puntajeActividad10,
-        actividad11:this.puntajeActividad11,
-        actividad12:this.puntajeActividad12,
-        actividad13:this.puntajeActividad13,
-        actividad14:this.puntajeActividad14,
-        actividad15:this.puntajeActividad15,
-        actividad16:this.puntajeActividad16,
-      }
-    
-    }
-  
-    this.pacienteService.ingresarPruebaDeDesarolloCognitivo(this.usuario.id,pruebaDeDesarolloCognitivoResuelta).then((result:any) => {
-      console.log(result);
-      this.emiterEvent.emit();
-    }).catch((err:any) => {
-      
-    });
-
-   
   }
   calificarActividad1(){
     var actividad1=this.pruebaGeneral.actividad1;

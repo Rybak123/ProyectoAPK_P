@@ -24,17 +24,6 @@ export class ResumenDeLaAgendaVirtualComponent implements OnInit {
   listaDeCanciones:any=[];
   listaDeMetasPersonales:any=[];
   listaMetasSociales:any=[];
-  colorDeFondoGraficos="rgba(166, 58, 230,1)";
-  controlDeAguaActualizado:any=[];
-  controlDeAnimoActualizado:any=[];
-  controlDeEnergiaActualizado:any=[];
-  controlDeEstudioActualizado:any=[];
-  controlDeSuenoActualizado:any=[];
-  listaDeLibrosActualizado:any=[];
-  listaDeCancionesActualizado:any=[];
-  listaDeMetasPersonalesActualizado:any=[];
-  listaMetasSocialesActualizado:any=[];
-
   constructor(private http:HttpClient) {
     this.actualizarOperacionesPaciente=new ActualizarOperacionesPaciente(this.http);
    }
@@ -161,7 +150,6 @@ export class ResumenDeLaAgendaVirtualComponent implements OnInit {
         }
       }
     });
-    this.controlDeAguaActualizado=nuevoControlDeAgua;
     let startDateArry: any[] = [];
     let blinkArry: any[] = [];
     startDateArry.push("8 vasos");
@@ -192,7 +180,7 @@ export class ResumenDeLaAgendaVirtualComponent implements OnInit {
     blinkArry.push(cantidad7vasos);
     blinkArry.push(cantidad5vasos);
     blinkArry.push(cantidad3vasos);
-    this.controlDeAguabarChartData = [{ data: blinkArry, label: 'Dias marcados durante el mes', backgroundColor: this.colorDeFondoGraficos, borderColor: this.colorDeFondoGraficos, hoverBackgroundColor: this.colorDeFondoGraficos, hoverBorderColor: this.colorDeFondoGraficos}];
+    this.controlDeAguabarChartData = [{ data: blinkArry, label: 'Vasos de agua consumidos', backgroundColor: "rgba(0,255,251,1)", borderColor: "rgba(0,255,251,1)", hoverBackgroundColor: "rgba(0,255,251,1)", hoverBorderColor: "rgba(0,255,251,1)"}];
     this.controlDeAguaBarChartLabels = [startDateArry];
     this.controlDeAguaBarChartLabels = startDateArry;
   }
@@ -213,7 +201,6 @@ export class ResumenDeLaAgendaVirtualComponent implements OnInit {
         }
       }
     });
-    this.controlDeSuenoActualizado=nuevoControlDeAgua;
     let startDateArry: any[] = [];
     let blinkArry: any[] = [];
     startDateArry.push("Mas de 10 horas");
@@ -256,7 +243,7 @@ export class ResumenDeLaAgendaVirtualComponent implements OnInit {
     blinkArry.push(cantidad8Horas);
     blinkArry.push(cantidad7Horas);
     blinkArry.push(cantidadMenosDe7Horas);
-    this.controlDeSuenobarChartData = [{ data: blinkArry, label: 'Dias marcados durante el mes', backgroundColor: this.colorDeFondoGraficos, borderColor: this.colorDeFondoGraficos, hoverBackgroundColor: this.colorDeFondoGraficos, hoverBorderColor: this.colorDeFondoGraficos}];
+    this.controlDeSuenobarChartData = [{ data: blinkArry, label: 'Horas de sueño', backgroundColor: "rgba(0,255,251,1)", borderColor: "rgba(0,255,251,1)", hoverBackgroundColor: "rgba(0,255,251,1)", hoverBorderColor: "rgba(0,255,251,1)"}];
     this.controlDeSuenobarChartLabels = [startDateArry];
     this.controlDeSuenobarChartLabels = startDateArry;
   }
@@ -277,7 +264,6 @@ export class ResumenDeLaAgendaVirtualComponent implements OnInit {
         }
       }
     });
-    this.controlDeAnimoActualizado=nuevoControlDeAgua;
     let startDateArry: any[] = [];
     let blinkArry: any[] = [];
     startDateArry.push("Emocionada");
@@ -334,7 +320,7 @@ export class ResumenDeLaAgendaVirtualComponent implements OnInit {
     blinkArry.push(cantidadEnojada);
     blinkArry.push(cantidadAnsiosa);
     blinkArry.push(cantidadMeeeeh);
-    this.controlDeAnimobarChartData = [{ data: blinkArry, label: 'Dias marcados durante el mes', backgroundColor: this.colorDeFondoGraficos, borderColor: this.colorDeFondoGraficos, hoverBackgroundColor: this.colorDeFondoGraficos, hoverBorderColor: this.colorDeFondoGraficos}];
+    this.controlDeAnimobarChartData = [{ data: blinkArry, label: 'Estado de animo', backgroundColor: "rgba(0,255,251,1)", borderColor: "rgba(0,255,251,1)", hoverBackgroundColor: "rgba(0,255,251,1)", hoverBorderColor: "rgba(0,255,251,1)"}];
     this.controlDeAnimobarChartLabels = [startDateArry];
     this.controlDeAnimobarChartLabels = startDateArry;
   }
@@ -355,7 +341,6 @@ export class ResumenDeLaAgendaVirtualComponent implements OnInit {
         }
       }
     });
-    this.controlDeEnergiaActualizado=nuevoControlDeAgua;
     let startDateArry: any[] = [];
     let blinkArry: any[] = [];
     startDateArry.push("100%");
@@ -393,7 +378,7 @@ export class ResumenDeLaAgendaVirtualComponent implements OnInit {
     blinkArry.push(cantidad50);
     blinkArry.push(cantidad25);
     blinkArry.push(cantidad0);
-    this.controlDeEnergiabarChartData = [{ data: blinkArry, label: 'Dias marcados durante el mes', backgroundColor: this.colorDeFondoGraficos, borderColor: this.colorDeFondoGraficos, hoverBackgroundColor: this.colorDeFondoGraficos, hoverBorderColor: this.colorDeFondoGraficos}];
+    this.controlDeEnergiabarChartData = [{ data: blinkArry, label: 'Porcentaje de energía', backgroundColor: "rgba(0,255,251,1)", borderColor: "rgba(0,255,251,1)", hoverBackgroundColor: "rgba(0,255,251,1)", hoverBorderColor: "rgba(0,255,251,1)"}];
     this.controlDeEnergiabarChartLabels = [startDateArry];
     this.controlDeEnergiabarChartLabels = startDateArry;
   }
@@ -446,7 +431,6 @@ export class ResumenDeLaAgendaVirtualComponent implements OnInit {
       
       if(anioStr==anio){
         if(mesStr==mes){
-     
           switch(diaStr){
             case "1":
               var arrayDeMaterias=diaDeAgua.materiasEstudiadas;
@@ -797,7 +781,6 @@ export class ResumenDeLaAgendaVirtualComponent implements OnInit {
         }
       }
     });
-    this.controlDeEstudioActualizado=nuevoControlDeAgua;
     let startDateArry: any[] = [];
     let blinkArry: any[] = [];
     for(var i=0; i<31;i++){
@@ -838,7 +821,7 @@ export class ResumenDeLaAgendaVirtualComponent implements OnInit {
     blinkArry.push(dia29);
     blinkArry.push(dia30);
     blinkArry.push(dia31);
-    this.controlDeEstudiobarChartData = [{ data: blinkArry, label: 'Tiempo estudiado durante el día', backgroundColor: this.colorDeFondoGraficos, borderColor: this.colorDeFondoGraficos, hoverBackgroundColor: this.colorDeFondoGraficos, hoverBorderColor: this.colorDeFondoGraficos}];
+    this.controlDeEstudiobarChartData = [{ data: blinkArry, label: 'Porcentaje de energía', backgroundColor: "rgba(0,255,251,1)", borderColor: "rgba(0,255,251,1)", hoverBackgroundColor: "rgba(0,255,251,1)", hoverBorderColor: "rgba(0,255,251,1)"}];
     this.controlDeEstudiobarChartLabels = [startDateArry];
     this.controlDeEstudiobarChartLabels = startDateArry;
   }
@@ -892,7 +875,8 @@ export class ResumenDeLaAgendaVirtualComponent implements OnInit {
       var anioStr=arrayFecha[0];
       var mesStr=arrayFecha[1];
       if(anioStr==anio){
-        this.listaDeLibrosActualizado.push(diaDeAgua);
+        console.log("Mesnuevo");
+        console.log(mesStr);
         switch(mesStr){
           case "1":
             mes1++;
@@ -953,7 +937,7 @@ export class ResumenDeLaAgendaVirtualComponent implements OnInit {
     blinkArry.push(mes11);
     blinkArry.push(mes12);
   
-    this.misLibrosbarChartData = [{ data: blinkArry, label: 'Cantidad de libros registrados por mes', backgroundColor: this.colorDeFondoGraficos, borderColor: this.colorDeFondoGraficos, hoverBackgroundColor: this.colorDeFondoGraficos, hoverBorderColor: this.colorDeFondoGraficos}];
+    this.misLibrosbarChartData = [{ data: blinkArry, label: 'Porcentaje de energía', backgroundColor: "rgba(0,255,251,1)", borderColor: "rgba(0,255,251,1)", hoverBackgroundColor: "rgba(0,255,251,1)", hoverBorderColor: "rgba(0,255,251,1)"}];
     this.misLibrosbarChartLabels = [startDateArry];
     this.misLibrosbarChartLabels = startDateArry;
   }
@@ -985,7 +969,6 @@ export class ResumenDeLaAgendaVirtualComponent implements OnInit {
       var anioStr=arrayFecha[0];
       var mesStr=arrayFecha[1];
       if(anioStr==anio){
-         this.listaDeCancionesActualizado.push(diaDeAgua);
         switch(mesStr){
           case "1":
             mes1++;
@@ -1046,7 +1029,7 @@ export class ResumenDeLaAgendaVirtualComponent implements OnInit {
     blinkArry.push(mes11);
     blinkArry.push(mes12);
   
-    this.misCancionesbarChartData = [{ data: blinkArry, label: 'Cantidad de canciones registradas por mes', backgroundColor: this.colorDeFondoGraficos, borderColor: this.colorDeFondoGraficos, hoverBackgroundColor: this.colorDeFondoGraficos, hoverBorderColor: this.colorDeFondoGraficos}];
+    this.misCancionesbarChartData = [{ data: blinkArry, label: 'Porcentaje de energía', backgroundColor: "rgba(0,255,251,1)", borderColor: "rgba(0,255,251,1)", hoverBackgroundColor: "rgba(0,255,251,1)", hoverBorderColor: "rgba(0,255,251,1)"}];
     this.misCancionesbarChartLabels = [startDateArry];
     this.misCancionesbarChartLabels = startDateArry;
   }
@@ -1078,7 +1061,6 @@ export class ResumenDeLaAgendaVirtualComponent implements OnInit {
       var anioStr=arrayFecha[0];
       var mesStr=arrayFecha[1];
       if(anioStr==anio){
-        this.listaDeMetasPersonalesActualizado.push(diaDeAgua);
         switch(mesStr){
           case "1":
             mes1++;
@@ -1139,7 +1121,7 @@ export class ResumenDeLaAgendaVirtualComponent implements OnInit {
     blinkArry.push(mes11);
     blinkArry.push(mes12);
   
-    this.misMetasSocialesbarChartData = [{ data: blinkArry, label: 'Cantidad de metas registradas por mes', backgroundColor: this.colorDeFondoGraficos, borderColor: this.colorDeFondoGraficos, hoverBackgroundColor: this.colorDeFondoGraficos, hoverBorderColor: this.colorDeFondoGraficos}];
+    this.misMetasSocialesbarChartData = [{ data: blinkArry, label: 'Porcentaje de energía', backgroundColor: "rgba(0,255,251,1)", borderColor: "rgba(0,255,251,1)", hoverBackgroundColor: "rgba(0,255,251,1)", hoverBorderColor: "rgba(0,255,251,1)"}];
     this.misMetasSocialesbarChartLabels = [startDateArry];
     this.misMetasSocialesbarChartLabels = startDateArry;
   }
@@ -1242,7 +1224,7 @@ export class ResumenDeLaAgendaVirtualComponent implements OnInit {
     blinkArry.push(cantidadMeta10);
     blinkArry.push(cantidadMeta11);
     blinkArry.push(cantidadMeta12);
-    this.misMetasPersonalesbarChartData = [{ data: blinkArry, label: 'Dias marcados en cada meta durante el mes', backgroundColor: this.colorDeFondoGraficos, borderColor: this.colorDeFondoGraficos, hoverBackgroundColor: this.colorDeFondoGraficos, hoverBorderColor: this.colorDeFondoGraficos}];
+    this.misMetasPersonalesbarChartData = [{ data: blinkArry, label: 'Porcentaje de energía', backgroundColor: "rgba(0,255,251,1)", borderColor: "rgba(0,255,251,1)", hoverBackgroundColor: "rgba(0,255,251,1)", hoverBorderColor: "rgba(0,255,251,1)"}];
     this.misMetasPersonalesbarChartLabels = [startDateArry];
     this.misMetasPersonalesbarChartLabels = startDateArry;
   }

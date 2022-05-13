@@ -28,10 +28,6 @@ export class PruebaDeDesarolloCognitivoComponent implements OnInit {
   enviarActividad2(){
     this.emiterEvent.emit();
   }
-  @Output() emiterEventIrResultados= new EventEmitter();
-  resultadosDePruebasDesarolloCognitivo(){
-    this.emiterEventIrResultados.emit();
-  }
 
 }
 
