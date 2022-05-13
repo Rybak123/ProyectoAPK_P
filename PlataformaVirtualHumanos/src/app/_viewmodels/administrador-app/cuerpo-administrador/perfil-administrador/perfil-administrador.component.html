@@ -77,26 +77,11 @@
                             <div *ngIf="f.estado.errors.required"> Fecha de nacimiento requerido</div>
                         </div>
                     </div>
+                </div>
+                <div class="row">
                     <div class="form-group col-4">
                         <label>Fecha de registro</label><br>
                         <label>{{fechaActualRegistro}}</label>
-                    </div>
-                </div>
-                <div class="row">
-                    
-                    <div class="form-group col-4"> 
-                        <input type="password" placeholder="Nueva contraseña"  class="form-control"  formControlName="contrasena" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.contrasena.errors }" />
-                        <div *ngIf="submitted && f.contrasena.errors" class="invalid-feedback" >
-                            <div *ngIf="f.contrasena.errors.required">No debe dejar este espacio en blanco</div>
-                            <div *ngIf="f.contrasena.errors.minlength">La contraseña debe tener almenos 6 caracteres</div>
-                        </div>
-                    </div>
-                    <div class="form-group col-4"> 
-                        <input type="password" placeholder="Repita la contraseña"  class="form-control" formControlName="contrasenaRepetida" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.contrasenaRepetida.errors }" />
-                        <div *ngIf="submitted && f.contrasenaRepetida.errors" class="invalid-feedback" >
-                            <div *ngIf="f.contrasenaRepetida.errors.required">No debe dejar este espacio en blanco</div>
-                            <div *ngIf="f.contrasenaRepetida.errors.mustMatch">Las contraseñas deben coincidir</div>
-                        </div>
                     </div>
                 </div>
                 <br>

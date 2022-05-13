@@ -110,7 +110,7 @@ body {
   color: white;
 }
 .estilo_boton{
-  width: 40%;
+  width: 190px;
   text-decoration: none;
   padding: 2px;
   padding-left: 5px;
@@ -123,7 +123,8 @@ body {
   font-style: italic;
   color: #0c091a;
   background-color: #ffffff;
-  border-radius: 20px;
+  border-radius: 5px;
+  border: 5px double #093016;
   cursor: pointer;
  line-height: 50px;
  // font: 700 1em Tahoma, Arial, Verdana, sans-serif;

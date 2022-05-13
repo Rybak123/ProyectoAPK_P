@@ -103,6 +103,7 @@ export class ControlDeEnergiaComponent implements OnInit {
           innerHtml = "<img style='width:60%; height:60%;margin-left: auto;margin-right: auto;display:block;' src='.../../../../assets/img/controlDeEnergia/rayo.png'>"
         break;
       }
+      console.log(innerHtml);
       return createElement = { html: '<div>'+innerHtml+'</div>' }
       
     }

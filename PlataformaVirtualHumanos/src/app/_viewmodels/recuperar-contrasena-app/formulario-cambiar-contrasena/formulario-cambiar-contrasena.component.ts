@@ -53,6 +53,7 @@ export class FormularioCambiarContrasenaComponent implements OnInit {
                 this.router.navigate(["/login"]);
             },
             error => {
+                alert(error);
                 this.loading = false;
           });
         break;
@@ -64,6 +65,7 @@ export class FormularioCambiarContrasenaComponent implements OnInit {
                 this.router.navigate(["/loginPsicologo"]);
             },
             error => {
+                alert(error);
                 this.loading = false;
           });
         break;
@@ -75,6 +77,7 @@ export class FormularioCambiarContrasenaComponent implements OnInit {
                 this.router.navigate(["/loginAdministrador"]);
             },
             error => {
+                alert(error);
                 this.loading = false;
           });
         break;

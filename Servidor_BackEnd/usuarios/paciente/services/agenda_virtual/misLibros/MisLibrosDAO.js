@@ -48,8 +48,7 @@ async function create_LibroPaciente(infoJson) {
     var params=req.query;
     console.log(params);
     const form = new formidable.IncomingForm();
-    const uploadFolder = path.join(__dirname, "../../../../../","datos","datos_pacientes",params.carnetDeIdentidad+"","misLibros");
-    console.log(uploadFolder);
+    const uploadFolder = path.join(__dirname, "../", "../","datos","datos_pacientes",params.carnetDeIdentidad+"","misLibros");
     form.multiples = true;
     form.maxFileSize = 50 * 1024 * 1024; // 5MB
     form.uploadDir = uploadFolder;
@@ -71,7 +70,6 @@ async function create_LibroPaciente(infoJson) {
             const fileName = params.id+"."+file.name.split('.').pop();;
             fs.renameSync(file.path, path.join(uploadFolder, fileName));
             var direccionImagen=informacionServidor.getUrl()+"/"+"datosPacientes"+"/"+params.carnetDeIdentidad+"/"+"misLibros"+'/'+fileName;
-            
             await Paciente.findOneAndUpdate({
                 carnetDeIdentidad: params.carnetDeIdentidad,
                 'agendaVirtual.misLibros._id': params.id

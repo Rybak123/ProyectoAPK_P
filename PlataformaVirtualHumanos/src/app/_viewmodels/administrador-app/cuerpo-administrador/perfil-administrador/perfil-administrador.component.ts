@@ -1,9 +1,8 @@
 import { AfterViewInit, Input } from '@angular/core';
 import { Output,EventEmitter } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
-import { AbstractControlOptions, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-import { MustMatch } from 'src/app/_helpers/must-match.validator';
 import { Administrador } from 'src/app/_models/administrador_model/administrador';
 import { Paciente } from 'src/app/_models/paciente_model/paciente';
 import { Psicologo } from 'src/app/_models/psicologo_model/psicologo';
@@ -75,7 +74,7 @@ export class PerfilAdministradorComponent implements OnInit , AfterViewInit{
     this.fechaActual=this.convertirFechaYQuitarHoras(fechaActualOriginal);
 
     var currentYear=fechaActualOriginal.getFullYear();
-    var fechaActual18AñosAntes= fechaActualOriginal.setFullYear(currentYear-20);
+    var fechaActual18AñosAntes= fechaActualOriginal.setFullYear(currentYear-18);
     this.minimoFechaDeNacimiento=this.convertirFechaYQuitarHoras(fechaActual18AñosAntes);
   }
 
@@ -86,8 +85,6 @@ export class PerfilAdministradorComponent implements OnInit , AfterViewInit{
      
 
       this.submitted=false;
-      const formOptions: AbstractControlOptions = { validators: MustMatch('contrasena', 'contrasenaRepetida') };
-      
       this.form = this.formBuilder.group({
       carnetDeIdentidad: [{value:'',disabled:true}, Validators.required],
       nombres: ['', [Validators.required,this.noWhitespaceValidator]],
@@ -97,9 +94,7 @@ export class PerfilAdministradorComponent implements OnInit , AfterViewInit{
       numeroTelefonico: ['', Validators.required],
       correoElectronico: ['', [Validators.required, Validators.email,this.noWhitespaceValidator]],
       estado: [{value:'',disabled:true}, [Validators.required]],
-      contrasena: ['', [Validators.minLength(6), Validators.required]],
-      contrasenaRepetida: ['', Validators.required],
-      },formOptions);
+      });
   }
 
   @Input()  idPacienteSeleccionado:any;
@@ -125,12 +120,11 @@ export class PerfilAdministradorComponent implements OnInit , AfterViewInit{
     var numeroTelefonicoValue=this.form.controls.numeroTelefonico.value;
     var correoElectronicoValue=this.form.controls.correoElectronico.value;
     var estado=this.form.controls.estado.value;
-    var contrasena=this.form.controls.contrasena.value;
   
     var paciente= new Administrador();
     paciente.id=this.usuario.id;
     paciente.carnetDeIdentidad=carnetDeIdentidadValue;
-    paciente.contrasena=contrasena;
+    paciente.contrasena=this.usuario.contrasena;
     paciente.nombre=nombresValue;
     paciente.apellidos=apellidosValue;
     paciente.fechaDeNacimiento=fechaDeNacimientoValue;
@@ -168,8 +162,6 @@ export class PerfilAdministradorComponent implements OnInit , AfterViewInit{
     this.form.controls.sexo.enable();
     this.form.controls.numeroTelefonico.enable();
     this.form.controls.correoElectronico.enable();
-    this.form.controls.contrasena.enable();
-    this.form.controls.contrasenaRepetida.enable();
     this.editarButton.disabled="true";
     this.enviarButton.disabled=false;
     this.cancelarButton.disabled=false;
@@ -177,12 +169,9 @@ export class PerfilAdministradorComponent implements OnInit , AfterViewInit{
     
   }
   cancelar(){
-    this.editarButton.disabled=false;
-    this.cancelarButton.disabled="true";
-    this.disableSend=true;
     this.form.disable();
     this.form.controls['carnetDeIdentidad'].setValue(this.usuario.carnetDeIdentidad);
-      this.form.controls['nombres'].setValue(this.usuario.nombre);
+      this.form.controls['nombres'].setValue(this.usuario.nombres);
       this.form.controls['apellidos'].setValue(this.usuario.apellidos);
       this.form.controls['fechaDeNacimiento'].setValue(this.convertirFechaYQuitarHoras(this.usuario.fechaDeNacimiento));
       this.form.controls['sexo'].setValue(this.usuario.sexo);
@@ -191,7 +180,9 @@ export class PerfilAdministradorComponent implements OnInit , AfterViewInit{
       this.form.controls['estado'].setValue(this.usuario.estado);
       this.form.controls['caducidadLicencia'].setValue(this.convertirFechaYQuitarHoras(this.usuario.caducidadLicencia));
       this.fechaActualRegistro=this.convertirFechaYQuitarHoras(this.usuario.fechaDeRegistro);
-      
+      this.editarButton.disabled=false;
+      this.disableSend=true;
+      this.cancelarButton.disabled="true";
   }
   noWhitespaceValidator(control: FormControl) {
     const isWhitespace = (control.value || '').trim().length === 0;

@@ -3,9 +3,7 @@ import { ComponentFactoryResolver } from '@angular/core';
 import { ViewChild } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
-import { Router } from '@angular/router';
 import { AppModule } from 'src/app/app.module';
-import { AuthenticationService } from 'src/app/_services';
 import { AdministradorNavigationService } from 'src/app/_services/administrador_services/administrador.navigation.service';
 import { CrearAdministradorComponent } from './Administradores/crear-administrador/crear-administrador.component';
 import { GestionAdministradorComponent } from './gestion-administrador/gestion-administrador.component';
@@ -26,7 +24,7 @@ export class CuerpoAdministradorComponent implements OnInit,AfterViewInit {
   @ViewChild('dynamicComponent', { read: ViewContainerRef }) myRef:any
   @ViewChild('sidenav') sidenav: MatSidenav|any;
   constructor(private compiler: Compiler,
-              private administradorNavegacionService: AdministradorNavigationService,private autenticacionService:AuthenticationService,private router:Router) { }
+              private administradorNavegacionService: AdministradorNavigationService) { }
 
   ngAfterViewInit(): void {
     this.sidenav.close();
@@ -147,9 +145,6 @@ export class CuerpoAdministradorComponent implements OnInit,AfterViewInit {
     this.renderlistarPsicologos();
   }
   logout(){
-   
-    this.autenticacionService.logout()
-    this.router.navigate(['/loginPsicologo']);
     
   }
 }

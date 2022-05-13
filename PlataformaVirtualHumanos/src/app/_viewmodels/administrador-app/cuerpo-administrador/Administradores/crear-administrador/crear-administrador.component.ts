@@ -26,7 +26,7 @@ export class CrearAdministradorComponent implements OnInit,AfterViewInit {
 
     this.fechaActual=this.convertirFechaYQuitarHoras(fechaActualOriginal);
     var currentYear=fechaActualOriginal.getFullYear();
-    var fechaActual18AñosAntes= fechaActualOriginal.setFullYear(currentYear-20);
+    var fechaActual18AñosAntes= fechaActualOriginal.setFullYear(currentYear-5);
     this.minimoFechaDeNacimiento=this.convertirFechaYQuitarHoras(fechaActual18AñosAntes);
   }
 
@@ -89,7 +89,6 @@ export class CrearAdministradorComponent implements OnInit,AfterViewInit {
     this.administradorService.registrarAdminstrador(administrador)
     .pipe(first())
     .subscribe(() => {
-        window.open("http://localhost:4000/excelUsuario/UsuarioRegistrado.csv", "_blank");
         this.irAListarAdministrador();
     }).add(() => this.loading = false);
   }

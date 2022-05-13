@@ -97,7 +97,6 @@ export class VerLibrosComponent implements OnInit,AfterViewInit {
     this.formularioCrearLibro.controls['Imagenn'].setValue(this.libroActual.imagen);
     this.formularioCrearLibro.controls['ControlDePAginass'].setValue(this.libroActual.cantidadPaginas);
     this.formularioCrearLibro.controls['Editoriall'].setValue(this.libroActual.editorial);
-    console.log(this.libroActual.imagenPortada);
     this.direccionLibroActual=this.libroActual.imagenPortada;
     //imagenLibro.src=;
 

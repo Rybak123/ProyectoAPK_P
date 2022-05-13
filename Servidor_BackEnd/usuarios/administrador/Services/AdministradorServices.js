@@ -51,25 +51,6 @@ async function registrarAdministrador(peticionJSON) {
         administrador.hash_contrasena = bcrypt.hashSync(administrador.contrasena, 10);
     }
 
-    var fs = require('fs');
-    const path = require('path');
-    const uploadFolder = path.join(__dirname, "../../","../","excelInfoUsuario");
-
-    if (!fs.existsSync(uploadFolder)){
-        fs.mkdirSync(uploadFolder, { recursive: true });
-    }
-
-    var writeStream = fs.createWriteStream(uploadFolder+"/UsuarioRegistrado.csv");
-
-    var header="Carnet de identidad"+","+"Contrasena"+","+"Nombre"+","+"Apellido"+","+"Fecha de nacimiento"+","+"Genero"+","+"Numero telefonico"+","+"Correo electronico"+","+"Estado"+","+"Fecha de registro"+"\n";
-    var row1 = administrador.carnetDeIdentidad+","+administrador.contrasena+","+administrador.nombre+","+administrador.apellidos+","+administrador.fechaDeNacimiento+","+administrador.sexo+","+administrador.numeroTelefonico+","+administrador.correoElectronico+","+administrador.estado+","+administrador.fechaDeRegistro+"\n";
-
-    writeStream.write(header);
-    writeStream.write(row1);
-
-    writeStream.close();
-
-
     return await administrador.save();
 }
 async function leerAdministrador(peticionJSON) {
@@ -97,9 +78,8 @@ async function modificarAdministrador(peticionJSON) {
         throw 'El siguiente carned de identidad "' +peticionJSON.carnetDeIdentidad + '" ya a sido registrada';
     }
     // hash password if it was entered
-    console.log(peticionJSON);
-    if (peticionJSON.contrasena) {
-        administrador.hash_contrasena = bcrypt.hashSync(peticionJSON.contrasena, 10);
+    if (peticionJSON.password) {
+        peticionJSON.hash_contrasena = bcrypt.hashSync(peticionJSON.password, 10);
     }
     // copy userParam properties to user
     Object.assign(administrador, peticionJSON);
@@ -139,7 +119,7 @@ async function habilitarAdministrador(peticionJSON) {
 }
 async function recuperarContrasena(jsonData) {
     const paciente = await Administrador.findOne({ correoElectronico:jsonData.correoElectronico });
-    if(!paciente){throw "Correo no encontrado";}
+    if(!paciente){throw "Administrador no encontrado";}
     let token = await Token.findOne({ userId: paciente._id });
     if (token) await token.deleteOne();
     let resetToken =  crypto.randomBytes(32).toString("hex");
@@ -150,7 +130,7 @@ async function recuperarContrasena(jsonData) {
         createdAt: Date.now(),
       }).save();
     const link = `localhost:4200/cambiarContrasenaRespuesta?token=${resetToken}&id=${paciente._id}&tipo=administrador`;
-    var succ= await sendEmail(paciente.correoElectronico,"Peticion para cambiar la contrasena",{name: paciente.nombres,link: link,},"./template/requestResetPassword.handlebars");
+    var succ= await sendEmail(paciente.correoElectronico,"Password Reset Request",{name: paciente.nombres,link: link,},"./template/requestResetPassword.handlebars");
     return link;
 }
 async function cambiarContrasena(jsonData) {

@@ -24,7 +24,7 @@ export class MisLibrosDAO
 
     async listarLibros(){
         var parametros={"carnetDeIdentidad": this.carnetDeIdentidadPaciente}
-        return await this.coneccionServidor.coneccionServidor(parametros,"/paciente/listarLibros");
+        return await this.coneccionServidor.coneccionServidor(parametros,"/pacientes/listarLibros");
     }
 
 
@@ -34,7 +34,7 @@ export class MisLibrosDAO
             "id_Libro":id_Libro
         }
 
-        var respuestaHTTP_libro= await this.coneccionServidor.coneccionServidor(parametros,"/paciente/read_libro");
+        var respuestaHTTP_libro= await this.coneccionServidor.coneccionServidor(parametros,"/pacientes/read_libro");
         
         var LibroLeido=new LibroModel();
         LibroLeido.set_id(respuestaHTTP_libro.id);
@@ -63,7 +63,7 @@ export class MisLibrosDAO
         var parametros={
             "carnetDeIdentidad": this.carnetDeIdentidadPaciente,
             "libro":nuevoLibro};
-        var respuesta=await this.coneccionServidor.coneccionServidor(parametros,"/paciente/create_libro")
+        var respuesta=await this.coneccionServidor.coneccionServidor(parametros,"/pacientes/create_libro")
         return respuesta;
     }
     async update_Libro(id:any,titulo:any,autor:any,editorial:any,cantidadPaginas:any,fecha:any,genero:any,descripcion:any,imagenPortada:any){
@@ -82,7 +82,7 @@ export class MisLibrosDAO
         var parametros={
             "carnetDeIdentidad": this.carnetDeIdentidadPaciente,
             "libro":modificarLibro};
-        var respuesta=await this.coneccionServidor.coneccionServidor(parametros,"/paciente/update_libro")
+        var respuesta=await this.coneccionServidor.coneccionServidor(parametros,"/pacientes/update_libro")
         return respuesta;
             
     }
@@ -90,10 +90,10 @@ export class MisLibrosDAO
         var parametros={
             "carnetDeIdentidad": this.carnetDeIdentidadPaciente,
             "id_libro":id}
-        return await this.coneccionServidor.coneccionServidor(parametros,"/paciente/delete_libro");
+        return await this.coneccionServidor.coneccionServidor(parametros,"/pacientes/delete_libro");
     }
     async create_LibroMandarImagen(id:any,formularioImagen:any){
-        return await this.coneccionServidor.coneccionServidor(formularioImagen,`/paciente/mandar_imagen_libro?id=${id}&carnetDeIdentidad=${this.carnetDeIdentidadPaciente}`);
+        return await this.coneccionServidor.coneccionServidor(formularioImagen,`/pacientes/mandar_imagen_libro?id=${id}&carnetDeIdentidad=${this.carnetDeIdentidadPaciente}`);
     }
 
 }

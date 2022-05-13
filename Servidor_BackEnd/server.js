@@ -15,8 +15,6 @@ app.use(cors());
 // use JWT auth to secure the api
 app.use(jwt());
 app.use('/datosPacientes', express.static('datos/datos_pacientes'));//ruta para las imagenes
-
-app.use('/excelUsuario', express.static('excelInfoUsuario'));//ruta El Archivoexcel
 // api routes
 app.use('/paciente', require('./usuarios/paciente/controller/PacienteController'));
 //ruta a para los psicologos

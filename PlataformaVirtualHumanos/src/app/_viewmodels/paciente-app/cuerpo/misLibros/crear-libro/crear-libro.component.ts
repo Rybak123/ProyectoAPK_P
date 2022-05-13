@@ -30,7 +30,7 @@ export class CrearLibroComponent implements OnInit {
   estadoCampo9="";
 
 
-  fechaActual:any;
+  
   formularioCrearLibro:FormGroup|any; 
   urlImage:any;
   archivoActual:any;
@@ -47,7 +47,6 @@ export class CrearLibroComponent implements OnInit {
       Descripcionn:new FormControl('',Validators.required),
       Imagenn:new FormControl('',Validators.required)
       });
-      this.fechaActual=this.convertirFechaYQuitarHoras(new Date);
   }
   validarCampos(){
 
@@ -338,14 +337,7 @@ export class CrearLibroComponent implements OnInit {
         this.estadoCampo9="";
   }
 
-  convertirFechaYQuitarHoras(fecha:any){
-    var fechLibro = new Date(fecha);
-    var dd = String(fechLibro.getDate()).padStart(2, '0');
-    var mm = String(fechLibro.getMonth() + 1).padStart(2, '0'); 
-    var yyyy = fechLibro.getFullYear();
-    var fechaActualString= yyyy + '-' + mm+ '-' +dd;
-    return fechaActualString;
-  }
+
 }
   
 

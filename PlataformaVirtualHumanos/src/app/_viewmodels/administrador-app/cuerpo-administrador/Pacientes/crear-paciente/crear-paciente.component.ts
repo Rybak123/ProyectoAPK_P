@@ -87,9 +87,7 @@ export class CrearPacienteComponent implements OnInit, AfterViewInit {
     this.pacienteService.registrarPaciente(paciente)
     .pipe(first())
     .subscribe(() => {
-      window.open("http://localhost:4000/excelUsuario/UsuarioRegistrado.csv", "_blank");
-      this.irAListarPaciente();
-   
+        this.irAListarPaciente();
     }).add(() => this.loading = false);
     
   }
