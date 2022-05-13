@@ -6,7 +6,6 @@ const PacienteCancionesDao = require('../services/agenda_virtual/misCanciones/Mi
 const PacienteMetasDao = require('../services/agenda_virtual/misMetas/MisMetasDAO');
 const PacienteMetasPersonalesDao = require('../services/agenda_virtual/MisMetasPersonales/misMetasPersonales');
 const PacienteMisFavoritosDao = require('../services/agenda_virtual/misFavoritos/MisFavoritosDAO');
-
 // rutas
 router.get('/listarPacientes', listarPacientes);
 router.post('/registrarPaciente', registrar);
@@ -17,7 +16,6 @@ router.post('/habiltiar_Paciente', habiltiar_Paciente);
 router.post('/autenticacion', autenticacion);
 router.post('/recuperarContrasena', recuperarContrasena);
 router.post('/enlaceCambiarContrasena', cambiarContrasena);
-
 
 //ControlesDeActividades
 router.post('/actualizarHorasDeEstudio', actualizarHorasDeEstudio);
@@ -278,4 +276,3 @@ function deleteFavoritos(req, res, next) {
 async function mandarImagenFavoritos(req, res, next) {
     PacienteMisFavoritosDao.mandarImagen(req, res, next);
 }
-

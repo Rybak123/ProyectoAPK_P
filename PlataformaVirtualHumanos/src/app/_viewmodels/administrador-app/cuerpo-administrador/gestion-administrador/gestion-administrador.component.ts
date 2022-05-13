@@ -20,6 +20,7 @@ export class GestionAdministradorComponent implements OnInit {
 
   ngOnInit(): void {
     this.listarAdministrador();
+    console.log(this.administradores);
   }
   private listarAdministrador(){
     this.gestionAdministrador.listarAdministrador().pipe().
@@ -27,6 +28,7 @@ export class GestionAdministradorComponent implements OnInit {
 
   }
   mostrarPeticion(){
+    console.log(this.administradores)
   }
   visualizarAdministrador(administradorSeleccionado: any){
     this.administradorActual= administradorSeleccionado;

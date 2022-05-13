@@ -49,6 +49,7 @@ export class PerfilPsicologoComponent implements OnInit , AfterViewInit{
     .pipe(first())
     .subscribe((data:any) => {
       this.usuario=data.resultado;
+      console.log(this.usuario)
       this.form.controls['carnetDeIdentidad'].setValue(this.usuario.carnetDeIdentidad);
       this.form.controls['nombres'].setValue(this.usuario.nombres);
       this.form.controls['apellidos'].setValue(this.usuario.apellidos);

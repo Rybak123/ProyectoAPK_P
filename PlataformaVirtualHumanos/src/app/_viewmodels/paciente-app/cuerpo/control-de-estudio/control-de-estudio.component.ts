@@ -89,9 +89,8 @@ export class ControlDeEstudioComponent implements OnInit{
         str += `<option value='${key}'>${val}</option>`
       });
       var select:any = document.getElementById('selectBar');
-      select.fore
+      select.innerHTML = str;
       this.obtenerRegistrosParaCalendario();
-
       
     }
     else{

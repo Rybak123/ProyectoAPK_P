@@ -5,10 +5,12 @@
     <table class="table table-striped">
         <thead>
             <tr>
+              
                 <th style="width: 10%">Carnet de identidad</th>
                 <th style="width: 15%">Nombres y apellidos</th>
                 <th style="width: 10%">Fecha de nacimiento</th>
                 <th style="width: 10%">Fecha de registro</th>
+  
                 <th style="width: 10%">Número telefónico</th>
                 <th style="width: 15%">Correo electrónico</th>
                 <th style="width: 10%">Sexo</th>
@@ -20,8 +22,10 @@
            
                 <td>{{psicologo.carnetDeIdentidad}}</td>
                 <td>{{psicologo.nombres}}    {{psicologo.apellidos}}</td>
+              
                 <td>{{convertirFechaYQuitarHoras(psicologo.fecha_de_nacimiento)}}</td>
                 <td>{{convertirFechaYQuitarHoras(psicologo.fechaDeRegistro)}}</td>
+                
                 <td>{{psicologo.numeroTelefonico}}</td>
                 <td>{{psicologo.correoElectronico}}</td>
                 <td>{{psicologo.sexo}}</td>
