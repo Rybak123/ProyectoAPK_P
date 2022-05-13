@@ -42,7 +42,7 @@ import { InicioPruebaActividadesComponent } from './PruebasDesarolloCognitivo/Pr
 import { InicioPruebaMarcoComponent } from './PruebasDesarolloCognitivo/PruebaGeneral/inicio-prueba-marco/inicio-prueba-marco.component';
 import { PruebaDeDesarolloCognitivoComponent } from './PruebasDesarolloCognitivo/prueba-de-desarollo-cognitivo/prueba-de-desarollo-cognitivo.component';
 
-import {EventosNotificacionesComponent} from '../cuerpo/eventos-notificaciones/eventos-notificaciones.component';
+
 @Component({
   selector: 'app-cuerpo',
   templateUrl: './cuerpo.component.html',
@@ -318,13 +318,7 @@ export class CuerpoComponent implements OnInit,AfterViewInit {
     });
     ref.changeDetectorRef.detectChanges();
   }
-  public renderNotificaiones(): void {
-    const componentModule = this.compiler.compileModuleAndAllComponentsSync(AppModule)
-    const factory = componentModule.componentFactories.find(c => c.componentType === EventosNotificacionesComponent);    
-    this.myRef.clear();
-    const ref = this.myRef.createComponent(factory);
-    ref.changeDetectorRef.detectChanges();
-  }
+ 
 
   ngAfterViewInit() {
     this.navigationServices.asObservableIrVerPerfil().subscribe(() => { 
@@ -346,9 +340,7 @@ export class CuerpoComponent implements OnInit,AfterViewInit {
                       this.sidenav.open();
                   }
           });
-      this.sidenavService.asObservableNotificaciones().subscribe(()=>{
-          this.renderNotificaiones();
-      })
+    
     
   }
 

@@ -16,6 +16,7 @@ import { PruebaGeneralLamina10Component } from 'src/app/_viewmodels/paciente-app
 import { PruebaGeneralLamina12Component } from 'src/app/_viewmodels/paciente-app/cuerpo/PruebasDesarolloCognitivo/PruebaGeneral/prueba-general-lamina12/prueba-general-lamina12.component';
 import { PruebaGeneralLamina15Component } from 'src/app/_viewmodels/paciente-app/cuerpo/PruebasDesarolloCognitivo/PruebaGeneral/prueba-general-lamina15/prueba-general-lamina15.component';
 import { PruebaGeneralLamina16Component } from 'src/app/_viewmodels/paciente-app/cuerpo/PruebasDesarolloCognitivo/PruebaGeneral/prueba-general-lamina16/prueba-general-lamina16.component';
+import { CardComponent } from 'src/app/_components/card/card.component';
 import { PruebaGeneralLamina14Component } from 'src/app/_viewmodels/paciente-app/cuerpo/PruebasDesarolloCognitivo/PruebaGeneral/prueba-general-lamina14/prueba-general-lamina14.component';
 import { PruebaGeneralResultadosComponent } from 'src/app/_viewmodels/paciente-app/cuerpo/PruebasDesarolloCognitivo/PruebaGeneral/prueba-general-resultados/prueba-general-resultados.component';
 import { PruebaDeDesarolloCognitivoComponent } from 'src/app/_viewmodels/paciente-app/cuerpo/PruebasDesarolloCognitivo/prueba-de-desarollo-cognitivo/prueba-de-desarollo-cognitivo.component';
@@ -48,6 +49,7 @@ import { InicioPruebaGeneralComponent } from 'src/app/_viewmodels/paciente-app/c
     PruebaGeneralLamina14Component,
     PruebaGeneralLamina15Component,
     PruebaGeneralLamina16Component,
+    CardComponent,
     PruebaGeneralResultadosComponent,
     PruebaDeDesarolloCognitivoComponent
   ],

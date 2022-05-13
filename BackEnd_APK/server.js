@@ -14,8 +14,6 @@ app.use(cors());
 
 // use JWT auth to secure the api
 app.use(jwt());
-app.use('/eventosImagenes', express.static('EventosImagenes'));//ruta para las imagenes
-
 app.use('/datosPacientes', express.static('datos/datos_pacientes'));//ruta para las imagenes
 
 app.use('/excelUsuario', express.static('excelInfoUsuario'));//ruta El Archivoexcel
@@ -29,8 +27,6 @@ app.use('/administrador', require('./usuarios/administrador/Controller/Administr
 //app.use('/administrador', require('./administrador/Controller/AdministradorController'));
 
 app.use('/pruebasGenerales', require('./pruebasDeDesarrolloCognitivo/pruebasGenerales/Controller/PruebaGeneralController'));
-
-app.use('/eventos', require('./eventos/controller/EventosController'));
 
 app.use(errorHandler);
 

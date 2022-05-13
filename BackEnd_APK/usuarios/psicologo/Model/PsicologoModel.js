@@ -18,8 +18,9 @@ const schema = new Schema({
     estado: { type: Boolean, required: true },
     fechaDeRegistro: { type: Date, required: true },
     fechaDeDeshabilitacion: { type: Date, required: false },
+    
     token: { type: String, required: false }
-
+    
     //son los atributos de una tablas, esqueleto del documento
 
 

@@ -9,8 +9,6 @@ import { AuthenticationService } from 'src/app/_services';
 import { AdministradorNavigationService } from 'src/app/_services/administrador_services/administrador.navigation.service';
 import { AuthenticacionAdministradorService } from 'src/app/_services/login_services/authentication-administrador.service';
 import { CrearAdministradorComponent } from './Administradores/crear-administrador/crear-administrador.component';
-import { CrearEventoComponent } from './Eventos/crear-evento/crear-evento.component';
-import { GestionEventosComponent } from './Eventos/gestion-eventos/gestion-eventos.component';
 import { GestionAdministradorComponent } from './gestion-administrador/gestion-administrador.component';
 import { GestionPacientesComponent } from './gestion-pacientes/gestion-pacientes.component';
 import { GestionPsicologoComponent } from './gestion-psicologo/gestion-psicologo.component';
@@ -131,28 +129,7 @@ export class CuerpoAdministradorComponent implements OnInit,AfterViewInit {
     });
     ref.changeDetectorRef.detectChanges();
   }
-  public renderGestionEventos(): void {
-    const componentModule = this.compiler.compileModuleAndAllComponentsSync(AppModule);
-    const factory = componentModule.componentFactories.find(c => c.componentType === GestionEventosComponent);    
-    this.myRef.clear();
-    const ref = this.myRef.createComponent(factory);
 
-    ref.instance.irACrearEventoEmiter.subscribe(() =>{
-      this.renderCrearEventos();
-    });
-    ref.changeDetectorRef.detectChanges();
-  }
-  public renderCrearEventos(): void {
-    const componentModule = this.compiler.compileModuleAndAllComponentsSync(AppModule);
-    const factory = componentModule.componentFactories.find(c => c.componentType === CrearEventoComponent);    
-    this.myRef.clear();
-    const ref = this.myRef.createComponent(factory);
-
-    ref.instance.irAListarEventoEmiter.subscribe(() =>{
-      this.renderGestionEventos();
-    });
-    ref.changeDetectorRef.detectChanges();
-  }
   mostrarPacientes(){
     this.renderlistarPacientes();
   }

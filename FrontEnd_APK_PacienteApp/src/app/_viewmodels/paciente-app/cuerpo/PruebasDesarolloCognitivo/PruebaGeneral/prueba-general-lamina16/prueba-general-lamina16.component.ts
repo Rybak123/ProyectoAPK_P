@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { trigger, keyframes, animate, transition } from "@angular/animations";
-import * as kf from '../../../../../../_components/keyframes';
+import * as kf from '../../../../../../_components/card/keyframes';
 
 import { Subject } from 'rxjs';
 

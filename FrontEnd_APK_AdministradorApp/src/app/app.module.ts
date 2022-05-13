@@ -71,9 +71,6 @@ import { RespuestaCambiarContrasenaComponent } from './_viewmodels/recuperar-con
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PsicologoService } from './_services/psicologo_services/psicologo-service';
 import { PacienteService } from './_services/paciente-service';
-import { GestionEventosComponent } from './_viewmodels/administrador-app/cuerpo-administrador/Eventos/gestion-eventos/gestion-eventos.component';
-import { CrearEventoComponent } from './_viewmodels/administrador-app/cuerpo-administrador/Eventos/crear-evento/crear-evento.component';
-
 FullCalendarModule.registerPlugins([ 
   dayGridPlugin,
   interactionPlugin
@@ -96,9 +93,6 @@ FullCalendarModule.registerPlugins([
     CrearAdministradorComponent,
     FormularioCambiarContrasenaComponent,
     RespuestaCambiarContrasenaComponent,
-    GestionEventosComponent,
-    CrearEventoComponent,
- 
      
   ],
   imports: [

@@ -48,14 +48,7 @@ function jwt() {
             //pruebas generales
             '/pruebasGenerales/listarPruebaGeneral',
             '/pruebasGenerales/leerPruebaGeneral',
-            '/datosPacientes',
-            //eventos
-            '/eventos/registrarEvento',
-            '/eventos/leerEvento',
-            '/eventos/listarEvento',
-            '/eventos/modificarEvento',
-            '/eventosImagenes',
-            '/EventosImagenes'
+            '/datosPacientes'
         ]
     });
 }

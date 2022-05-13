@@ -1,0 +1,19 @@
+.tphoto {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    margin: 0 auto;
+    position: relative;
+    top: 15px;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -o-border-radius: 10px;
+    -ms-border-radius: 10px;
+    border: 1px solid #c0c0c0;
+    background-color: rgb(50, 245, 124);
+    box-shadow: 2px 2px 2px #c0c0c0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+  }
