@@ -114,7 +114,6 @@ import { BarraDeNavegacionPaginaPrincipalComponent } from './_viewmodels/pagina-
 import { CuerpoPaginaPrincipalComponent } from './_viewmodels/pagina-principal-app/cuerpo-pagina-principal/cuerpo-pagina-principal.component';
 import { InicioComponent } from './_viewmodels/pagina-principal-app/cuerpo-pagina-principal/inicio/inicio.component';
 import { HistoriaComponent } from './_viewmodels/pagina-principal-app/cuerpo-pagina-principal/historia/historia.component';
-import { ResultadosPruebasDeDesarolloCognitivoComponent } from './_viewmodels/paciente-app/cuerpo/resultados-pruebas-de-desarollo-cognitivo/resultados-pruebas-de-desarollo-cognitivo.component';
 
 FullCalendarModule.registerPlugins([ 
   dayGridPlugin, 
@@ -175,8 +174,7 @@ FullCalendarModule.registerPlugins([
     BarraDeNavegacionPaginaPrincipalComponent,
     CuerpoPaginaPrincipalComponent,
     InicioComponent,
-    HistoriaComponent,
-    ResultadosPruebasDeDesarolloCognitivoComponent
+    HistoriaComponent
   ],
   imports: [
     BrowserModule,

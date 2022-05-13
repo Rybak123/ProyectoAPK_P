@@ -7,8 +7,6 @@ const PacienteMetasDao = require('../services/agenda_virtual/misMetas/MisMetasDA
 const PacienteMetasPersonalesDao = require('../services/agenda_virtual/MisMetasPersonales/misMetasPersonales');
 const PacienteMisFavoritosDao = require('../services/agenda_virtual/misFavoritos/MisFavoritosDAO');
 
-const pruebasDesarolloCognitivoDao = require('../services/pruebasDeDesarolloCognitivo/pruebasDeDesarollo');
-
 // rutas
 router.get('/listarPacientes', listarPacientes);
 router.post('/registrarPaciente', registrar);
@@ -62,8 +60,6 @@ router.post('/mandar_imagen_favorito',mandarImagenFavoritos);
 //notificaciones vistas
 router.post('/aumentarNotificacionesVistas',aumentarNotificacionesVistas);
 router.post('/quitarNotificacionVista',quitarNotificacionVista);
-
-router.post('/ingresarPruebaDeDesarolloCognitivo',ingresarPruebaDeSarolloCognitivo);
 module.exports = router;
 
 function aumentarNotificacionesVistas(req, res, next) {
@@ -295,8 +291,3 @@ async function mandarImagenFavoritos(req, res, next) {
     PacienteMisFavoritosDao.mandarImagen(req, res, next);
 }
 
-function ingresarPruebaDeSarolloCognitivo(req, res, next) {
-    pruebasDesarolloCognitivoDao.ingresar_PruebasDeDesarolloCognitivo(req.body)
-        .then(user => user ? res.json(user) : res.sendStatus(500))
-        .catch(err => next(err));
-}

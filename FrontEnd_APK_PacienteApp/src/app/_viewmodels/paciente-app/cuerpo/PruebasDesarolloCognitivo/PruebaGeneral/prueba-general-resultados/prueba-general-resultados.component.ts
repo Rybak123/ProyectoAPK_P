@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-prueba-general-resultados',
@@ -7,10 +7,6 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class PruebaGeneralResultadosComponent implements OnInit {
 
-  @Output() emiterEvent= new EventEmitter();
-  enviarActividad2(){
-    this.emiterEvent.emit();
-  }
   constructor() { }
   puntajeActividad1:any=0;
   puntajeActividad2:any=0;

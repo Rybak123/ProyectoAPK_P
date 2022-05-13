@@ -44,7 +44,6 @@ import { PruebaDeDesarolloCognitivoComponent } from './PruebasDesarolloCognitivo
 
 import {EventosNotificacionesComponent} from '../cuerpo/eventos-notificaciones/eventos-notificaciones.component';
 import { ContactosDeEmergenciaComponent } from '../cuerpo/contactos-de-emergencia/contactos-de-emergencia.component';
-import { ResultadosPruebasDeDesarolloCognitivoComponent } from './resultados-pruebas-de-desarollo-cognitivo/resultados-pruebas-de-desarollo-cognitivo.component';
 @Component({
   selector: 'app-cuerpo',
   templateUrl: './cuerpo.component.html',
@@ -129,26 +128,31 @@ export class CuerpoComponent implements OnInit,AfterViewInit {
 
 
   public renderCrearLibro(): void {
+    // Paso 3 crear la imagen si no existe y asignaro a la etiqueta de componentes dinamicos
+    if(this.factoryCrearLibro==null){
+      this.factoryCrearLibro = this.componentFactoryResolver.resolveComponentFactory(CrearLibroComponent);
+    }
+    
     this.myRef.clear();
-    const ref = this.myRef.createComponent(this.componentFactoryResolver.resolveComponentFactory(CrearLibroComponent));  
+    const ref = this.myRef.createComponent(this.factoryCrearLibro);
+  
     ref.instance.volverAVerLibroEmiter.subscribe(() => {
       this.renderVerLibro();
     });
     ref.changeDetectorRef.detectChanges();
   }
   public renderVerLibro(): void {
-   
     this.myRef.clear();
     const ref = this.myRef.createComponent(this.componentFactoryResolver.resolveComponentFactory(VerLibrosComponent));
+    ref.changeDetectorRef.detectChanges();
     ref.instance.irACrearLibroEmiter.subscribe(() => {
-     console.log("emicion para crear libro");
       this.renderCrearLibro();
     });
     ref.changeDetectorRef.detectChanges();
   }
-
+  // MIS CANCIONES 
   public renderCrearCancion(): void {
-
+    // Paso 3 crear la imagen si no existe y asignaro a la etiqueta de componentes dinamicos
     if(this.factoryCrearCancion==null){
       this.factoryCrearCancion = this.componentFactoryResolver.resolveComponentFactory(CrearCancionesComponent);
     }
@@ -164,7 +168,7 @@ export class CuerpoComponent implements OnInit,AfterViewInit {
   public renderVerCancion(): void {
     this.myRef.clear();
     const ref = this.myRef.createComponent(this.componentFactoryResolver.resolveComponentFactory(VerCancionesComponent));
-   
+    ref.changeDetectorRef.detectChanges();
     ref.instance.irACrearCancionesEventEmiter.subscribe(() => {
       this.renderCrearCancion();
     });
@@ -178,15 +182,12 @@ export class CuerpoComponent implements OnInit,AfterViewInit {
   public render_crearMetasSociales(): void {
     this.myRef.clear();
     const ref = this.myRef.createComponent(this.componentFactoryResolver.resolveComponentFactory(CrearMetasSocialesComponent));
-    ref.instance.irAVerMetasPersonalesEventEmiter.subscribe(() => {
-      this.render_verMetasPersonales();
-    });
     ref.changeDetectorRef.detectChanges();
   }
   public render_verMetasPersonales(): void {
     this.myRef.clear();
     const ref = this.myRef.createComponent(this.componentFactoryResolver.resolveComponentFactory(VerMetasPersonalesComponent));
-
+    ref.changeDetectorRef.detectChanges();
     ref.instance.irACrearMetasPersonalesEventEmiter.subscribe(() => {
       this.render_crearMetasPersonales();
     });
@@ -270,9 +271,6 @@ export class CuerpoComponent implements OnInit,AfterViewInit {
 
     this.myRef.clear();
     const ref = this.myRef.createComponent(this.componentFactoryResolver.resolveComponentFactory(InicioPruebaMarcoComponent));
-    ref.instance.emiterEvent.subscribe(() => {
-      this.render_ResultadosDesarolloCognitivoDesarrolloCognitivo();
-    });
     ref.changeDetectorRef.detectChanges();
   }
   public  render_VerPruebasDeDesarrolloCognitivo(): void {
@@ -293,11 +291,6 @@ export class CuerpoComponent implements OnInit,AfterViewInit {
   public renderContactosDeEmergencia(): void {
     this.myRef.clear();
     const ref = this.myRef.createComponent(this.componentFactoryResolver.resolveComponentFactory(ContactosDeEmergenciaComponent));
-    ref.changeDetectorRef.detectChanges();
-  }
-  public render_ResultadosDesarolloCognitivoDesarrolloCognitivo(): void {
-    this.myRef.clear();
-    const ref = this.myRef.createComponent(this.componentFactoryResolver.resolveComponentFactory(ResultadosPruebasDeDesarolloCognitivoComponent));
     ref.changeDetectorRef.detectChanges();
   }
 
