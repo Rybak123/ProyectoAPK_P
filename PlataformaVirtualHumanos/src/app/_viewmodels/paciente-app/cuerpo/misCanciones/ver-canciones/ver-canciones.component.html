@@ -1,0 +1,48 @@
+<div   id="contenedorTarjetasCanciones"  class=" row align-items-md-stretch" style="width: 100% !important; height: 90.3% !important;background-color: rgb(234, 243, 243)">
+    <div id="scroll" class="col-md-6" style=" background:linear-gradient( rgba(247, 114, 81, 0.693),rgba(194, 248, 232, 0.898));width: 50%;" >
+        
+        <div style="width: 100%; text-align: center;">
+            <h2><i><b>Mis canciones</b></i></h2>
+         </div>
+        <div *ngFor="let cancion of listaDeCanciones">
+            <button id="boton_libro"  style="text-align: center;" class="boton" (click)="visualizarCancion(cancion)">{{cancion.titulo}}</button><br>
+        </div>
+     
+      </div>
+          <div class="col-md-6" id="informacion" style="background:linear-gradient( rgba(194, 248, 232, 0.898),rgba(247, 114, 81, 0.693)); width: 49.5%;">
+           <form [formGroup]="formularioCrearCancion" class="formulario">
+            <div style="width: 60%;height: 50vh; margin-right: 10%;margin-left: 10%;display: block;">
+                <img  onerror='this.src = "assets/img/imagenEnBlanco.jpg"' style="width: 100%; height:100%;" src={{direccionLibroActual|authImage|async}} id="imagenVerLibro">
+             </div>
+            <p for="" id="mensaje7">{{estadoCampo7}}</p>
+            <input style="visibility: hidden;" type="file" class="form-control" formControlName="Imagenn"><br/>
+
+
+            <p for="" id="mensaje">{{estadoCampo}}</p>
+            <input style="visibility:hidden;" type="file" class="form-control" formControlName="Imagenn"><br/>
+            <button class="btn btn-primary" (click)="irACrearCanciones()" id="boton_form3">Registrar nueva cancion</button><br><br>
+            <p for="" id="mensaje2">{{estadoCampo2}}</p>
+            <label for="" class="formulario__label">Titulo</label>
+            <input type="text" class="form-control" formControlName="Titulo" id="titulo1"><br>
+            <p for="" id="mensaje3">{{estadoCampo3}}</p>
+            <label for="" class="formulario__label">Genero</label>
+            <input type="text" class="form-control" formControlName="Genero" id="Genero1"><br>
+            <p for="" id="mensaje4">{{estadoCampo4}}</p>
+            <label for="" class="formulario__label">Artista</label>
+            <input type="text" class="form-control" formControlName="Artista" id="Artista1"><br>
+            <p for="" id="mensaje5">{{estadoCampo5}}</p>
+            <label for="" class="formulario__label">Fecha</label>
+            <input type="date" class="form-control" formControlName="Fecha" id="Fechas1" ><br>
+            <p for="" id="mensaje6">{{estadoCampo6}}</p>
+            <label for="" class="formulario__label">Descripcion</label>
+            <input type="text" class="form-control" formControlName="Descripcion" id="Descripcion1"><br>
+    
+            
+            
+            <button class="btn btn-primary" (click)="editarCancion()" id="boton_form">Editar</button>
+            <button class="btn btn-primary" (click)="GuardarCambiosCancion()" id="boton_form">Guardar cambios</button>
+            <button class="btn btn-primary" (click)="eliminarCancion()" id="boton_form2">Eliminar</button>
+            <button class="btn btn-primary" (click)="cancelar()" id="boton_form2" style="width: 73%;">Cancelar</button>
+        </form>
+        </div>
+    </div>

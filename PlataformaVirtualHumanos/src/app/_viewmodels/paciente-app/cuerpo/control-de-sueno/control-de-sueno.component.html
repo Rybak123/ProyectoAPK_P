@@ -1,0 +1,34 @@
+
+  <div class="row align-items-md-stretch" style="width: 100%; height: 90.3%;background-color: rgb(234, 243, 243)">
+    <div class="col-md-6" style="background-color: rgb(231, 187, 66);width: 50%;">
+      <br>
+  <h3 class="estilo_letra">
+    ¿CUANTO DORMISTE EL DIA DE HOY?
+  </h3>
+    <div>
+        <img src="assets/img/sleep2.png" class="imagen" alt="">
+        <div class="contenedor_opciones">
+          <div> 
+            <button class="boton_agregar" (click)="guardarRegistros('mas de 10 horas')">MAS DE 10 HORAS</button><br>
+            <button class="boton_agregar" (click)="guardarRegistros('10 horas')">10 HORAS</button><br>
+            <button class="boton_agregar" (click)="guardarRegistros('9 horas')">9 HORAS</button><br>
+            <button class="boton_agregar" (click)="guardarRegistros('8 horas')">8 HORAS</button><br>
+            <button class="boton_agregar" (click)="guardarRegistros('7 horas')">7 HORAS</button><br>
+            <button class="boton_agregar" (click)="guardarRegistros('menos de 7 horas')">MENOS DE 7 HORAS</button><br>
+          </div>
+      </div>
+    </div>
+    
+    </div>
+    <div class="col-md-6" style="background-color: rgb(234, 243, 243); height: 80%;width: 50%;">   
+      <div>
+        <p id="textoConfirmatorio" style="font-size:x-large;width: 100%; text-align: center;margin-top: 2%;">{{estadoActividad}}</p>
+      </div>  
+      <div class="calendario" style="background-color: rgb(234, 243, 243); ;margin-top: 5%; ">
+        <full-calendar [options]="calendarOptions"></full-calendar>
+       </div>  
+    </div>
+</div>
+
+
+

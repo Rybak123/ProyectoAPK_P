@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context=".ui.home.ControlDeEstudio.ControlDeEstudio">
+
+
+
+  <Button
+    android:id="@+id/id_controlDeSueno_btn9horas"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="32dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="32dp"
+    android:text="Parar cronometro"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.0"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/id_controlDeSueno_btn10horas" />
+
+  <Button
+    android:id="@+id/id_controlDeEstudioF_btn_irCalendario"
+    android:layout_width="213dp"
+    android:layout_height="57dp"
+    android:layout_marginStart="164dp"
+    android:layout_marginTop="8dp"
+    android:text="Ir a mi calendario"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/id_controlDeEstudioF_tv_titulo" />
+
+  <TextView
+    android:id="@+id/id_controlDeEstudioF_tv_titulo"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:text="Control de estudio"
+    android:textAlignment="center"
+    android:textSize="24sp"
+    android:textStyle="bold"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+  <Button
+    android:id="@+id/id_controlDeSueno_btn10horas"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="32dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="32dp"
+    android:text="Iniciar cronometro"
+    android:textAlignment="center"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.0"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/id_controlDeEstudioF_tv_Cronometro" />
+
+  <TextView
+    android:id="@+id/textView2"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:text="¿Cuantas horas estudiaste el dia de hoy?"
+    android:textAlignment="center"
+    android:textSize="20sp"
+    android:textStyle="bold"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.0"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/id_controlDeEstudioF_btn_eliminarMateria" />
+
+  <TextView
+    android:id="@+id/id_controlDeEstudioF_tv_Cronometro"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="32dp"
+    android:layout_marginTop="16dp"
+    android:layout_marginEnd="32dp"
+    android:text="00:00:00"
+    android:textAlignment="center"
+    android:textSize="34sp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+  <Spinner
+    android:id="@+id/spinnerMaterias"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="1dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="1dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="1.0"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+  <Button
+    android:id="@+id/id_controlDeEstudioF_btn_eliminarMateria"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="85dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="16dp"
+    android:text="Eliminar"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toEndOf="@+id/id_controlDeEstudioF_btn_añadirMateria"
+    app:layout_constraintTop_toBottomOf="@+id/id_controlDeEstudioF_pt_nuevaMATERIAnOMBRE" />
+
+  <Button
+    android:id="@+id/id_controlDeEstudioF_btn_añadirMateria"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="8dp"
+    android:text="Guardar"
+    app:layout_constraintEnd_toStartOf="@+id/id_controlDeEstudioF_btn_eliminarMateria"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/id_controlDeEstudioF_pt_nuevaMATERIAnOMBRE" />
+
+  <TextView
+    android:id="@+id/textView4"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="16dp"
+    android:text="Materias de estudio"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/id_controlDeEstudioF_btn_irCalendario" />
+
+  <EditText
+    android:id="@+id/id_controlDeEstudioF_pt_nuevaMATERIAnOMBRE"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:ems="10"
+    android:hint="Nueva materia"
+    android:inputType="textPersonName"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/spinnerMaterias" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
