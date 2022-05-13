@@ -28,7 +28,7 @@ export class AuthenticacionAdministradorService {
                 localStorage.setItem('currentUser', JSON.stringify(user));
                 this.currentUserSubject.next(user);
                 return user;
-            })).toPromise();
+            }));
     }
     logout() {
         localStorage.removeItem('currentUser');
