@@ -9,7 +9,6 @@ import { NotificacionesService } from 'src/app/_services/notificacionesService';
 import { Evento } from 'src/app/_models/evento_model/Evento';
 import { EventoService } from 'src/app/_services/eventosServices/evento.service';
 import { Subscription } from 'rxjs';
-import { PacienteService } from 'src/app/_services/paciente-service';
 @Component({
   selector: 'app-barra-de-navegacion',
   templateUrl: './barra-de-navegacion.component.html',
@@ -26,15 +25,11 @@ export class BarraDeNavegacionComponent implements OnInit,OnDestroy {
   private authenticationService: AuthenticationService,
   private navigationService:NavigationService,
   private notificacionesService:NotificacionesService,
-  private gestioneventos:EventoService,
-  private gestionPacientes:PacienteService) { this.authenticationService.currentUser.pipe().subscribe(x => this.currentUser = x); }
+  private gestioneventos:EventoService) { this.authenticationService.currentUser.pipe().subscribe(x => this.currentUser = x); }
 
   usuario:any;
   ngOnInit(): void {
     
-    
-
-
     this.notificacionesService.listen("messageRespuesta").subscribe((data)=>{
       console.log("Nuevo mensaje del servidor");
       this.hayNotificacionesNuevas=true;
@@ -48,35 +43,10 @@ export class BarraDeNavegacionComponent implements OnInit,OnDestroy {
             throw console.error("Paciente no encontrado");
         }
     this.usuario=JSON.parse(pacienteInfo);
+    
+    console.log(this.usuario.notificacionesVistas);
+    console.log(this.eventos);
 
-    this.gestioneventos.asObservable().subscribe(() => { 
-      this.actualizarEventos();
-    });
-    this.actualizarEventos();
-  }
-  actualizarEventos(){
-    this.gestionPacientes.leerPaciente(this.usuario.id).pipe().
-    subscribe((paciente: any) => {
-      console.log("Actualizado");
-      var notificaciones=paciente.notificacionesVistas;
-      this.gestioneventos.listarEventos().pipe().
-      subscribe((eventoObtenido: any) => {
-        var eventosCreados=eventoObtenido.resultado.map((evento: { _id: any}) => (evento._id));
-        var difference = eventosCreados.filter((x:any) => notificaciones.indexOf(x) === -1);
-        console.log(difference);
-        console.log(difference>0);
-        if(difference.length>0){
-          this.hayNotificacionesNuevas=true;
-        }
-        else{
-          this.hayNotificacionesNuevas=false;
-        }
-      }).add((eventoObtenido:any)=>{
-        
-      })
-     
-
-    })
   }
   getIdEventos(testResults:any){
     let eventos:any = [];
@@ -97,14 +67,14 @@ export class BarraDeNavegacionComponent implements OnInit,OnDestroy {
   }
   verNotificaciones(){
     this.sideNavService.abrirNotificaciones();
-
+    this.hayNotificacionesNuevas=false;
   }
   listarEventos(){
     this.gestioneventos.listarEventos().pipe().
     subscribe((evento: any) => {
+    
       this.eventos = evento.resultado}).add((x:any)=>{
-        console.log(this.usuario);
-        console.log(this.eventos);
+      
     })
   }
   ngOnDestroy() {

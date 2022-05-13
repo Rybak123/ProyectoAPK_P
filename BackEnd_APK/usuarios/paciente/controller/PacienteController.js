@@ -64,12 +64,12 @@ module.exports = router;
 
 function aumentarNotificacionesVistas(req, res, next) {
     PacienteDao.aumentarNotificacionesVistas(req.body)
-    .then(user => user ? res.json(user) : res.sendStatus(500))
+    .then(() => res.json({}))
     .catch(err => next(err));
 }
 function quitarNotificacionVista(req, res, next) {
     PacienteDao.quitarNotificacionVista(req.body)
-    .then(user => user ? res.json(user) : res.sendStatus(500))
+    .then(() => res.json({}))
     .catch(err => next(err));
 }
 
